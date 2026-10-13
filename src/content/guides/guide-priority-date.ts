@@ -1,26 +1,112 @@
 import { definePage } from '../../lib/guide-types';
+import { cellAt, evaluate, filingChart, MONTHS, LATEST, CAT_SHORT, COUNTRY_LABEL, type Cat, type Country } from '../../lib/engine/cases';
+import { cellText, monthName } from '../../lib/text';
+
+// Chiffres lus dans les données (jamais tapés) : bulletin d'octobre 2026 au moment de l'écriture.
+type Q = Exclude<Cat, 'IR'>;
+const f2bRow = cellAt('F2B', 'ROW', 'FAD');
+const f2bRowDff = cellAt('F2B', 'ROW', 'DFF');
+const f2aRowDff = cellAt('F2A', 'ROW', 'DFF');
+const eb1Row = cellAt('EB1', 'ROW', 'FAD');
+// Exemple fixe : une date de priorité de mars 2019 en F2B, reste du monde (valeur par défaut du mini-simulateur).
+const EX_PD = '2019-03-01';
+const ex = evaluate('F2B', 'ROW', EX_PD);
+const exBehind = Math.max(0, Math.round(ex.behindMonths));
+// Mois récents où EB-2 Inde a été « U » (indisponible) dans le tableau Final Action.
+const recent = MONTHS.slice(-15);
+const uMonths = recent.filter((m) => cellAt('EB2', 'IN', 'FAD', MONTHS.indexOf(m)) === 'U');
+const list = (xs: string[], and: string) => (xs.length < 2 ? xs.join('') : `${xs.slice(0, -1).join(', ')} ${and} ${xs[xs.length - 1]}`);
+// Cases du tableau : une ligne par file, lue ce mois.
+const ROWS_EN: Array<[Q, Country]> = [['F2A', 'ROW'], ['F2B', 'ROW'], ['F2B', 'MX'], ['F4', 'PH'], ['EB1', 'ROW'], ['EB2', 'IN'], ['EB3', 'ROW']];
+const ROWS_ES: Array<[Q, Country]> = [['F2A', 'ROW'], ['F2A', 'MX'], ['F2B', 'MX'], ['F3', 'MX'], ['F4', 'MX'], ['F4', 'ROW']];
+const chartName = (c: Q, l: 'en' | 'es') => (filingChart(c) === 'DFF' ? (l === 'en' ? 'Dates for Filing' : 'Fechas de presentación') : (l === 'en' ? 'Final Action' : 'Acción final'));
+const en = (c: string) => cellText(c, 'en');
+const es = (c: string) => cellText(c, 'es');
+const famChart = filingChart('F2B');
 
 export default definePage({
   id: "guide-priority-date", group: "guides", order: 700,
   mini: "isCurrent",
-  related: ["priority-date-calculator", "visa-bulletin", "visa-bulletin-predictions"],
-  sources: ["vbIndex", "aosCharts", "visaPriority"],
+  related: ["priority-date-calculator", "visa-bulletin", "guide-final-action-vs-dates-for-filing", "guide-chargeability", "guide-portability"],
+  sources: ["vbIndex", "aosCharts", "visaPriority", "i130Form", "i140Form", "avoidScams"],
   en: {
     path: "guides/priority-date",
-    nav: 'TODO', card: 'TODO',
-    title: 'TODO', description: 'TODO',
-    h1: 'TODO', intro: 'TODO',
-    resume: 'TODO',
-    faqs: [],
-    body: () => `<p>TODO</p>`,
+    nav: 'Priority date', card: 'Where the priority date is printed, which filing sets it, and how to compare it with the Visa Bulletin cutoff.',
+    title: 'Priority Date Explained 2026: Find It, Read the Bulletin',
+    description: 'Find your priority date on the I-797 notice, learn which filing sets it (I-130, I-140 or PERM) and compare it with the Visa Bulletin: current, C, U explained.',
+    h1: 'Your priority date: where to find it and how to read it against the bulletin',
+    intro: 'Pick your category and country, type the date printed on your approval notice, and see where it stands in this month’s Final Action chart.',
+    resume: `A priority date is your place in the green card line. For a family case it is the day USCIS received a properly filed Form I-130; for an employment case that needs labor certification it is the day the Department of Labor accepted the PERM application, and for other employment cases the day USCIS accepted Form I-140. The date is printed on the Form I-797 Notice of Action for the petition. Each month the Visa Bulletin publishes a cutoff for every category and country of chargeability, and a visa is available only when your date is earlier than that cutoff. In the ${monthName(LATEST, 'en')} bulletin, F2B for most countries sits at ${en(f2bRow)}, so a date of ${en(EX_PD)} is ${ex.status === 'current' ? 'current' : `about ${exBehind} months behind`}. A “C” means every date qualifies, a “U” means no visa can be issued that month, and USCIS separately tells applicants which of the two charts to use for filing Form I-485.`,
+    faqs: [
+      { q: 'Where is the priority date printed on a Form I-797 notice?', a: 'On the receipt and approval notices for the petition, Form I-797C or I-797, in a box labeled “Priority Date”, close to the receipt number and the category code. The notice goes to the person or employer who filed, so a beneficiary abroad often has to ask the petitioner for a copy. The same date appears on later notices for that petition.' },
+      { q: 'Is the priority date the day the I-130 was mailed or the day USCIS received it?', a: 'USCIS uses the day it received a properly filed Form I-130, which is usually the receipt date on the notice, not the postmark. A petition rejected for a missing signature or a wrong fee gets no priority date; the date comes only from the filing that USCIS accepts, so a corrected resubmission carries the later date.' },
+      { q: 'What priority date does an employment case with PERM labor certification get?', a: 'The day the Department of Labor accepted the labor certification application for processing. To keep that date, the employer must file Form I-140 within 180 days of the PERM approval, or the certification expires. EB-1 and national interest waiver cases skip PERM, so their date is the day USCIS accepts the I-140 itself.' },
+      { q: 'Does a priority date equal to the Visa Bulletin cutoff count as current?', a: 'No. USCIS says a visa is available when the priority date is earlier than the cutoff shown for the category and country. If the bulletin lists the same day as your date, you are still at the front of the line but not yet inside it; the next forward move of even one day is enough.' },
+      { q: 'Can a priority date be current one month and not the next?', a: 'Yes. When demand uses up the numbers faster than expected, the State Department moves a cutoff back, which is called retrogression, or marks the category “U” for the rest of the fiscal year. A priority date that was current in August can therefore stop qualifying in September, and an interview or approval waits until the date moves past it again.' },
+      { q: 'Which Visa Bulletin column applies to my priority date?', a: 'The column of your country of chargeability, which is usually your country of birth, not your citizenship or where you live. India, China, Mexico and the Philippines have their own columns in some categories; everyone else uses the column for all other countries. A spouse’s country of birth can sometimes be used instead.' },
+      { q: 'Does the priority date matter for the spouse of a U.S. citizen?', a: 'Not for timing. Spouses, parents and unmarried children under 21 of U.S. citizens are immediate relatives, and their visas are unlimited, so they never wait for a cutoff. The I-130 notice still shows a filing date, but the wait in that case is USCIS or consular processing, not the bulletin.' },
+    ],
+    body: (h) => `
+<h2>One date, set once, used for years</h2>
+<p>The priority date is fixed by the first accepted filing in your case and does not change while that petition stays alive. USCIS lists which filing sets it on its ${h.src('visaPriority', 'visa availability page')}:</p>
+<ul>
+<li><strong>Family preference (F1 to F4):</strong> the day USCIS received a properly filed ${h.src('i130Form', 'Form I-130')}.</li>
+<li><strong>Employment with labor certification (most EB-2 and EB-3):</strong> the day the Department of Labor accepted the PERM application. The employer then has 180 days from the PERM approval to file Form I-140, or the date is lost with the certification.</li>
+<li><strong>Employment without labor certification (EB-1, national interest waiver):</strong> the day USCIS accepted the ${h.src('i140Form', 'Form I-140')}.</li>
+<li><strong>EB-4 and EB-5:</strong> the day USCIS accepted Form I-360 or Form I-526.</li>
+</ul>
+<p>Nothing that happens later moves the date: not the approval, not a change of address, not a new lawyer. What can happen is that a second petition gives you a second date, and in some employment cases an older date can be carried to a newer I-140. That rule is in the ${h.a('guide-portability', 'portability guide')}.</p>
+<h2>Reading the I-797 notice</h2>
+<p>USCIS prints the priority date on the Form I-797 Notice of Action for the petition: the receipt notice (I-797C) when the case is accepted and the approval notice when it is granted. Look for three items close together: the receipt number, which identifies the case in every later letter and online status check; the section line, which names the relationship or the job category and tells you which row of the bulletin is yours; and the priority date box, which holds the day that counts.</p>
+<p>Two mistakes come up often. The first is reading the “received date” of a later form, such as an I-485 or I-765, as the priority date: those forms have their own receipt dates that play no role in the line. The second is taking the notice date, printed at the top, which is the day the letter was produced. If the approval notice was lost, the same date appears on the receipt notice.</p>
+<h2>The comparison, step by step</h2>
+<p>The ${h.src('vbIndex', 'Visa Bulletin')} has two tables for family cases and two for employment. Find the row for your category and the column for your country of chargeability (usually the country of birth; see ${h.a('guide-chargeability', 'chargeability')}). The value there is a cutoff. Your date qualifies when it is <em>earlier</em> than that cutoff, not equal to it. Take F2B for most countries this month: the Final Action Date is ${h.cell(f2bRow)}. A priority date of ${h.date(EX_PD)} is ${ex.status === 'current' ? 'earlier, so it is current and a visa can be issued' : `later by about ${h.num(exBehind)} months, so it is not current yet`}. The Date for Filing in the same box is ${h.cell(f2bRowDff)}.</p>
+${h.table(['Category and country', 'Final Action Date', 'Date for Filing', 'Chart USCIS accepts for I-485'], ROWS_EN.map(([c, k]) => [`${CAT_SHORT[c]} ${COUNTRY_LABEL.en[k]}`, h.cell(cellAt(c, k, 'FAD')), h.cell(cellAt(c, k, 'DFF')), chartName(c, 'en')]), `${h.month(LATEST)} Visa Bulletin, read from the State Department archive.`)}
+<p>The table shows why the country column matters so much. The same F2B date that is close to the worldwide cutoff can be years away from the Mexican one, because demand from Mexico is larger than its 7% share of family numbers, so it gets its own line.</p>
+<h2>Final Action or Dates for Filing</h2>
+<p>The Final Action chart decides when a green card can actually be approved or a visa issued. The Dates for Filing chart is an earlier waiting room. Inside the United States, USCIS posts each month on its ${h.src('aosCharts', 'filing charts page')} which chart it accepts for Form I-485: in ${h.month(LATEST)} it is the ${famChart === 'DFF' ? 'Dates for Filing' : 'Final Action'} chart for family cases. Applicants abroad use the Dates for Filing chart to know when the National Visa Center will take their documents; the interview itself waits for the Final Action Date. If you only remember one rule, it is that the approval follows the Final Action chart every time. The ${h.a('guide-final-action-vs-dates-for-filing', 'two-chart guide')} goes through the monthly designation in detail.</p>
+<h2>What “current”, “C” and “U” mean</h2>
+<p><strong>Current</strong> describes your date: it is earlier than the cutoff this month. <strong>C</strong> describes the whole box: every priority date qualifies, so there is no line at all. This month EB-1 for most countries reads ${h.cell(eb1Row)} in the Final Action chart, and F2A for most countries reads ${h.cell(f2aRowDff)} in the Dates for Filing chart, which means any F2A applicant may file the I-485 even though the approval still waits for the Final Action Date. <strong>U</strong> means unavailable: no visa may be issued in that box that month, whatever the date. ${uMonths.length ? `EB-2 India was listed as unavailable in ${list(uMonths.map((m) => h.month(m)), 'and')}, the closing months of a fiscal year.` : 'It usually appears near the end of a fiscal year, when a category has used its numbers.'} A “U” is a pause, not a reset: the priority date keeps its place, and the box reopens with a date, usually in October when the new fiscal year brings new numbers.</p>
+<h2>Watching the date over time</h2>
+<p>Cutoffs move once a month, by a few days, by months, or not at all, and sometimes backwards. Since the archive starts in December 2001, every family category in the worldwide column has gone back at least once. Two habits help. Note the cutoff each month next to your own date, so the distance is a number you track rather than a feeling. And look at the same box over several Octobers rather than one month, because large moves often come when a fiscal year opens in October and corrections near its end in September. The calculator above does that comparison for this month; the full ${h.a('priority-date-calculator', 'priority date calculator')} adds the history since 2001 and a range for the wait when our back-test says the range can be trusted.</p>
+<h2>When to ask for help</h2>
+<p>A priority date question is usually simple. It becomes legal when two petitions exist, when a parent naturalizes, when a child is close to 21, or when an employer withdraws an I-140. In those cases, a licensed immigration attorney or a DOJ-accredited representative can read the notices and say which date applies. Be wary of anyone who offers to move a priority date forward for a fee: no form, letter or payment changes the date or your place in the line, and USCIS describes the usual schemes on its ${h.src('avoidScams', 'avoid scams page')}. Nothing on this page is legal advice, and we are not affiliated with USCIS or the State Department.</p>`,
   },
   es: {
     path: "guias/fecha-de-prioridad",
-    nav: 'TODO', card: 'TODO',
-    title: 'TODO', description: 'TODO',
-    h1: 'TODO', intro: 'TODO',
-    resume: 'TODO',
-    faqs: [],
-    body: () => `<p>TODO</p>`,
+    nav: 'Fecha de prioridad', card: 'Dónde aparece la fecha de prioridad de su familiar y cómo compararla con el boletín de visas de cada mes.',
+    title: 'Fecha de prioridad 2026: dónde verla y cómo leer el boletín',
+    description: 'La fecha de prioridad de su petición familiar: en qué aviso I-797 aparece, qué la fija y cómo compararla con el boletín de visas para México y Centroamérica.',
+    h1: 'La fecha de prioridad de su familiar: dónde está y cómo leerla',
+    intro: 'Elija la categoría y el país de nacimiento, escriba la fecha del aviso de la petición y vea si está al día en el boletín de este mes.',
+    resume: `La fecha de prioridad (priority date) es el lugar de su familiar en la fila de la residencia permanente. En una petición familiar es el día en que USCIS recibió el formulario I-130 bien presentado, y aparece en el aviso de acción I-797 (Notice of Action) que recibe quien hizo la petición. Cada mes el Departamento de Estado publica en el boletín de visas (Visa Bulletin) una fecha límite por categoría y por país de nacimiento, y la visa solo está disponible cuando la fecha de prioridad es anterior a esa fecha límite. México tiene su propia columna en casi todas las categorías familiares; El Salvador, Guatemala y Honduras usan la columna general. En ${monthName(LATEST, 'es')}, la categoría F2B de México está en ${es(cellAt('F2B', 'MX', 'FAD'))} y la de los demás países en ${es(f2bRow)}. Una «C» quiere decir que todas las fechas califican; una «U», que ese mes no se entregan visas en esa casilla.`,
+    faqs: [
+      { q: '¿Por qué mi hijo en México no tiene el aviso con su fecha de prioridad?', a: 'Porque USCIS envía los avisos de la petición I-130 a quien la presentó, es decir, al padre o la madre que vive en Estados Unidos, o a su abogado. El beneficiario en México o en Centroamérica no recibe ese papel. Pida una copia del aviso de recibo o de aprobación: la fecha de prioridad aparece en un recuadro con ese nombre.' },
+      { q: '¿Cambia la fecha de prioridad si mi petición familiar tardó años en aprobarse?', a: 'No. La fecha de prioridad es el día en que USCIS recibió la petición bien presentada, no el día de la aprobación. Si la I-130 estuvo pendiente varios años, su familiar no perdió ese tiempo: siguió avanzando en la fila. La aprobación solo confirma la relación familiar y la categoría; la fila ya corría desde el principio.' },
+      { q: '¿Mi fecha de prioridad está al día si es igual a la fecha del boletín?', a: 'Todavía no. USCIS explica que la visa está disponible cuando la fecha de prioridad es anterior a la fecha límite del boletín para la categoría y el país. Si las dos fechas coinciden, su familiar está justo en la puerta, y basta que el boletín avance un solo día para que quede al día.' },
+      { q: '¿Qué columna del boletín usa un familiar nacido en Guatemala o en Honduras?', a: 'La de todos los demás países (All Chargeability Areas Except Those Listed). Guatemala, Honduras y El Salvador no tienen columna propia en las categorías familiares, así que comparten la fecha general, que hoy va muchos años por delante de la de México. Cuenta el país de nacimiento, no la nacionalidad ni el país donde vive.' },
+      { q: '¿Qué hago si el boletín pone «U» en la categoría de mi familiar?', a: 'Nada cambia en la petición: la fecha de prioridad conserva su lugar. La «U» (unavailable) significa que ese mes no se pueden entregar visas en esa casilla, por lo general cerca del final del año fiscal. Suele volver una fecha en octubre, cuando empieza el nuevo año fiscal; entretanto no hay entrevistas ni aprobaciones en esa categoría.' },
+      { q: '¿Puede retroceder la fecha de prioridad de mi hermana en el boletín?', a: 'La fecha de prioridad de su hermana no se mueve; lo que puede retroceder es la fecha límite del boletín. Cuando la demanda supera los números disponibles, el Departamento de Estado regresa la fecha límite (retrogression). Una fecha que estaba al día puede dejar de estarlo por unos meses, y la entrevista espera a que el boletín vuelva a pasarla.' },
+      { q: '¿El esposo de una ciudadana estadounidense necesita esperar su fecha de prioridad?', a: 'No. El cónyuge, los padres y los hijos solteros menores de 21 años de un ciudadano son familiares inmediatos (immediate relatives) y no tienen límite anual de visas. El aviso de la I-130 muestra una fecha, pero no hay fila del boletín que esperar; la espera es solo el trámite de USCIS o del consulado.' },
+    ],
+    body: (h) => `
+<h2>Qué día fija la fecha de prioridad</h2>
+<p>En una familia que pide a un pariente, la fecha de prioridad es el día en que USCIS recibió el ${h.src('i130Form', 'formulario I-130')} completo, firmado y con la tarifa correcta. Si la petición fue rechazada y se volvió a enviar, cuenta la fecha del envío que USCIS aceptó, no la del primer intento. Así lo explica USCIS en su ${h.src('visaPriority', 'página de disponibilidad de visas')}. En las peticiones de trabajo la fecha sale de otro trámite: la certificación laboral (PERM) presentada por el empleador ante el Departamento de Trabajo, o el formulario I-140 cuando no hace falta certificación.</p>
+<p>Esa fecha no cambia mientras la petición siga vigente. No la mueve la aprobación, ni una mudanza, ni un cambio de abogado. Si el padre que hizo la petición se naturaliza, la categoría puede cambiar (por ejemplo de F2B a F1), pero la fecha de prioridad se queda igual; lo explicamos en la ${h.a('guide-f2b-to-f1', 'guía de conversión F2B a F1')}.</p>
+<h2>Cómo leer el aviso I-797 que llega a casa</h2>
+<p>USCIS manda los avisos de la petición al peticionario: el residente o ciudadano que vive en Estados Unidos. Primero llega el aviso de recibo (I-797C) y meses o años después el de aprobación. En los dos hay tres datos juntos. El número de recibo (receipt number) identifica el caso en cada carta y en la consulta en línea. La línea de sección (Section) describe el parentesco, por ejemplo hijo soltero de residente permanente, que en el boletín se llama F2B, o hermano de ciudadano, que se llama F4. Y el recuadro Priority Date trae el día que cuenta.</p>
+<p>Hay dos confusiones frecuentes en las familias. Una es tomar la fecha del aviso (Notice Date, arriba de la hoja), que es solo el día en que se imprimió la carta. Otra es tomar la fecha de recibo de otro formulario, como un I-485 o un permiso de trabajo: esos papeles tienen sus propias fechas, que no sirven para la fila. Si se perdió el aviso de aprobación, la misma fecha de prioridad aparece en el de recibo.</p>
+<h2>La comparación con el boletín, casilla por casilla</h2>
+<p>El ${h.src('vbIndex', 'boletín de visas')} tiene dos tablas para las categorías familiares: fechas de acción final (Final Action Dates) y fechas de presentación (Dates for Filing). Busque la fila de la categoría y la columna del país de nacimiento de su familiar. Para alguien nacido en Jalisco o en Oaxaca es la columna de México; para alguien nacido en San Salvador, Tegucigalpa o Quetzaltenango es la columna general. La fecha de prioridad califica cuando es <em>anterior</em> a la fecha límite.</p>
+${h.table(['Categoría y país', 'Acción final', 'Presentación', 'Tabla que USCIS acepta para el I-485'], ROWS_ES.map(([c, k]) => [`${CAT_SHORT[c]} ${COUNTRY_LABEL.es[k]}`, h.cell(cellAt(c, k, 'FAD')), h.cell(cellAt(c, k, 'DFF')), chartName(c, 'es')]), `Boletín de visas de ${h.month(LATEST)}, leído en el archivo del Departamento de Estado.`)}
+<p>Un ejemplo: si usted es ciudadano y pidió a su hermano de Guadalajara, la categoría es F4 y la columna es la de México, que hoy marca ${h.cell(cellAt('F4', 'MX', 'FAD'))}. El mismo trámite para un hermano nacido en El Salvador se mide con la columna general, en ${h.cell(cellAt('F4', 'ROW', 'FAD'))}. La diferencia no depende de los papeles ni de la familia: depende solo del país de nacimiento, porque ningún país puede recibir más del 7 % de las visas de preferencia en un año y la demanda de México supera esa parte.</p>
+<h2>Las dos tablas: cuál manda en cada etapa</h2>
+<p>La tabla de acción final decide cuándo se aprueba la residencia o se entrega la visa. La de presentación es una antesala. Si su familiar ya está en Estados Unidos y puede ajustar su estatus, USCIS publica cada mes en su ${h.src('aosCharts', 'página de tablas de presentación')} cuál de las dos acepta para el formulario I-485: en ${h.month(LATEST)} es la de ${famChart === 'DFF' ? 'fechas de presentación' : 'acción final'} para las categorías familiares. Si su familiar vive en México o en Centroamérica, la fecha de presentación indica cuándo el Centro Nacional de Visas (National Visa Center) recibe sus documentos, y la entrevista en el consulado espera a la fecha de acción final. Más detalles en la ${h.a('guide-final-action-vs-dates-for-filing', 'guía de las dos tablas')}.</p>
+<h2>«Al día», «C» y «U» en palabras sencillas</h2>
+<p>Decimos que una fecha de prioridad está <strong>al día</strong> (current) cuando es anterior a la fecha límite del mes. La letra <strong>C</strong> en una casilla significa que toda la categoría está al día: no hay fila. Este mes la F2A, para cónyuges e hijos menores de residentes, marca ${h.cell(cellAt('F2A', 'ROW', 'DFF'))} en la tabla de presentación de la columna general, de modo que quien está aquí puede presentar el I-485 aunque la aprobación espere la fecha final. La letra <strong>U</strong> quiere decir no disponible: ese mes no se entregan visas en la casilla. ${uMonths.length ? `Pasó con EB-2 India en ${list(uMonths.map((m) => h.month(m)), 'y')}, los últimos meses de un año fiscal.` : 'Suele pasar al final del año fiscal, cuando una categoría gasta sus números.'} La fecha de prioridad no pierde su lugar con una «U».</p>
+<h2>Seguir la fecha mes a mes</h2>
+<p>La fecha límite cambia una vez al mes: a veces avanza semanas, a veces meses, a veces nada, y a veces regresa. Desde diciembre de 2001 todas las casillas familiares de México han retrocedido al menos una vez. Anote cada mes la fecha del boletín junto a la de su familiar, y compare varios octubres seguidos en vez de un solo mes, porque los saltos grandes suelen llegar con el nuevo año fiscal. El simulador de arriba hace la comparación de este mes; la ${h.a('priority-date-calculator', 'calculadora de fecha de prioridad')} agrega la historia desde 2001 y un rango de espera cuando nuestra prueba con datos pasados dice que es confiable.</p>
+<h2>Cuándo pedir ayuda</h2>
+<p>Si hay dos peticiones para la misma persona, si el peticionario murió o se naturalizó, o si un hijo está por cumplir 21 años, la fecha que cuenta puede ser otra. Para esos casos, busque un abogado de inmigración con licencia o un representante acreditado por el Departamento de Justicia. Desconfíe de quien ofrezca adelantar la fecha de prioridad a cambio de dinero: ningún formulario, carta ni pago cambia esa fecha ni el lugar de su familiar en la fila, y USCIS describe esos engaños en su ${h.src('avoidScams', 'página contra las estafas')}. Esta página no es asesoría legal y no tiene relación con USCIS ni con el Departamento de Estado.</p>`,
   },
 });
