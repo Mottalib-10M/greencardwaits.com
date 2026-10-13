@@ -131,3 +131,19 @@ l'achat du domaine. Les données brutes (`scripts/.cache-raw/`) restent hors du 
 hors `body`), `../../lib/minis/retro` (`retrogressions`), `../../lib/format`, `../../data/*.json`. **Jamais**
 `lib/helpers`, `i18n/*` ni `lib/guides` : ils chargent toutes les pages et créent une boucle d'import.
 Modèle complet : `src/content/employment/eb-2-india.ts`.
+
+## État au 2026-10-13
+
+- **148 pages indexables** : 108 en anglais, 40 en espagnol. Anglais : accueil, méthode, à propos ; Visa Bulletin (rubrique,
+  prévisions, historique, 5 bulletins mensuels) ; familles F1 à F4, × Mexique (5), × Philippines (4), F4 Inde ; emploi
+  EB-1 à EB-5, × Inde et Chine (EB-1, EB-2, EB-3, EB-5), EB-3 Philippines, EB-3 Other Workers ; 5 pays ; 4 calculateurs ;
+  12 pages de délais par formulaire ; 20 bureaux USCIS ; 14 pages de frais ; 12 guides. Espagnol : accueil, método,
+  quiénes somos, boletín (3), familles et Mexique (10), México et Centroamérica (2), 4 calculateurs, tiempos (9),
+  costos (5), 4 guides. En noindex : widget, contact, politique éditoriale, confidentialité, mentions, cookies, embed.
+- Simulateurs : carte verte (statut, retard, prévision, I-485, bureau, frais), vérificateur de bulletin (mois fixe ou
+  au choix sur 294), délais USCIS (21 formulaires, 90 bureaux), frais (8 parcours), CSPA, N-400 ; 12 mini-simulateurs.
+- Rétro-test : 66 cellules publiées par le modèle, 15 par le rythme des 12 mois, sur 220 ; jamais au-delà de 10 ans.
+- Points à revoir : la page « adoptions.state.gov » est un miroir du Département d'État (travel.state.gov refuse les
+  robots, lien affiché quand même) ; à chaque nouveau bulletin, ajouter la page du mois et retirer la plus ancienne (301).
+- Outil de mesure des pages pendant la rédaction (hors dépôt) : un test vitest qui affiche longueurs de titre,
+  description, corps, résumé et FAQ par page.

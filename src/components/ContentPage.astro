@@ -56,7 +56,7 @@ const mh = (k: string) => (miniTarget[k] && hasRoute(miniTarget[k], lang) ? rout
       </>
     )}
     <div class="prose prose-slate mt-8 max-w-none">
-      {parts.map((p, i) => i % 2 === 0 ? <Fragment set:html={p} /> : <MiniSim client:load kind={p} lang={lang} href={mh(p)} />)}
+      {parts.map((p, i) => i % 2 === 0 ? <Fragment set:html={p} /> : <div data-chrome class="not-prose"><MiniSim client:load kind={p} lang={lang} href={mh(p)} /></div>)}
     </div>
     {page.data && <DataBlocks data={page.data} lang={lang} only={page.data.special} />}
   </article>

@@ -93,8 +93,8 @@ export function Head({ label, value, sub }: { label: string; value: string; sub?
       {bar && (
         <button type="button" aria-hidden="true" tabIndex={-1} onClick={() => ref.current?.scrollIntoView({ behavior: 'smooth', block: 'center' })}
           className="no-print fixed inset-x-0 bottom-0 z-40 flex items-center justify-between gap-3 border-t border-accent-200 bg-white px-4 py-3 text-left shadow-[0_-4px_16px_rgba(0,0,0,0.08)] lg:hidden">
-          <span className="text-sm font-medium text-navy-700">{label}</span>
-          <span className="tabular-nums whitespace-nowrap font-serif text-xl font-bold text-navy-900">{value}</span>
+          <span className="shrink-0 text-sm font-medium text-navy-700">{label}</span>
+          <span className="tabular-nums min-w-0 text-right font-serif text-base font-bold leading-tight text-navy-900 sm:text-xl">{value}</span>
         </button>
       )}
     </div>
