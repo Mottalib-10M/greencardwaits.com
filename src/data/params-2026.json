@@ -352,6 +352,41 @@
         "en": "USCIS, Form AR-11, Alien’s Change of Address Card (report a move within 10 days)",
         "es": "USCIS, formulario AR-11, cambio de dirección (avisar en 10 días)"
       }
+    },
+    "f2bOptOut": {
+      "url": "https://www.uscis.gov/policy-manual/volume-6-part-b-chapter-2",
+      "label": {
+        "en": "USCIS Policy Manual, Volume 6, Part B, Chapter 2: automatic conversion and the INA 204(k)(2) opt-out",
+        "es": "Manual de políticas de USCIS, volumen 6, parte B, capítulo 2: conversión automática y renuncia según INA 204(k)(2)"
+      }
+    },
+    "pmPdRetention": {
+      "url": "https://www.uscis.gov/policy-manual/volume-6-part-e-chapter-8",
+      "label": {
+        "en": "USCIS Policy Manual, Volume 6, Part E, Chapter 8: Documentation and Evidence (priority date retention)",
+        "es": "Manual de Políticas de USCIS, Volumen 6, Parte E, Capítulo 8: documentación y pruebas (conservación de la fecha de prioridad)"
+      }
+    },
+    "pmPortability": {
+      "url": "https://www.uscis.gov/policy-manual/volume-7-part-e-chapter-5",
+      "label": {
+        "en": "USCIS Policy Manual, Volume 7, Part E, Chapter 5: Job Portability after Adjustment Filing and Other AC21 Provisions",
+        "es": "Manual de Políticas de USCIS, Volumen 7, Parte E, Capítulo 5: portabilidad del empleo tras presentar el ajuste (AC21)"
+      }
+    },
+    "pmTransferBasis": {
+      "url": "https://www.uscis.gov/policy-manual/volume-7-part-a-chapter-8",
+      "label": {
+        "en": "USCIS Policy Manual, Volume 7, Part A, Chapter 8: Transfer of Underlying Basis",
+        "es": "Manual de Políticas de USCIS, Volumen 7, Parte A, Capítulo 8: transferencia de la base del ajuste"
+      }
+    },
+    "i140Procedures": {
+      "url": "https://www.uscis.gov/forms/all-forms/petition-filing-and-processing-procedures-for-form-i-140-immigrant-petition-for-alien-workers",
+      "label": {
+        "en": "USCIS, Petition Filing and Processing Procedures for Form I-140",
+        "es": "USCIS, procedimientos de presentación y trámite del Formulario I-140"
+      }
     }
   },
   "limits": {

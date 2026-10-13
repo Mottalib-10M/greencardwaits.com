@@ -97,6 +97,9 @@ export const backtestCells = (cat: Exclude<Cat, 'IR'>, country: Country) => B.ca
 /** Part des bulletins depuis octobre 2015 où le pays a sa propre date (règle des pages catégorie × pays : ≥ 25 %). */
 export const distinctShare = (cat: Exclude<Cat, 'IR'>, country: Country) => B.cases[key(cat, country)]?.distinct ?? 0;
 
+/** Horizon maximal d'une prévision publiée : dix ans. */
+export const MAX_FORECAST_MONTHS = 120;
+
 export interface CaseResult {
   cat: Cat;
   country: Country;
@@ -138,10 +141,11 @@ export function evaluate(cat: Cat, country: Country, priorityDate: string, i = L
   const at = (m: number) => (Number.isFinite(m) ? addMonths(MONTHS[i], m) : null);
   if (bt && !bt.reliable && bt.naiveReliable) {
     const nv = naiveAt(series(cat, country, 'FAD'), MONTHS, i, pd);
-    if (Number.isFinite(nv)) {
+    // Au-delà de dix ans, aucune règle testée sur 2012-2025 ne justifie une date : pas de prévision.
+    if (Number.isFinite(nv) && nv <= MAX_FORECAST_MONTHS) {
       const e = bt.naiveError;
       return { cat, country, status: 'waiting', canFile, filingChart: chart, fad, dff, behindMonths, forecast: f, range: [at(Math.max(1, nv - e)), at(nv), at(nv + e)], backtest: bt, reliable: true, method: 'pace' };
     }
   }
-  return { cat, country, status: 'waiting', canFile, filingChart: chart, fad, dff, behindMonths, forecast: f, range: [at(f.p20), at(f.p50), at(f.p80)], backtest: bt, reliable: !!bt?.reliable && Number.isFinite(f.p50), method: 'model' };
+  return { cat, country, status: 'waiting', canFile, filingChart: chart, fad, dff, behindMonths, forecast: f, range: [at(f.p20), at(f.p50), at(f.p80)], backtest: bt, reliable: !!bt?.reliable && Number.isFinite(f.p50) && f.p50 <= MAX_FORECAST_MONTHS, method: 'model' };
 }
