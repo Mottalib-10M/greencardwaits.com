@@ -7,15 +7,8 @@ import { LANG_TAGS } from '../data/site-config';
 
 const esc = (s: string | number) => String(s).replace(/&(?!(?:[a-z]+|#\d+);)/g, '&amp;').replace(/</g, '&lt;');
 
-export function monthName(ym: string, lang: Locale): string {
-  const d = new Date(`${ym}-01T00:00:00Z`);
-  return d.toLocaleDateString(LANG_TAGS[lang], { month: 'long', year: 'numeric', timeZone: 'UTC' });
-}
-export function cellText(v: string, lang: Locale): string {
-  if (v === 'C') return lang === 'es' ? 'Al día (C)' : 'Current (C)';
-  if (v === 'U') return lang === 'es' ? 'No disponible (U)' : 'Unavailable (U)';
-  return displayDate(v, LANG_TAGS[lang]);
-}
+export { monthName, cellText } from './text';
+import { monthName, cellText } from './text';
 
 export function helpers(lang: Locale): Helpers {
   return {

@@ -1,7 +1,7 @@
 import { definePage } from '../../lib/guide-types';
 import { cellAt, moveDays, backtestCell, MONTHS, LATEST } from '../../lib/engine/cases';
 import { retrogressions } from '../../lib/minis/retro';
-import { cellText } from '../../lib/helpers';
+import { cellText } from '../../lib/text';
 
 // Chiffres lus dans les données (jamais tapés) : octobre 2026 au moment de l'écriture.
 const fad = cellAt('EB2', 'IN', 'FAD');

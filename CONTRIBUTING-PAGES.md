@@ -124,3 +124,10 @@ Serveur local : port **4561** (`npm run preview`). Arrêt : `lsof -ti tcp:4561 |
 
 Pas de dépôt GitHub, pas de push, pas de DNS. Ne toucher ni à `_trame` ni à la RECETTE. `CLARITY_ID` reste vide jusqu'à
 l'achat du domaine. Les données brutes (`scripts/.cache-raw/`) restent hors du dépôt.
+
+## Imports permis dans un fichier de page
+
+`../../lib/engine/*` (cases, forecast, ptimes, fees, rules), `../../lib/text` (`cellText`, `monthName` pour les chaînes
+hors `body`), `../../lib/minis/retro` (`retrogressions`), `../../lib/format`, `../../data/*.json`. **Jamais**
+`lib/helpers`, `i18n/*` ni `lib/guides` : ils chargent toutes les pages et créent une boucle d'import.
+Modèle complet : `src/content/employment/eb-2-india.ts`.
