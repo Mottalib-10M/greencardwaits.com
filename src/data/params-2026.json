@@ -1,30 +1,64 @@
 {
-  "_lisezmoi": "Tous les paramètres légaux du site vivent ici — jamais en dur dans le code (RECETTE-SITE.md §4). Renommer en params-<année>.json à chaque millésime. Chaque valeur doit être relue sur la source officielle citée avant d'être écrite, et retrieved_at mis à jour ce jour-là.",
+  "_lisezmoi": "Tous les montants et règles du site vivent ici, jamais en dur (RECETTE §4, §17.4). Chaque valeur a été relue sur la source citée le jour indiqué. Les frais USCIS viennent du formulaire G-1055, édition 10/07/26 (PDF de 60 pages lu en entier pour les formulaires du site) ; s'il change d'édition, le contrôle quotidien bloque le build jusqu'à relecture.",
   "year": 2026,
-  "retrieved_at": "AAAA-MM-JJ",
-  "valid_from": "2026-01-01",
+  "retrieved_at": "2026-10-13",
+  "valid_from": "2026-10-07",
   "valid_to": "2026-12-31",
+  "g1055_edition": "10/07/26",
+  "fees": {
+    "i130": { "paper": 675, "online": 625, "_src": "g1055" },
+    "i485": { "paper": 1440, "online": 1390, "under14WithParentPaper": 950, "under14WithParentOnline": 900, "_src": "g1055" },
+    "i765": { "paper": 520, "online": 470, "withPendingI485Since2024": 260, "withPendingI485Before2024": 0, "_src": "g1055", "_note": "260 $ papier ou en ligne si l'I-485 a été déposé avec frais le 1er avril 2024 ou après et reste en attente ; 0 $ si l'I-485 a été déposé avec frais entre le 30 juillet 2007 et le 31 mars 2024." },
+    "i131": { "advanceParolePaper": 630, "advanceParoleOnline": 580, "reentryPermitPaper": 630, "withPendingI485Before2024": 0, "_src": "g1055" },
+    "i140": { "paper": 715, "online": 665, "asylumProgramRegular": 600, "asylumProgramSmall": 300, "asylumProgramNonprofit": 0, "_src": "g1055" },
+    "i751": { "paper": 750, "online": 700, "_src": "g1055" },
+    "i90": { "paper": 465, "online": 415, "_src": "g1055" },
+    "i129f": { "paper": 675, "_src": "g1055" },
+    "n400": { "paper": 760, "online": 710, "reduced": 380, "_src": "g1055", "_note": "380 $ si le revenu du foyer ne dépasse pas 400 % du seuil fédéral de pauvreté, dépôt papier seulement." },
+    "immigrantFee": { "amount": 235, "_src": "g1055" },
+    "i526e": { "amount": 3675, "integrity": 1000, "_src": "g1055" },
+    "i864": { "amount": 0, "_src": "g1055" },
+    "i693": { "amount": 0, "_src": "g1055", "_note": "Aucun frais USCIS ; l'examen chez le médecin agréé (civil surgeon) est payé au médecin, prix libre, non inclus." },
+    "dosImmigrantFamily": { "amount": 325, "_src": "dosFees" },
+    "dosImmigrantEmployment": { "amount": 345, "_src": "dosFees" },
+    "dosAffidavitReview": { "amount": 120, "_src": "dosFees" },
+    "dosK": { "amount": 265, "_src": "dosFees" }
+  },
+  "cspa": { "ageLimit": 21, "soughtToAcquireYears": 1, "chart": "FAD", "_src": "cspaPolicy" },
+  "naturalization": { "earlyFilingDays": 90, "residenceYears": 5, "residenceYearsSpouse": 3, "physicalPresenceDays5": 913, "physicalPresenceDays3": 548, "breakPresumedMonths": 6, "breakYears": 1, "_src": "n400Residence" },
+  "aosChart": { "month": "2026-10", "family": "DFF", "employment": "DFF", "next": null, "reviewed": "2026-10-01", "_src": "aosCharts" },
   "sources": {
-    "principale": {
-      "url": "https://exemple.gouv.xx/page-officielle",
-      "label": {
-        "fr": "Administration — intitulé exact de la page ou du texte",
-        "en": "Authority — exact title of the page or legal text"
-      }
-    },
-    "loi": {
-      "url": "https://exemple.gouv.xx/texte-de-loi",
-      "label": {
-        "fr": "Loi / code — article précis appliqué par le moteur",
-        "en": "Act / code — the exact article the engine applies"
-      }
-    },
-    "bareme": {
-      "url": "https://exemple.gouv.xx/bareme-annuel",
-      "label": {
-        "fr": "Barème ou circulaire annuelle, millésime 2026",
-        "en": "Annual schedule or circular, 2026 edition"
-      }
-    }
+    "vbIndex": { "url": "https://travel.state.gov/content/travel/en/legal/visa-law0/visa-bulletin.html", "label": { "en": "U.S. Department of State, Visa Bulletin (monthly, since December 2001)", "es": "Departamento de Estado de EE. UU., Visa Bulletin (mensual, desde diciembre de 2001)" } },
+    "vbMirror": { "url": "https://adoptions.state.gov/content/travel/en/legal/visa-law0/visa-bulletin.html", "label": { "en": "Visa Bulletin archive on the State Department's adoptions.state.gov host (read for this site)", "es": "Archivo del Visa Bulletin en adoptions.state.gov, servidor del Departamento de Estado (fuente de lectura)" } },
+    "vbOct2026": { "url": "https://adoptions.state.gov/content/travel/en/legal/visa-law0/visa-bulletin/2027/visa-bulletin-for-october-2026.html", "label": { "en": "Visa Bulletin for October 2026", "es": "Visa Bulletin de octubre de 2026" } },
+    "aosCharts": { "url": "https://www.uscis.gov/green-card/green-card-processes-and-procedures/visa-availability-priority-dates/adjustment-of-status-filing-charts-from-the-visa-bulletin", "label": { "en": "USCIS, Adjustment of Status Filing Charts from the Visa Bulletin", "es": "USCIS, tablas de presentación del ajuste de estatus según el Visa Bulletin" } },
+    "g1055": { "url": "https://www.uscis.gov/g-1055", "label": { "en": "USCIS, Form G-1055 Fee Schedule, edition 10/07/26", "es": "USCIS, tabla de tarifas G-1055, edición del 10/07/26" } },
+    "g1055pdf": { "url": "https://www.uscis.gov/sites/default/files/document/forms/g-1055.pdf", "label": { "en": "USCIS, Form G-1055 (PDF, 60 pages)", "es": "USCIS, formulario G-1055 (PDF, 60 páginas)" } },
+    "feeCalculator": { "url": "https://www.uscis.gov/feecalculator", "label": { "en": "USCIS official fee calculator", "es": "Calculadora oficial de tarifas de USCIS" } },
+    "dosFees": { "url": "https://travel.state.gov/content/travel/en/us-visas/visa-information-resources/fees/fees-visa-services.html", "label": { "en": "U.S. Department of State, Fees for Visa Services", "es": "Departamento de Estado, tarifas de servicios de visa" } },
+    "immigrantFee": { "url": "https://www.uscis.gov/forms/filing-fees/uscis-immigrant-fee", "label": { "en": "USCIS Immigrant Fee", "es": "USCIS Immigrant Fee (tarifa de inmigrante)" } },
+    "uscisTimes": { "url": "https://egov.uscis.gov/processing-times/", "label": { "en": "USCIS, Check Case Processing Times", "es": "USCIS, consultar tiempos de procesamiento" } },
+    "itData": { "url": "https://immigrationtimes.org/data/", "label": { "en": "ImmigrationTimes.org Open Data (CC BY 4.0), processing times published by USCIS", "es": "Datos abiertos de ImmigrationTimes.org (CC BY 4.0), tiempos publicados por USCIS" } },
+    "uscisReport": { "url": "https://www.uscis.gov/sites/default/files/document/data/appropriation_requirement_august_2026_v1.0.csv", "label": { "en": "USCIS, Report to Congress: forms received, pending and average processing time, August 2026", "es": "USCIS, informe al Congreso: solicitudes recibidas, pendientes y tiempo medio, agosto de 2026" } },
+    "uscisData": { "url": "https://www.uscis.gov/tools/reports-and-studies/immigration-and-citizenship-data", "label": { "en": "USCIS, Immigration and Citizenship Data", "es": "USCIS, datos de inmigración y ciudadanía" } },
+    "cspaPolicy": { "url": "https://www.uscis.gov/policy-manual/volume-7-part-a-chapter-7", "label": { "en": "USCIS Policy Manual, Volume 7, Part A, Chapter 7: Child Status Protection Act", "es": "Manual de políticas de USCIS, volumen 7, parte A, capítulo 7: Ley CSPA" } },
+    "cspaPage": { "url": "https://www.uscis.gov/green-card/green-card-processes-and-procedures/child-status-protection-act-cspa", "label": { "en": "USCIS, Child Status Protection Act (CSPA)", "es": "USCIS, Ley de Protección del Estatus del Menor (CSPA)" } },
+    "n400Residence": { "url": "https://www.uscis.gov/policy-manual/volume-12-part-d-chapter-3", "label": { "en": "USCIS Policy Manual, Volume 12, Part D, Chapter 3: Continuous Residence", "es": "Manual de políticas de USCIS, volumen 12, parte D, capítulo 3: residencia continua" } },
+    "n400Presence": { "url": "https://www.uscis.gov/policy-manual/volume-12-part-d-chapter-4", "label": { "en": "USCIS Policy Manual, Volume 12, Part D, Chapter 4: Physical Presence", "es": "Manual de políticas de USCIS, volumen 12, parte D, capítulo 4: presencia física" } },
+    "n400Form": { "url": "https://www.uscis.gov/n-400", "label": { "en": "USCIS, Form N-400, Application for Naturalization", "es": "USCIS, formulario N-400, solicitud de naturalización" } },
+    "i485Form": { "url": "https://www.uscis.gov/i-485", "label": { "en": "USCIS, Form I-485", "es": "USCIS, formulario I-485" } },
+    "i130Form": { "url": "https://www.uscis.gov/i-130", "label": { "en": "USCIS, Form I-130, Petition for Alien Relative", "es": "USCIS, formulario I-130, petición de familiar extranjero" } },
+    "i765Form": { "url": "https://www.uscis.gov/i-765", "label": { "en": "USCIS, Form I-765, Application for Employment Authorization", "es": "USCIS, formulario I-765, permiso de trabajo" } },
+    "i131Form": { "url": "https://www.uscis.gov/i-131", "label": { "en": "USCIS, Form I-131, travel documents and advance parole", "es": "USCIS, formulario I-131, documentos de viaje y advance parole" } },
+    "i140Form": { "url": "https://www.uscis.gov/i-140", "label": { "en": "USCIS, Form I-140, Immigrant Petition for Alien Workers", "es": "USCIS, formulario I-140" } },
+    "i751Form": { "url": "https://www.uscis.gov/i-751", "label": { "en": "USCIS, Form I-751, Petition to Remove Conditions on Residence", "es": "USCIS, formulario I-751, retiro de condiciones" } },
+    "i90Form": { "url": "https://www.uscis.gov/i-90", "label": { "en": "USCIS, Form I-90, Application to Replace Permanent Resident Card", "es": "USCIS, formulario I-90, reemplazo de la tarjeta de residente" } },
+    "i129fForm": { "url": "https://www.uscis.gov/i-129f", "label": { "en": "USCIS, Form I-129F, Petition for Alien Fiancé(e)", "es": "USCIS, formulario I-129F, petición de prometido(a)" } },
+    "i526eForm": { "url": "https://www.uscis.gov/i-526e", "label": { "en": "USCIS, Form I-526E, Immigrant Petition by Regional Center Investor", "es": "USCIS, formulario I-526E" } },
+    "ina203": { "url": "https://www.uscis.gov/laws-and-policy/legislation/immigration-and-nationality-act", "label": { "en": "Immigration and Nationality Act, sections 201 to 203 (worldwide levels, per-country limit, preference categories)", "es": "Ley de Inmigración y Nacionalidad, secciones 201 a 203 (límites anuales, por país y categorías)" } },
+    "visaPriority": { "url": "https://www.uscis.gov/green-card/green-card-processes-and-procedures/visa-availability-priority-dates", "label": { "en": "USCIS, Visa Availability and Priority Dates", "es": "USCIS, disponibilidad de visas y fechas de prioridad" } },
+    "consular": { "url": "https://travel.state.gov/content/travel/en/us-visas/immigrate/the-immigrant-visa-process.html", "label": { "en": "U.S. Department of State, The Immigrant Visa Process", "es": "Departamento de Estado, el proceso de visa de inmigrante" } },
+    "legalHelp": { "url": "https://www.justice.gov/eoir/find-legal-representation", "label": { "en": "U.S. Department of Justice (EOIR), Find Legal Representation", "es": "Departamento de Justicia (EOIR), encontrar representación legal" } },
+    "avoidScams": { "url": "https://www.uscis.gov/scams-fraud-and-misconduct/avoid-scams", "label": { "en": "USCIS, Avoid Scams", "es": "USCIS, evite las estafas" } }
   }
 }

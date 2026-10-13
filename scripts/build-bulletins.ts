@@ -45,7 +45,8 @@ for (const it of items) {
   }
   const b = parseBulletin(readFileSync(f, 'utf8'), it.month);
   errors.push(...integrity(b));
-  bulletins.push({ ...b, url: it.url } as Bulletin & { url: string });
+  // Chemin seul (sans hôte) : check-sources ne doit pas ouvrir les 294 pages à chaque contrôle.
+  bulletins.push({ ...b, path: it.url.replace(HOST, "") } as Bulletin & { path: string });
 }
 
 if (bulletins.length < 294) errors.push(`${bulletins.length} bulletins seulement (294 attendus au 2026-10-13)`);
