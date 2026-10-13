@@ -9,7 +9,7 @@ import { formatNumber, formatMoney, displayDate } from '../../lib/format';
 type R = { office: string; subtype: string; info: string; min: number | null; max: number | null; inquiry: string | null };
 const ROWS = ((PT as unknown as { forms: Record<string, { rows: R[] }> }).forms['i-140']?.rows ?? []).filter((r) => r.max != null).sort((a, b) => a.max! - b.max!);
 const CAT: Record<string, Exclude<Cat, 'IR'> | null> = { '136A-E11': 'EB1', '136A-E12': 'EB1', '136A-E13': 'EB1', '136A-E21': 'EB2', '136A-NIW': 'EB2', '136A-E31': 'EB3', '136A-EW3': 'EW', '136A-NUR': null };
-const n = (x: number | null | undefined) => (x == null ? '—' : formatNumber(x, x % 1 ? 1 : 0, 'en'));
+const n = (x: number | null | undefined) => (x == null ? '–' : formatNumber(x, x % 1 ? 1 : 0, 'en'));
 const by = (s: string) => ROWS.find((r) => r.subtype === s)!;
 const eb2 = by('136A-E21'), eb3 = by('136A-E31'), niw = by('136A-NIW'), eb1a = by('136A-E11');
 const selfSlower = Math.min(niw.max!, eb1a.max!) > Math.max(eb2.max!, eb3.max!);
@@ -39,7 +39,7 @@ export default definePage({
       { q: 'Does an approved I-140 mean I can file for my green card?', a: 'Only when your priority date is current under the chart USCIS designates for filing Form I-485 that month. For many categories and countries it is current or close; for India and China it can be years away. The table on this page shows this month’s Final Action Date for each I-140 category, for applicants born in all other countries.' },
     ],
     body: (h) => {
-      const m = (x: number | null | undefined) => (x == null ? '—' : h.num(x, x % 1 ? 1 : 0));
+      const m = (x: number | null | undefined) => (x == null ? '–' : h.num(x, x % 1 ? 1 : 0));
       return `<h2>Eight lines, from months to years</h2>
 <p>Sorted from fastest to slowest, the published I-140 lines run from ${m(fast.max)} months for ${lc(fast.info)} to ${m(slow.max)} months for ${lc(slow.info)}. The last column shows where the matching Visa Bulletin queue stands this month for people born outside India, China, Mexico and the Philippines.</p>
 ${h.table(['Category as published', 'Published range', 'Inquiries for receipts up to', 'Final Action Date, all other countries'], ROWS.map((r) => [r.info, `${m(r.min)} to ${m(r.max)} months`, r.inquiry ? h.date(r.inquiry) : 'not published', CAT[r.subtype] ? `${CAT_SHORT[CAT[r.subtype]!]}: ${h.cell(cellAt(CAT[r.subtype]!, 'ROW', 'FAD'))}` : 'depends on the petition']), `USCIS publication of ${h.date(PUBLISHED)}; Visa Bulletin, latest month.`, ['l', 'r', 'l', 'l'])}

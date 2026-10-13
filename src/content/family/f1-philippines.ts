@@ -37,7 +37,7 @@ export default definePage({
   tool: {"kind": "greencard", "cat": "F1", "country": "PH"},
   data: {"cat": "F1", "country": "PH"},
   related: ["f1", "country-philippines", "f2b-philippines", "guide-f2b-to-f1", "guide-chargeability"],
-  sources: ["vbIndex", "vbMirror", "aosCharts", "visaPriority", "i130Form"],
+  sources: ["vbIndex", "vbMirror", "aosCharts", "visaPriority", "i130Form", "cfr204_2"],
   en: {
     path: "family/f1/philippines",
     nav: 'F1 Philippines', card: 'Adult unmarried children of U.S. citizens born in the Philippines: cutoff, F2B comparison and history.',

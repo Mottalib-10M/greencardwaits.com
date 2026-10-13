@@ -38,7 +38,7 @@ export default function CspaTool({ lang = 'en', methodHref }: { lang?: L; method
           </div>
         </form>
         <div aria-live="polite" data-resultat className={box}>
-          <Head label={tx(lang, 'Child Status Protection Act', 'Ley de Protección del Estatus del Menor')} value={!r ? '—' : r.protected ? tx(lang, 'Protected: under 21', 'Protegido: menos de 21') : tx(lang, 'Ages out', 'Pierde la edad')} sub={r ? tx(lang, `CSPA age ${yrs(r.cspaDays)}`, `Edad CSPA ${yrs(r.cspaDays)}`) : ''} />
+          <Head label={tx(lang, 'Child Status Protection Act', 'Ley de Protección del Estatus del Menor')} value={!r ? '–' : r.protected ? tx(lang, 'Protected: under 21', 'Protegido: menos de 21') : tx(lang, 'Ages out', 'Pierde la edad')} sub={r ? tx(lang, `CSPA age ${yrs(r.cspaDays)}`, `Edad CSPA ${yrs(r.cspaDays)}`) : ''} />
           <Rows rows={rows} />
           <Steps lang={lang} steps={steps} />
           <Actions lang={lang} text={() => (r ? `CSPA: ${yrs(r.cspaDays)}` : '')} />

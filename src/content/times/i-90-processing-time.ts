@@ -5,7 +5,7 @@ import { formatNumber, formatMoney, displayDate } from '../../lib/format';
 
 // Chiffres lus dans les données : I-90 renouvellement (140B) et remplacement (140A), Service Center Operations.
 type L = 'en' | 'es';
-const n = (x: number | null | undefined, l: L = 'en') => (x == null ? '—' : formatNumber(x, x % 1 ? 1 : 0, l));
+const n = (x: number | null | undefined, l: L = 'en') => (x == null ? '–' : formatNumber(x, x % 1 ? 1 : 0, l));
 const renew = centerRows(kindById('i90renew')!)[0];
 const repl = centerRows(kindById('i90replace')!)[0];
 const renewSlower = renew.max! > repl.max!;
@@ -19,7 +19,7 @@ export default definePage({
   tool: {"kind": "ptime", "form": "i90renew", "office": "HOU"},
   data: {"form": "i-90"},
   related: ["processing-times", "i-90-fee", "i-751-processing-time", "n-400-processing-time"],
-  sources: ["uscisTimes", "itData", "uscisData", "i90Form", "g1055"],
+  sources: ["uscisTimes", "itData", "uscisData", "i90Form", "g1055", "i751Form"],
   en: {
     path: "processing-times/i-90",
     nav: 'I-90 card renewal time', card: 'How long a ten-year green card renewal or a replacement card takes, as USCIS publishes it.',
@@ -34,7 +34,7 @@ export default definePage({
       { q: 'Is the I-90 the right form for a two-year conditional green card?', a: 'A conditional resident with a two-year card is in a different process: the conditions are removed with Form I-751, filed in the 90 days before the conditional residence expires, and that petition has its own processing time. Our I-751 page covers it. If you are unsure which card you hold, the card itself shows its validity period.' },
     ],
     body: (h) => {
-      const m = (x: number | null | undefined) => (x == null ? '—' : h.num(x, x % 1 ? 1 : 0));
+      const m = (x: number | null | undefined) => (x == null ? '–' : h.num(x, x % 1 ? 1 : 0));
       return `<h2>Renewal and replacement side by side</h2>
 ${h.table(['Request', 'Median', '80% of cases', 'Inquiries for receipts up to', 'Fee, paper / online'], [['Ten-year renewal', `${m(renew.min)} months`, `${m(renew.max)} months`, h.date(renew.inquiry!), `${h.usd(F.paper)} / ${h.usd(F.online)}`], ['Initial issuance or replacement', `${m(repl.min)} months`, `${m(repl.max)} months`, h.date(repl.inquiry!), `${h.usd(F.paper)} / ${h.usd(F.online)}`]], `USCIS publication of ${h.date(PUBLISHED)}; fees from Form G-1055, edition ${h.P.g1055_edition}.`, ['l', 'r', 'r', 'l', 'r'])}
 <p>${renewSlower ? `The routine case is the slower one: a renewal reaches its 80% mark ${m(renew.max! - repl.max!)} months after a replacement does.` : 'The two lines are close in the current edition.'} USCIS does not explain the gap on its tool. Both lines are published by Service Center Operations, and both are measured from the receipt date to a decision on the application.</p>
@@ -58,7 +58,7 @@ ${h.table(['Request', 'Median', '80% of cases', 'Inquiries for receipts up to', 
       { q: '¿Cuánto cuesta renovar la tarjeta de residente con el formulario I-90?', a: `Según el formulario G-1055 de 2026, el I-90 cuesta ${usd(F.paper, 'es')} si lo presenta en papel y ${usd(F.online, 'es')} si lo presenta en línea. El precio es el mismo para la renovación de diez años y para el reemplazo. La página de la tarifa del I-90 tiene el detalle y otros casos.` },
     ],
     body: (h) => {
-      const m = (x: number | null | undefined) => (x == null ? '—' : h.num(x, x % 1 ? 1 : 0));
+      const m = (x: number | null | undefined) => (x == null ? '–' : h.num(x, x % 1 ? 1 : 0));
       return `<h2>Renovar con tiempo</h2>
 <p>Con una cifra alta de ${m(renew.max)} meses para la renovación, quien presenta el I-90 pocas semanas antes del vencimiento probablemente tendrá la tarjeta vencida durante una parte de la espera. Las dos líneas que publica USCIS:</p>
 ${h.table(['Trámite', 'Rango publicado', 'Consultas para recibos hasta'], [['Renovación de la tarjeta de diez años', `${m(renew.min)} a ${m(renew.max)} meses`, h.date(renew.inquiry!)], ['Reemplazo o primera tarjeta', `${m(repl.min)} a ${m(repl.max)} meses`, h.date(repl.inquiry!)]], `Publicación de USCIS del ${h.date(PUBLISHED)}, centros de servicio.`, ['l', 'r', 'l'])}

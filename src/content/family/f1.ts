@@ -34,7 +34,7 @@ export default definePage({
   tool: {"kind": "greencard", "cat": "F1", "country": "ROW"},
   data: {"cat": "F1", "country": "ROW"},
   related: ["f1-mexico", "f1-philippines", "guide-f2b-to-f1", "i-130-processing-time", "guide-priority-date"],
-  sources: ["vbIndex", "vbMirror", "aosCharts", "visaPriority", "i130Form", "ina203"],
+  sources: ["vbIndex", "vbMirror", "aosCharts", "visaPriority", "i130Form", "ina203", "cfr204_2", "cfr204_1", "vbOct2026"],
   en: {
     path: "family/f1",
     nav: 'F1 (adult son or daughter)', card: 'Unmarried sons and daughters 21+ of U.S. citizens: this month’s cutoff, the Mexico and Philippines lines, and the wait.',

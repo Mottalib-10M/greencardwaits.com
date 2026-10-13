@@ -46,7 +46,7 @@ export default definePage({
   tool: {"kind": "greencard", "cat": "F2A", "country": "ROW"},
   data: {"cat": "F2A", "country": "ROW"},
   related: ["f2a-mexico", "guide-cspa", "i-130-processing-time", "marriage-green-card-cost", "guide-priority-date"],
-  sources: ["vbIndex", "vbMirror", "aosCharts", "visaPriority", "i130Form", "cspaPolicy", "ina203", "vbOct2026"],
+  sources: ["vbIndex", "vbMirror", "aosCharts", "visaPriority", "i130Form", "cspaPolicy", "ina203", "vbOct2026", "cfr204_2", "cfr205_1"],
   en: {
     path: "family/f2a",
     nav: 'F2A (spouse or child of resident)', card: 'Spouses and children under 21 of green card holders: the shortest family line, often current on the filing chart.',

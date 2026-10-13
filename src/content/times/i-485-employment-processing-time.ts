@@ -8,7 +8,7 @@ const NF = (PT as unknown as { national: { forms: Record<string, { months: numbe
 const MN = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 const [mName, mYear] = NATIONAL_MONTH.split(' ');
 const natYm = `${mYear}-${String(MN.indexOf(mName) + 1).padStart(2, '0')}`;
-const n = (x: number | null | undefined) => (x == null ? '—' : formatNumber(x, x % 1 ? 1 : 0, 'en'));
+const n = (x: number | null | undefined) => (x == null ? '–' : formatNumber(x, x % 1 ? 1 : 0, 'en'));
 const rows = centerRows(kindById('i485emp')!);
 const fod = rows.find((r) => r.office === 'FOD')!, scd = rows.find((r) => r.office === 'SCD')!;
 const nat = NF['I-485 employment'], fam = NF['I-485 family'];
@@ -35,7 +35,7 @@ export default definePage({
       { q: 'Does an employment-based I-485 get decided faster when my priority date is current?', a: 'USCIS cannot approve the case before the date is current, so a backlog in the Visa Bulletin can keep a file pending long after the published range has passed. Once the Final Action Date reaches your priority date, the processing range is the relevant clock again. Our green card calculator combines both for your category and country.' },
     ],
     body: (h) => {
-      const m = (x: number | null | undefined) => (x == null ? '—' : h.num(x, x % 1 ? 1 : 0));
+      const m = (x: number | null | undefined) => (x == null ? '–' : h.num(x, x % 1 ? 1 : 0));
       return `<h2>Two published lines, far apart</h2>
 <p>Most forms on this site come with one range, or with one per field office. The employment adjustment is unusual: two lines, published separately, with a gap of ${m(scd.max! - fod.max!)} months at the 80% mark. The Field Office Directorate line reads ${m(fod.min)} to ${m(fod.max)} months and accepts inquiries for receipts up to ${h.date(fod.inquiry!)}. The Service Center Operations line reads ${m(scd.min)} to ${m(scd.max)} months, with inquiries for receipts up to ${h.date(scd.inquiry!)}. USCIS does not explain the split on its tool, and we do not guess at it. What it means in practice is that two people who filed the same month can sit on very different clocks.</p>
 <h2>Smaller queue, smaller backlog</h2>

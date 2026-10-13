@@ -30,7 +30,7 @@ export default definePage({
   tool: {"kind": "greencard", "cat": "EB3", "country": "ROW"},
   data: {"cat": "EB3", "country": "ROW"},
   related: ["eb-3-other-workers", "eb-3-philippines", "eb-3-india", "guide-eb2-to-eb3", "i-140-processing-time"],
-  sources: ["vbIndex", "vbMirror", "vbOct2026", "aosCharts", "visaPriority", "i140Form", "itData"],
+  sources: ["vbIndex", "vbMirror", "vbOct2026", "aosCharts", "visaPriority", "i140Form", "itData", "eb3Page", "cfr204_5"],
   en: {
     path: "employment/eb-3",
     nav: 'EB-3 skilled workers', card: 'Third preference: the worldwide cutoff for skilled workers and professionals, its October 2026 step back and the history.',
@@ -46,7 +46,7 @@ export default definePage({
     ],
     body: (h) => `
 <h2>Who sits in this row</h2>
-<p>The main EB-3 row covers skilled workers, whose job needs at least two years of training or experience, and professionals with a bachelor’s degree. Each case starts with a PERM labor certification, then a Form I-140 from the employer; the PERM filing date becomes the priority date. The ${h.src('vbOct2026', 'October 2026 bulletin')} sets the share at 28.6% of the worldwide employment level, plus numbers unused by EB-1 and EB-2, with a ceiling of 10,000 for the separate ${h.a('eb-3-other-workers', 'Other Workers')} row.</p>
+<p>The main EB-3 row covers skilled workers, whose job needs at least two years of training or experience, and professionals with a bachelor’s degree. Most cases start with a PERM labor certification, then a Form I-140 from the employer; the day the Department of Labor accepted the PERM application becomes the priority date. The ${h.src('vbOct2026', 'October 2026 bulletin')} sets the share at 28.6% of the worldwide employment level, plus numbers unused by EB-1 and EB-2, with a ceiling of 10,000 for the separate ${h.a('eb-3-other-workers', 'Other Workers')} row.</p>
 <h2>A step back to open fiscal year 2027</h2>
 <p>The new fiscal year began with a retreat. The Final Action Date went from ${h.cell(sep26)} in September 2026 to ${h.cell(oct26)} in October, about ${h.num(Math.abs(gapMonths(oct26, sep26)))} months, and the Date for Filing from ${h.cell(sep26dff)} to ${h.cell(oct26dff)}. ${LATEST === '2026-10' ? '' : `The latest bulletin then moved the Final Action Date ${h.num(Math.abs(Math.round(move)))} days ${move >= 0 ? 'forward' : 'back'}. `}Seen from further away, the line has been creeping up from a low point: ${h.cell(octs[0])} in October 2023, ${h.cell(octs[1])} in October 2024 and ${h.cell(octs[2])} in October 2025, after six Octobers in a row, 2017 to 2022, when EB-3 was Current for the rest of the world.</p>
 <h2>The 2007 lesson</h2>

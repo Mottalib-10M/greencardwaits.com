@@ -12,7 +12,7 @@ export default (l: Lang): MiniSpec => ({
   ],
   run: (v) => {
     const F = f(l);
-    if (!iso(v.pd)) return { head: ['', '—'], rows: [] };
+    if (!iso(v.pd)) return { head: ['', '–'], rows: [] };
     const r = evaluate(v.cat as Cat, v.country as Country, v.pd);
     const chart = filingChart(v.cat as Cat);
     return {

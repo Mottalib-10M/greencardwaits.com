@@ -44,7 +44,7 @@ export default definePage({
   tool: {"kind": "greencard", "cat": "F4", "country": "MX"},
   data: {"cat": "F4", "country": "MX"},
   related: ["f4", "country-mexico", "guide-cspa", "guide-chargeability", "consular-processing-cost"],
-  sources: ["vbIndex", "vbMirror", "aosCharts", "visaPriority", "i130Form"],
+  sources: ["vbIndex", "vbMirror", "aosCharts", "visaPriority", "i130Form", "vbOct2026", "famPref"],
   en: {
     path: "family/f4/mexico",
     nav: 'F4 Mexico', card: 'Mexican-born brothers and sisters of U.S. citizens: the oldest family cutoff in the bulletin and a year of almost no movement.',

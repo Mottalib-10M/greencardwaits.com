@@ -33,7 +33,7 @@ const sources = keys.map((k) => ({ name: P.sources[k].label[lang], url: P.source
 const jsonLd = [websiteSchema(lang), organizationSchema(lang), webPageSchema({ name: x.h1, description: x.description, path, lang }), webApplicationSchema({ name: x.h1, description: x.description, path, lang }), faqSchema(faqs, lang)];
 const r = (id: string) => (hasRoute(id, lang) ? route(id, lang) : route(id, 'en'));
 const popular: Array<[Exclude<Cat, 'IR'>, Country, string]> = [['EB2', 'IN', 'eb-2-india'], ['EB3', 'IN', 'eb-3-india'], ['EB2', 'CN', 'eb-2-china'], ['F2A', 'ROW', 'f2a'], ['F4', 'PH', 'f4-philippines'], ['F1', 'MX', 'f1-mexico']];
-const mv = (d: number | null) => (d === null ? '—' : Math.abs(d) < 1 ? T('unchanged', 'sin cambio') : `${d > 0 ? '▲' : '▼'} ${h.num(Math.round(Math.abs(d)))} ${T('days', 'días')}`);
+const mv = (d: number | null) => (d === null ? '–' : Math.abs(d) < 1 ? T('unchanged', 'sin cambio') : `${d > 0 ? '▲' : '▼'} ${h.num(Math.round(Math.abs(d)))} ${T('days', 'días')}`);
 // Plus grands mouvements du mois, toutes cases confondues.
 const moves = QUEUE_CATS.flatMap((c) => COUNTRIES.map((k) => ({ c, k, d: moveDays(c, k) }))).filter((m) => m.d !== null && Math.abs(m.d) >= 1)
   .filter((m, i, a) => m.k === 'ROW' || cellAt(m.c, m.k, 'FAD') !== cellAt(m.c, 'ROW', 'FAD'))

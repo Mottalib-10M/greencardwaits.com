@@ -17,7 +17,7 @@ export default definePage({
   id: "cspa-age-out-calculator", group: "tools", order: 401,
   tool: {"kind": "cspa"},
   related: ["guide-cspa", "f2a", "priority-date-calculator", "f2a-mexico", "guide-f2b-to-f1"],
-  sources: ["cspaPolicy", "cspaPage", "vbIndex"],
+  sources: ["cspaPolicy", "cspaPage", "vbIndex", "cfr205_1"],
   en: {
     path: "tools/cspa-age-out-calculator",
     nav: 'CSPA age-out calculator', card: 'Will a child still count as under 21? CSPA age from four dates, with the one-year filing deadline.',

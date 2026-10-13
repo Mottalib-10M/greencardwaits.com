@@ -26,7 +26,7 @@ export default definePage({
   tool: {"kind": "greencard", "cat": "EB2", "country": "ROW"},
   data: {"cat": "EB2", "country": "ROW"},
   related: ["eb-2-india", "eb-2-china", "i-140-processing-time", "guide-eb2-to-eb3", "guide-portability"],
-  sources: ["vbIndex", "vbMirror", "vbOct2026", "aosCharts", "visaPriority", "i140Form", "itData"],
+  sources: ["vbIndex", "vbMirror", "vbOct2026", "aosCharts", "visaPriority", "i140Form", "itData", "cfr204_5"],
   en: {
     path: "employment/eb-2",
     nav: 'EB-2 advanced degree', card: 'Second preference: the rest-of-world cutoff after the October 2026 reset, NIW timing and the India and China lines.',
@@ -47,7 +47,7 @@ export default definePage({
 <h2>October 2026: the end of a Current spring</h2>
 <p>For the rest of the world, the Final Action Date was listed as Current in every bulletin from April to September 2026. The October bulletin reset it to ${h.cell(oct26)}, with the Date for Filing at ${h.cell(oct26dff)}. That pattern is not new. EB-2 was Current every October from 2013 to 2022, then a cutoff appeared: ${h.cell(octs[0])} in October 2023, ${h.cell(octs[1])} in 2024 and ${h.cell(octs[2])} in 2025. The deepest single drop in the archive came in ${h.month(retro.worstAt)}, when the box went from ${h.cell(worstBefore)} to ${h.cell(worstCell)} for one month and returned to ${h.cell(worstAfter)} the next. In all, the line has stepped backwards ${h.num(retro.n)} times since 2001.</p>
 <h2>Two I-140 clocks under one row</h2>
-<p>The petition stage can matter more than the bulletin for this column. In the ${h.src('itData', `${h.month(PUBLISHED.slice(0, 7))} USCIS release`)}, a standard EB-2 Form I-140 (E21) took ${m1(h, e21.min)} to ${m1(h, e21.max)} months, while one requesting a National Interest Waiver took ${m1(h, niw.min)} to ${m1(h, niw.max)} months. The priority date is the PERM filing date for labor-certified cases and the I-140 receipt date for waiver cases, so a long NIW review does not cost queue position; it delays the moment the approved petition can be used.</p>
+<p>The petition stage can matter more than the bulletin for this column. In the ${h.src('itData', `${h.month(PUBLISHED.slice(0, 7))} USCIS release`)}, a standard EB-2 Form I-140 (E21) took ${m1(h, e21.min)} to ${m1(h, e21.max)} months, while one requesting a National Interest Waiver took ${m1(h, niw.min)} to ${m1(h, niw.max)} months. The priority date is the day the Department of Labor accepted the PERM application for labor-certified cases and the I-140 receipt date for waiver cases, so a long NIW review does not cost queue position; it delays the moment the approved petition can be used.</p>
 <h2>India, China and everyone else</h2>
 <p>Applicants born in India stand at ${h.cell(fadIN)} and those born in mainland China at ${h.cell(fadCN)}, both far behind the worldwide line. Each has its own page: ${h.a('eb-2-india', 'EB-2 India')} and ${h.a('eb-2-china', 'EB-2 China')}. ${dffChart ? 'This month USCIS accepts the Dates for Filing chart for employment-based I-485 applications.' : 'This month USCIS requires the Final Action chart for employment-based I-485 applications.'} Applicants weighing a second petition in the third preference can compare the two rows with the ${h.a('guide-eb2-to-eb3', 'EB-2 to EB-3 calculator')}.</p>
 <h2>What the back-test says about this column</h2>

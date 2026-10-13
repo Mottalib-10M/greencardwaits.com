@@ -19,7 +19,7 @@ const h = helpers(lang);
 const es = lang === 'es';
 const T = (en: string, sp: string) => (es ? sp : en);
 const cell = (c: string) => h.cell(c);
-const mv = (d: number | null) => (d === null ? '—' : Math.abs(d) < 1 ? T('no change', 'sin cambio') : `<span class="${d > 0 ? 'move-up' : 'move-down'}">${d > 0 ? '▲' : '▼'} ${h.num(Math.round(Math.abs(d)))} ${T('days', 'días')}</span>`);
+const mv = (d: number | null) => (d === null ? '–' : Math.abs(d) < 1 ? T('no change', 'sin cambio') : `<span class="${d > 0 ? 'move-up' : 'move-down'}">${d > 0 ? '▲' : '▼'} ${h.num(Math.round(Math.abs(d)))} ${T('days', 'días')}</span>`);
 const monthIdx = (ym: string) => MONTHS.indexOf(ym);
 const famCats = QUEUE_CATS.filter((c) => c.startsWith('F'));
 const empCats = QUEUE_CATS.filter((c) => !c.startsWith('F'));
@@ -55,14 +55,14 @@ if (data.cat) {
     const j = monthIdx(`${y}-10`); if (j < 0) continue;
     const v = resolve(series(c, k, 'FAD'), MONTHS, j);
     const raw = cellAt(c, k, 'FAD', j);
-    const lag = v === null || raw === 'C' ? '—' : h.num((monthStart(MONTHS[j]) - v) / 365.25, 1);
+    const lag = v === null || raw === 'C' ? '–' : h.num((monthStart(MONTHS[j]) - v) / 365.25, 1);
     years.push([h.month(`${y}-10`), cell(raw), lag]);
   }
   html += `<h2>${T('Every October since 2002', 'Cada octubre desde 2002')}</h2>` + h.table([T('Bulletin', 'Boletín'), T('Final Action Date', 'Acción final'), T('Years behind the bulletin', 'Años de atraso')], years, T('October opens each federal fiscal year, so it is the cleanest point to compare one year with the next.', 'Octubre abre cada año fiscal federal: es el mejor punto para comparar un año con otro.'), ['l', 'l', 'r']);
   const cells = backtestCells(c, k);
   if (cells.length) {
     html += `<h2>${T('How our forecast did for this case', 'Cómo le fue a nuestro pronóstico en este caso')}</h2>`;
-    html += h.table([T('Distance behind the cutoff', 'Distancia a la fecha límite'), T('Median error, our model', 'Error mediano, nuestro modelo'), T('Median error, “last 12 months” rule', 'Error mediano, regla de 12 meses'), T('Range held the real date', 'El rango acertó'), T('Start months tested', 'Meses probados'), T('Published?', '¿Se publica?')], cells.map((x) => [T(`${x.gapMonths} months`, `${x.gapMonths} meses`), Number.isFinite(x.medianError) ? T(`${h.num(x.medianError)} months`, `${h.num(x.medianError)} meses`) : '—', Number.isFinite(x.naiveError) ? T(`${h.num(x.naiveError)} months`, `${h.num(x.naiveError)} meses`) : '—', Number.isFinite(x.coverage) ? h.pct(x.coverage) : '—', h.num(x.observed + x.pending), x.reliable ? T('Yes', 'Sí') : x.naiveReliable ? T('12-month pace only', 'Solo ritmo de 12 meses') : T('No reliable forecast', 'Sin pronóstico fiable')]), T(`Back-test from ${h.month(BACKTEST_FROM)} to ${h.month(BACKTEST_TO)}, each month using only the bulletins known that month.`, `Prueba retrospectiva de ${h.month(BACKTEST_FROM)} a ${h.month(BACKTEST_TO)}, cada mes solo con los boletines conocidos entonces.`));
+    html += h.table([T('Distance behind the cutoff', 'Distancia a la fecha límite'), T('Median error, our model', 'Error mediano, nuestro modelo'), T('Median error, “last 12 months” rule', 'Error mediano, regla de 12 meses'), T('Range held the real date', 'El rango acertó'), T('Start months tested', 'Meses probados'), T('Published?', '¿Se publica?')], cells.map((x) => [T(`${x.gapMonths} months`, `${x.gapMonths} meses`), Number.isFinite(x.medianError) ? T(`${h.num(x.medianError)} months`, `${h.num(x.medianError)} meses`) : '–', Number.isFinite(x.naiveError) ? T(`${h.num(x.naiveError)} months`, `${h.num(x.naiveError)} meses`) : '–', Number.isFinite(x.coverage) ? h.pct(x.coverage) : '–', h.num(x.observed + x.pending), x.reliable ? T('Yes', 'Sí') : x.naiveReliable ? T('12-month pace only', 'Solo ritmo de 12 meses') : T('No reliable forecast', 'Sin pronóstico fiable')]), T(`Back-test from ${h.month(BACKTEST_FROM)} to ${h.month(BACKTEST_TO)}, each month using only the bulletins known that month.`, `Prueba retrospectiva de ${h.month(BACKTEST_FROM)} a ${h.month(BACKTEST_TO)}, cada mes solo con los boletines conocidos entonces.`));
   }
 }
 
@@ -76,13 +76,13 @@ if (only === 'predictions') {
   const cases: Array<[Exclude<Cat, 'IR'>, Country]> = [['F1', 'ROW'], ['F1', 'MX'], ['F1', 'PH'], ['F2A', 'ROW'], ['F2A', 'MX'], ['F2B', 'ROW'], ['F2B', 'MX'], ['F2B', 'PH'], ['F3', 'ROW'], ['F3', 'MX'], ['F3', 'PH'], ['F4', 'ROW'], ['F4', 'IN'], ['F4', 'MX'], ['F4', 'PH'], ['EB1', 'IN'], ['EB1', 'CN'], ['EB2', 'ROW'], ['EB2', 'IN'], ['EB2', 'CN'], ['EB3', 'ROW'], ['EB3', 'IN'], ['EB3', 'CN'], ['EB3', 'PH'], ['EW', 'ROW'], ['EB5', 'IN'], ['EB5', 'CN']];
   const rows = cases.map(([c, k]) => {
     const raw = cellAt(c, k, 'FAD');
-    if (raw === 'C' || raw === 'U') return [`${CAT_SHORT[c]} · ${COUNTRY_LABEL[lang][k]}`, cell(raw), '—', '—'];
+    if (raw === 'C' || raw === 'U') return [`${CAT_SHORT[c]} · ${COUNTRY_LABEL[lang][k]}`, cell(raw), '–', '–'];
     const pd = addMonths(raw.slice(0, 7), 12) + raw.slice(7);
     // Une date de priorité ne peut pas être postérieure au mois du bulletin.
-    if (pd > `${LATEST}-01`) return [`${CAT_SHORT[c]} · ${COUNTRY_LABEL[lang][k]}`, cell(raw), T('cutoff within a year of today', 'fecha a menos de un año de hoy'), '—'];
+    if (pd > `${LATEST}-01`) return [`${CAT_SHORT[c]} · ${COUNTRY_LABEL[lang][k]}`, cell(raw), T('cutoff within a year of today', 'fecha a menos de un año de hoy'), '–'];
     const r = evaluate(c, k, pd);
-    const est = r.reliable && r.range ? `${r.range[0] ? h.month(r.range[0]) : '—'} – ${r.range[2] ? h.month(r.range[2]) : T('later', 'después')}` : T('No reliable forecast', 'Sin pronóstico fiable');
-    return [`${CAT_SHORT[c]} · ${COUNTRY_LABEL[lang][k]}`, cell(raw), est, r.backtest ? T(`${h.num(r.method === 'pace' ? r.backtest.naiveError : r.backtest.medianError)} months${r.method === 'pace' ? ' (12-month pace)' : ''}`, `${h.num(r.method === 'pace' ? r.backtest.naiveError : r.backtest.medianError)} meses${r.method === 'pace' ? ' (ritmo de 12 meses)' : ''}`) : '—'];
+    const est = r.reliable && r.range ? `${r.range[0] ? h.month(r.range[0]) : '–'} – ${r.range[2] ? h.month(r.range[2]) : T('later', 'después')}` : T('No reliable forecast', 'Sin pronóstico fiable');
+    return [`${CAT_SHORT[c]} · ${COUNTRY_LABEL[lang][k]}`, cell(raw), est, r.backtest ? T(`${h.num(r.method === 'pace' ? r.backtest.naiveError : r.backtest.medianError)} months${r.method === 'pace' ? ' (12-month pace)' : ''}`, `${h.num(r.method === 'pace' ? r.backtest.naiveError : r.backtest.medianError)} meses${r.method === 'pace' ? ' (ritmo de 12 meses)' : ''}`) : '–'];
   });
   html += `<h2>${T('A year behind the cutoff: when does it turn current?', 'Un año detrás de la fecha límite: ¿cuándo se pone al día?')}</h2>` + h.table([T('Case', 'Caso'), T(`Cutoff, ${h.month(LATEST)}`, `Fecha límite, ${h.month(LATEST)}`), T('Likely current (20% to 80%)', 'Probable (20 % a 80 %)'), T('Past median error', 'Error mediano pasado')], rows, T('Priority date set 12 months after this month’s Final Action Date. Ranges are shown only where the back-test passed.', 'Fecha de prioridad 12 meses posterior a la fecha de acción final del mes. Solo mostramos rangos donde la prueba retrospectiva pasó.'));
 }
@@ -95,31 +95,31 @@ if (only === 'history') {
 }
 
 const top20 = ['NYC', 'LOS', 'HOU', 'CHI', 'MIA', 'NEW', 'SFR', 'ATL', 'DAL', 'SEA', 'PHO', 'ORL', 'SNA', 'BOS', 'WAS', 'SNJ', 'DEN', 'SND', 'TAM', 'PHI'];
-const rng = (b: any) => (b && b.max != null ? T(`${b.min == null ? '—' : h.num(b.min, 1)} to ${h.num(b.max, 1)} months`, `${b.min == null ? '—' : h.num(b.min, 1)} a ${h.num(b.max, 1)} meses`) : '—');
+const rng = (b: any) => (b && b.max != null ? T(`${b.min == null ? '–' : h.num(b.min, 1)} to ${h.num(b.max, 1)} months`, `${b.min == null ? '–' : h.num(b.min, 1)} a ${h.num(b.max, 1)} meses`) : '–');
 if (data.form === 'n-400' || data.form === 'i-485-family' || only === 'office20') {
   const key = data.form === 'i-485-family' ? 'i485fam' : 'n400';
   const list = top20.map((c) => [c, OFFICES[c]] as const).filter(([, o]) => o).sort((a, b) => ((a[1] as any)[key]?.max ?? 99) - ((b[1] as any)[key]?.max ?? 99));
   html += `<h2>${T(`${key === 'n400' ? 'N-400' : 'I-485 family'} at the 20 largest field offices`, `${key === 'n400' ? 'N-400' : 'I-485 familiar'} en las 20 oficinas más grandes`)}</h2>`;
-  html += h.table([T('Field office', 'Oficina'), T('Published range', 'Rango publicado'), T('Rank of 90 (1 = fastest)', 'Puesto de 90 (1 = más rápida)'), T('Inquiries accepted for receipts up to', 'Consultas para recibos hasta')], list.map(([, o]) => [o.name, rng((o as any)[key]), h.num((PTFULL.offices as any)[top20.find((c) => OFFICES[c] === o)!][`${key}Rank`]), (o as any)[key]?.inquiry ? h.date((o as any)[key].inquiry) : '—']), T(`USCIS publication of ${h.date(PUBLISHED)}. Processing-time data: ImmigrationTimes.org (CC BY 4.0), from USCIS; selected and reformatted.`, `Publicación de USCIS del ${h.date(PUBLISHED)}. Datos: ImmigrationTimes.org (CC BY 4.0), a partir de USCIS; seleccionados y reformateados.`));
+  html += h.table([T('Field office', 'Oficina'), T('Published range', 'Rango publicado'), T('Rank of 90 (1 = fastest)', 'Puesto de 90 (1 = más rápida)'), T('Inquiries accepted for receipts up to', 'Consultas para recibos hasta')], list.map(([, o]) => [o.name, rng((o as any)[key]), h.num((PTFULL.offices as any)[top20.find((c) => OFFICES[c] === o)!][`${key}Rank`]), (o as any)[key]?.inquiry ? h.date((o as any)[key].inquiry) : '–']), T(`USCIS publication of ${h.date(PUBLISHED)}. Processing-time data: ImmigrationTimes.org (CC BY 4.0), from USCIS; selected and reformatted.`, `Publicación de USCIS del ${h.date(PUBLISHED)}. Datos: ImmigrationTimes.org (CC BY 4.0), a partir de USCIS; seleccionados y reformateados.`));
 }
 if (data.form && data.form !== 'n-400' && data.form !== 'i-485-family') {
   const fileOf: Record<string, string> = { 'i-485-employment': 'i-485' };
   const file = fileOf[data.form] ?? data.form;
   const kinds = KINDS.filter((k) => k.file === file && !k.field);
-  const rows = kinds.flatMap((k) => centerRows(k).map((r) => [k.label[lang], r.name, rng(r), r.inquiry ? h.date(r.inquiry) : '—']));
+  const rows = kinds.flatMap((k) => centerRows(k).map((r) => [k.label[lang], r.name, rng(r), r.inquiry ? h.date(r.inquiry) : '–']));
   if (rows.length) html += `<h2>${T('Published processing times', 'Tiempos publicados')}</h2>` + h.table([T('Form and category', 'Formulario y categoría'), T('Office', 'Oficina'), T('Range (median to 80% of cases)', 'Rango (mediana a 80 % de los casos)'), T('Inquiries for receipts up to', 'Consultas para recibos hasta')], rows, T(`USCIS publication of ${h.date(PUBLISHED)}. Processing-time data: ImmigrationTimes.org (CC BY 4.0), from USCIS; selected and reformatted.`, `Publicación de USCIS del ${h.date(PUBLISHED)}. Datos: ImmigrationTimes.org (CC BY 4.0), a partir de USCIS; seleccionados y reformateados.`));
 }
 if (data.office) {
   const code = data.office, o: any = (PTFULL.offices as any)[code];
   html += `<h2>${T(`${o.name}: latest published times`, `${o.name}: últimos tiempos publicados`)}</h2>`;
-  html += h.table([T('Form', 'Formulario'), T('Range', 'Rango'), T('Rank of 90', 'Puesto de 90'), T('Inquiries for receipts up to', 'Consultas para recibos hasta')], [['N-400', rng(o.n400), h.num(o.n400Rank), o.n400?.inquiry ? h.date(o.n400.inquiry) : '—'], [T('I-485 family-based', 'I-485 familiar'), rng(o.i485fam), h.num(o.i485famRank), o.i485fam?.inquiry ? h.date(o.i485fam.inquiry) : '—']], T(`USCIS publication of ${h.date(PUBLISHED)}. Processing-time data: ImmigrationTimes.org (CC BY 4.0), from USCIS; selected and reformatted.`, `Publicación de USCIS del ${h.date(PUBLISHED)}. Datos: ImmigrationTimes.org (CC BY 4.0), a partir de USCIS; seleccionados y reformateados.`));
+  html += h.table([T('Form', 'Formulario'), T('Range', 'Rango'), T('Rank of 90', 'Puesto de 90'), T('Inquiries for receipts up to', 'Consultas para recibos hasta')], [['N-400', rng(o.n400), h.num(o.n400Rank), o.n400?.inquiry ? h.date(o.n400.inquiry) : '–'], [T('I-485 family-based', 'I-485 familiar'), rng(o.i485fam), h.num(o.i485famRank), o.i485fam?.inquiry ? h.date(o.i485fam.inquiry) : '–']], T(`USCIS publication of ${h.date(PUBLISHED)}. Processing-time data: ImmigrationTimes.org (CC BY 4.0), from USCIS; selected and reformatted.`, `Publicación de USCIS del ${h.date(PUBLISHED)}. Datos: ImmigrationTimes.org (CC BY 4.0), a partir de USCIS; seleccionados y reformateados.`));
   const pick = (arr: any[] | undefined) => { const byYear = new Map<string, any>(); for (const r of arr ?? []) byYear.set(r[0].slice(0, 4), r); return byYear; };
   const n = pick(o.hist.n400), f = pick(o.hist.i485fam);
   const ys = [...new Set([...n.keys(), ...f.keys()])].sort();
-  html += `<h2>${T('Four years of published times', 'Cuatro años de tiempos publicados')}</h2>` + h.table([T('Last publication of the year', 'Última publicación del año'), 'N-400', T('I-485 family', 'I-485 familiar')], ys.map((y) => [h.date((n.get(y) ?? f.get(y))[0]), n.get(y) ? rng({ min: n.get(y)[1], max: n.get(y)[2] }) : '—', f.get(y) ? rng({ min: f.get(y)[1], max: f.get(y)[2] }) : '—']), T('Series published by USCIS since March 2022, as kept by ImmigrationTimes.org (CC BY 4.0).', 'Serie publicada por USCIS desde marzo de 2022, conservada por ImmigrationTimes.org (CC BY 4.0).'));
+  html += `<h2>${T('Four years of published times', 'Cuatro años de tiempos publicados')}</h2>` + h.table([T('Last publication of the year', 'Última publicación del año'), 'N-400', T('I-485 family', 'I-485 familiar')], ys.map((y) => [h.date((n.get(y) ?? f.get(y))[0]), n.get(y) ? rng({ min: n.get(y)[1], max: n.get(y)[2] }) : '–', f.get(y) ? rng({ min: f.get(y)[1], max: f.get(y)[2] }) : '–']), T('Series published by USCIS since March 2022, as kept by ImmigrationTimes.org (CC BY 4.0).', 'Serie publicada por USCIS desde marzo de 2022, conservada por ImmigrationTimes.org (CC BY 4.0).'));
 }
 if (only === 'alltimes') {
-  const rows = KINDS.map((k) => { const b = k.field ? null : centerRows(k)[0]; return [k.label[lang], k.field ? T('by field office, see below', 'por oficina, ver abajo') : b ? `${b.name}: ${rng(b)}` : '—']; });
+  const rows = KINDS.map((k) => { const b = k.field ? null : centerRows(k)[0]; return [k.label[lang], k.field ? T('by field office, see below', 'por oficina, ver abajo') : b ? `${b.name}: ${rng(b)}` : '–']; });
   html += `<h2>${T('Every form we track', 'Todos los formularios que seguimos')}</h2>` + h.table([T('Form and category', 'Formulario y categoría'), T('Published range', 'Rango publicado')], rows, T(`USCIS publication of ${h.date(PUBLISHED)}; national averages from the ${NATIONAL_MONTH} report to Congress: N-400 ${h.num(NATIONAL['N-400'], 1)} months, I-485 family ${h.num(NATIONAL['I-485 family'], 1)}, I-485 employment ${h.num(NATIONAL['I-485 employment'], 1)}, I-130 ${h.num(NATIONAL['I-130'], 1)}, I-765 ${h.num(NATIONAL['I-765'], 1)}, I-751 ${h.num(NATIONAL['I-751'], 1)}.`, `Publicación de USCIS del ${h.date(PUBLISHED)}; promedios del informe al Congreso de ${NATIONAL_MONTH}: N-400 ${h.num(NATIONAL['N-400'], 1)} meses, I-485 familiar ${h.num(NATIONAL['I-485 family'], 1)}, I-485 empleo ${h.num(NATIONAL['I-485 employment'], 1)}, I-130 ${h.num(NATIONAL['I-130'], 1)}, I-765 ${h.num(NATIONAL['I-765'], 1)}, I-751 ${h.num(NATIONAL['I-751'], 1)}.`));
 }
 if (data.fees) {
@@ -132,9 +132,9 @@ if (only === 'allfees') {
     ['I-130', h.usd(F.i130.paper), h.usd(F.i130.online)], ['I-485', h.usd(F.i485.paper), h.usd(F.i485.online)], [T('I-485, under 14 with a parent', 'I-485, menor de 14 con un padre'), h.usd(F.i485.under14WithParentPaper), h.usd(F.i485.under14WithParentOnline)],
     [T('I-765 (general)', 'I-765 (general)'), h.usd(F.i765.paper), h.usd(F.i765.online)], [T('I-765 with an I-485 filed since April 1, 2024', 'I-765 con I-485 presentado desde el 1 de abril de 2024'), h.usd(F.i765.withPendingI485Since2024), h.usd(F.i765.withPendingI485Since2024)],
     [T('I-131 advance parole', 'I-131 advance parole'), h.usd(F.i131.advanceParolePaper), h.usd(F.i131.advanceParoleOnline)], ['I-140', h.usd(F.i140.paper), h.usd(F.i140.online)], [T('Asylum Program Fee (I-140)', 'Asylum Program Fee (I-140)'), h.usd(F.i140.asylumProgramRegular), h.usd(F.i140.asylumProgramRegular)],
-    ['I-751', h.usd(F.i751.paper), h.usd(F.i751.online)], ['I-90', h.usd(F.i90.paper), h.usd(F.i90.online)], ['I-129F', h.usd(F.i129f.paper), '—'], ['N-400', h.usd(F.n400.paper), h.usd(F.n400.online)], [T('N-400 reduced fee', 'N-400 tarifa reducida'), h.usd(F.n400.reduced), '—'],
-    ['USCIS Immigrant Fee', h.usd(F.immigrantFee.amount), h.usd(F.immigrantFee.amount)], ['I-526E', h.usd(F.i526e.amount), '—'],
-    [T('State Department: family immigrant visa', 'Departamento de Estado: visa familiar'), h.usd(F.dosImmigrantFamily.amount), '—'], [T('State Department: employment immigrant visa', 'Departamento de Estado: visa de empleo'), h.usd(F.dosImmigrantEmployment.amount), '—'], [T('State Department: affidavit of support review', 'Departamento de Estado: revisión de la declaración de patrocinio'), h.usd(F.dosAffidavitReview.amount), '—'], [T('State Department: K visa', 'Departamento de Estado: visa K'), h.usd(F.dosK.amount), '—'],
+    ['I-751', h.usd(F.i751.paper), h.usd(F.i751.online)], ['I-90', h.usd(F.i90.paper), h.usd(F.i90.online)], ['I-129F', h.usd(F.i129f.paper), '–'], ['N-400', h.usd(F.n400.paper), h.usd(F.n400.online)], [T('N-400 reduced fee', 'N-400 tarifa reducida'), h.usd(F.n400.reduced), '–'],
+    ['USCIS Immigrant Fee', h.usd(F.immigrantFee.amount), h.usd(F.immigrantFee.amount)], ['I-526E', h.usd(F.i526e.amount), '–'],
+    [T('State Department: family immigrant visa', 'Departamento de Estado: visa familiar'), h.usd(F.dosImmigrantFamily.amount), '–'], [T('State Department: employment immigrant visa', 'Departamento de Estado: visa de empleo'), h.usd(F.dosImmigrantEmployment.amount), '–'], [T('State Department: affidavit of support review', 'Departamento de Estado: revisión de la declaración de patrocinio'), h.usd(F.dosAffidavitReview.amount), '–'], [T('State Department: K visa', 'Departamento de Estado: visa K'), h.usd(F.dosK.amount), '–'],
   ];
   html += `<h2>${T('The 2026 fee schedule for green card and citizenship forms', 'Tarifas de 2026 para la green card y la ciudadanía')}</h2>` + h.table([T('Form', 'Formulario'), T('Paper', 'Papel'), T('Online', 'En línea')], rows, T(`USCIS Form G-1055, edition ${h.P.g1055_edition}; State Department fees for visa services.`, `Formulario G-1055 de USCIS, edición del ${h.P.g1055_edition}; tarifas del Departamento de Estado.`), ['l', 'r', 'r']);
 }

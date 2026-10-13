@@ -38,7 +38,7 @@ export default definePage({
   tool: {"kind": "greencard", "cat": "F1", "country": "MX"},
   data: {"cat": "F1", "country": "MX"},
   related: ["f1", "country-mexico", "f2b-mexico", "guide-f2b-to-f1", "guide-chargeability"],
-  sources: ["vbIndex", "vbMirror", "aosCharts", "visaPriority", "i130Form"],
+  sources: ["vbIndex", "vbMirror", "aosCharts", "visaPriority", "i130Form", "cfr204_2", "vbOct2026"],
   en: {
     path: "family/f1/mexico",
     nav: 'F1 Mexico', card: 'Mexican-born adult sons and daughters of U.S. citizens: a line nearly two decades long that ran fast in 2026.',

@@ -28,7 +28,7 @@ export default definePage({
   tool: {"kind": "greencard", "cat": "F3", "country": "PH"},
   data: {"cat": "F3", "country": "PH"},
   related: ["f3", "country-philippines", "f1-philippines", "guide-cspa", "consular-processing-cost"],
-  sources: ["vbIndex", "vbMirror", "aosCharts", "visaPriority", "i130Form"],
+  sources: ["vbIndex", "vbMirror", "aosCharts", "visaPriority", "i130Form", "vbOct2026", "famPref"],
   en: {
     path: "family/f3/philippines",
     nav: 'F3 Philippines', card: 'Married sons and daughters of U.S. citizens born in the Philippines: the longest Philippine family wait.',

@@ -12,7 +12,7 @@ export default (l: Lang): MiniSpec => ({
   ],
   run: (v) => {
     const F = f(l);
-    if (!iso(v.pd)) return { head: [tx(l, 'Priority date', 'Fecha de prioridad'), '—'], rows: [] };
+    if (!iso(v.pd)) return { head: [tx(l, 'Priority date', 'Fecha de prioridad'), '–'], rows: [] };
     const r = evaluate(v.cat as Cat, v.country as Country, v.pd);
     return {
       head: [tx(l, `${F.month(LATEST)} Final Action chart`, `Tabla de acción final de ${F.month(LATEST)}`), r.status === 'current' ? tx(l, 'Current', 'Al día') : r.status === 'unavailable' ? tx(l, 'Unavailable', 'No disponible') : tx(l, 'Not current', 'No al día')],

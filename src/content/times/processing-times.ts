@@ -10,7 +10,7 @@ const NF = (PT as unknown as { national: { forms: Record<string, { months: numbe
 const MN = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 const [mName, mYear] = NATIONAL_MONTH.split(' ');
 const natYm = `${mYear}-${String(MN.indexOf(mName) + 1).padStart(2, '0')}`;
-const n = (x: number | null | undefined, l: L = 'en') => (x == null ? '—' : formatNumber(x, x % 1 ? 1 : 0, l));
+const n = (x: number | null | undefined, l: L = 'en') => (x == null ? '–' : formatNumber(x, x % 1 ? 1 : 0, l));
 const pubEn = displayDate(PUBLISHED, 'en-US');
 const pubEs = displayDate(PUBLISHED, 'es-US');
 const field = Object.values(OFFICES).filter((o) => o.n400?.max != null).sort((a, b) => a.n400!.max! - b.n400!.max!);
@@ -43,7 +43,7 @@ export default definePage({
       { q: 'How far back do the USCIS processing times on this site go?', a: 'For the 90 field offices we keep every publication since March 2022, as republished in open data by ImmigrationTimes.org under the CC BY 4.0 licence. That lets each office page show how its N-400 and family I-485 ranges moved over four years. For the other forms we show the latest publication, next to the national average from the monthly report to Congress.' },
     ],
     body: (h) => {
-      const m = (x: number | null | undefined) => (x == null ? '—' : h.num(x, x % 1 ? 1 : 0));
+      const m = (x: number | null | undefined) => (x == null ? '–' : h.num(x, x % 1 ? 1 : 0));
       return `<h2>Two official numbers, two different questions</h2>
 <p>Take naturalization. The report to Congress for ${h.month(natYm)} puts the average at ${m(NATIONAL['N-400'])} months from receipt to decision. Yet across the ${h.num(nOffices)} field offices, the upper end of the published N-400 range runs from ${m(fastN.n400!.max)} months in ${fastN.name} to ${m(slowN.n400!.max)} months in ${slowN.name}. The family green card spreads even wider, from ${m(fastF.i485fam!.max)} months in ${fastF.name} to ${m(slowF.i485fam!.max)} in ${slowF.name}, against a national average of ${m(NATIONAL['I-485 family'])}. The report averages every file closed that month, including some that waited for years and some decided in weeks. The published range describes one office: its median case and the point by which 80% of its cases were done. The office range is closer to your own situation; the average describes the system.</p>
 <h2>Where each form is decided</h2>
@@ -70,7 +70,7 @@ ${h.table(['Form', 'Received in the month', 'Pending', 'Average months to decisi
       { q: '¿Quién puede ayudarme si mi caso de USCIS está atrasado y algo no cuadra?', a: 'Un abogado de inmigración con licencia o un representante acreditado por el Departamento de Justicia (DOJ). Desconfíe de quien promete acelerar un caso a cambio de dinero: USCIS publica una página para evitar estafas. Esta página solo muestra los tiempos publicados y no es asesoría legal; no estamos afiliados a USCIS.' },
     ],
     body: (h) => {
-      const m = (x: number | null | undefined) => (x == null ? '—' : h.num(x, x % 1 ? 1 : 0));
+      const m = (x: number | null | undefined) => (x == null ? '–' : h.num(x, x % 1 ? 1 : 0));
       return `<h2>Dos cifras oficiales que no miden lo mismo</h2>
 <p>Piense en una pareja de Houston donde la esposa, nacida en México, ajusta su estatus por matrimonio con un ciudadano. El informe al Congreso de ${h.month(natYm)} dice que el I-485 por familia tarda en promedio ${m(NATIONAL['I-485 family'])} meses. Pero el rango de su oficina puede ser muy distinto: entre las ${h.num(nOffices)} oficinas locales (field offices), la cifra alta va de ${m(fastF.i485fam!.max)} meses en ${fastF.name} a ${m(slowF.i485fam!.max)} en ${slowF.name}. El promedio incluye todos los casos cerrados en el mes, también los que esperaron años. El rango habla de una sola oficina. Para saber si su caso va bien, compare con el rango; el promedio sirve para ver el sistema completo.</p>
 <h2>Qué oficina publica cada formulario</h2>

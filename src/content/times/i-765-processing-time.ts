@@ -13,7 +13,7 @@ const ALL = ((PT as unknown as { forms: Record<string, { rows: R[] }> }).forms['
 const MN = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 const [mName, mYear] = NATIONAL_MONTH.split(' ');
 const natYm = `${mYear}-${String(MN.indexOf(mName) + 1).padStart(2, '0')}`;
-const n = (x: number | null | undefined, l: L = 'en') => (x == null ? '—' : formatNumber(x, x % 1 ? 1 : 0, l));
+const n = (x: number | null | undefined, l: L = 'en') => (x == null ? '–' : formatNumber(x, x % 1 ? 1 : 0, l));
 const c9 = centerRows(kindById('i765c9')!);
 const c9hi = Math.max(...c9.map((r) => r.max ?? 0)), c9lo = Math.min(...c9.map((r) => r.max ?? 99));
 const nat = NF['I-765'];
@@ -44,7 +44,7 @@ export default definePage({
       { q: 'Can I start working before my (c)(9) work permit is approved?', a: 'The (c)(9) category gives permission to work once the card is approved, which is why its processing time matters to families who depend on a second income. This page describes the published wait and does not give legal advice; for questions about your current status or a job offer, speak to an immigration attorney or a DOJ-accredited representative.' },
     ],
     body: (h) => {
-      const m = (x: number | null | undefined) => (x == null ? '—' : h.num(x, x % 1 ? 1 : 0));
+      const m = (x: number | null | undefined) => (x == null ? '–' : h.num(x, x % 1 ? 1 : 0));
       return `<h2>Where (c)(9) sits among work permit categories</h2>
 <p>USCIS publishes ${h.num(ALL.length)} work permit lines with a figure. Sorted by upper bound, the (c)(9) line ranks ${h.num(c9rank)} of ${h.num(ALL.length)}, counting from the fastest.</p>
 ${h.table(['Category as published', 'Unit', 'Upper bound'], sorted.map((r) => [r.subtype === '147-C9' ? `<strong>${r.info}</strong>` : r.info, r.office, `${m(r.max)} ${r.max === 1 ? 'month' : 'months'}`]), `USCIS publication of ${h.date(PUBLISHED)}. NBC: ${OFFICE_NAMES.NBC}; SCD: ${OFFICE_NAMES.SCD}.`, ['l', 'l', 'r'])}
@@ -68,7 +68,7 @@ ${h.table(['Category as published', 'Unit', 'Upper bound'], sorted.map((r) => [r
       { q: '¿Por qué mi vecina recibió su permiso de trabajo mucho más rápido?', a: 'Probablemente su permiso es de otra categoría. USCIS publica más de una docena de líneas para el I-765, por ejemplo para estudiantes, cónyuges de trabajadores temporales o solicitantes de asilo, y algunas se resuelven en semanas. El promedio nacional mezcla todas. Para quien ajusta estatus, la referencia es la línea (c)(9).' },
     ],
     body: (h) => {
-      const m = (x: number | null | undefined) => (x == null ? '—' : h.num(x, x % 1 ? 1 : 0));
+      const m = (x: number | null | undefined) => (x == null ? '–' : h.num(x, x % 1 ? 1 : 0));
       return `<h2>Un permiso con su propio reloj</h2>
 <p>Muchas familias suponen que el permiso de trabajo llega en pocas semanas porque eso le pasó a un conocido. Para la categoría (c)(9), la cifra alta publicada está hoy entre ${m(c9lo)} y ${m(c9hi)} meses, y ocupa el puesto ${h.num(c9rank)} de las ${h.num(ALL.length)} líneas del I-765 con cifra, contando desde la más rápida. El promedio de ${m(nat.months)} meses del informe de ${h.month(natYm)} incluye todas las categorías y por eso queda más bajo.</p>
 <h2>Lo que paga según la fecha de su I-485</h2>

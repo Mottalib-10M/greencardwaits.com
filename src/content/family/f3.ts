@@ -36,7 +36,7 @@ export default definePage({
   tool: {"kind": "greencard", "cat": "F3", "country": "ROW"},
   data: {"cat": "F3", "country": "ROW"},
   related: ["f3-mexico", "f3-philippines", "guide-cspa", "i-130-processing-time", "consular-processing-cost"],
-  sources: ["vbIndex", "vbMirror", "aosCharts", "visaPriority", "i130Form", "cspaPolicy"],
+  sources: ["vbIndex", "vbMirror", "aosCharts", "visaPriority", "i130Form", "cspaPolicy", "cfr204_2", "cfr205_1", "vbOct2026", "famPref"],
   en: {
     path: "family/f3",
     nav: 'F3 (married son or daughter)', card: 'Married sons and daughters of U.S. citizens, with spouse and children: the cutoff, the 2026 leap and the long Mexico line.',

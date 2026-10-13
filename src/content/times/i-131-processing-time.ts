@@ -5,7 +5,7 @@ import { formatNumber, formatMoney, displayDate } from '../../lib/format';
 
 // Chiffres lus dans les données : I-131 advance parole et permis de retour (Service Center Operations).
 type L = 'en' | 'es';
-const n = (x: number | null | undefined, l: L = 'en') => (x == null ? '—' : formatNumber(x, x % 1 ? 1 : 0, l));
+const n = (x: number | null | undefined, l: L = 'en') => (x == null ? '–' : formatNumber(x, x % 1 ? 1 : 0, l));
 const ap = centerRows(kindById('i131ap')!)[0];
 const re = centerRows(kindById('i131re')!)[0];
 const fam = Object.values(OFFICES).filter((o) => o.i485fam?.max != null);
@@ -35,7 +35,7 @@ export default definePage({
       { q: 'What does the I-131 advance parole fee depend on?', a: 'The G-1055 schedule lists a paper fee and a lower online fee for advance parole. Applicants whose Form I-485 was filed with a fee before April 1, 2024 and is still pending pay no fee for advance parole. Our I-131 fee page shows the current amounts and the re-entry permit fee.' },
     ],
     body: (h) => {
-      const m = (x: number | null | undefined) => (x == null ? '—' : h.num(x, x % 1 ? 1 : 0));
+      const m = (x: number | null | undefined) => (x == null ? '–' : h.num(x, x % 1 ? 1 : 0));
       return `<h2>Two documents on one form</h2>
 ${h.table(['Document', 'Who asks for it', 'Published range', 'Inquiries for receipts up to', 'Paper fee'], [['Advance parole', 'Applicant with a pending I-485', `${m(ap.min)} to ${m(ap.max)} months`, h.date(ap.inquiry!), h.usd(F.advanceParolePaper)], ['Re-entry permit or refugee travel document', 'Green card holder planning a long absence, or refugee', `${m(re.min)} to ${m(re.max)} months`, h.date(re.inquiry!), h.usd(F.reentryPermitPaper)]], `USCIS publication of ${h.date(PUBLISHED)}; fees from Form G-1055, edition ${h.P.g1055_edition}.`, ['l', 'l', 'r', 'l', 'r'])}
 <p>The fee for the re-entry permit is the same as for advance parole on paper, but only advance parole can be filed online, at ${h.usd(F.advanceParoleOnline)}.</p>
@@ -59,7 +59,7 @@ ${h.table(['Document', 'Who asks for it', 'Published range', 'Inquiries for rece
       { q: '¿Para qué sirve el permiso de reingreso de un residente permanente?', a: 'Es el documento que USCIS ofrece con el mismo formulario I-131 a residentes que planean una ausencia larga de Estados Unidos. Se presenta solo en papel. Tenga en cuenta que las ausencias largas también cuentan para la ciudadanía: más de seis meses fuera crean la presunción de que se rompió la residencia continua.' },
     ],
     body: (h) => {
-      const m = (x: number | null | undefined) => (x == null ? '—' : h.num(x, x % 1 ? 1 : 0));
+      const m = (x: number | null | undefined) => (x == null ? '–' : h.num(x, x % 1 ? 1 : 0));
       return `<h2>Planear un viaje con estas cifras</h2>
 <p>Con una cifra alta de ${m(ap.max)} meses, el advance parole no sirve para una emergencia que llega sin aviso. Muchas familias lo piden junto con el I-485, precisamente para tenerlo listo cuando haga falta. Si ya lo presentó, la herramienta de arriba le dice cuántos meses lleva y desde qué fecha USCIS acepta una consulta: hoy, para recibos hasta el ${h.date(ap.inquiry!)}.</p>
 <h2>Lo que cuesta cada documento</h2>

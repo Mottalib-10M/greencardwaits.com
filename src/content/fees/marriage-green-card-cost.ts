@@ -21,7 +21,7 @@ export default definePage({
   tool: {"kind": "fees", "path": "marriage"},
   data: {"fees": "marriage"},
   related: ["fees", "uscis-fee-calculator", "i-485-fee", "i-751-fee", "guide-aos-vs-consular"],
-  sources: ["g1055", "g1055pdf", "feeCalculator", "i130Form", "i485Form", "dosFees", "legalHelp"],
+  sources: ["g1055", "g1055pdf", "feeCalculator", "i130Form", "i485Form", "dosFees", "legalHelp", "travelDocs", "cfr204_2"],
   en: {
     path: "fees/marriage-green-card",
     nav: 'Marriage green card cost', card: 'I-130 and I-485 filed together for a spouse in the U.S., with or without work permit and travel document.',
@@ -32,7 +32,7 @@ export default definePage({
     resume: `A U.S. citizen who files Form I-130 and Form I-485 together for a spouse living in the United States pays ${en(F.i130.paper)} for the petition and ${en(F.i485.paper)} for the adjustment on paper, under Form G-1055 dated ${P.g1055_edition}. Adding the work permit (${en(F.i765.withPendingI485Since2024)} with a pending I-485) and advance parole for travel (${en(F.i131.advanceParolePaper)}) brings the total to ${en(full)}. Where online filing is open, the same set costs ${en(fullOn)}. Couples who skip both interim documents pay ${en(bare)}. A stepchild under 14 filing with the parent adds ${en(perKid)} once the permits are included, and one aged 14 or older adds ${en(perTeen)}. The affidavit of support, Form I-864, has no USCIS fee. Two years later, a marriage under two years old at approval leads to the I-751 to remove conditions, a separate fee not counted here.`,
     faqs: [
       { q: 'Is the marriage green card cost lower if I skip the work permit and travel document?', a: `Yes, by ${en(extras)} on paper. The I-130 and I-485 alone come to ${en(bare)}. Without the I-765, your spouse cannot work on the pending case; without advance parole, leaving the country while the I-485 is pending can be treated as abandoning it. Both can still be filed later, but then at the price in force at that time.` },
-      { q: 'Does my spouse need a separate I-130 fee for each child in a marriage green card case?', a: `A U.S. citizen files one I-130 for the spouse and a separate I-130 for each stepchild who qualifies, each at ${en(F.i130.paper)} on paper. Each child also files an I-485: ${en(F.i485.under14WithParentPaper)} under 14 with a parent, ${en(F.i485.paper)} at 14 or older. Ask an accredited representative whether a stepchild qualifies, since the marriage date matters.` },
+      { q: 'Does my spouse need a separate I-130 fee for each child in a marriage green card case?', a: `A U.S. citizen files one I-130 for the spouse and a separate I-130 for each stepchild who qualifies, each at ${en(F.i130.paper)} on paper. Each child also files an I-485: ${en(F.i485.under14WithParentPaper)} under 14 with a parent, ${en(F.i485.paper)} at 14 or older. A stepchild qualifies only if the marriage took place before the child turned 18, under 8 CFR 204.2.` },
       { q: 'Is there a biometrics fee on top of the marriage green card filing fees?', a: `Not in the current schedule. The G-1055 dated ${P.g1055_edition} lists no separate biometric services fee for the I-130, I-485, I-765 or I-131, so the appointment at the Application Support Center is covered by the form prices. Your spouse still has to attend it when USCIS mails the notice.` },
     ],
     body: (h) => `

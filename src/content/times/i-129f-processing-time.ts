@@ -5,7 +5,7 @@ import { formatNumber, formatMoney, displayDate } from '../../lib/format';
 
 // Chiffres lus dans les données : I-129F (K-1 à K-4) à Service Center Operations, puis I-485 familial par bureau.
 type L = 'en' | 'es';
-const n = (x: number | null | undefined, l: L = 'en') => (x == null ? '—' : formatNumber(x, x % 1 ? 1 : 0, l));
+const n = (x: number | null | undefined, l: L = 'en') => (x == null ? '–' : formatNumber(x, x % 1 ? 1 : 0, l));
 const median = (a: number[]) => { const s = [...a].sort((x, y) => x - y); const k = Math.floor(s.length / 2); return s.length % 2 ? s[k] : (s[k - 1] + s[k]) / 2; };
 const k = centerRows(kindById('i129f')!)[0];
 const famMed = median(Object.values(OFFICES).filter((o) => o.i485fam?.max != null).map((o) => o.i485fam!.max!));
@@ -19,7 +19,7 @@ export default definePage({
   tool: {"kind": "ptime", "form": "i129f", "office": "HOU"},
   data: {"form": "i-129f"},
   related: ["processing-times", "k-1-visa-cost", "i-485-family-processing-time", "guide-aos-vs-consular"],
-  sources: ["uscisTimes", "itData", "uscisData", "i129fForm", "consular", "dosFees", "g1055"],
+  sources: ["uscisTimes", "itData", "uscisData", "i129fForm", "consular", "dosFees", "g1055", "ivPosts", "k1Page"],
   en: {
     path: "processing-times/i-129f",
     nav: 'I-129F / K-1 visa time', card: 'How long the fiancé(e) petition takes at USCIS, and the stages of a K-1 visa that have no published time.',
@@ -34,7 +34,7 @@ export default definePage({
       { q: 'What must a K-1 petition show about the wedding?', a: 'The I-129F checklist on uscis.gov asks for evidence that you and your fiancé(e) intend to marry within 90 days of their admission to the United States as a K-1 nonimmigrant. The 90 days count from entry, not from the approval of the petition, so the processing time on this page does not reduce that window.' },
     ],
     body: (h) => {
-      const m = (x: number | null | undefined) => (x == null ? '—' : h.num(x, x % 1 ? 1 : 0));
+      const m = (x: number | null | undefined) => (x == null ? '–' : h.num(x, x % 1 ? 1 : 0));
       return `<h2>Three stages, one with a published time</h2>
 ${h.table(['Stage', 'Who handles it', 'Published time', 'Fee'], [['Form I-129F petition', 'USCIS, Service Center Operations', `${m(k.min)} to ${m(k.max)} months`, h.usd(F.i129f.paper)], ['K-1 visa interview abroad', 'State Department', 'Not published', h.usd(F.dosK.amount)], ['Green card after the wedding (I-485)', 'USCIS field office', `${m(famMed)} months at the median office (80% mark)`, h.usd(F.i485.paper)]], `USCIS publication of ${h.date(PUBLISHED)}; fees from Form G-1055 and the State Department.`, ['l', 'l', 'r', 'r'])}
 <p>Only the first and last rows have official figures. Sites that quote a single K-1 total are adding the middle stage from their own estimates.</p>
@@ -60,7 +60,7 @@ ${h.table(['Stage', 'Who handles it', 'Published time', 'Fee'], [['Form I-129F p
       { q: '¿La visa K-1 conviene más que pedir a mi esposa con el I-130?', a: 'Son caminos distintos con tiempos y costos distintos, y la elección depende de la situación de cada pareja. Esta página no da asesoría legal. Compare el rango del I-129F con el del I-130 para cónyuges en la página de tiempos del I-130, y consulte a un abogado de inmigración o a un representante acreditado antes de decidir.' },
     ],
     body: (h) => {
-      const m = (x: number | null | undefined) => (x == null ? '—' : h.num(x, x % 1 ? 1 : 0));
+      const m = (x: number | null | undefined) => (x == null ? '–' : h.num(x, x % 1 ? 1 : 0));
       return `<h2>Lo que se sabe y lo que no</h2>
 <p>De las tres etapas de una visa K-1, dos tienen cifras oficiales de USCIS y una no tiene ninguna. La petición I-129F está hoy en ${m(k.min)} a ${m(k.max)} meses, con consultas aceptadas para recibos hasta el ${h.date(k.inquiry!)}. La entrevista en el consulado no tiene un tiempo publicado. El ajuste de estatus después de la boda depende de la oficina: la oficina típica de las 90 publica ${m(famMed)} meses como cifra alta.</p>
 ${h.table(['Pago', 'Monto'], [['Petición I-129F (USCIS)', h.usd(F.i129f.paper)], ['Visa K (Departamento de Estado)', h.usd(F.dosK.amount)], ['Ajuste de estatus I-485 después de la boda, en papel', h.usd(F.i485.paper)]], `Formulario G-1055 de USCIS y tarifas del Departamento de Estado.`, ['l', 'r'])}

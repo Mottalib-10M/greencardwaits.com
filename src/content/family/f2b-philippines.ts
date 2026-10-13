@@ -30,7 +30,7 @@ export default definePage({
   tool: {"kind": "greencard", "cat": "F2B", "country": "PH"},
   data: {"cat": "F2B", "country": "PH"},
   related: ["f2b", "country-philippines", "f1-philippines", "guide-f2b-to-f1", "consular-processing-cost"],
-  sources: ["vbIndex", "vbMirror", "aosCharts", "visaPriority", "i130Form"],
+  sources: ["vbIndex", "vbMirror", "aosCharts", "visaPriority", "i130Form", "cfr205_1", "cfr204_2"],
   en: {
     path: "family/f2b/philippines",
     nav: 'F2B Philippines', card: 'Adult unmarried children of green card holders, born in the Philippines: the freeze, the thaw and the forecast.',

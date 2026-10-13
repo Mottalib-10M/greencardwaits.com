@@ -19,7 +19,7 @@ export default definePage({
   tool: {"kind": "fees", "path": "family-consular"},
   data: {"fees": "family-consular"},
   related: ["fees", "uscis-immigrant-fee", "i-130-fee", "guide-aos-vs-consular", "country-mexico"],
-  sources: ["g1055", "g1055pdf", "feeCalculator", "dosFees", "immigrantFee", "consular", "legalHelp"],
+  sources: ["g1055", "g1055pdf", "feeCalculator", "dosFees", "immigrantFee", "consular", "legalHelp", "ivPosts"],
   en: {
     path: "fees/consular-processing",
     nav: 'Consular processing cost', card: 'I-130, State Department visa fee, affidavit review and USCIS Immigrant Fee for a relative abroad.',
@@ -54,7 +54,7 @@ export default definePage({
     resume: `Para un familiar que vive en México, El Salvador, Guatemala u Honduras, la residencia por proceso consular (consular processing) cuesta ${es(one)} en tarifas oficiales para una persona si la petición se presenta en papel. El pago se hace en tres momentos: ${es(F.i130.paper)} a USCIS por la petición de familiar (I-130), según la tabla G-1055 del ${P.g1055_edition}; luego, en el Centro Nacional de Visas (National Visa Center, NVC), ${es(F.dosImmigrantFamily.amount)} por la solicitud de visa familiar y ${es(F.dosAffidavitReview.amount)} por revisar la declaración de patrocinio (I-864); y al final, ya con la visa, ${es(F.immigrantFee.amount)} de USCIS Immigrant Fee para que la tarjeta se imprima y llegue por correo. Si con su hermano vienen su esposa y su hijo, cada uno paga su visa y su Immigrant Fee: ${es(three)} en total. El examen médico con el médico de la embajada se paga aparte.`,
     faqs: [
       { q: '¿En qué orden se pagan las tarifas del proceso consular?', a: `Primero la I-130 a USCIS, de ${es(F.i130.paper)} en papel o ${es(F.i130.online)} en línea. Cuando USCIS la aprueba, el NVC envía las facturas de ${es(F.dosImmigrantFamily.amount)} y ${es(F.dosAffidavitReview.amount)}, que se pagan en línea al Departamento de Estado. El USCIS Immigrant Fee de ${es(F.immigrantFee.amount)} se paga después de recibir la visa y antes de viajar.` },
-      { q: '¿Dónde hacen la entrevista consular los familiares que viven en México?', a: `Las visas de inmigrante para quienes viven en México se tramitan en el consulado de Estados Unidos en Ciudad Juárez, donde también se hace el examen médico con un médico autorizado. El viaje, el hospedaje y el examen no tienen tarifa oficial y no están en nuestro total. Los tiempos del consulado no se publican, así que no los estimamos.` },
+      { q: '¿Dónde hacen la entrevista consular los familiares que viven en México?', a: `Las visas de inmigrante para quienes viven en México se tramitan en el consulado de Estados Unidos en Ciudad Juárez, el único de México en la lista de consulados que procesan visas de inmigrante del Departamento de Estado. El viaje, el hospedaje y el examen médico no tienen tarifa oficial y no están en nuestro total. Los tiempos del consulado no se publican, así que no los estimamos.` },
       { q: '¿El proceso consular cuesta lo mismo para un hijo menor de 14 años?', a: `Sí. A diferencia del I-485 dentro de Estados Unidos, la visa de inmigrante no tiene precio reducido por edad en nuestra tabla: cada hijo paga ${es(F.dosImmigrantFamily.amount)} de visa familiar y ${es(F.immigrantFee.amount)} de Immigrant Fee. La revisión de la declaración de patrocinio se cobra una sola vez por caso, no por persona.` },
     ],
     body: (h) => `

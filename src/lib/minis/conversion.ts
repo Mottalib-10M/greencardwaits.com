@@ -11,7 +11,7 @@ export default (l: Lang): MiniSpec => ({
   ],
   run: (v) => {
     const F = f(l);
-    if (!iso(v.pd)) return { head: ['', '—'], rows: [] };
+    if (!iso(v.pd)) return { head: ['', '–'], rows: [] };
     const a = evaluate('F2B', v.country as Country, v.pd), b = evaluate('F1', v.country as Country, v.pd);
     const d = (a.behindMonths || 0) - (b.behindMonths || 0);
     const best = d > 0.5 ? 'F1' : d < -0.5 ? 'F2B' : tx(l, 'about the same', 'casi igual');

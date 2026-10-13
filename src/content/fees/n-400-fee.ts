@@ -16,7 +16,7 @@ export default definePage({
   tool: {"kind": "fees", "path": "n400"},
   data: {"fees": "n400"},
   related: ["fees", "n-400-early-filing-calculator", "n-400-processing-time", "guide-n400-residence", "i-90-fee"],
-  sources: ["g1055", "g1055pdf", "feeCalculator", "n400Form", "n400Residence", "n400Presence", "legalHelp"],
+  sources: ["g1055", "g1055pdf", "feeCalculator", "n400Form", "n400Residence", "n400Presence", "legalHelp", "cfr320_2"],
   en: {
     path: "fees/n-400",
     nav: 'N-400 fee', card: 'The citizenship application fee on paper, online and at the reduced rate for lower household incomes.',
@@ -42,7 +42,7 @@ ${h.table(['How you file', 'Fee', 'Saving against paper'], [
 <h2>Paying for an application that is not ready</h2>
 <p>A citizenship fee buys a decision, not a certificate. Filing more than ${N.earlyFilingDays} days before the five-year mark (three years for the spouse of a citizen) or with fewer than ${N.physicalPresenceDays5} days inside the country in the last five years (${N.physicalPresenceDays3} on the three-year route) is the most common way to lose the money. The ${h.a('n-400-early-filing-calculator', 'early filing calculator')} counts both from your trips, and the ${h.a('guide-n400-residence', 'residence guide')} explains why a trip of more than six months raises questions.</p>
 <h2>Couples and families</h2>
-<p>There is no family rate. Each spouse files a separate N-400 and pays a separate fee. Children under 18 who hold a green card and live with a citizen parent usually become citizens automatically when the parent naturalizes; their proof of citizenship is a different form with a different fee, not covered here.</p>
+<p>There is no family rate. Each spouse files a separate N-400 and pays a separate fee. Under 8 CFR 320.2, children under 18 who hold a green card and reside in the United States in the legal and physical custody of the citizen parent become citizens automatically when that parent naturalizes; their proof of citizenship is a different form with a different fee, not covered here.</p>
 <h2>After you pay</h2>
 <p>The wait that follows depends on your field office; see the ${h.a('n-400-processing-time', 'N-400 processing time')} by office. If your case involves arrests, long absences or a past immigration problem, a licensed immigration attorney or a ${h.src('legalHelp', 'DOJ-accredited representative')} should look at it before the fee is spent.</p>`,
   },

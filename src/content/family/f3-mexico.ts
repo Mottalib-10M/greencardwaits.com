@@ -41,7 +41,7 @@ export default definePage({
   tool: {"kind": "greencard", "cat": "F3", "country": "MX"},
   data: {"cat": "F3", "country": "MX"},
   related: ["f3", "country-mexico", "guide-cspa", "f1-mexico", "consular-processing-cost"],
-  sources: ["vbIndex", "vbMirror", "aosCharts", "visaPriority", "cspaPolicy"],
+  sources: ["vbIndex", "vbMirror", "aosCharts", "visaPriority", "cspaPolicy", "vbOct2026", "cfr204_2", "famPref"],
   en: {
     path: "family/f3/mexico",
     nav: 'F3 Mexico', card: 'Mexican-born married sons and daughters of U.S. citizens: a quarter-century line with the deepest drop on record.',

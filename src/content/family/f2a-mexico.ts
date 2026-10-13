@@ -36,7 +36,7 @@ export default definePage({
   tool: {"kind": "greencard", "cat": "F2A", "country": "MX"},
   data: {"cat": "F2A", "country": "MX"},
   related: ["f2a", "country-mexico", "guide-cspa", "guide-chargeability", "consular-processing-cost"],
-  sources: ["vbIndex", "vbMirror", "aosCharts", "visaPriority", "vbOct2026", "cspaPolicy"],
+  sources: ["vbIndex", "vbMirror", "aosCharts", "visaPriority", "vbOct2026", "cspaPolicy", "cfr204_2"],
   en: {
     path: "family/f2a/mexico",
     nav: 'F2A Mexico', card: 'Mexican-born spouses and minor children of green card holders: the one Mexico family line counted in months.',

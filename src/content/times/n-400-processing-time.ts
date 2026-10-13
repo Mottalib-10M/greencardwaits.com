@@ -14,7 +14,7 @@ const NF = (PT as unknown as { national: { forms: Record<string, { months: numbe
 const MN = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 const [mName, mYear] = NATIONAL_MONTH.split(' ');
 const natYm = `${mYear}-${String(MN.indexOf(mName) + 1).padStart(2, '0')}`;
-const n = (x: number | null | undefined, l: L = 'en') => (x == null ? '—' : formatNumber(x, x % 1 ? 1 : 0, l));
+const n = (x: number | null | undefined, l: L = 'en') => (x == null ? '–' : formatNumber(x, x % 1 ? 1 : 0, l));
 const median = (a: number[]) => { const s = [...a].sort((x, y) => x - y); const k = Math.floor(s.length / 2); return s.length % 2 ? s[k] : (s[k - 1] + s[k]) / 2; };
 const nat = NF['N-400'];
 const all = Object.values(O).filter((o) => o.n400?.max != null).sort((a, b) => a.n400!.max! - b.n400!.max!);
@@ -57,7 +57,7 @@ export default definePage({
       { q: 'Can I choose a faster field office for my N-400?', a: 'No. USCIS assigns the field office from the address on your application, so the range that applies to you is the one for the office covering where you live. A move to another area can transfer the case. Keep your address current with Form AR-11 within ten days of moving, so notices reach you.' },
     ],
     body: (h) => {
-      const m = (x: number | null | undefined) => (x == null ? '—' : h.num(x, x % 1 ? 1 : 0));
+      const m = (x: number | null | undefined) => (x == null ? '–' : h.num(x, x % 1 ? 1 : 0));
       return `<h2>A wait that fell, then climbed again</h2>
 <p>The naturalization queue has not stood still since the first publication in our series, in March 2022. We took the last publication of each year for every field office and kept the upper bound, the 80% mark. The middle office tells the story better than any single city.</p>
 ${h.table(['End of year', 'Median office, upper bound', 'Fastest office', 'Slowest office', 'Publication'], years.map((r) => [String(r.y), `${m(r.med)} months`, `${m(r.lo)} months`, `${m(r.hi)} months`, h.date(r.last)]), 'N-400 upper bounds at the 90 field offices, last USCIS publication of each year. The current year uses the latest publication.', ['l', 'r', 'r', 'r', 'l'])}
@@ -83,10 +83,10 @@ ${h.table(['End of year', 'Median office, upper bound', 'Fastest office', 'Slowe
       { q: '¿El N-400 se tarda menos si lo presento en línea?', a: 'USCIS publica un solo rango por oficina para el N-400, sin separar las solicitudes en papel de las presentadas en línea. Presentar en línea cuesta menos y le da acceso a su caso en su cuenta de USCIS, pero no hay una cifra oficial que muestre un tiempo distinto. El reloj empieza en la fecha de recibo de su aviso.' },
     ],
     body: (h) => {
-      const m = (x: number | null | undefined) => (x == null ? '—' : h.num(x, x % 1 ? 1 : 0));
+      const m = (x: number | null | undefined) => (x == null ? '–' : h.num(x, x % 1 ? 1 : 0));
       return `<h2>Las oficinas que más le importan a una familia latina</h2>
 <p>La tabla general de abajo muestra las 20 oficinas más grandes. Muchas familias mexicanas y centroamericanas, sin embargo, viven en zonas que atienden oficinas más pequeñas: el Valle del Río Grande, El Paso, el Valle Imperial, el Inland Empire o el sur de Florida.</p>
-${h.table(['Oficina', 'Rango publicado del N-400', 'Puesto de 90 (1 = más rápida)', 'Consultas para recibos hasta'], ES_OFFICES.map((c) => [O[c].name, `${m(O[c].n400!.min)} a ${m(O[c].n400!.max)} meses`, h.num(O[c].n400Rank), O[c].n400!.inquiry ? h.date(O[c].n400!.inquiry!) : '—']), `Publicación de USCIS del ${h.date(PUBLISHED)}.`, ['l', 'r', 'r', 'l'])}
+${h.table(['Oficina', 'Rango publicado del N-400', 'Puesto de 90 (1 = más rápida)', 'Consultas para recibos hasta'], ES_OFFICES.map((c) => [O[c].name, `${m(O[c].n400!.min)} a ${m(O[c].n400!.max)} meses`, h.num(O[c].n400Rank), O[c].n400!.inquiry ? h.date(O[c].n400!.inquiry!) : '–']), `Publicación de USCIS del ${h.date(PUBLISHED)}.`, ['l', 'r', 'r', 'l'])}
 <h2>El promedio nacional no es su plazo</h2>
 <p>Cuando alguien le dice que la ciudadanía tarda unos ${m(nat.months)} meses, probablemente leyó el informe al Congreso de ${h.month(natYm)}. Ese número junta todos los casos decididos en el mes. El rango de su oficina dice otra cosa: en cuánto tiempo terminó la mitad de los casos y en cuánto el 80 %. Entre la oficina más rápida y la más lenta hay hoy ${m(slow.n400!.max - fast.n400!.max)} meses de diferencia.</p>
 <h2>Lo que usted sí puede preparar</h2>

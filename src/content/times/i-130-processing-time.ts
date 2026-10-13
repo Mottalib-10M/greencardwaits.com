@@ -11,7 +11,7 @@ const NF = (PT as unknown as { national: { forms: Record<string, { months: numbe
 const MN = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 const [mName, mYear] = NATIONAL_MONTH.split(' ');
 const natYm = `${mYear}-${String(MN.indexOf(mName) + 1).padStart(2, '0')}`;
-const n = (x: number | null | undefined, l: L = 'en') => (x == null ? '—' : formatNumber(x, x % 1 ? 1 : 0, l));
+const n = (x: number | null | undefined, l: L = 'en') => (x == null ? '–' : formatNumber(x, x % 1 ? 1 : 0, l));
 const nat = NF['I-130'];
 const kinds = KINDS.filter((k) => k.file === 'i-130');
 const spread = kinds.map((k) => {
@@ -32,7 +32,7 @@ export default definePage({
   tool: {"kind": "ptime", "form": "i130ir", "office": "HOU"},
   data: {"form": "i-130"},
   related: ["processing-times", "i-130-fee", "guide-priority-date", "f4-mexico", "i-485-family-processing-time"],
-  sources: ["uscisTimes", "itData", "uscisReport", "uscisData", "i130Form", "visaPriority", "consular"],
+  sources: ["uscisTimes", "itData", "uscisReport", "uscisData", "i130Form", "visaPriority", "consular", "cfr204_1"],
   en: {
     path: "processing-times/i-130",
     nav: 'I-130 processing time', card: 'Relative petition times for all six I-130 categories at the three units that publish them.',
@@ -48,7 +48,7 @@ export default definePage({
       { q: 'What does the I-130 national average in the report to Congress include?', a: 'Every Form I-130 that USCIS completed in the month, whatever the category and whichever unit decided it, measured from receipt to decision. It does not separate immediate relatives from preference cases. That is why it cannot be compared line by line with the published ranges, which are given per category and per unit.' },
     ],
     body: (h) => {
-      const m = (x: number | null | undefined) => (x == null ? '—' : h.num(x, x % 1 ? 1 : 0));
+      const m = (x: number | null | undefined) => (x == null ? '–' : h.num(x, x % 1 ? 1 : 0));
       return `<h2>Six categories, three units</h2>
 <p>For each I-130 category, here is the shortest and the longest upper bound USCIS publishes across the National Benefits Center, Service Center Operations and the Field Office Directorate. The full list of eighteen lines, with medians and inquiry dates, follows the checker.</p>
 ${h.table(['Category', 'Shortest upper bound', 'Longest upper bound'], spread.map((s) => [s.k.label.en, `${m(s.lo.max)} months (${s.lo.name})`, `${m(s.hi.max)} months (${s.hi.name})`]), `USCIS publication of ${h.date(PUBLISHED)}. Some lines publish an upper bound only.`, ['l', 'r', 'r'])}
@@ -72,8 +72,8 @@ ${h.table(['Category', 'Shortest upper bound', 'Longest upper bound'], spread.ma
       { q: '¿Qué fecha de prioridad me da la petición I-130 de mi familiar?', a: 'En los casos familiares, la fecha de prioridad (priority date) es la fecha en que USCIS recibió la petición I-130, impresa en el aviso de recibo I-797C. Esa fecha es la que se compara cada mes con el Visa Bulletin. Por eso conviene guardar el aviso aunque la petición tarde en aprobarse: el lugar en la fila ya está fijado.' },
     ],
     body: (h) => {
-      const m = (x: number | null | undefined) => (x == null ? '—' : h.num(x, x % 1 ? 1 : 0));
-      const y = (x: number | null | undefined) => (x == null ? '—' : h.num(x / 12, 1));
+      const m = (x: number | null | undefined) => (x == null ? '–' : h.num(x, x % 1 ? 1 : 0));
+      const y = (x: number | null | undefined) => (x == null ? '–' : h.num(x / 12, 1));
       return `<h2>El parentesco cambia todo</h2>
 <p>Una ciudadana de Los Ángeles que pide a su esposo y la misma ciudadana que pide a su hermano en Jalisco presentan el mismo formulario, pagan la misma tarifa y entran en líneas muy diferentes. Esta tabla convierte a años la cifra alta más corta y la más larga de cada categoría.</p>
 ${h.table(['Categoría', 'Cifra alta más corta', 'Cifra alta más larga'], spread.map((s) => [s.k.label.es, `${y(s.lo.max)} años`, `${y(s.hi.max)} años`]), `Publicación de USCIS del ${h.date(PUBLISHED)}, entre el Centro Nacional de Beneficios, los centros de servicio y la dirección de oficinas locales.`, ['l', 'r', 'r'])}

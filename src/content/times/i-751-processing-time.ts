@@ -11,7 +11,7 @@ const NF = (PT as unknown as { national: { forms: Record<string, { months: numbe
 const MN = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 const [mName, mYear] = NATIONAL_MONTH.split(' ');
 const natYm = `${mYear}-${String(MN.indexOf(mName) + 1).padStart(2, '0')}`;
-const n = (x: number | null | undefined, l: L = 'en') => (x == null ? '—' : formatNumber(x, x % 1 ? 1 : 0, l));
+const n = (x: number | null | undefined, l: L = 'en') => (x == null ? '–' : formatNumber(x, x % 1 ? 1 : 0, l));
 const rows = centerRows(kindById('i751')!);
 const fod = rows.find((r) => r.office === 'FOD')!, scd = rows.find((r) => r.office === 'SCD')!;
 const nat = NF['I-751'];
@@ -43,7 +43,7 @@ export default definePage({
       { q: 'Should I make an inquiry if my I-751 is past the published range?', a: 'When the receipt date on your notice is on or before the inquiry date USCIS publishes for your unit, the case is outside normal processing time and USCIS accepts a case inquiry. The checker shows both units and their dates. For questions about status, travel or a change in the marriage, speak to an immigration attorney or a DOJ-accredited representative.' },
     ],
     body: (h) => {
-      const m = (x: number | null | undefined) => (x == null ? '—' : h.num(x, x % 1 ? 1 : 0));
+      const m = (x: number | null | undefined) => (x == null ? '–' : h.num(x, x % 1 ? 1 : 0));
       return `<h2>Two units, two clocks</h2>
 <p>The I-751 is one of the few forms that USCIS publishes at both the Field Office Directorate and Service Center Operations. The two lines start close, with medians of ${m(fod.min)} and ${m(scd.min)} months, but the field-office line reaches ${m(fod.max)} months at the 80% mark against ${m(scd.max)} for the service centers. Inquiries are accepted for receipts up to ${h.date(fod.inquiry!)} on the first line and ${h.date(scd.inquiry!)} on the second. USCIS does not say on its tool which petitions go where.</p>
 <h2>A long average too</h2>
@@ -68,7 +68,7 @@ export default definePage({
       { q: '¿Qué fecha uso para saber cuánto lleva mi I-751?', a: 'La fecha de recibo (receipt date) del aviso I-797C que USCIS envía después de recibir la petición, en papel o en su cuenta en línea. La herramienta de esta página compara esa fecha con el rango de la unidad elegida y le dice si USCIS ya acepta una consulta de caso. No use la fecha en que envió el sobre.' },
     ],
     body: (h) => {
-      const m = (x: number | null | undefined) => (x == null ? '—' : h.num(x, x % 1 ? 1 : 0));
+      const m = (x: number | null | undefined) => (x == null ? '–' : h.num(x, x % 1 ? 1 : 0));
       return `<h2>Una espera más larga que la propia tarjeta</h2>
 <p>Una pareja de Phoenix que recibió la residencia condicional y presentó el I-751 a tiempo puede esperar, según la unidad, hasta ${m(fod.max)} meses para la decisión${fod.max! > 24 ? ', más que los dos años de validez de la tarjeta' : ''}. Por eso conviene guardar el aviso de recibo con la tarjeta y anotar la fecha. Las cifras de cada unidad:</p>
 ${h.table(['Unidad', 'Caso mediano', '80 % de los casos', 'Consultas para recibos hasta'], [[fod.name, `${m(fod.min)} meses`, `${m(fod.max)} meses`, h.date(fod.inquiry!)], [scd.name, `${m(scd.min)} meses`, `${m(scd.max)} meses`, h.date(scd.inquiry!)]], `Publicación de USCIS del ${h.date(PUBLISHED)}.`, ['l', 'r', 'r', 'l'])}

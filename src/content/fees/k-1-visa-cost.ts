@@ -17,7 +17,7 @@ export default definePage({
   tool: {"kind": "fees", "path": "k1"},
   data: {"fees": "k1"},
   related: ["fees", "i-129f-processing-time", "consular-processing-cost", "marriage-green-card-cost", "i-751-fee"],
-  sources: ["g1055", "g1055pdf", "feeCalculator", "dosFees", "i129fForm"],
+  sources: ["g1055", "g1055pdf", "feeCalculator", "dosFees", "i129fForm", "k1Page"],
   en: {
     path: "fees/k-1",
     nav: 'K-1 visa cost', card: 'Fiancé(e) petition, K visa fee and the I-485 after the wedding, compared with a spousal visa.',

@@ -18,7 +18,7 @@ export default definePage({
   tool: {"kind": "fees", "path": "marriage"},
   data: {"special": "allfees"},
   related: ["fees", "marriage-green-card-cost", "i-765-fee", "i-131-fee", "i-485-family-processing-time"],
-  sources: ["g1055", "g1055pdf", "feeCalculator", "i485Form", "i765Form", "i131Form", "legalHelp"],
+  sources: ["g1055", "g1055pdf", "feeCalculator", "i485Form", "i765Form", "i131Form", "legalHelp", "cfr245"],
   en: {
     path: "fees/i-485",
     nav: 'I-485 fee', card: 'The adjustment of status fee for adults and for children under 14, and what the work permit and travel document add.',

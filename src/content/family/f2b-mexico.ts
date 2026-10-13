@@ -41,7 +41,7 @@ export default definePage({
   tool: {"kind": "greencard", "cat": "F2B", "country": "MX"},
   data: {"cat": "F2B", "country": "MX"},
   related: ["f2b", "country-mexico", "f1-mexico", "guide-f2b-to-f1", "consular-processing-cost"],
-  sources: ["vbIndex", "vbMirror", "aosCharts", "visaPriority", "legalHelp"],
+  sources: ["vbIndex", "vbMirror", "aosCharts", "visaPriority", "legalHelp", "cfr205_1", "cfr204_2"],
   en: {
     path: "family/f2b/mexico",
     nav: 'F2B Mexico', card: 'Mexican-born unmarried sons and daughters 21+ of green card holders: three fast years and a line now ahead of F1.',

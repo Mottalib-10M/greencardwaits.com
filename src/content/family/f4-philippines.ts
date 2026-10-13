@@ -28,7 +28,7 @@ export default definePage({
   tool: {"kind": "greencard", "cat": "F4", "country": "PH"},
   data: {"cat": "F4", "country": "PH"},
   related: ["f4", "country-philippines", "f4-india", "guide-chargeability", "consular-processing-cost"],
-  sources: ["vbIndex", "vbMirror", "aosCharts", "visaPriority", "i130Form"],
+  sources: ["vbIndex", "vbMirror", "aosCharts", "visaPriority", "i130Form", "vbOct2026", "famPref"],
   en: {
     path: "family/f4/philippines",
     nav: 'F4 Philippines', card: 'Brothers and sisters of U.S. citizens born in the Philippines: a line that has gained years on the calendar.',

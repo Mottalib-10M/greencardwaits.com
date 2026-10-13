@@ -37,7 +37,7 @@ export default definePage({
   tool: {"kind": "greencard", "cat": "F4", "country": "ROW"},
   data: {"cat": "F4", "country": "ROW"},
   related: ["f4-mexico", "f4-philippines", "f4-india", "i-130-processing-time", "consular-processing-cost"],
-  sources: ["vbIndex", "vbMirror", "aosCharts", "visaPriority", "i130Form", "cspaPolicy"],
+  sources: ["vbIndex", "vbMirror", "aosCharts", "visaPriority", "i130Form", "cspaPolicy", "vbOct2026", "cfr204_1", "famPref"],
   en: {
     path: "family/f4",
     nav: 'F4 (brother or sister)', card: 'Brothers and sisters of adult U.S. citizens: the longest family line, its Mexico, Philippines and India columns.',

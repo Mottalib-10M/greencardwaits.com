@@ -44,7 +44,7 @@ export default function BulletinCheck({ lang = 'en', month: m0, pick = false, ca
           {pick && <SelectField id="bc-month" label={tx(lang, 'Bulletin month', 'Mes del boletín')} value={month} onChange={setMonth} options={MONTHS.filter((m) => series('F1', 'ROW', 'FAD')[MONTHS.indexOf(m)] !== null).slice().reverse().map((m) => ({ value: m, label: f.month(m) }))} />}
         </form>
         <div aria-live="polite" data-resultat className={box}>
-          <Head label={tx(lang, `In the ${f.month(month)} bulletin`, `En el boletín de ${f.month(month)}`)} value={!out ? '—' : out.fad.cur ? tx(lang, 'Current', 'Al día') : tx(lang, 'Not current', 'No al día')} sub={CAT_LABEL[lang][cat]} />
+          <Head label={tx(lang, `In the ${f.month(month)} bulletin`, `En el boletín de ${f.month(month)}`)} value={!out ? '–' : out.fad.cur ? tx(lang, 'Current', 'Al día') : tx(lang, 'Not current', 'No al día')} sub={CAT_LABEL[lang][cat]} />
           <Rows rows={rows} />
           <Disclaimer lang={lang} methodHref={methodHref} />
         </div>

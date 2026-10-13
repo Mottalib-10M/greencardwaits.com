@@ -28,7 +28,7 @@ export default definePage({
   id: "guide-priority-date", group: "guides", order: 700,
   mini: "isCurrent",
   related: ["priority-date-calculator", "visa-bulletin", "guide-final-action-vs-dates-for-filing", "guide-chargeability", "guide-portability"],
-  sources: ["vbIndex", "aosCharts", "visaPriority", "i130Form", "i140Form", "avoidScams"],
+  sources: ["vbIndex", "aosCharts", "visaPriority", "i130Form", "i140Form", "avoidScams", "cfr204_5", "cfr204_1"],
   en: {
     path: "guides/priority-date",
     nav: 'Priority date', card: 'Where the priority date is printed, which filing sets it, and how to compare it with the Visa Bulletin cutoff.',

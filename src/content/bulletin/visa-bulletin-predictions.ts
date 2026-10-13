@@ -29,7 +29,7 @@ export default definePage({
   tool: {"kind": "greencard", "cat": "EB3", "country": "ROW", "pd": "2025-02-01"},
   data: {"special": "predictions"},
   related: ["visa-bulletin", "priority-date-calculator", "guide-retrogression", "visa-bulletin-history", "guide-bulletin-release"],
-  sources: ["vbIndex", "vbMirror", "aosCharts", "visaPriority", "ina203"],
+  sources: ["vbIndex", "vbMirror", "aosCharts", "visaPriority", "ina203", "vbDec2022", "ivPosts"],
   en: {
     path: "visa-bulletin/predictions",
     nav: 'Predictions', card: 'Graded forecast ranges for people a year behind each cutoff, and the boxes where we refuse to guess.',
@@ -46,7 +46,7 @@ export default definePage({
     ],
     body: (h) => `
 <h2>What a forecast can know, and what it cannot</h2>
-<p>The cutoff in each box is chosen by the State Department so that the people who become eligible in a month roughly match the visa numbers left for the fiscal year. It sees how many applicants are documentarily qualified, how many I-485 cases USCIS holds, and how many numbers were left unused by the other system, which by law move between family and employment the following year (${h.src('ina203', 'INA section 201')}). None of that is published in a form anyone can model month by month. A prediction from outside is therefore a reading of the past, and it should say so.</p>
+<p>The cutoff in each box is chosen by the State Department so that the people who become eligible in a month roughly match the visa numbers left for the fiscal year. It sees how many applicants are documentarily qualified, how many I-485 cases USCIS holds, and how many family numbers went unused the year before, which raise the next employment limit (the ${h.src('vbDec2022', 'December 2022 bulletin')} counted about ${h.num(57_000)}). None of that is published in a form anyone can model month by month. A prediction from outside is therefore a reading of the past, and it should say so.</p>
 <h2>How the table below is built</h2>
 <p>For each case we place a priority date exactly twelve months behind this month's Final Action Date, then ask how long the cutoff has taken, from every starting month in the previous ten years, to advance twelve months. Waits that never finished inside the archive are kept as unfinished rather than thrown away. The 20th and 80th percentiles of those waits give the range in the third column; the fourth column is the median miss of the same method, run on each month from ${h.month(BACKTEST_FROM)} to ${h.month(BACKTEST_TO)} without seeing the future.</p>
 <h2>Why most employment boxes stay blank</h2>
@@ -69,7 +69,7 @@ export default definePage({
     ],
     body: (h) => `
 <h2>Lo que una predicción puede saber</h2>
-<p>La fecha de cada casilla la decide el Departamento de Estado para que las personas que se vuelven elegibles en el mes quepan en los números que quedan del año fiscal. Para eso mira cuántas familias ya entregaron sus documentos, cuántos casos I-485 tiene USCIS y cuántos números sobraron del sistema de empleo, que por ley pasan al familiar el año siguiente (${h.src('ina203', 'Ley de Inmigración y Nacionalidad')}). Esa información no se publica de forma que se pueda calcular mes por mes. Por eso cualquier predicción hecha desde fuera es una lectura del pasado, y debe decirlo.</p>
+<p>La fecha de cada casilla la decide el Departamento de Estado para que las personas que se vuelven elegibles en el mes quepan en los números que quedan del año fiscal. Para eso mira cuántas familias ya entregaron sus documentos, cuántos casos I-485 tiene USCIS y cuántos números familiares sobraron el año anterior, que suben el límite de empleo del año siguiente (el ${h.src('vbDec2022', 'boletín de diciembre de 2022')} contó unos ${h.num(57_000)}). Esa información no se publica de forma que se pueda calcular mes por mes. Por eso cualquier predicción hecha desde fuera es una lectura del pasado, y debe decirlo.</p>
 <h2>Las cinco filas de México, una por una</h2>
 <p>${mexRows.map((x) => `${catEs[x.c]}: ${x.kind === 'model' ? 'rango del modelo' : x.kind === 'pace' ? 'rango del ritmo de 12 meses' : x.kind === 'none' ? 'sin pronóstico fiable' : x.kind === 'near' ? 'la fecha límite tiene menos de un año, no hay nadie un año detrás' : 'sin fecha límite'}`).join('; ')}. F2B México, por ejemplo, ${f2bMx.r && f2bMx.kind !== 'none' ? `muestra el ritmo de 12 meses porque el modelo principal falló a un año (error de ${h.num(f2bMx12.medianError)} meses) y la regla simple pasó` : 'no tiene rango este mes'}. En F4 México, la fila de los hermanos, el ritmo reciente es tan lento que ${f4Mx.r?.range?.[0] ? `el rango empieza en ${h.month(f4Mx.r.range[0])}` : 'no sale un rango útil'}: es una forma honesta de decir que, a esa velocidad, la espera se cuenta en décadas, no en años.</p>
 <h2>Cómo se arma la tabla</h2>

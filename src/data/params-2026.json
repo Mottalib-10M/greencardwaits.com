@@ -340,7 +340,7 @@
       }
     },
     "avoidScams": {
-      "url": "https://www.uscis.gov/scams-fraud-and-misconduct/avoid-scams",
+      "url": "https://www.uscis.gov/avoid-scams",
       "label": {
         "en": "USCIS, Avoid Scams",
         "es": "USCIS, evite las estafas"
@@ -386,6 +386,104 @@
       "label": {
         "en": "USCIS, Petition Filing and Processing Procedures for Form I-140",
         "es": "USCIS, procedimientos de presentación y trámite del Formulario I-140"
+      }
+    },
+    "k1Page": {
+      "url": "https://www.uscis.gov/family/family-of-us-citizens/visas-for-fiancees-of-us-citizens",
+      "label": {
+        "en": "USCIS, Visas for Fiancé(e)s of U.S. Citizens (marriage within 90 days of K-1 admission)",
+        "es": "USCIS, visas para prometidos(as) de ciudadanos (boda dentro de los 90 días tras la admisión K-1)"
+      }
+    },
+    "replaceCard": {
+      "url": "https://www.uscis.gov/green-card/after-we-grant-your-green-card/replace-your-green-card",
+      "label": {
+        "en": "USCIS, Replace Your Green Card (renewal when the card expires within six months)",
+        "es": "USCIS, reemplazar su green card (renovación cuando vence en los próximos seis meses)"
+      }
+    },
+    "travelDocs": {
+      "url": "https://www.uscis.gov/green-card/green-card-processes-and-procedures/travel-documents",
+      "label": {
+        "en": "USCIS, Travel Documents (travel with a pending Green Card application)",
+        "es": "USCIS, documentos de viaje (viajar con una solicitud de green card pendiente)"
+      }
+    },
+    "cfr245": {
+      "url": "https://www.ecfr.gov/current/title-8/chapter-I/subchapter-B/part-245/section-245.2",
+      "label": {
+        "en": "8 CFR 245.2: departure during adjustment, advance parole and the H-1/L-1 exception",
+        "es": "8 CFR 245.2: salida durante el ajuste, advance parole y la excepción H-1/L-1"
+      }
+    },
+    "cfr204_1": {
+      "url": "https://www.ecfr.gov/current/title-8/chapter-I/subchapter-B/part-204/subpart-A/section-204.1",
+      "label": {
+        "en": "8 CFR 204.1: filing date of a family petition is its priority date",
+        "es": "8 CFR 204.1: la fecha de presentación de la petición familiar es su fecha de prioridad"
+      }
+    },
+    "cfr204_2": {
+      "url": "https://www.ecfr.gov/current/title-8/chapter-I/subchapter-B/part-204/subpart-A/section-204.2",
+      "label": {
+        "en": "8 CFR 204.2: relative petitions, stepchildren, derivatives and automatic conversion",
+        "es": "8 CFR 204.2: peticiones de familiares, hijastros, derivados y conversión automática"
+      }
+    },
+    "cfr204_5": {
+      "url": "https://www.ecfr.gov/current/title-8/chapter-I/subchapter-B/part-204/subpart-A/section-204.5",
+      "label": {
+        "en": "8 CFR 204.5(d): priority date of employment-based petitions",
+        "es": "8 CFR 204.5(d): fecha de prioridad de las peticiones de empleo"
+      }
+    },
+    "cfr205_1": {
+      "url": "https://www.ecfr.gov/current/title-8/chapter-I/subchapter-B/part-205/section-205.1",
+      "label": {
+        "en": "8 CFR 205.1: automatic revocation of approved petitions",
+        "es": "8 CFR 205.1: revocación automática de peticiones aprobadas"
+      }
+    },
+    "cfr320_2": {
+      "url": "https://www.ecfr.gov/current/title-8/chapter-I/subchapter-C/part-320/section-320.2",
+      "label": {
+        "en": "8 CFR 320.2: children who acquire citizenship automatically (INA 320)",
+        "es": "8 CFR 320.2: hijos que adquieren la ciudadanía automáticamente (INA 320)"
+      }
+    },
+    "cfr656_5": {
+      "url": "https://www.ecfr.gov/current/title-20/chapter-V/part-656/subpart-B/section-656.5",
+      "label": {
+        "en": "20 CFR 656.5: Department of Labor Schedule A (nurses, physical therapists)",
+        "es": "20 CFR 656.5: Schedule A del Departamento de Trabajo (enfermeras, fisioterapeutas)"
+      }
+    },
+    "eb3Page": {
+      "url": "https://www.uscis.gov/working-in-the-united-states/permanent-workers/employment-based-immigration-third-preference-eb-3",
+      "label": {
+        "en": "USCIS, Employment-Based Immigration: Third Preference EB-3",
+        "es": "USCIS, inmigración por empleo: tercera preferencia EB-3"
+      }
+    },
+    "famPref": {
+      "url": "https://www.uscis.gov/green-card/green-card-eligibility/green-card-for-family-preference-immigrants",
+      "label": {
+        "en": "USCIS, Green Card for Family Preference Immigrants (derivative applicants)",
+        "es": "USCIS, green card para inmigrantes de preferencia familiar (solicitantes derivados)"
+      }
+    },
+    "ivPosts": {
+      "url": "https://adoptions.state.gov/content/travel/en/us-visas/visa-information-resources/list-of-posts.html",
+      "label": {
+        "en": "U.S. Department of State, List of U.S. Embassies and Consulates that Process Immigrant Visas",
+        "es": "Departamento de Estado, lista de embajadas y consulados que procesan visas de inmigrante"
+      }
+    },
+    "vbDec2022": {
+      "url": "https://adoptions.state.gov/content/travel/en/legal/visa-law0/visa-bulletin/2023/visa-bulletin-for-december-2022.html",
+      "label": {
+        "en": "Visa Bulletin for December 2022 (unused family numbers and the FY 2023 employment limit)",
+        "es": "Visa Bulletin de diciembre de 2022 (números familiares no usados y límite de empleo del año fiscal 2023)"
       }
     }
   },

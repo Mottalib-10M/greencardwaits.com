@@ -30,7 +30,7 @@ export default definePage({
   id: "guide-aos-vs-consular", group: "guides", order: 710,
   mini: "aosVsConsular",
   related: ["consular-processing-cost", "marriage-green-card-cost", "i-485-family-processing-time", "guide-cspa", "guide-final-action-vs-dates-for-filing"],
-  sources: ["consular", "g1055", "dosFees", "immigrantFee", "i485Form", "aosCharts", "uscisReport", "itData", "cspaPolicy", "legalHelp"],
+  sources: ["consular", "g1055", "dosFees", "immigrantFee", "i485Form", "aosCharts", "uscisReport", "itData", "cspaPolicy", "legalHelp", "ivPosts"],
   en: {
     path: "guides/adjustment-of-status-vs-consular-processing",
     nav: 'Adjustment vs consular', card: 'Filing Form I-485 in the U.S. or interviewing at a consulate abroad: the 2026 fees, the published times and the gaps.',

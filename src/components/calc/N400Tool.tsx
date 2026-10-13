@@ -26,7 +26,7 @@ export default function N400Tool({ lang = 'en', methodHref }: { lang?: L; method
     { label: tx(lang, 'Days present / required', 'Días presente / requeridos'), value: `${f.num(r.daysPresent)} / ${f.num(r.daysRequired)}` },
     { label: tx(lang, 'Trips over 6 months / of a year or more', 'Viajes de más de 6 meses / de un año o más'), value: `${r.longTrips} / ${r.breakingTrips}` },
   ] : [];
-  const verdict = !r ? '—' : r.breakingTrips ? tx(lang, 'Residence broken', 'Residencia interrumpida') : !r.presenceOk ? tx(lang, 'Too few days present', 'Pocos días presente') : r.canFileToday ? tx(lang, 'You can file now', 'Ya puede presentar') : f.date(r.earliestFiling);
+  const verdict = !r ? '–' : r.breakingTrips ? tx(lang, 'Residence broken', 'Residencia interrumpida') : !r.presenceOk ? tx(lang, 'Too few days present', 'Pocos días presente') : r.canFileToday ? tx(lang, 'You can file now', 'Ya puede presentar') : f.date(r.earliestFiling);
   const steps = [
     tx(lang, 'USCIS accepts Form N-400 up to 90 days before the 5-year (or 3-year, married to a U.S. citizen) anniversary of the date on your green card.', 'USCIS acepta el N-400 hasta 90 días antes del aniversario de 5 años (o 3 si está casado con un ciudadano) de la fecha de su green card.'),
     tx(lang, 'Physical presence: at least half the period, 913 days (548). The days you leave and return count as days present.', 'Presencia física: al menos la mitad del periodo, 913 días (548). Los días de salida y regreso cuentan como presentes.'),

@@ -6,7 +6,7 @@ import { formatNumber, formatMoney, displayDate } from '../../lib/format';
 import { cellText } from '../../lib/text';
 
 // Chiffres lus dans les données : I-526E à l'Immigrant Investor Program Office, et case EB-5 (non réservée) du bulletin.
-const n = (x: number | null | undefined) => (x == null ? '—' : formatNumber(x, x % 1 ? 1 : 0, 'en'));
+const n = (x: number | null | undefined) => (x == null ? '–' : formatNumber(x, x % 1 ? 1 : 0, 'en'));
 const r = centerRows(kindById('i526e')!)[0];
 const eb5 = (['ROW', 'CN', 'IN'] as const).map((c) => ({ c, fad: cellAt('EB5', c, 'FAD'), dff: cellAt('EB5', c, 'DFF') }));
 const row = eb5[0], cn = eb5[1], ind = eb5[2];
@@ -34,7 +34,7 @@ export default definePage({
       { q: 'What is the USCIS filing fee for Form I-526E in 2026?', a: 'The G-1055 fee schedule in force in 2026 lists one fee for Form I-526E, shown on this page and on our fee overview. It is paid once per petition and it does not change with the processing time. Legal and regional center charges are separate and are not set by USCIS, so we do not show them.' },
     ],
     body: (h) => {
-      const m = (x: number | null | undefined) => (x == null ? '—' : h.num(x, x % 1 ? 1 : 0));
+      const m = (x: number | null | undefined) => (x == null ? '–' : h.num(x, x % 1 ? 1 : 0));
       return `<h2>A wait measured in years</h2>
 <p>The range reads ${m(r.min)} to ${m(r.max)} months, about ${h.num(r.min! / 12, 1)} to ${h.num(r.max! / 12, 1)} years. Only ${m(r.max! - r.min!)} months separate the median petition from the 80% mark, so the petitions decided between those two points are bunched closely together. The inquiry date of ${h.date(r.inquiry!)} shows how far back that 80% mark reaches: an investor whose receipt date is later than it is still within what USCIS calls normal processing time, even after two or more years.</p>
 <p>Put the receipt date from the I-797C notice in the checker above. It returns the months elapsed and tells you whether a case inquiry is already possible. Keep in mind that, by construction, one petition in five takes longer than the upper figure, so passing it is not by itself a sign that something went wrong.</p>

@@ -13,7 +13,7 @@ export default definePage({
   tool: {"kind": "fees", "path": "family-consular"},
   data: {"special": "allfees"},
   related: ["fees", "i-130-processing-time", "consular-processing-cost", "marriage-green-card-cost", "guide-priority-date"],
-  sources: ["g1055", "g1055pdf", "feeCalculator", "dosFees", "i130Form"],
+  sources: ["g1055", "g1055pdf", "feeCalculator", "dosFees", "i130Form", "cfr204_2", "cfr204_1", "vbOct2026"],
   en: {
     path: "fees/i-130",
     nav: 'I-130 fee', card: 'The petition for a relative on paper or online, and how many petitions a family really needs.',

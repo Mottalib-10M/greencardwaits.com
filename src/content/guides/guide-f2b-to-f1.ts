@@ -35,7 +35,7 @@ const es = (c: string) => cellText(c, 'es');
 const st = (r: ReturnType<typeof evaluate>, l: 'en' | 'es') => r.status === 'current' ? (l === 'en' ? 'current' : 'al día') : (l === 'en' ? `about ${Math.round(r.behindMonths)} months behind` : `unos ${Math.round(r.behindMonths)} meses detrás`);
 const ahead = (k: Country, l: 'en' | 'es') => {
   const g = G[k];
-  if (!Number.isFinite(g)) return '—';
+  if (!Number.isFinite(g)) return '–';
   if (Math.abs(g) <= 0.5) return l === 'en' ? 'about even' : 'casi igual';
   const m = Math.round(Math.abs(g));
   const u = l === 'en' ? (m === 1 ? 'month' : 'months') : (m === 1 ? 'mes' : 'meses');
@@ -46,7 +46,7 @@ export default definePage({
   id: "guide-f2b-to-f1", group: "guides", order: 705,
   mini: "conversion",
   related: ["f2b", "f1-mexico", "f2b-mexico", "guide-cspa", "n-400-processing-time"],
-  sources: ["cspaPage", "f2bOptOut", "vbIndex", "visaPriority", "n400Form"],
+  sources: ["cspaPage", "f2bOptOut", "vbIndex", "visaPriority", "n400Form", "cfr204_2", "cfr205_1"],
   en: {
     path: "guides/f2b-to-f1-conversion",
     nav: 'F2B to F1 conversion', card: 'What a parent’s naturalization does to F2A and F2B petitions, and when staying in F2B is the shorter line.',
@@ -95,7 +95,7 @@ ${h.table(['Column', 'F1 Final Action', 'F2B Final Action', 'Ahead this month', 
 <li>The receipt number and the approving office, both on the I-797 approval notice.</li>
 </ul>
 <h2>Marriage changes the answer</h2>
-<p>The conversion rules also explain why some families time the naturalization before a wedding. The Policy Manual is plain about it. An F2B beneficiary who marries has no category left, because there is no visa for the married son or daughter of a green card holder; a pending petition is denied and an approved one is generally revoked. An F1 beneficiary who marries converts to F3, the married son or daughter of a citizen, and keeps the priority date. A divorced F3 beneficiary converts back to F1. So a son or daughter who stays in F2B by opting out keeps the faster line but also keeps the rule that marriage ends the case.</p>
+<p>The conversion rules also explain why some families time the naturalization before a wedding. The Policy Manual is plain about it. An F2B beneficiary who marries has no category left, because there is no visa for the married son or daughter of a green card holder; under 8 CFR 205.1 an approved petition is revoked automatically on the marriage. An F1 beneficiary who marries converts to F3, the married son or daughter of a citizen, and keeps the priority date. A divorced F3 beneficiary converts back to F1. So a son or daughter who stays in F2B by opting out keeps the faster line but also keeps the rule that marriage ends the case.</p>
 <h2>How long the parent’s naturalization takes</h2>
 <p>None of this happens until the oath. USCIS reported an average of ${h.num(n400Avg, 1)} months to decide a naturalization application in its latest report to Congress, and the range at each field office is on our ${h.a('n-400-processing-time', 'N-400 processing time page')}. A parent who can file Form ${h.src('n400Form', 'N-400')} now should know that the conversion lands on the day of the oath, not the day of filing, and that for an F2A child under 21 that day can decide whether the child is still a child.</p>
 <p>This guide describes the rules USCIS publishes; it is not legal advice, and we are not affiliated with USCIS or the State Department.</p>`,
@@ -141,7 +141,7 @@ ${h.table(['Columna', 'F1, acción final', 'F2B, acción final', 'Va adelante es
 <h2>El hijo que ya perdió la F2A al cumplir 21 años</h2>
 <p>Algunos hijos llegan a la F2B por otro camino: estaban en la petición F2A de su madre o de su padre y cumplieron 21 años con una edad CSPA demasiado alta. El Manual de políticas explica que el hijo derivado del cónyuge de un residente que pierde la edad pasa solo a F2B como beneficiario principal, sin nueva petición y con la fecha de prioridad original. Para esas familias la conversión llega dos veces: de F2A a F2B a los 21 años, y de F2B a F1 el día del juramento, siempre con la misma fecha.</p>
 <h2>Si su hijo piensa casarse</h2>
-<p>Aquí la diferencia entre F2B y F1 es enorme. Un hijo en F2B que se casa se queda sin categoría, porque no existe visa para el hijo casado de un residente: la petición pendiente se niega y la aprobada en general queda revocada. Un hijo en F1 que se casa pasa a F3, hijo casado de ciudadano, y conserva la fecha de prioridad; si después se divorcia, vuelve a F1. Por eso hay familias que esperan el juramento del padre antes de la boda. Y por eso un hijo que pidió quedarse en F2B debe saber que mantiene la fila más rápida, pero también la regla de que casarse termina el caso.</p>
+<p>Aquí la diferencia entre F2B y F1 es enorme. Un hijo en F2B que se casa se queda sin categoría, porque no existe visa para el hijo casado de un residente: según 8 CFR 205.1, la petición aprobada queda revocada automáticamente con la boda. Un hijo en F1 que se casa pasa a F3, hijo casado de ciudadano, y conserva la fecha de prioridad; si después se divorcia, vuelve a F1. Por eso hay familias que esperan el juramento del padre antes de la boda. Y por eso un hijo que pidió quedarse en F2B debe saber que mantiene la fila más rápida, pero también la regla de que casarse termina el caso.</p>
 <h2>Cuánto tarda la ciudadanía del padre</h2>
 <p>Nada de esto pasa antes del juramento. En su último informe al Congreso, USCIS reportó un promedio de ${h.num(n400Avg, 1)} meses para decidir una solicitud de naturalización, y el rango de cada oficina está en nuestra ${h.a('n-400-processing-time', 'página de tiempos del N-400')}. Si usted puede presentar el ${h.src('n400Form', 'formulario N-400')}, recuerde que la conversión ocurre el día del juramento, no el día en que manda la solicitud, y que para un hijo menor que está por cumplir 21 años ese día puede decidir si sigue siendo hijo menor.</p>
 <p>Esta guía describe las reglas que publica USCIS; no es asesoría legal y no tiene relación con USCIS ni con el Departamento de Estado.</p>`,

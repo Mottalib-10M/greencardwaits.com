@@ -12,7 +12,7 @@ export default (l: Lang): MiniSpec => ({
   ],
   run: (v) => {
     const F = f(l);
-    if (!iso(v.pd)) return { head: ['', '—'], rows: [] };
+    if (!iso(v.pd)) return { head: ['', '–'], rows: [] };
     const r = evaluate(v.cat as Cat, v.country as Country, v.pd);
     return {
       head: [tx(l, 'In the new category', 'En la nueva categoría'), r.status === 'current' ? tx(l, 'Current', 'Al día') : tx(l, `${months(l, r.behindMonths)} behind`, `${months(l, r.behindMonths)} detrás`)],

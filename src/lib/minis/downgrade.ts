@@ -11,7 +11,7 @@ export default (l: Lang): MiniSpec => ({
   ],
   run: (v) => {
     const F = f(l);
-    if (!iso(v.pd)) return { head: ['', '—'], rows: [] };
+    if (!iso(v.pd)) return { head: ['', '–'], rows: [] };
     const a = evaluate('EB2', v.country as Country, v.pd), b = evaluate('EB3', v.country as Country, v.pd);
     const ahead = Math.abs(a.behindMonths - b.behindMonths) < 0.5 ? tx(l, 'Tied', 'Empate') : a.behindMonths < b.behindMonths ? 'EB-2' : 'EB-3';
     const w = (r: typeof a) => (r.status === 'current' ? tx(l, 'Current', 'Al día') : tx(l, `${months(l, r.behindMonths)} behind`, `${months(l, r.behindMonths)} detrás`));

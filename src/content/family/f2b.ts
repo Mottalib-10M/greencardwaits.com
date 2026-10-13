@@ -38,7 +38,7 @@ export default definePage({
   tool: {"kind": "greencard", "cat": "F2B", "country": "ROW"},
   data: {"cat": "F2B", "country": "ROW"},
   related: ["f2b-mexico", "f2b-philippines", "guide-f2b-to-f1", "i-130-processing-time", "consular-processing-cost"],
-  sources: ["vbIndex", "vbMirror", "aosCharts", "visaPriority", "i130Form", "cspaPolicy", "legalHelp"],
+  sources: ["vbIndex", "vbMirror", "aosCharts", "visaPriority", "i130Form", "cspaPolicy", "legalHelp", "cfr205_1", "cfr204_2", "cfr204_1", "vbOct2026"],
   en: {
     path: "family/f2b",
     nav: 'F2B (adult child of resident)', card: 'Unmarried sons and daughters 21+ of green card holders: the cutoff, the 2026 jump, and the F1 conversion question.',

@@ -8,7 +8,7 @@ export default (l: Lang): MiniSpec => ({
   inputs: [{ id: 'd', label: tx(l, 'A date', 'Una fecha'), type: 'date', def: '2026-10-13' }],
   run: (v) => {
     const F = f(l);
-    if (!iso(v.d)) return { head: ['', '—'], rows: [] };
+    if (!iso(v.d)) return { head: ['', '–'], rows: [] };
     const y = Number(v.d.slice(0, 4)), m = Number(v.d.slice(5, 7));
     const fy = m >= 10 ? y + 1 : y;
     const next = addMonths(v.d.slice(0, 7), 1);

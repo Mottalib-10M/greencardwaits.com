@@ -29,7 +29,7 @@ export default function TimeChecker({ lang = 'en', kind: k0 = 'n400', office: o0
   const placeName = k.field ? OFFICES[where]?.name : centers.find((x) => x.office === where)?.name;
   const nat = NATIONAL[NAT_KEY[kind] ?? ''];
   const rows: Row[] = [];
-  if (b) rows.push({ label: tx(lang, `Published range, ${placeName}`, `Rango publicado, ${placeName}`), value: b.max === null ? tx(lang, 'not published', 'no publicado') : tx(lang, `${b.min === null ? '—' : f.num(b.min, 1)} to ${f.num(b.max, 1)} months`, `${b.min === null ? '—' : f.num(b.min, 1)} a ${f.num(b.max, 1)} meses`) });
+  if (b) rows.push({ label: tx(lang, `Published range, ${placeName}`, `Rango publicado, ${placeName}`), value: b.max === null ? tx(lang, 'not published', 'no publicado') : tx(lang, `${b.min === null ? '–' : f.num(b.min, 1)} to ${f.num(b.max, 1)} months`, `${b.min === null ? '–' : f.num(b.min, 1)} a ${f.num(b.max, 1)} meses`) });
   if (c) rows.push({ label: tx(lang, 'Time since your receipt date', 'Tiempo desde su fecha de recibo'), value: tx(lang, `${f.num(c.elapsedMonths, 1)} months`, `${f.num(c.elapsedMonths, 1)} meses`), strong: true });
   if (b?.inquiry) rows.push({ label: tx(lang, 'USCIS takes inquiries for receipts on or before', 'USCIS acepta consultas para recibos hasta el'), value: f.date(b.inquiry) });
   if (nat) rows.push({ label: tx(lang, `National average to a decision (${NATIONAL_MONTH})`, `Promedio nacional hasta la decisión (${NATIONAL_MONTH})`), value: tx(lang, `${f.num(nat, 1)} months`, `${f.num(nat, 1)} meses`), muted: true });
@@ -48,7 +48,7 @@ export default function TimeChecker({ lang = 'en', kind: k0 = 'n400', office: o0
           <div className="grid grid-cols-1 gap-x-4 gap-y-4 sm:grid-cols-2">
             {k.field
               ? <SelectField id="pt-office" label={tx(lang, 'USCIS field office', 'Oficina de USCIS')} value={where} onChange={setOffice} options={FIELD.map(([code, o]) => ({ value: code, label: o.name }))} />
-              : <SelectField id="pt-center" label={tx(lang, 'Office handling the form', 'Oficina que tramita')} value={where} onChange={setOffice} options={centers.length ? centers.map((x) => ({ value: x.office, label: x.name })) : [{ value: '', label: '—' }]} />}
+              : <SelectField id="pt-center" label={tx(lang, 'Office handling the form', 'Oficina que tramita')} value={where} onChange={setOffice} options={centers.length ? centers.map((x) => ({ value: x.office, label: x.name })) : [{ value: '', label: '–' }]} />}
             <DateField id="pt-receipt" label={tx(lang, 'Receipt date (Form I-797C)', 'Fecha de recibo (I-797C)')} value={receipt} onChange={setReceipt} min="2015-01-01" />
           </div>
         </form>

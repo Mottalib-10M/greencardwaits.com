@@ -7,7 +7,7 @@ import { readFileSync } from 'node:fs';
 import { parseBulletin, parseCell, rowCategory, columnCountry, monthFromUrl, integrity } from '../src/lib/engine/vb-parse';
 import VB from '../src/data/visa-bulletin.json';
 
-const fx = (m: string) => readFileSync(new URL(`./fixtures/visa-bulletin-for-${m}.html`, import.meta.url), 'utf8');
+const fx = (m: string) => readFileSync(new URL(`./fixtures/visa-bulletin-for-${m}.html.txt`, import.meta.url), 'utf8');
 
 describe('janvier 2002 : un seul tableau par domaine, pas de colonne Chine, années à deux chiffres anciennes', () => {
   const b = parseBulletin(fx('january-2002'), '2002-01');

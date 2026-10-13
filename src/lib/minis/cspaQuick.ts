@@ -12,7 +12,7 @@ export default (l: Lang): MiniSpec => ({
   ],
   run: (v) => {
     const F = f(l);
-    if (!iso(v.birth) || !iso(v.avail)) return { head: ['', '—'], rows: [] };
+    if (!iso(v.birth) || !iso(v.avail)) return { head: ['', '–'], rows: [] };
     const pm = Math.max(0, Number(v.pending) || 0);
     const filed = '2000-01-01';
     const approved = new Date(Date.UTC(2000, Math.round(pm), 1)).toISOString().slice(0, 10);
