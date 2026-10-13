@@ -3,4 +3,4 @@ Allow: /
 
 Disallow: /*?*
 
-Sitemap: https://us-greencard.example/sitemap-index.xml
+Sitemap: https://greencardwaits.com/sitemap-index.xml

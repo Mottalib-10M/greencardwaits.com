@@ -1,5 +1,5 @@
 /** Configuration centrale du site (générée par new-site.py). */
-export const SITE_URL = "https://us-greencard.example";
+export const SITE_URL = "https://greencardwaits.com";
 export const SITE_NAMES: Record<string, string> = {"en": "Green Card Waits", "es": "Green Card Waits"};
 export const LANG_TAGS: Record<string, string> = {"en": "en-US", "es": "es-US"};
 export const OG_LOCALES: Record<string, string> = {"en": "en_US", "es": "es_US"};
@@ -21,7 +21,7 @@ export const AUTHOR_DESC: Record<string, string> = {
  *  themes reellement traites par le site, pas une liste de mots-cles : un sujet
  *  declare ici sans page qui le couvre est une declaration fausse. */
 export const KNOWS_ABOUT: Record<string, string[]> = {"en": ["Visa Bulletin final action dates and dates for filing", "Family-sponsored and employment-based priority dates", "USCIS processing times by field office", "USCIS filing fees (Form G-1055)", "Child Status Protection Act age calculation", "Naturalization early filing and residence rules"], "es": ["Fechas de acción final y fechas de presentación del Boletín de Visas", "Fechas de prioridad familiares y de empleo", "Tiempos de proceso de USCIS por oficina", "Tarifas de USCIS (formulario G-1055)", "Cálculo de edad de la Ley CSPA", "Plazos de la naturalización"]};
-export const CONTACT_EMAIL = "contact@us-greencard.example";
+export const CONTACT_EMAIL = "contact@greencardwaits.com";
 export const THEME_COLOR = '#1F6F50';
 export const LOGO_SYMBOL = 'GC';
 export const BING_VERIFY_CODE = '';

@@ -12,7 +12,7 @@
  "volumesNote": "621 071 recherches/mois estimées (56 requêtes mesurées au Keyword Planner le 2026-10-13, bornes basses 196 400) : GO volume, validé par l'éditeur le 2026-10-13.",
  "folder": "us-greencard",
  "outDir": "a-publier/Mottalib-10M",
- "url": "https://us-greencard.example",
+ "url": "https://greencardwaits.com",
  "locales": ["en", "es"],
  "names": {"en": "Green Card Waits", "es": "Green Card Waits"},
  "langTags": {"en": "en-US", "es": "es-US"},
@@ -27,7 +27,7 @@
   "es": "Editor de datos del Boletín de Visas, pronósticos de espera de la green card, tiempos de USCIS y tarifas de 2026"
  },
  "authorDesc": {"en": "(voir src/data/site-config.ts)", "es": "(voir src/data/site-config.ts)"},
- "email": "contact@us-greencard.example",
+ "email": "contact@greencardwaits.com",
  "indexnow": "6b1f0c8e4d2a47f3a9e5c7b18d3f2a61",
  "shortName": "GC Waits",
  "description": "When will your green card come? Visa Bulletin cutoffs since 2001, a forecast range with its past error, USCIS processing times by office and 2026 fees.",

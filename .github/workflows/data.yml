@@ -2,7 +2,7 @@ name: Monthly data refresh
 
 # Du 5 au 25 de chaque mois : nouveau Visa Bulletin (adoptions.state.gov), délais USCIS (ImmigrationTimes.org,
 # CC BY 4.0) et édition du barème G-1055. Si le bulletin ou les délais changent, les séries, le rétro-test et les
-# tests sont relancés et le résultat est poussé sur main (le déploiement suit). Si l'édition du G-1055 change, le job
+# tests sont relancés et le résultat est poussé sur main (le job relance alors deploy.yml : un push fait avec GITHUB_TOKEN ne déclenche pas les autres workflows). Si l'édition du G-1055 change, le job
 # échoue : les frais se relisent à la main (CONTRIBUTING-PAGES.md). Les pages mensuelles du bulletin s'ajoutent à la main.
 on:
   schedule:
@@ -11,6 +11,7 @@ on:
 
 permissions:
   contents: write
+  actions: write
 
 jobs:
   refresh:
@@ -35,4 +36,9 @@ jobs:
           git config user.name "data-refresh"
           git config user.email "data-refresh@users.noreply.github.com"
           git add src/data
-          git diff --cached --quiet || (git commit -m "Données : bulletin et délais du $(date -u +%F)" && git push)
+          if ! git diff --cached --quiet; then
+            git commit -m "Données : bulletin et délais du $(date -u +%F)" && git push
+            gh workflow run deploy.yml --ref main
+          fi
+        env:
+          GH_TOKEN: ${{ github.token }}
