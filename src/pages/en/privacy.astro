@@ -1,0 +1,28 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import LegalIdentity from '../../components/LegalIdentity.astro';
+import { AUTHOR_NAME, AUTHOR_ROLE, CONTACT_EMAIL, LAST_UPDATED, SITE_URL, SITE_NAMES, LEGAL, LANG_TAGS } from '../../data/site-config';
+import { route } from '../../i18n/routes';
+import { displayDate } from '../../lib/format';
+import { personSchema, organizationSchema, breadcrumbSchema, profilePageSchema, contactPageSchema } from '../../lib/seo';
+const lang = 'en';
+const upd = displayDate(LAST_UPDATED, LANG_TAGS[lang]);
+---
+<PageLayout title="Privacy: Green Card Dates Never Leave Your Browser" description="Privacy policy of Green Card Waits: priority dates, birth dates and travel dates are calculated in your browser and never sent; no cookies, no forms, only host logs." lang={lang} noindex={true} breadcrumbs={[{ label: 'Privacy' }]} showAuthor={false}>
+  <div class="prose prose-slate max-w-none">
+    <h1>Privacy policy</h1>
+    <p>Immigration details are sensitive. The site is built so that {SITE_URL} never receives them.</p>
+    <h2>1. Who is responsible</h2>
+    <LegalIdentity lang={lang} />
+    <p>Email: <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>.</p>
+    <h2>2. What you type</h2>
+    <p>Category, country, priority date, field office, birth dates, receipt dates and travel dates are processed only by your browser. <strong>Nothing is sent to us or to anyone else, nothing is stored, and nothing is written into the page address.</strong> The “copy result” button puts the text on your own clipboard; the calendar reminder is a file created on your device.</p>
+    <h2>3. What the host sees</h2>
+    <p>When a page loads, GitHub (the host) processes technical data needed to deliver it: IP address, time, page requested, browser and referring page. Legal basis: legitimate interest in running the site (Article 6(1)(f) GDPR, as the publisher is in France).</p>
+    <h2>4. Measurement</h2>
+    <p>No cookies are set. If anonymous error measurement (Microsoft Clarity, cookieless mode) is switched on, it records loading errors, load times and dead clicks with every form field masked, and gives each visit a new identifier. Provider: Microsoft Ireland Operations Limited, Dublin, Ireland.</p>
+    <h2>5. Your rights</h2>
+    <p>You may ask for access, correction, deletion or objection by writing to <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>; we answer within a month. You may also complain to the {LEGAL.supervisoryAuthority} (<a href={LEGAL.supervisoryAuthorityUrl} rel="nofollow noopener" target="_blank">{LEGAL.supervisoryAuthorityUrl}</a>). Visitors in California keep the rights given by the CCPA; we sell and share no personal information.</p>
+    <p>See also <a href={route('cookies', lang)}>cookies</a>. Last updated: {upd}.</p>
+  </div>
+</PageLayout>

@@ -1,4 +1,4 @@
-/** Types des mini-simulateurs (RECETTE §9.3). Chaque site décrit les siens dans `lib/mini-specs.ts`. */
-export interface MiniInput { id: string; label: string; def: number; unit?: string; max?: number; decimals?: number; options?: Array<{ value: string; label: string }> }
+/** Types des mini-simulateurs (RECETTE §9.3) : un fichier par sujet dans `lib/minis/<kind>.ts`. Valeurs en texte. */
+export interface MiniInput { id: string; label: string; def: string; type: 'select' | 'date' | 'number'; options?: Array<{ value: string; label: string }>; max?: number; unit?: string }
 export interface MiniOut { head: [string, string]; rows: Array<[string, string]>; note?: string }
-export interface MiniSpec { title: string; cta: string; inputs: MiniInput[]; run: (v: Record<string, number>) => MiniOut }
+export interface MiniSpec { title: string; cta: string; inputs: MiniInput[]; run: (v: Record<string, string>) => MiniOut }

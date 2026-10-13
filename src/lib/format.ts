@@ -1,26 +1,30 @@
 /** Formatage monétaire/numérique localisé (configuré par site via site-config). */
-import { LOCALE_TAG, CURRENCY } from '../data/site-config';
+import { LOCALE_TAG, LOCALE_BY_LANG, CURRENCY } from '../data/site-config';
+
+export type Lang = 'en' | 'es';
+const tagOf = (lang?: string) => (lang && LOCALE_BY_LANG[lang]) || LOCALE_TAG;
 
 const cache = new Map<string, Intl.NumberFormat>();
-function nf(opts: Intl.NumberFormatOptions): Intl.NumberFormat {
-  const k = JSON.stringify(opts);
-  if (!cache.has(k)) cache.set(k, new Intl.NumberFormat(LOCALE_TAG, opts));
+function nf(opts: Intl.NumberFormatOptions, lang?: string): Intl.NumberFormat {
+  const tag = tagOf(lang);
+  const k = tag + JSON.stringify(opts);
+  if (!cache.has(k)) cache.set(k, new Intl.NumberFormat(tag, opts));
   return cache.get(k)!;
 }
-export function formatMoney(value: number, decimals = 0): string {
-  return nf({ style: 'currency', currency: CURRENCY, minimumFractionDigits: decimals, maximumFractionDigits: decimals }).format(value);
+export function formatMoney(value: number, decimals = 0, lang?: string): string {
+  return nf({ style: 'currency', currency: CURRENCY, minimumFractionDigits: decimals, maximumFractionDigits: decimals }, lang).format(value);
 }
-export function formatNumber(value: number, decimals = 0): string {
-  return nf({ minimumFractionDigits: decimals, maximumFractionDigits: decimals }).format(value);
+export function formatNumber(value: number, decimals = 0, lang?: string): string {
+  return nf({ minimumFractionDigits: decimals, maximumFractionDigits: decimals }, lang).format(value);
 }
 /** Nombre tiré des paramètres et inséré dans un texte : décimales utiles seulement (13,18 · 111,8 · 548),
  *  toujours au format de la locale. Jamais `{P.x}` ni `toFixed` dans une page (RECETTE §4, §17.4). */
-export function formatDecimal(value: number, max = 2): string {
-  return nf({ maximumFractionDigits: max }).format(value);
+export function formatDecimal(value: number, max = 2, lang?: string): string {
+  return nf({ maximumFractionDigits: max }, lang).format(value);
 }
-export function formatPercent(value: number, decimals = 1): string {
+export function formatPercent(value: number, decimals = 1, lang?: string): string {
   // Toutes langues : espace insécable avant % (RECETTE §7) ; Intl n'en met pas en anglais (« 3.5% »).
-  return nf({ style: 'percent', minimumFractionDigits: decimals, maximumFractionDigits: decimals }).format(value).replace(/(\d)\s?%/, '$1\u00a0%');
+  return nf({ style: 'percent', minimumFractionDigits: decimals, maximumFractionDigits: decimals }, lang).format(value).replace(/(\d)\s?%/, '$1\u00a0%');
 }
 export function parseLocaleNumber(input: string): number {
   const cleaned = input.replace(/[^\d.,-]/g, '');
@@ -40,6 +44,5 @@ export function parseLocaleNumber(input: string): number {
  *  Le format ISO reste dans l'attribut `datetime` de la balise <time>. */
 export function displayDate(iso: string, langTag: string): string {
   const s = new Date(`${iso}T00:00:00Z`).toLocaleDateString(langTag, { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
-  // Français : « 1er novembre », jamais « 1 novembre » (ordinal du premier jour du mois).
-  return langTag.startsWith('fr') ? s.replace(/^1 /, '1er ') : s;
+  return s;
 }

@@ -1,0 +1,18 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import LegalIdentity from '../../components/LegalIdentity.astro';
+import { AUTHOR_NAME, AUTHOR_ROLE, CONTACT_EMAIL, LAST_UPDATED, SITE_URL, SITE_NAMES, LEGAL, LANG_TAGS } from '../../data/site-config';
+import { route } from '../../i18n/routes';
+import { displayDate } from '../../lib/format';
+import { personSchema, organizationSchema, breadcrumbSchema, profilePageSchema, contactPageSchema } from '../../lib/seo';
+const lang = 'es';
+const upd = displayDate(LAST_UPDATED, LANG_TAGS[lang]);
+---
+<PageLayout title="Inserte la calculadora de espera de la green card" description="Inserte gratis la calculadora de espera de la green card con un iframe: estado en el Visa Bulletin, rango de pronóstico con su error, tiempo de USCIS y tarifas, en español." lang={lang} noindex={true} jsonLd={[breadcrumbSchema([{ name: 'Inicio', path: route('home', lang) }, { name: 'Widget', path: route('widget', lang) }])]} breadcrumbs={[{ label: 'Widget' }]} showAuthor={false}>
+  <header class="mb-6"><h1 class="text-3xl font-bold text-navy-900 md:text-4xl">Inserte la calculadora de la green card</h1><p class="mt-3 text-lg text-navy-700">Para organizaciones comunitarias, parroquias, clubes de oriundos y medios en español: pegue el código una vez y las fechas se actualizan con cada boletín.</p></header>
+  <div class="prose prose-slate max-w-none">
+    <pre class="overflow-x-auto rounded-lg bg-navy-900 p-4 text-sm text-white"><code>{`<iframe src="${SITE_URL}/embed/green-card-wait/?lang=es" title="Calculadora de espera de la green card" width="100%" height="900" style="border:0;max-width:1100px" loading="lazy"></iframe>`}</code></pre>
+    <p>Condiciones: el enlace de la fuente bajo la calculadora queda visible y la calculadora no se modifica; se ofrece sin garantía y no es asesoría legal. El marco no guarda ni mide nada.</p>
+  </div>
+  <div class="mt-8 overflow-hidden rounded-xl border border-navy-200"><iframe src="/embed/green-card-wait/?lang=es" title="Calculadora de espera de la green card" width="100%" height="900" style="border:0" loading="lazy"></iframe></div>
+</PageLayout>

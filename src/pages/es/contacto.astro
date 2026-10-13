@@ -1,0 +1,22 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import LegalIdentity from '../../components/LegalIdentity.astro';
+import { AUTHOR_NAME, AUTHOR_ROLE, CONTACT_EMAIL, LAST_UPDATED, SITE_URL, SITE_NAMES, LEGAL, LANG_TAGS } from '../../data/site-config';
+import { route } from '../../i18n/routes';
+import { displayDate } from '../../lib/format';
+import { personSchema, organizationSchema, breadcrumbSchema, profilePageSchema, contactPageSchema } from '../../lib/seo';
+const lang = 'es';
+const upd = displayDate(LAST_UPDATED, LANG_TAGS[lang]);
+---
+<PageLayout title="Contacto de Green Card Waits: avise de una fecha o tarifa" description="Escriba a Green Card Waits si una fecha del Visa Bulletin, un tiempo de USCIS o una tarifa de 2026 no coincide, o si quiere insertar la calculadora en su sitio web." lang={lang} noindex={true} jsonLd={[contactPageSchema({ name: 'Contacto', description: 'Avise de un error o pida insertar la calculadora.', path: route('contact', lang), lang })]} breadcrumbs={[{ label: 'Contacto' }]} showAuthor={false}>
+  <div class="prose prose-slate max-w-none">
+    <h1>Contacto</h1>
+    <p>Correo: <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>. Respondemos en español o en inglés, normalmente en una semana.</p>
+    <h2>Una cifra no coincide</h2>
+    <p>Díganos la página, la categoría y el país, y la cifra oficial que ve. No mande números de recibo, número A, nombres ni copias de avisos: no los necesitamos. Si el error es nuestro, lo corregimos y lo agregamos a las pruebas automáticas.</p>
+    <h2>Insertar la calculadora</h2>
+    <p>Organizaciones comunitarias, iglesias, clubes de oriundos y medios pueden insertarla gratis: <a href={route('widget', lang)}>insertar la calculadora</a>.</p>
+    <h2>Lo que no podemos hacer</h2>
+    <p>No podemos consultar su caso, llamar a USCIS por usted ni acelerar nada. Para ayuda con un caso, use el Centro de Contacto de USCIS, un abogado de inmigración con licencia o un representante acreditado.</p>
+  </div>
+</PageLayout>

@@ -1,0 +1,63 @@
+---
+/**
+ * Page de contenu tirée de `src/content/`. Ordre (RECETTE §5, §9.3, §21) : H1 et une ligne d'introduction, aussitôt
+ * l'outil (visible sans défiler) ou le mini-simulateur, puis le paragraphe citable (replié après sa première phrase
+ * sur les pages à outil), le texte écrit pour la page, les blocs de données générés, la FAQ, les pages liées, les sources.
+ */
+import PageLayout from '../layouts/PageLayout.astro';
+import MiniSim from './calc/MiniSim';
+import Clamp from './Clamp.astro';
+import ToolSwitch from './ToolSwitch.astro';
+import DataBlocks from './DataBlocks.astro';
+import { route, ROUTES, hasRoute, type Locale } from '../i18n/routes';
+import { label } from '../i18n/nav';
+import { t } from '../i18n/ui';
+import { pageById } from '../lib/guides';
+import { helpers } from '../lib/helpers';
+import { P } from '../lib/params';
+import { articleSchema, faqSchema, breadcrumbSchema, webPageSchema, webApplicationSchema } from '../lib/seo';
+import { AUTHOR_NAME } from '../data/site-config';
+import type { PageDef } from '../lib/guide-types';
+interface Props { page: PageDef; lang: Locale }
+const { page, lang } = Astro.props;
+const x = page[lang]!;
+const ui = t(lang);
+const path = route(page.id, lang);
+const parts = x.body(helpers(lang)).split(/<!--mini:([A-Za-z0-9_]+)-->/);
+const parent = page.parent && hasRoute(page.parent, lang) ? { label: label(page.parent, lang), href: route(page.parent, lang) } : null;
+const crumbs = [...(parent ? [parent] : []), { label: x.nav }];
+const jsonLd = [articleSchema({ title: x.h1, description: x.description, path, lang }), webPageSchema({ name: x.h1, description: x.description, path, lang }), breadcrumbSchema([{ name: ui.breadcrumbHome, path: route('home', lang) }, ...(parent ? [{ name: parent.label, path: parent.href }] : []), { name: x.nav, path }])];
+if (page.tool) jsonLd.push(webApplicationSchema({ name: x.h1, description: x.description, path, lang }));
+if (x.faqs.length) jsonLd.push(faqSchema(x.faqs, lang));
+const related = page.related.filter((id) => hasRoute(id, lang)).map((id) => ({ href: route(id, lang), name: label(id, lang), description: (pageById(id)?.[lang] ?? pageById(id)?.en)?.card ?? '' }));
+const sources = page.sources.map((k) => ({ name: P.sources[k].label[lang], url: P.sources[k].url }));
+const methodHref = route('method', lang);
+const feesHref = hasRoute('uscis-fee-calculator', lang) ? route('uscis-fee-calculator', lang) : undefined;
+const miniHref = page.mini ? (hasRoute('priority-date-calculator', lang) ? route('priority-date-calculator', lang) : route('home', lang)) : undefined;
+const miniTarget: Record<string, string> = { cspaQuick: 'cspa-age-out-calculator', n400Days: 'n-400-early-filing-calculator', aosVsConsular: 'uscis-fee-calculator', fiscalYear: 'visa-bulletin' };
+const mh = (k: string) => (miniTarget[k] && hasRoute(miniTarget[k], lang) ? route(miniTarget[k], lang) : miniHref);
+---
+<PageLayout title={x.title} description={x.description} lang={lang} jsonLd={jsonLd} faqs={x.faqs} related={related} sources={sources} breadcrumbs={crumbs}>
+  <article>
+    <header class="mb-5">
+      <h1 class="text-3xl font-bold text-navy-900 md:text-4xl">{x.h1}</h1>
+      <p class="mt-2 text-lg text-navy-700">{x.intro}</p>
+      <p class="mt-2 text-sm text-navy-600">{ui.reviewedBy} <a href={route('about', lang)} class="underline hover:text-navy-900">{AUTHOR_NAME}</a> · <a href={route('editorial', lang)} class="underline hover:text-navy-900">{ui.editorialPolicy}</a> · <a href={methodHref} class="underline hover:text-navy-900">{label('method', lang)}</a></p>
+    </header>
+    {page.tool ? (
+      <>
+        <div data-outil><ToolSwitch tool={page.tool} lang={lang} methodHref={methodHref} feesHref={feesHref} /></div>
+        <Clamp text={x.resume} lang={lang} id={`clamp-${page.id}`} class="mt-6" />
+      </>
+    ) : (
+      <>
+        {page.mini && <MiniSim client:load kind={page.mini} lang={lang} href={mh(page.mini)} lead />}
+        <p class="mt-6 text-navy-800">{x.resume}</p>
+      </>
+    )}
+    <div class="prose prose-slate mt-8 max-w-none">
+      {parts.map((p, i) => i % 2 === 0 ? <Fragment set:html={p} /> : <MiniSim client:load kind={p} lang={lang} href={mh(p)} />)}
+    </div>
+    {page.data && <DataBlocks data={page.data} lang={lang} only={page.data.special} />}
+  </article>
+</PageLayout>

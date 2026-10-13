@@ -1,0 +1,27 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import LegalIdentity from '../../components/LegalIdentity.astro';
+import { AUTHOR_NAME, AUTHOR_ROLE, CONTACT_EMAIL, LAST_UPDATED, SITE_URL, SITE_NAMES, LEGAL, LANG_TAGS } from '../../data/site-config';
+import { route } from '../../i18n/routes';
+import { displayDate } from '../../lib/format';
+import { personSchema, organizationSchema, breadcrumbSchema, profilePageSchema, contactPageSchema } from '../../lib/seo';
+const lang = 'es';
+const upd = displayDate(LAST_UPDATED, LANG_TAGS[lang]);
+---
+<PageLayout title="Green Card Waits: quién lee el Visa Bulletin por usted" description="Quién publica Green Card Waits, por qué existe, cómo se califican sus pronósticos contra 294 Visa Bulletins, cómo se financia y qué datos nunca le pediremos." lang={lang} jsonLd={[personSchema(lang), organizationSchema(lang), profilePageSchema({ path: route('about', lang), lang }), breadcrumbSchema([{ name: 'Inicio', path: route('home', lang) }, { name: 'Quiénes somos', path: route('about', lang) }])]} breadcrumbs={[{ label: 'Quiénes somos' }]}>
+  <header class="mb-6"><h1 class="text-3xl font-bold text-navy-900 md:text-4xl">Quiénes somos</h1></header>
+  <div class="prose prose-slate max-w-none">
+    <div class="not-prose mb-6"><p class="text-lg font-semibold text-navy-900">{AUTHOR_NAME}</p><p class="text-navy-700">{AUTHOR_ROLE[lang]}</p></div>
+    <p>{SITE_NAMES.es} lo publica Radif Partners. Nació de una pregunta que hacen miles de familias con una petición I-130 pendiente: si mi hermano en Guadalajara o mi hija en Manila tiene esta fecha de prioridad, ¿cuántos años faltan y cuánto vamos a pagar? El boletín publica una fecha al mes; USCIS publica los tiempos en otro sitio y las tarifas en una tabla de 60 páginas. Aquí están juntos.</p>
+    <h2>Por qué este sitio responde mejor que el primer resultado de Google</h2>
+    <p>Convierte su propia fecha de prioridad en un rango de pronóstico con su error pasado publicado, le suma el tiempo de USCIS en su oficina y las tarifas de 2026, y cubre las categorías familiares por país, México en primer lugar, que los demás rastreadores dejan de lado.</p>
+    <h2>Cómo revisamos las cifras</h2>
+    <p>Un programa lee los 294 boletines publicados desde diciembre de 2001 y se prueba con boletines reales de 2002, 2015 y 2026; si falta una casilla, no se publica nada. Cada pronóstico se calificó mes a mes desde octubre de 2012 con lo que se sabía en ese momento. Donde falló, la calculadora lo dice en vez de inventar una fecha. Todo está en la <a href={route('method', lang)}>página de método</a>.</p>
+    <h2>Lo que no somos</h2>
+    <p>No somos abogados ni representantes acreditados, y no somos un sitio del gobierno. No tenemos relación con USCIS, el Departamento de Estado, el Centro Nacional de Visas ni ningún consulado. No revisamos casos ni vendemos sus datos a despachos. Desconfíe de quien se presente como «notario» para trámites migratorios: en Estados Unidos ese título no autoriza a dar asesoría legal. Para su caso, busque un abogado de inmigración con licencia o un representante acreditado por el Departamento de Justicia.</p>
+    <h2>Financiación y sus datos</h2>
+    <p>Las calculadoras son gratis y no piden cuenta. Las fechas que escribe se calculan en su navegador y no se envían a nadie. Si hay publicidad, nunca estará entre un campo y su resultado.</p>
+    <h2>Contacto</h2>
+    <p>¿Una fecha que no cuadra, una tarifa que cambió? Escriba a <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>. Vea también la <a href={route('editorial', lang)}>política editorial</a> y el <a href={route('terms', lang)}>aviso legal</a>. Datos revisados el <time datetime={LAST_UPDATED}>{upd}</time>.</p>
+  </div>
+</PageLayout>

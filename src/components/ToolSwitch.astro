@@ -1,0 +1,20 @@
+---
+/** Outil principal d'une page, hydraté au chargement (RECETTE §17.5 : check-saisie ne voit pas client:visible). */
+import GreenCardTool from './calc/GreenCardTool';
+import BulletinCheck from './calc/BulletinCheck';
+import TimeChecker from './calc/TimeChecker';
+import FeeTool from './calc/FeeTool';
+import CspaTool from './calc/CspaTool';
+import N400Tool from './calc/N400Tool';
+import type { ToolSpec } from '../lib/guide-types';
+import type { Locale } from '../i18n/routes';
+interface Props { tool: ToolSpec; lang: Locale; methodHref: string; feesHref?: string }
+const { tool, lang, methodHref, feesHref } = Astro.props;
+const t = tool as any;
+---
+{tool.kind === 'greencard' && <GreenCardTool client:load lang={lang} cat={t.cat} country={t.country} pd={t.pd} methodHref={methodHref} feesHref={feesHref} />}
+{tool.kind === 'bulletin' && <BulletinCheck client:load lang={lang} month={t.month} pick={t.pick} cat={t.cat} country={t.country} methodHref={methodHref} />}
+{tool.kind === 'ptime' && <TimeChecker client:load lang={lang} kind={t.form} office={t.office} methodHref={methodHref} />}
+{tool.kind === 'fees' && <FeeTool client:load lang={lang} path={t.path} methodHref={methodHref} />}
+{tool.kind === 'cspa' && <CspaTool client:load lang={lang} methodHref={methodHref} />}
+{tool.kind === 'n400' && <N400Tool client:load lang={lang} methodHref={methodHref} />}

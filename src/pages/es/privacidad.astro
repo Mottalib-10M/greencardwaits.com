@@ -1,0 +1,27 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import LegalIdentity from '../../components/LegalIdentity.astro';
+import { AUTHOR_NAME, AUTHOR_ROLE, CONTACT_EMAIL, LAST_UPDATED, SITE_URL, SITE_NAMES, LEGAL, LANG_TAGS } from '../../data/site-config';
+import { route } from '../../i18n/routes';
+import { displayDate } from '../../lib/format';
+import { personSchema, organizationSchema, breadcrumbSchema, profilePageSchema, contactPageSchema } from '../../lib/seo';
+const lang = 'es';
+const upd = displayDate(LAST_UPDATED, LANG_TAGS[lang]);
+---
+<PageLayout title="Privacidad: sus fechas de inmigración no salen del navegador" description="Política de privacidad de Green Card Waits: fechas de prioridad, de nacimiento y de viaje se calculan en su navegador y no se envían; sin cookies ni formularios de contacto." lang={lang} noindex={true} breadcrumbs={[{ label: 'Privacidad' }]} showAuthor={false}>
+  <div class="prose prose-slate max-w-none">
+    <h1>Política de privacidad</h1>
+    <p>Los datos migratorios son delicados. El sitio está hecho para que {SITE_URL} no los reciba nunca.</p>
+    <h2>1. Responsable</h2>
+    <LegalIdentity lang={lang} />
+    <p>Correo: <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>.</p>
+    <h2>2. Lo que usted escribe</h2>
+    <p>Categoría, país, fecha de prioridad, oficina, fechas de nacimiento, de recibo y de viaje se procesan solo en su navegador. <strong>No se envían a nadie, no se guardan y no se escriben en la dirección de la página.</strong></p>
+    <h2>3. Lo que ve el alojamiento</h2>
+    <p>Al cargar una página, GitHub trata los datos técnicos necesarios para entregarla (dirección IP, hora, página, navegador). Base legal: interés legítimo (artículo 6.1.f del RGPD, pues el editor está en Francia).</p>
+    <h2>4. Medición</h2>
+    <p>No se instalan cookies. Si se activa la medición anónima de errores (Microsoft Clarity sin cookies), los campos de los formularios se ocultan y cada visita recibe un identificador nuevo.</p>
+    <h2>5. Sus derechos</h2>
+    <p>Puede pedir acceso, rectificación, supresión u oposición en <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>; respondemos en un mes. También puede reclamar ante la {LEGAL.supervisoryAuthority} (<a href={LEGAL.supervisoryAuthorityUrl} rel="nofollow noopener" target="_blank">{LEGAL.supervisoryAuthorityUrl}</a>). Vea también <a href={route('cookies', lang)}>cookies</a>. Última actualización: {upd}.</p>
+  </div>
+</PageLayout>

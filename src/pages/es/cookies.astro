@@ -1,0 +1,18 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import LegalIdentity from '../../components/LegalIdentity.astro';
+import { AUTHOR_NAME, AUTHOR_ROLE, CONTACT_EMAIL, LAST_UPDATED, SITE_URL, SITE_NAMES, LEGAL, LANG_TAGS } from '../../data/site-config';
+import { route } from '../../i18n/routes';
+import { displayDate } from '../../lib/format';
+import { personSchema, organizationSchema, breadcrumbSchema, profilePageSchema, contactPageSchema } from '../../lib/seo';
+const lang = 'es';
+const upd = displayDate(LAST_UPDATED, LANG_TAGS[lang]);
+---
+<PageLayout title="Cookies: ninguna en la calculadora de la green card" description="Green Card Waits no instala cookies ni muestra avisos: sus fechas de prioridad y de viaje se quedan en su navegador y la calculadora insertada no mide absolutamente nada." lang={lang} noindex={true} breadcrumbs={[{ label: 'Cookies' }]} showAuthor={false}>
+  <div class="prose prose-slate max-w-none">
+    <h1>Cookies</h1>
+    <p>Este sitio <strong>no instala cookies</strong> ni guarda nada en el almacenamiento de su navegador, así que no hay aviso de consentimiento. Al cerrar la pestaña, las fechas que escribió desaparecen.</p>
+    <h2>Medición anónima de errores</h2>
+    <p>Si se activa, Microsoft Clarity funciona sin cookies y oculta los campos de los formularios. Bloquear clarity.ms no cambia nada en las calculadoras. Preguntas: <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>. Vea la <a href={route('privacy', lang)}>política de privacidad</a>. Última actualización: {upd}.</p>
+  </div>
+</PageLayout>

@@ -1,0 +1,24 @@
+---
+/** Page à intégrer (iframe) : le simulateur principal sans navigation. noindex, hors sitemap. ?lang=es : espagnol. */
+import '../../styles/global.css';
+import GreenCardTool from '../../components/calc/GreenCardTool';
+import { SITE_URL } from '../../data/site-config';
+---
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Green card wait calculator · Green Card Waits</title>
+    <meta name="robots" content="noindex" />
+    <link rel="canonical" href={`${SITE_URL}/en/`} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  </head>
+  <body class="bg-white p-2 text-navy-900">
+    <div id="en-view"><GreenCardTool client:load lang="en" compact /></div>
+    <div id="es-view" hidden><GreenCardTool client:load lang="es" compact /></div>
+    <p class="mt-2 text-center text-xs text-navy-600"><a id="credit" href={`${SITE_URL}/en/`} target="_blank" rel="noopener" class="underline">Green card wait calculator · Green Card Waits</a></p>
+    <script is:inline>
+      if (new URLSearchParams(location.search).get('lang') === 'es') { document.getElementById('en-view').hidden = true; document.getElementById('es-view').hidden = false; document.documentElement.lang = 'es-US'; var c = document.getElementById('credit'); c.textContent = 'Calculadora de espera de la green card · Green Card Waits'; c.href = c.href.replace('/en/', '/es/'); }
+    </script>
+  </body>
+</html>

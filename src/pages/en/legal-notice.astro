@@ -1,0 +1,26 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import LegalIdentity from '../../components/LegalIdentity.astro';
+import { AUTHOR_NAME, AUTHOR_ROLE, CONTACT_EMAIL, LAST_UPDATED, SITE_URL, SITE_NAMES, LEGAL, LANG_TAGS } from '../../data/site-config';
+import { route } from '../../i18n/routes';
+import { displayDate } from '../../lib/format';
+import { personSchema, organizationSchema, breadcrumbSchema, profilePageSchema, contactPageSchema } from '../../lib/seo';
+const lang = 'en';
+const upd = displayDate(LAST_UPDATED, LANG_TAGS[lang]);
+---
+<PageLayout title="Legal Notice: Publisher of the Green Card Calculators" description="Legal notice of Green Card Waits: publisher, host, what the site does and does not do, no affiliation with USCIS or the State Department, and no legal advice." lang={lang} noindex={true} breadcrumbs={[{ label: 'Legal notice' }]} showAuthor={false}>
+  <div class="prose prose-slate max-w-none">
+    <h1>Legal notice</h1>
+    <h2>Publisher</h2>
+    <LegalIdentity lang={lang} />
+    <p>Publication director: {AUTHOR_NAME}. Contact: <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>.</p>
+    <h2>Host</h2>
+    <LegalIdentity mode="hosting" lang={lang} />
+    <h2>Not legal advice, not a government site</h2>
+    <p>{SITE_URL} publishes general information and calculations from public data: Visa Bulletin cutoffs, USCIS processing times and filing fees. It is not affiliated with U.S. Citizenship and Immigration Services, the U.S. Department of State or any government agency, and it does not provide legal advice or legal services. Estimates can differ from the outcome of a real case (cross-chargeability, CSPA, waivers, administrative processing). For advice, consult a licensed immigration attorney or a representative accredited by the U.S. Department of Justice.</p>
+    <h2>Data and licenses</h2>
+    <p>Visa Bulletin, USCIS pages and forms are works of the U.S. federal government and are in the public domain. Processing-time data: ImmigrationTimes.org Open Data, CC BY 4.0, from USCIS, selected and reformatted. No official seal or logo is used.</p>
+    <h2>Liability and embedding</h2>
+    <p>Figures are checked against the official sources and tested before each update; they are provided without warranty. The calculator may be embedded free of charge: <a href={route('widget', lang)}>embed the calculator</a>. Methods: <a href={route('method', lang)}>method and past error</a>. Last updated: {upd}.</p>
+  </div>
+</PageLayout>

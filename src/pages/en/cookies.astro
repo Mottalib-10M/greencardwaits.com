@@ -1,0 +1,20 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import LegalIdentity from '../../components/LegalIdentity.astro';
+import { AUTHOR_NAME, AUTHOR_ROLE, CONTACT_EMAIL, LAST_UPDATED, SITE_URL, SITE_NAMES, LEGAL, LANG_TAGS } from '../../data/site-config';
+import { route } from '../../i18n/routes';
+import { displayDate } from '../../lib/format';
+import { personSchema, organizationSchema, breadcrumbSchema, profilePageSchema, contactPageSchema } from '../../lib/seo';
+const lang = 'en';
+const upd = displayDate(LAST_UPDATED, LANG_TAGS[lang]);
+---
+<PageLayout title="Cookies: None on the Green Card Wait Calculator" description="Green Card Waits sets no cookies and shows no banner: priority dates and travel dates stay in your browser, and the embedded calculator measures nothing at all." lang={lang} noindex={true} breadcrumbs={[{ label: 'Cookies' }]} showAuthor={false}>
+  <div class="prose prose-slate max-w-none">
+    <h1>Cookies</h1>
+    <p>This site <strong>sets no cookies</strong> and stores nothing in your browser’s storage, so there is no consent banner. Close the tab and the dates you typed are gone.</p>
+    <h2>Anonymous error measurement</h2>
+    <p>If it is switched on, Microsoft Clarity runs in cookieless mode: no <code>_clck</code>, <code>_clsk</code>, <code>MUID</code> or <code>CLID</code> cookie is created and form fields are masked. Blocking clarity.ms in your browser changes nothing for the calculators.</p>
+    <h2>Embedded calculator</h2>
+    <p>The iframe version loads no measurement at all. Questions: <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>. See the <a href={route('privacy', lang)}>privacy policy</a>. Last updated: {upd}.</p>
+  </div>
+</PageLayout>

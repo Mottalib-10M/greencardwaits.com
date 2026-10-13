@@ -1,0 +1,23 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import LegalIdentity from '../../components/LegalIdentity.astro';
+import { AUTHOR_NAME, AUTHOR_ROLE, CONTACT_EMAIL, LAST_UPDATED, SITE_URL, SITE_NAMES, LEGAL, LANG_TAGS } from '../../data/site-config';
+import { route } from '../../i18n/routes';
+import { displayDate } from '../../lib/format';
+import { personSchema, organizationSchema, breadcrumbSchema, profilePageSchema, contactPageSchema } from '../../lib/seo';
+const lang = 'es';
+const upd = displayDate(LAST_UPDATED, LANG_TAGS[lang]);
+---
+<PageLayout title="Política editorial: cómo publica una fecha Green Card Waits" description="De dónde salen las fechas del Visa Bulletin, los tiempos y las tarifas de USCIS, cuándo se muestra un pronóstico, cómo se corrigen los errores y por qué no hay patrocinios." lang={lang} noindex={true} breadcrumbs={[{ label: 'Política editorial' }]} showAuthor={false}>
+  <div class="prose prose-slate max-w-none">
+    <h1>Política editorial</h1>
+    <h2>Primero la fuente</h2>
+    <p>Cada fecha límite sale del Visa Bulletin del Departamento de Estado; la tabla que exige USCIS, de su página de tablas de presentación; cada tarifa, del formulario G-1055 y de la página de tarifas de visa; cada tiempo, de lo que publicó USCIS, con su fecha al lado.</p>
+    <h2>Cuándo se muestra un pronóstico</h2>
+    <p>Solo si el mismo método, aplicado al pasado en ese caso y a esa distancia, acertó al menos el 40 % de las veces, con un error mediano de como mucho la mitad de la espera real y con al menos 12 resultados conocidos. Si no, la página dice «sin pronóstico fiable».</p>
+    <h2>Actualizaciones y correcciones</h2>
+    <p>Cada boletín se lee el día en que sale; las tarifas, cada vez que cambia la edición del G-1055. Los errores que nos señalan en <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a> se comprueban con la fuente oficial y se corrigen.</p>
+    <h2>Independencia</h2>
+    <p>Ningún despacho, gestor ni agencia paga por aparecer. No hay páginas patrocinadas, formularios de captación ni enlaces de afiliado. Editor: {AUTHOR_NAME}. Última actualización: {upd}.</p>
+  </div>
+</PageLayout>

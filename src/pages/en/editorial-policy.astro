@@ -1,0 +1,25 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import LegalIdentity from '../../components/LegalIdentity.astro';
+import { AUTHOR_NAME, AUTHOR_ROLE, CONTACT_EMAIL, LAST_UPDATED, SITE_URL, SITE_NAMES, LEGAL, LANG_TAGS } from '../../data/site-config';
+import { route } from '../../i18n/routes';
+import { displayDate } from '../../lib/format';
+import { personSchema, organizationSchema, breadcrumbSchema, profilePageSchema, contactPageSchema } from '../../lib/seo';
+const lang = 'en';
+const upd = displayDate(LAST_UPDATED, LANG_TAGS[lang]);
+---
+<PageLayout title="Editorial Policy: How Green Card Waits Publishes a Date" description="How Green Card Waits sources Visa Bulletin cutoffs, USCIS times and fees, when a forecast may be shown, how corrections are made, and why there is no advice or sponsorship." lang={lang} noindex={true} breadcrumbs={[{ label: 'Editorial policy' }]} showAuthor={false}>
+  <div class="prose prose-slate max-w-none">
+    <h1>Editorial policy</h1>
+    <h2>Sources first</h2>
+    <p>Every cutoff comes from the State Department’s Visa Bulletin, every filing-chart instruction from the USCIS Adjustment of Status Filing Charts page, every fee from Form G-1055 and the State Department fee page, and every processing time from what USCIS published, with the date shown next to it. Third-party data is used only under an open license, with attribution on the page.</p>
+    <h2>When a forecast may be shown</h2>
+    <p>Only when the same method, applied to the past for that case and that distance, met three thresholds: the range held the real outcome at least 40% of the time, the median error was at most half the real wait (4 months minimum), and at least 12 outcomes were known. Otherwise the page says “no reliable forecast”. We never round a range into a single promised date.</p>
+    <h2>Updates</h2>
+    <p>Each new bulletin is read on the day it appears, the USCIS filing-chart choice at the end of the month, processing times when USCIS publishes them, and fees whenever the G-1055 edition changes. The date at the top and bottom of every page is the date of the last check.</p>
+    <h2>Corrections</h2>
+    <p>Errors reported to <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a> are checked against the official source and corrected; the case then joins the automated tests so it cannot come back.</p>
+    <h2>Independence</h2>
+    <p>No law firm, filing service or agency pays for a mention or a link. There are no sponsored pages, no lead forms and no affiliate links. Advertising, if any, is labeled and kept away from results. Publisher: {AUTHOR_NAME}. Last updated: {upd}.</p>
+  </div>
+</PageLayout>

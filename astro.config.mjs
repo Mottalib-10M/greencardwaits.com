@@ -17,7 +17,9 @@ export default defineConfig({
       item.lastmod = new Date(LAST_UPDATED);
       const p = new URL(item.url).pathname;
       const pair = ROUTES.find((r) => LOCALES.some((l) => r.paths[l] === p));
-      if (pair && LOCALES.length > 1) item.links = [...LOCALES.map((l) => ({ lang: l, url: `${SITE_URL}${pair.paths[l]}` })), { lang: 'x-default', url: `${SITE_URL}${pair.paths[DEFAULT_LOCALE]}` }];
+      const have = pair ? LOCALES.filter((l) => pair.paths[l]) : [];
+      // Annotations seulement vers les versions qui existent (40 pages espagnoles sur 148).
+      if (pair && have.length > 1) item.links = [...have.map((l) => ({ lang: l, url: `${SITE_URL}${pair.paths[l]}` })), { lang: 'x-default', url: `${SITE_URL}${pair.paths[DEFAULT_LOCALE]}` }];
       return item;
     },
   })],

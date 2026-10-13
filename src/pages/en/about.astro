@@ -1,0 +1,29 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import LegalIdentity from '../../components/LegalIdentity.astro';
+import { AUTHOR_NAME, AUTHOR_ROLE, CONTACT_EMAIL, LAST_UPDATED, SITE_URL, SITE_NAMES, LEGAL, LANG_TAGS } from '../../data/site-config';
+import { route } from '../../i18n/routes';
+import { displayDate } from '../../lib/format';
+import { personSchema, organizationSchema, breadcrumbSchema, profilePageSchema, contactPageSchema } from '../../lib/seo';
+const lang = 'en';
+const upd = displayDate(LAST_UPDATED, LANG_TAGS[lang]);
+---
+<PageLayout title="About Green Card Waits: Who Reads the Visa Bulletin" description="Who publishes Green Card Waits, why it exists, how its forecasts are graded against 294 Visa Bulletins, how it is funded, and what it will never ask you for." lang={lang} jsonLd={[personSchema(lang), organizationSchema(lang), profilePageSchema({ path: route('about', lang), lang }), breadcrumbSchema([{ name: 'Home', path: route('home', lang) }, { name: 'About', path: route('about', lang) }])]} breadcrumbs={[{ label: 'About' }]}>
+  <header class="mb-6"><h1 class="text-3xl font-bold text-navy-900 md:text-4xl">About {SITE_NAMES.en}</h1></header>
+  <div class="prose prose-slate max-w-none">
+    <div class="not-prose mb-6"><p class="text-lg font-semibold text-navy-900">{AUTHOR_NAME}</p><p class="text-navy-700">{AUTHOR_ROLE[lang]}</p></div>
+    <p>{SITE_NAMES.en} is published by Radif Partners. It starts from the question that the Visa Bulletin never answers directly: given my category, my country and the date on my I-797, how long until I can actually get the card, and what will it cost? The bulletin gives one cutoff a month. USCIS publishes processing times on another site, and fees in a 60-page schedule. Nobody puts the three side by side for one person.</p>
+    <h2>Why this site does better than the first search result</h2>
+    <p>It turns your own priority date into a forecast range with its past error published, adds the USCIS time at your office and the 2026 fees, and covers family categories by country that the other trackers leave out. Mexico and the Philippines have their own family pages here, built from every bulletin since December 2001.</p>
+    <h2>How the numbers are checked</h2>
+    <p>The archive of {294} bulletins is read by a program that is tested on real bulletins from 2002, 2015 and 2026; if one cell is missing, nothing is published. Every forecast method was graded month by month from October 2012 to October 2025 using only what was known at the time. Where it failed, the calculator says so instead of printing a date. The <a href={route('method', lang)}>method page</a> shows the full table, good cells and bad ones.</p>
+    <h2>What we are not</h2>
+    <p>We are not a law firm, not an accredited representative and not a government site. We have no relationship with USCIS, the Department of State, the National Visa Center or any consulate. We do not review cases, sell leads to lawyers or recommend anyone. For advice on your own case, the Department of Justice keeps a list of accredited organizations, and a licensed immigration attorney can help. Be wary of anyone called a “notario” offering immigration services: in the United States that title does not allow them to give legal advice.</p>
+    <h2>Funding and your data</h2>
+    <p>The calculators are free and need no account. Your priority date, birth dates and travel dates are processed in your browser and never sent anywhere. If the site carries advertising, it will never sit between a field and its result, and there will never be more than three spaces on a page.</p>
+    <h2>Also in Spanish</h2>
+    <p>Forty pages, centered on family petitions from Mexico and Central America, have a Spanish version written for Spanish speakers living in the United States.</p>
+    <h2>Contact</h2>
+    <p>A cutoff that looks wrong, a fee that changed, a case we do not cover? Write to <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>. See also the <a href={route('editorial', lang)}>editorial policy</a> and the <a href={route('terms', lang)}>legal notice</a>. Data checked on <time datetime={LAST_UPDATED}>{upd}</time>.</p>
+  </div>
+</PageLayout>

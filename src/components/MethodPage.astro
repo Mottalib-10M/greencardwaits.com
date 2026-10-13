@@ -1,0 +1,70 @@
+---
+/**
+ * Méthode et erreur passée (RECETTE §6.6 règle 6, §17.3) : d'où viennent les chiffres, comment la prévision est faite,
+ * le rétro-test complet par case, la règle de publication, les licences et le calendrier de mise à jour.
+ */
+import PageLayout from '../layouts/PageLayout.astro';
+import { route, type Locale } from '../i18n/routes';
+import { helpers } from '../lib/helpers';
+import { P, type SourceKey } from '../lib/params';
+import { CAT_SHORT, COUNTRY_LABEL, BACKTEST_FROM, BACKTEST_TO, LATEST, type Cat, type Country } from '../lib/engine/cases';
+import { PUBLISHED, NATIONAL_MONTH } from '../lib/engine/ptimes';
+import { LOOKBACK } from '../lib/engine/forecast';
+import { articleSchema, breadcrumbSchema, webPageSchema } from '../lib/seo';
+import BT from '../data/backtest.json';
+import VB from '../data/visa-bulletin.json';
+interface Props { lang: Locale }
+const { lang } = Astro.props;
+const es = lang === 'es';
+const T = (en: string, sp: string) => (es ? sp : en);
+const h = helpers(lang);
+const title = T('Visa Bulletin Forecast Method and Past Error, Case by Case', 'Método del pronóstico del Visa Bulletin y su error, caso a caso');
+const description = T('How Green Card Waits reads 294 Visa Bulletins, forecasts a range, grades it month by month since 2012, and where the data on USCIS times and fees comes from.', 'Cómo Green Card Waits lee 294 Visa Bulletins, pronostica un rango, lo califica mes a mes desde 2012 y de dónde salen los datos de tiempos y tarifas de USCIS.');
+const path = route('method', lang);
+const shown: Array<[Exclude<Cat, 'IR'>, Country]> = [['F1', 'ROW'], ['F1', 'MX'], ['F1', 'PH'], ['F2A', 'ROW'], ['F2A', 'MX'], ['F2B', 'ROW'], ['F2B', 'MX'], ['F2B', 'PH'], ['F3', 'ROW'], ['F3', 'MX'], ['F3', 'PH'], ['F4', 'ROW'], ['F4', 'IN'], ['F4', 'MX'], ['F4', 'PH'], ['EB1', 'IN'], ['EB1', 'CN'], ['EB2', 'ROW'], ['EB2', 'IN'], ['EB2', 'CN'], ['EB3', 'ROW'], ['EB3', 'IN'], ['EB3', 'CN'], ['EB3', 'PH'], ['EW', 'ROW'], ['EW', 'IN'], ['EW', 'CN'], ['EB4', 'ROW'], ['EB5', 'IN'], ['EB5', 'CN']];
+const fmt = (c: any) => (c.observed + c.pending < 24 ? T('too few months', 'pocos meses') : `${Number.isFinite(c.medianError) ? h.num(c.medianError) : '—'} / ${Number.isFinite(c.naiveError) ? h.num(c.naiveError) : '—'} · ${Number.isFinite(c.coverage) ? h.pct(c.coverage) : '—'}${c.reliable ? ' ✓' : ''}`);
+const table = h.table([T('Case', 'Caso'), ...[6, 12, 24, 48].map((g) => T(`${g} months behind`, `${g} meses detrás`))], shown.map(([c, k]) => [`${CAT_SHORT[c]} · ${COUNTRY_LABEL[lang][k]}`, ...(BT.cases as any)[`${c}-${k}`].cells.map(fmt)]), T('Each cell: median error of our middle estimate / of the “last 12 months” rule, in months · share of real outcomes inside our range. ✓ = published.', 'Cada celda: error mediano de nuestra estimación central / de la regla de los 12 meses, en meses · parte de los resultados reales dentro del rango. ✓ = se publica.'));
+const sources: SourceKey[] = ['vbIndex', 'vbMirror', 'aosCharts', 'g1055', 'g1055pdf', 'dosFees', 'uscisTimes', 'itData', 'uscisReport', 'cspaPolicy', 'n400Residence', 'n400Presence'];
+const jsonLd = [articleSchema({ title, description, path, lang }), webPageSchema({ name: title, description, path, lang }), breadcrumbSchema([{ name: T('Home', 'Inicio'), path: route('home', lang) }, { name: T('Method', 'Método'), path }])];
+---
+<PageLayout title={title} description={description} lang={lang} jsonLd={jsonLd} sources={sources.map((k) => ({ name: P.sources[k].label[lang], url: P.sources[k].url }))} breadcrumbs={[{ label: T('Method and past error', 'Método y error pasado') }]}>
+  <article class="prose prose-slate max-w-none">
+    <h1>{T('Method and past error', 'Método y error pasado')}</h1>
+    {es ? (
+      <Fragment>
+        <p>Cada cifra del sitio sale de tres fuentes públicas, leídas por programas que se pueden volver a ejecutar, y cada pronóstico se califica contra lo que pasó de verdad. Esta página explica las tres cosas y publica el resultado completo, incluso donde nos va mal.</p>
+        <h2>El archivo del Visa Bulletin</h2>
+        <p>Leemos los {h.num(VB.count)} boletines publicados desde {h.month(VB.first)} hasta {h.month(LATEST)}. El servidor principal del Departamento de Estado rechaza a los programas automáticos y no intentamos saltarnos esa protección: la lectura se hace en adoptions.state.gov, que sirve las mismas páginas del mismo departamento. El lector entiende las cuatro épocas del boletín: los tablones de 2002 sin columna para China, las filas con errores de tipeo («4rd», «Charge- ability»), la llegada de las dos tablas en octubre de 2015 y los cuatro nombres de la categoría EB-5. Un país que no tiene columna sigue la fecha del resto del mundo, como dice el propio boletín. Si falta una sola casilla, la reconstrucción del sitio se detiene.</p>
+        <h2>El pronóstico</h2>
+        <p>Para una persona que está G días detrás de la fecha límite de su caso, miramos cada mes de los {h.num(LOOKBACK / 12)} años anteriores y medimos cuántos meses tardó esa misma fecha límite en avanzar G días, retrocesos incluidos. Los meses cuyo resultado aún no se conoce se tratan con el estimador de Kaplan-Meier, sin contarlos como éxito ni como fracaso. De esa distribución sacamos tres puntos: el 20 % de los casos más rápidos, la mediana y el 80 %. Un primer modelo, que extrapolaba el ritmo medio de avance, quedó descartado en la prueba: su rango solo contenía la fecha real en el 23 % de los casos.</p>
+        <h2>La prueba retrospectiva y la regla de publicación</h2>
+        <p>De {h.month(BACKTEST_FROM)} a {h.month(BACKTEST_TO)}, para cada caso y cada mes, hacemos el pronóstico con los boletines conocidos ese mes y para personas situadas a 6, 12, 24 y 48 meses de la fecha límite, y lo comparamos con el mes en que su fecha se puso al día de verdad. Un pronóstico se publica solo si, en ese caso y a esa distancia, el rango acertó al menos el 40 % de las veces, el error mediano no supera la mitad de la espera real (con un mínimo de 4 meses) y hay al menos 12 resultados conocidos. Si no, la calculadora dice «sin pronóstico fiable». Más de seis años de atraso quedan fuera de lo probado: tampoco se publica fecha.</p>
+        <div set:html={table} />
+        <h2>Tiempos de USCIS</h2>
+        <p>La herramienta oficial de tiempos de USCIS también está cerrada a los programas. Usamos los datos abiertos de ImmigrationTimes.org (licencia CC BY 4.0), que conservan las cifras publicadas por USCIS por oficina y formulario desde marzo de 2022; última publicación de USCIS: {h.date(PUBLISHED)}. Las seleccionamos y les damos otro formato. A su lado ponemos el promedio nacional del informe mensual de USCIS al Congreso ({NATIONAL_MONTH}), que mide otra cosa: el tiempo medio de todos los casos terminados en el mes.</p>
+        <h2>Tarifas</h2>
+        <p>Todas salen del formulario G-1055 de USCIS, edición del {P.g1055_edition}, leído completo para los formularios del sitio, y de la página de tarifas de visa del Departamento de Estado. Están en un archivo de parámetros comprobado por pruebas automáticas; cuando cambia la edición, el sitio no se reconstruye hasta que una persona las vuelve a leer.</p>
+        <h2>Lo que no hacemos</h2>
+        <p>No damos asesoría legal, no revisamos casos, no pedimos correo ni teléfono, y lo que usted escribe en las calculadoras no sale de su navegador. No tenemos relación con USCIS, con el Departamento de Estado ni con ninguna agencia del gobierno.</p>
+      </Fragment>
+    ) : (
+      <Fragment>
+        <p>Every figure on this site comes from three public sources, read by programs that can be run again, and every forecast is graded against what really happened. This page explains all three and publishes the full result, including where we do badly.</p>
+        <h2>The Visa Bulletin archive</h2>
+        <p>We read the {h.num(VB.count)} bulletins published from {h.month(VB.first)} to {h.month(LATEST)}. The State Department’s main host turns away automated readers and we do not try to get around that: the reading is done on adoptions.state.gov, which serves the same pages from the same department. The reader copes with four eras of the bulletin: the 2002 tables with no China column, rows with typos (“4rd”, “Charge- ability”), the arrival of the two charts in October 2015, and the four names the EB-5 rows have carried. A country without its own column follows the worldwide date, as the bulletin itself says. If a single cell is missing, the site rebuild stops.</p>
+        <h2>The forecast</h2>
+        <p>For someone G days behind the cutoff of their case, we look at every month of the previous {h.num(LOOKBACK / 12)} years and measure how many months that same cutoff took to move G days forward, retrogressions included. Months whose outcome is not known yet are handled with the Kaplan-Meier estimator, counted neither as a success nor as a failure. From that distribution we take three points: the fastest 20% of cases, the median, and 80%. A first model, which extrapolated the average pace of advance, was dropped at the back-test: its range contained the real date in only 23% of cases.</p>
+        <h2>The back-test and the publication rule</h2>
+        <p>From {h.month(BACKTEST_FROM)} to {h.month(BACKTEST_TO)}, for every case and every month, we make the forecast using only the bulletins known that month, for people 6, 12, 24 and 48 months behind the cutoff, and compare it with the month their date really became current. A forecast is published only if, for that case at that distance, the range held the real date at least 40% of the time, the median error is no more than half the real wait (with a floor of 4 months), and at least 12 outcomes are known. Otherwise the calculator says “no reliable forecast”. More than six years behind is outside what we tested: no date is published there either.</p>
+        <div set:html={table} />
+        <h2>USCIS processing times</h2>
+        <p>The official USCIS processing-time tool is closed to automated readers too. We use the open data of ImmigrationTimes.org (CC BY 4.0 license), which keeps the figures USCIS published by office and form since March 2022; latest USCIS publication: {h.date(PUBLISHED)}. We select them and change their format. Next to them we show the national average from USCIS’s monthly report to Congress ({NATIONAL_MONTH}), which measures something else: the average time of all cases completed in the month.</p>
+        <h2>Fees</h2>
+        <p>All of them come from USCIS Form G-1055, edition {P.g1055_edition}, read in full for the forms on this site, and from the State Department’s visa fee page. They live in a parameter file checked by automated tests; when the edition changes, the site does not rebuild until a person has read them again.</p>
+        <h2>What we do not do</h2>
+        <p>We give no legal advice, review no cases, ask for no email or phone number, and what you type in the calculators never leaves your browser. We are not affiliated with USCIS, the Department of State or any government agency.</p>
+      </Fragment>
+    )}
+    <p class="text-sm text-navy-600"><a href={route('about', lang)}>{T('About this site', 'Quiénes somos')}</a> · <a href={route('home', lang)}>{T('Back to the calculator', 'Volver a la calculadora')}</a></p>
+  </article>
+</PageLayout>

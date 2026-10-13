@@ -1,0 +1,22 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import LegalIdentity from '../../components/LegalIdentity.astro';
+import { AUTHOR_NAME, AUTHOR_ROLE, CONTACT_EMAIL, LAST_UPDATED, SITE_URL, SITE_NAMES, LEGAL, LANG_TAGS } from '../../data/site-config';
+import { route } from '../../i18n/routes';
+import { displayDate } from '../../lib/format';
+import { personSchema, organizationSchema, breadcrumbSchema, profilePageSchema, contactPageSchema } from '../../lib/seo';
+const lang = 'en';
+const upd = displayDate(LAST_UPDATED, LANG_TAGS[lang]);
+---
+<PageLayout title="Contact Green Card Waits: Report a Wrong Date or Fee" description="Write to Green Card Waits if a Visa Bulletin cutoff, a USCIS processing time or a 2026 fee looks wrong, or if you would like to embed the green card calculator." lang={lang} noindex={true} jsonLd={[contactPageSchema({ name: 'Contact', description: 'Report an error or ask to embed the calculator.', path: route('contact', lang), lang })]} breadcrumbs={[{ label: 'Contact' }]} showAuthor={false}>
+  <div class="prose prose-slate max-w-none">
+    <h1>Contact</h1>
+    <p>Email: <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>. We read every message and usually answer within a week, in English or Spanish.</p>
+    <h2>A number looks wrong</h2>
+    <p>Tell us the page, the category and country, and the official figure you see. Please do not send receipt numbers, A-numbers, names or copies of notices: we do not need them. If the mistake is ours, we fix the data, add the case to the automated tests and note the correction.</p>
+    <h2>Embedding</h2>
+    <p>Community groups, consulates’ diaspora networks, employers and publishers can embed the calculator free of charge: <a href={route('widget', lang)}>embed the calculator</a>.</p>
+    <h2>What we cannot do</h2>
+    <p>We cannot look up your case, contact USCIS for you, expedite anything or tell you whether to file. For help with a case, use the USCIS Contact Center, a licensed immigration attorney or a DOJ-accredited representative.</p>
+  </div>
+</PageLayout>
