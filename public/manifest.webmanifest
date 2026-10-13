@@ -1,0 +1,21 @@
+{
+ "name": "Green Card Waits",
+ "short_name": "GC Waits",
+ "description": "When will your green card come? Visa Bulletin cutoffs since 2001, a forecast range with its past error, USCIS processing times by office and 2026 fees.",
+ "start_url": "/en/",
+ "display": "standalone",
+ "background_color": "#ffffff",
+ "theme_color": "#1F6F50",
+ "icons": [
+  {
+   "src": "/icon-192.png",
+   "sizes": "192x192",
+   "type": "image/png"
+  },
+  {
+   "src": "/icon-512.png",
+   "sizes": "512x512",
+   "type": "image/png"
+  }
+ ]
+}

@@ -1,0 +1,2482 @@
+{
+ "from": "2012-10",
+ "to": "2025-10",
+ "latest": "2026-10",
+ "cases": {
+  "F1-ROW": {
+   "distinct": 0,
+   "cells": [
+    {
+     "gapMonths": 6,
+     "observed": 156,
+     "pending": 0,
+     "medianError": 4,
+     "naiveError": 4.7,
+     "coverage": 0.59,
+     "medianActual": 9,
+     "reliable": true
+    },
+    {
+     "gapMonths": 12,
+     "observed": 156,
+     "pending": 0,
+     "medianError": 7,
+     "naiveError": 8.6,
+     "coverage": 0.54,
+     "medianActual": 15,
+     "reliable": true
+    },
+    {
+     "gapMonths": 24,
+     "observed": 156,
+     "pending": 0,
+     "medianError": 13,
+     "naiveError": 19.9,
+     "coverage": 0.48,
+     "medianActual": 27.5,
+     "reliable": true
+    },
+    {
+     "gapMonths": 48,
+     "observed": 149,
+     "pending": 7,
+     "medianError": 15,
+     "naiveError": 37.6,
+     "coverage": 0.34,
+     "medianActual": 47,
+     "reliable": false
+    }
+   ]
+  },
+  "F1-CN": {
+   "distinct": 0,
+   "cells": [
+    {
+     "gapMonths": 6,
+     "observed": 156,
+     "pending": 0,
+     "medianError": 4,
+     "naiveError": 4.7,
+     "coverage": 0.59,
+     "medianActual": 9,
+     "reliable": true
+    },
+    {
+     "gapMonths": 12,
+     "observed": 156,
+     "pending": 0,
+     "medianError": 7,
+     "naiveError": 8.6,
+     "coverage": 0.54,
+     "medianActual": 15,
+     "reliable": true
+    },
+    {
+     "gapMonths": 24,
+     "observed": 156,
+     "pending": 0,
+     "medianError": 13,
+     "naiveError": 19.9,
+     "coverage": 0.48,
+     "medianActual": 27.5,
+     "reliable": true
+    },
+    {
+     "gapMonths": 48,
+     "observed": 149,
+     "pending": 7,
+     "medianError": 15,
+     "naiveError": 37.6,
+     "coverage": 0.34,
+     "medianActual": 47,
+     "reliable": false
+    }
+   ]
+  },
+  "F1-IN": {
+   "distinct": 0,
+   "cells": [
+    {
+     "gapMonths": 6,
+     "observed": 156,
+     "pending": 0,
+     "medianError": 4,
+     "naiveError": 4.7,
+     "coverage": 0.59,
+     "medianActual": 9,
+     "reliable": true
+    },
+    {
+     "gapMonths": 12,
+     "observed": 156,
+     "pending": 0,
+     "medianError": 7,
+     "naiveError": 8.6,
+     "coverage": 0.54,
+     "medianActual": 15,
+     "reliable": true
+    },
+    {
+     "gapMonths": 24,
+     "observed": 156,
+     "pending": 0,
+     "medianError": 13,
+     "naiveError": 19.9,
+     "coverage": 0.48,
+     "medianActual": 27.5,
+     "reliable": true
+    },
+    {
+     "gapMonths": 48,
+     "observed": 149,
+     "pending": 7,
+     "medianError": 15,
+     "naiveError": 37.6,
+     "coverage": 0.34,
+     "medianActual": 47,
+     "reliable": false
+    }
+   ]
+  },
+  "F1-MX": {
+   "distinct": 1,
+   "cells": [
+    {
+     "gapMonths": 6,
+     "observed": 156,
+     "pending": 0,
+     "medianError": 9,
+     "naiveError": 6.9,
+     "coverage": 0.62,
+     "medianActual": 9,
+     "reliable": false
+    },
+    {
+     "gapMonths": 12,
+     "observed": 156,
+     "pending": 0,
+     "medianError": 12,
+     "naiveError": 0.6,
+     "coverage": 0.44,
+     "medianActual": 13,
+     "reliable": false
+    },
+    {
+     "gapMonths": 24,
+     "observed": 156,
+     "pending": 0,
+     "medianError": 23,
+     "naiveError": 1.3,
+     "coverage": 0.18,
+     "medianActual": 25,
+     "reliable": false
+    },
+    {
+     "gapMonths": 48,
+     "observed": 144,
+     "pending": 12,
+     "medianError": 46.5,
+     "naiveError": 1.5,
+     "coverage": 0,
+     "medianActual": 57.5,
+     "reliable": false
+    }
+   ]
+  },
+  "F1-PH": {
+   "distinct": 1,
+   "cells": [
+    {
+     "gapMonths": 6,
+     "observed": 156,
+     "pending": 0,
+     "medianError": 8,
+     "naiveError": 18.3,
+     "coverage": 0.55,
+     "medianActual": 7,
+     "reliable": false
+    },
+    {
+     "gapMonths": 12,
+     "observed": 155,
+     "pending": 1,
+     "medianError": 11,
+     "naiveError": 26.7,
+     "coverage": 0.55,
+     "medianActual": 14,
+     "reliable": false
+    },
+    {
+     "gapMonths": 24,
+     "observed": 94,
+     "pending": 62,
+     "medianError": 15.5,
+     "naiveError": 26.1,
+     "coverage": 0.38,
+     "medianActual": 13.5,
+     "reliable": false
+    },
+    {
+     "gapMonths": 48,
+     "observed": 89,
+     "pending": 67,
+     "medianError": 17.5,
+     "naiveError": 43.3,
+     "coverage": 0.31,
+     "medianActual": 34,
+     "reliable": false
+    }
+   ]
+  },
+  "F2A-ROW": {
+   "distinct": 0,
+   "cells": [
+    {
+     "gapMonths": 6,
+     "observed": 103,
+     "pending": 0,
+     "medianError": 3,
+     "naiveError": 3.8,
+     "coverage": 0.67,
+     "medianActual": 6,
+     "reliable": true
+    },
+    {
+     "gapMonths": 12,
+     "observed": 101,
+     "pending": 0,
+     "medianError": 5,
+     "naiveError": 6.4,
+     "coverage": 0.76,
+     "medianActual": 11,
+     "reliable": true
+    },
+    {
+     "gapMonths": 24,
+     "observed": 50,
+     "pending": 0,
+     "medianError": 7.5,
+     "naiveError": 20,
+     "coverage": 0.7,
+     "medianActual": 9,
+     "reliable": false
+    },
+    {
+     "gapMonths": 48,
+     "observed": 6,
+     "pending": 0,
+     "medianError": 7,
+     "naiveError": 578,
+     "coverage": 1,
+     "medianActual": 22,
+     "reliable": false
+    }
+   ]
+  },
+  "F2A-CN": {
+   "distinct": 0,
+   "cells": [
+    {
+     "gapMonths": 6,
+     "observed": 103,
+     "pending": 0,
+     "medianError": 3,
+     "naiveError": 3.8,
+     "coverage": 0.67,
+     "medianActual": 6,
+     "reliable": true
+    },
+    {
+     "gapMonths": 12,
+     "observed": 101,
+     "pending": 0,
+     "medianError": 5,
+     "naiveError": 6.4,
+     "coverage": 0.76,
+     "medianActual": 11,
+     "reliable": true
+    },
+    {
+     "gapMonths": 24,
+     "observed": 50,
+     "pending": 0,
+     "medianError": 7.5,
+     "naiveError": 20,
+     "coverage": 0.7,
+     "medianActual": 9,
+     "reliable": false
+    },
+    {
+     "gapMonths": 48,
+     "observed": 6,
+     "pending": 0,
+     "medianError": 7,
+     "naiveError": 578,
+     "coverage": 1,
+     "medianActual": 22,
+     "reliable": false
+    }
+   ]
+  },
+  "F2A-IN": {
+   "distinct": 0,
+   "cells": [
+    {
+     "gapMonths": 6,
+     "observed": 103,
+     "pending": 0,
+     "medianError": 3,
+     "naiveError": 3.8,
+     "coverage": 0.67,
+     "medianActual": 6,
+     "reliable": true
+    },
+    {
+     "gapMonths": 12,
+     "observed": 101,
+     "pending": 0,
+     "medianError": 5,
+     "naiveError": 6.4,
+     "coverage": 0.76,
+     "medianActual": 11,
+     "reliable": true
+    },
+    {
+     "gapMonths": 24,
+     "observed": 50,
+     "pending": 0,
+     "medianError": 7.5,
+     "naiveError": 20,
+     "coverage": 0.7,
+     "medianActual": 9,
+     "reliable": false
+    },
+    {
+     "gapMonths": 48,
+     "observed": 6,
+     "pending": 0,
+     "medianError": 7,
+     "naiveError": 578,
+     "coverage": 1,
+     "medianActual": 22,
+     "reliable": false
+    }
+   ]
+  },
+  "F2A-MX": {
+   "distinct": 0.677,
+   "cells": [
+    {
+     "gapMonths": 6,
+     "observed": 106,
+     "pending": 0,
+     "medianError": 3,
+     "naiveError": 2.9,
+     "coverage": 0.84,
+     "medianActual": 6,
+     "reliable": true
+    },
+    {
+     "gapMonths": 12,
+     "observed": 106,
+     "pending": 0,
+     "medianError": 5,
+     "naiveError": 6.1,
+     "coverage": 0.89,
+     "medianActual": 10,
+     "reliable": true
+    },
+    {
+     "gapMonths": 24,
+     "observed": 65,
+     "pending": 0,
+     "medianError": 7,
+     "naiveError": 17.9,
+     "coverage": 0.78,
+     "medianActual": 12,
+     "reliable": false
+    },
+    {
+     "gapMonths": 48,
+     "observed": 12,
+     "pending": 0,
+     "medianError": 14.5,
+     "naiveError": 571,
+     "coverage": 1,
+     "medianActual": 29,
+     "reliable": false
+    }
+   ]
+  },
+  "F2A-PH": {
+   "distinct": 0,
+   "cells": [
+    {
+     "gapMonths": 6,
+     "observed": 103,
+     "pending": 0,
+     "medianError": 3,
+     "naiveError": 3.8,
+     "coverage": 0.67,
+     "medianActual": 6,
+     "reliable": true
+    },
+    {
+     "gapMonths": 12,
+     "observed": 101,
+     "pending": 0,
+     "medianError": 5,
+     "naiveError": 6.4,
+     "coverage": 0.76,
+     "medianActual": 11,
+     "reliable": true
+    },
+    {
+     "gapMonths": 24,
+     "observed": 50,
+     "pending": 0,
+     "medianError": 7.5,
+     "naiveError": 20,
+     "coverage": 0.7,
+     "medianActual": 9,
+     "reliable": false
+    },
+    {
+     "gapMonths": 48,
+     "observed": 6,
+     "pending": 0,
+     "medianError": 7,
+     "naiveError": 578,
+     "coverage": 1,
+     "medianActual": 22,
+     "reliable": false
+    }
+   ]
+  },
+  "F2B-ROW": {
+   "distinct": 0,
+   "cells": [
+    {
+     "gapMonths": 6,
+     "observed": 156,
+     "pending": 0,
+     "medianError": 3,
+     "naiveError": 3,
+     "coverage": 0.6,
+     "medianActual": 7,
+     "reliable": true
+    },
+    {
+     "gapMonths": 12,
+     "observed": 156,
+     "pending": 0,
+     "medianError": 5,
+     "naiveError": 6.7,
+     "coverage": 0.53,
+     "medianActual": 14.5,
+     "reliable": true
+    },
+    {
+     "gapMonths": 24,
+     "observed": 156,
+     "pending": 0,
+     "medianError": 10,
+     "naiveError": 17.5,
+     "coverage": 0.31,
+     "medianActual": 25.5,
+     "reliable": false
+    },
+    {
+     "gapMonths": 48,
+     "observed": 103,
+     "pending": 53,
+     "medianError": 10.5,
+     "naiveError": 17.6,
+     "coverage": 0.34,
+     "medianActual": 43,
+     "reliable": false
+    }
+   ]
+  },
+  "F2B-CN": {
+   "distinct": 0,
+   "cells": [
+    {
+     "gapMonths": 6,
+     "observed": 156,
+     "pending": 0,
+     "medianError": 3,
+     "naiveError": 3,
+     "coverage": 0.6,
+     "medianActual": 7,
+     "reliable": true
+    },
+    {
+     "gapMonths": 12,
+     "observed": 156,
+     "pending": 0,
+     "medianError": 5,
+     "naiveError": 6.7,
+     "coverage": 0.53,
+     "medianActual": 14.5,
+     "reliable": true
+    },
+    {
+     "gapMonths": 24,
+     "observed": 156,
+     "pending": 0,
+     "medianError": 10,
+     "naiveError": 17.5,
+     "coverage": 0.31,
+     "medianActual": 25.5,
+     "reliable": false
+    },
+    {
+     "gapMonths": 48,
+     "observed": 103,
+     "pending": 53,
+     "medianError": 10.5,
+     "naiveError": 17.6,
+     "coverage": 0.34,
+     "medianActual": 43,
+     "reliable": false
+    }
+   ]
+  },
+  "F2B-IN": {
+   "distinct": 0,
+   "cells": [
+    {
+     "gapMonths": 6,
+     "observed": 156,
+     "pending": 0,
+     "medianError": 3,
+     "naiveError": 3,
+     "coverage": 0.6,
+     "medianActual": 7,
+     "reliable": true
+    },
+    {
+     "gapMonths": 12,
+     "observed": 156,
+     "pending": 0,
+     "medianError": 5,
+     "naiveError": 6.7,
+     "coverage": 0.53,
+     "medianActual": 14.5,
+     "reliable": true
+    },
+    {
+     "gapMonths": 24,
+     "observed": 156,
+     "pending": 0,
+     "medianError": 10,
+     "naiveError": 17.5,
+     "coverage": 0.31,
+     "medianActual": 25.5,
+     "reliable": false
+    },
+    {
+     "gapMonths": 48,
+     "observed": 103,
+     "pending": 53,
+     "medianError": 10.5,
+     "naiveError": 17.6,
+     "coverage": 0.34,
+     "medianActual": 43,
+     "reliable": false
+    }
+   ]
+  },
+  "F2B-MX": {
+   "distinct": 1,
+   "cells": [
+    {
+     "gapMonths": 6,
+     "observed": 156,
+     "pending": 0,
+     "medianError": 7,
+     "naiveError": 8.7,
+     "coverage": 0.51,
+     "medianActual": 6,
+     "reliable": false
+    },
+    {
+     "gapMonths": 12,
+     "observed": 156,
+     "pending": 0,
+     "medianError": 10,
+     "naiveError": 12,
+     "coverage": 0.44,
+     "medianActual": 13,
+     "reliable": false
+    },
+    {
+     "gapMonths": 24,
+     "observed": 156,
+     "pending": 0,
+     "medianError": 18,
+     "naiveError": 7.3,
+     "coverage": 0.21,
+     "medianActual": 25,
+     "reliable": false
+    },
+    {
+     "gapMonths": 48,
+     "observed": 152,
+     "pending": 4,
+     "medianError": 37,
+     "naiveError": 19,
+     "coverage": 0,
+     "medianActual": 50,
+     "reliable": false
+    }
+   ]
+  },
+  "F2B-PH": {
+   "distinct": 1,
+   "cells": [
+    {
+     "gapMonths": 6,
+     "observed": 156,
+     "pending": 0,
+     "medianError": 4,
+     "naiveError": 7,
+     "coverage": 0.6,
+     "medianActual": 8,
+     "reliable": true
+    },
+    {
+     "gapMonths": 12,
+     "observed": 155,
+     "pending": 1,
+     "medianError": 7,
+     "naiveError": 11.3,
+     "coverage": 0.48,
+     "medianActual": 15,
+     "reliable": true
+    },
+    {
+     "gapMonths": 24,
+     "observed": 103,
+     "pending": 53,
+     "medianError": 10,
+     "naiveError": 4.9,
+     "coverage": 0.47,
+     "medianActual": 27,
+     "reliable": true
+    },
+    {
+     "gapMonths": 48,
+     "observed": 88,
+     "pending": 68,
+     "medianError": 13,
+     "naiveError": null,
+     "coverage": 0.58,
+     "medianActual": 49,
+     "reliable": true
+    }
+   ]
+  },
+  "F3-ROW": {
+   "distinct": 0,
+   "cells": [
+    {
+     "gapMonths": 6,
+     "observed": 156,
+     "pending": 0,
+     "medianError": 4,
+     "naiveError": 3,
+     "coverage": 0.63,
+     "medianActual": 9,
+     "reliable": true
+    },
+    {
+     "gapMonths": 12,
+     "observed": 156,
+     "pending": 0,
+     "medianError": 5,
+     "naiveError": 4.1,
+     "coverage": 0.51,
+     "medianActual": 18,
+     "reliable": true
+    },
+    {
+     "gapMonths": 24,
+     "observed": 156,
+     "pending": 0,
+     "medianError": 11,
+     "naiveError": 0.1,
+     "coverage": 0.37,
+     "medianActual": 34,
+     "reliable": false
+    },
+    {
+     "gapMonths": 48,
+     "observed": 149,
+     "pending": 7,
+     "medianError": 10,
+     "naiveError": 7,
+     "coverage": 0.46,
+     "medianActual": 66,
+     "reliable": true
+    }
+   ]
+  },
+  "F3-CN": {
+   "distinct": 0,
+   "cells": [
+    {
+     "gapMonths": 6,
+     "observed": 156,
+     "pending": 0,
+     "medianError": 4,
+     "naiveError": 3,
+     "coverage": 0.63,
+     "medianActual": 9,
+     "reliable": true
+    },
+    {
+     "gapMonths": 12,
+     "observed": 156,
+     "pending": 0,
+     "medianError": 5,
+     "naiveError": 4.1,
+     "coverage": 0.51,
+     "medianActual": 18,
+     "reliable": true
+    },
+    {
+     "gapMonths": 24,
+     "observed": 156,
+     "pending": 0,
+     "medianError": 11,
+     "naiveError": 0.1,
+     "coverage": 0.37,
+     "medianActual": 34,
+     "reliable": false
+    },
+    {
+     "gapMonths": 48,
+     "observed": 149,
+     "pending": 7,
+     "medianError": 10,
+     "naiveError": 7,
+     "coverage": 0.46,
+     "medianActual": 66,
+     "reliable": true
+    }
+   ]
+  },
+  "F3-IN": {
+   "distinct": 0,
+   "cells": [
+    {
+     "gapMonths": 6,
+     "observed": 156,
+     "pending": 0,
+     "medianError": 4,
+     "naiveError": 3,
+     "coverage": 0.63,
+     "medianActual": 9,
+     "reliable": true
+    },
+    {
+     "gapMonths": 12,
+     "observed": 156,
+     "pending": 0,
+     "medianError": 5,
+     "naiveError": 4.1,
+     "coverage": 0.51,
+     "medianActual": 18,
+     "reliable": true
+    },
+    {
+     "gapMonths": 24,
+     "observed": 156,
+     "pending": 0,
+     "medianError": 11,
+     "naiveError": 0.1,
+     "coverage": 0.37,
+     "medianActual": 34,
+     "reliable": false
+    },
+    {
+     "gapMonths": 48,
+     "observed": 149,
+     "pending": 7,
+     "medianError": 10,
+     "naiveError": 7,
+     "coverage": 0.46,
+     "medianActual": 66,
+     "reliable": true
+    }
+   ]
+  },
+  "F3-MX": {
+   "distinct": 1,
+   "cells": [
+    {
+     "gapMonths": 6,
+     "observed": 149,
+     "pending": 7,
+     "medianError": 9,
+     "naiveError": 5.5,
+     "coverage": 0.67,
+     "medianActual": 13,
+     "reliable": false
+    },
+    {
+     "gapMonths": 12,
+     "observed": 143,
+     "pending": 13,
+     "medianError": 12.5,
+     "naiveError": 7.5,
+     "coverage": 0.5,
+     "medianActual": 23,
+     "reliable": false
+    },
+    {
+     "gapMonths": 24,
+     "observed": 138,
+     "pending": 18,
+     "medianError": 29.5,
+     "naiveError": 10,
+     "coverage": 0.09,
+     "medianActual": 47,
+     "reliable": false
+    },
+    {
+     "gapMonths": 48,
+     "observed": 109,
+     "pending": 47,
+     "medianError": 511,
+     "naiveError": null,
+     "coverage": 0,
+     "medianActual": 84,
+     "reliable": false
+    }
+   ]
+  },
+  "F3-PH": {
+   "distinct": 1,
+   "cells": [
+    {
+     "gapMonths": 6,
+     "observed": 156,
+     "pending": 0,
+     "medianError": 7,
+     "naiveError": 4,
+     "coverage": 0.53,
+     "medianActual": 13,
+     "reliable": false
+    },
+    {
+     "gapMonths": 12,
+     "observed": 156,
+     "pending": 0,
+     "medianError": 12,
+     "naiveError": 8,
+     "coverage": 0.53,
+     "medianActual": 20,
+     "reliable": false
+    },
+    {
+     "gapMonths": 24,
+     "observed": 155,
+     "pending": 1,
+     "medianError": 13,
+     "naiveError": 20.7,
+     "coverage": 0.59,
+     "medianActual": 33,
+     "reliable": true
+    },
+    {
+     "gapMonths": 48,
+     "observed": 138,
+     "pending": 18,
+     "medianError": 16,
+     "naiveError": 51.1,
+     "coverage": 0.62,
+     "medianActual": 47.5,
+     "reliable": true
+    }
+   ]
+  },
+  "F4-ROW": {
+   "distinct": 0,
+   "cells": [
+    {
+     "gapMonths": 6,
+     "observed": 156,
+     "pending": 0,
+     "medianError": 5,
+     "naiveError": 3.6,
+     "coverage": 0.55,
+     "medianActual": 13,
+     "reliable": true
+    },
+    {
+     "gapMonths": 12,
+     "observed": 156,
+     "pending": 0,
+     "medianError": 10,
+     "naiveError": 8.4,
+     "coverage": 0.52,
+     "medianActual": 21,
+     "reliable": true
+    },
+    {
+     "gapMonths": 24,
+     "observed": 156,
+     "pending": 0,
+     "medianError": 13,
+     "naiveError": 7,
+     "coverage": 0.43,
+     "medianActual": 34,
+     "reliable": true
+    },
+    {
+     "gapMonths": 48,
+     "observed": 150,
+     "pending": 6,
+     "medianError": 22.5,
+     "naiveError": 16.7,
+     "coverage": 0.36,
+     "medianActual": 66,
+     "reliable": false
+    }
+   ]
+  },
+  "F4-CN": {
+   "distinct": 0.068,
+   "cells": [
+    {
+     "gapMonths": 6,
+     "observed": 156,
+     "pending": 0,
+     "medianError": 5,
+     "naiveError": 6.5,
+     "coverage": 0.51,
+     "medianActual": 13,
+     "reliable": true
+    },
+    {
+     "gapMonths": 12,
+     "observed": 156,
+     "pending": 0,
+     "medianError": 10,
+     "naiveError": 15.1,
+     "coverage": 0.54,
+     "medianActual": 21,
+     "reliable": true
+    },
+    {
+     "gapMonths": 24,
+     "observed": 156,
+     "pending": 0,
+     "medianError": 14,
+     "naiveError": 22.9,
+     "coverage": 0.46,
+     "medianActual": 35,
+     "reliable": true
+    },
+    {
+     "gapMonths": 48,
+     "observed": 150,
+     "pending": 6,
+     "medianError": 21.5,
+     "naiveError": 32.5,
+     "coverage": 0.38,
+     "medianActual": 64,
+     "reliable": false
+    }
+   ]
+  },
+  "F4-IN": {
+   "distinct": 0.932,
+   "cells": [
+    {
+     "gapMonths": 6,
+     "observed": 152,
+     "pending": 4,
+     "medianError": 5,
+     "naiveError": null,
+     "coverage": 0.46,
+     "medianActual": 14,
+     "reliable": true
+    },
+    {
+     "gapMonths": 12,
+     "observed": 136,
+     "pending": 20,
+     "medianError": 10,
+     "naiveError": 14.5,
+     "coverage": 0.4,
+     "medianActual": 28,
+     "reliable": true
+    },
+    {
+     "gapMonths": 24,
+     "observed": 89,
+     "pending": 67,
+     "medianError": 26,
+     "naiveError": 21.9,
+     "coverage": 0.24,
+     "medianActual": 53,
+     "reliable": false
+    },
+    {
+     "gapMonths": 48,
+     "observed": 40,
+     "pending": 116,
+     "medianError": 58.5,
+     "naiveError": 1.6,
+     "coverage": 0.38,
+     "medianActual": 116.5,
+     "reliable": false
+    }
+   ]
+  },
+  "F4-MX": {
+   "distinct": 1,
+   "cells": [
+    {
+     "gapMonths": 6,
+     "observed": 138,
+     "pending": 18,
+     "medianError": 8,
+     "naiveError": 13.9,
+     "coverage": 0.49,
+     "medianActual": 17,
+     "reliable": true
+    },
+    {
+     "gapMonths": 12,
+     "observed": 116,
+     "pending": 40,
+     "medianError": 21,
+     "naiveError": 15.3,
+     "coverage": 0.32,
+     "medianActual": 42,
+     "reliable": false
+    },
+    {
+     "gapMonths": 24,
+     "observed": 113,
+     "pending": 43,
+     "medianError": 44,
+     "naiveError": 28.4,
+     "coverage": 0.1,
+     "medianActual": 57,
+     "reliable": false
+    },
+    {
+     "gapMonths": 48,
+     "observed": 45,
+     "pending": 111,
+     "medianError": 25,
+     "naiveError": 0.9,
+     "coverage": 0.47,
+     "medianActual": 121,
+     "reliable": true
+    }
+   ]
+  },
+  "F4-PH": {
+   "distinct": 1,
+   "cells": [
+    {
+     "gapMonths": 6,
+     "observed": 156,
+     "pending": 0,
+     "medianError": 2,
+     "naiveError": 1.4,
+     "coverage": 0.58,
+     "medianActual": 6,
+     "reliable": true
+    },
+    {
+     "gapMonths": 12,
+     "observed": 156,
+     "pending": 0,
+     "medianError": 3.5,
+     "naiveError": 2,
+     "coverage": 0.52,
+     "medianActual": 12,
+     "reliable": true
+    },
+    {
+     "gapMonths": 24,
+     "observed": 156,
+     "pending": 0,
+     "medianError": 8,
+     "naiveError": 3.6,
+     "coverage": 0.53,
+     "medianActual": 22,
+     "reliable": true
+    },
+    {
+     "gapMonths": 48,
+     "observed": 148,
+     "pending": 8,
+     "medianError": 11,
+     "naiveError": 18,
+     "coverage": 0.6,
+     "medianActual": 40.5,
+     "reliable": true
+    }
+   ]
+  },
+  "EB1-ROW": {
+   "distinct": 0,
+   "cells": [
+    {
+     "gapMonths": 6,
+     "observed": 21,
+     "pending": 0,
+     "medianError": 2,
+     "naiveError": 591,
+     "coverage": 0.19,
+     "medianActual": 3,
+     "reliable": false
+    },
+    {
+     "gapMonths": 12,
+     "observed": 20,
+     "pending": 0,
+     "medianError": 5.5,
+     "naiveError": 587.5,
+     "coverage": 0.05,
+     "medianActual": 6.5,
+     "reliable": false
+    },
+    {
+     "gapMonths": 24,
+     "observed": 3,
+     "pending": 0,
+     "medianError": 14,
+     "naiveError": 585,
+     "coverage": 0,
+     "medianActual": 15,
+     "reliable": false
+    },
+    {
+     "gapMonths": 48,
+     "observed": 0,
+     "pending": 0,
+     "medianError": null,
+     "naiveError": null,
+     "coverage": null,
+     "medianActual": null,
+     "reliable": false
+    }
+   ]
+  },
+  "EB1-CN": {
+   "distinct": 0.654,
+   "cells": [
+    {
+     "gapMonths": 6,
+     "observed": 76,
+     "pending": 0,
+     "medianError": 6.5,
+     "naiveError": 16.4,
+     "coverage": 0.3,
+     "medianActual": 7.5,
+     "reliable": false
+    },
+    {
+     "gapMonths": 12,
+     "observed": 51,
+     "pending": 22,
+     "medianError": 14,
+     "naiveError": 20.3,
+     "coverage": 0.18,
+     "medianActual": 8,
+     "reliable": false
+    },
+    {
+     "gapMonths": 24,
+     "observed": 36,
+     "pending": 11,
+     "medianError": 9,
+     "naiveError": 74,
+     "coverage": 0.14,
+     "medianActual": 7.5,
+     "reliable": false
+    },
+    {
+     "gapMonths": 48,
+     "observed": 13,
+     "pending": 0,
+     "medianError": 2,
+     "naiveError": 596,
+     "coverage": 0.23,
+     "medianActual": 3,
+     "reliable": false
+    }
+   ]
+  },
+  "EB1-IN": {
+   "distinct": 0.662,
+   "cells": [
+    {
+     "gapMonths": 6,
+     "observed": 75,
+     "pending": 0,
+     "medianError": 3,
+     "naiveError": null,
+     "coverage": 0.44,
+     "medianActual": 4,
+     "reliable": true
+    },
+    {
+     "gapMonths": 12,
+     "observed": 72,
+     "pending": 0,
+     "medianError": 5,
+     "naiveError": null,
+     "coverage": 0.43,
+     "medianActual": 6,
+     "reliable": false
+    },
+    {
+     "gapMonths": 24,
+     "observed": 46,
+     "pending": 16,
+     "medianError": 9.5,
+     "naiveError": 577.5,
+     "coverage": 0.19,
+     "medianActual": 6,
+     "reliable": false
+    },
+    {
+     "gapMonths": 48,
+     "observed": 28,
+     "pending": 0,
+     "medianError": 4,
+     "naiveError": 594,
+     "coverage": 0.29,
+     "medianActual": 5,
+     "reliable": false
+    }
+   ]
+  },
+  "EB1-MX": {
+   "distinct": 0,
+   "cells": [
+    {
+     "gapMonths": 6,
+     "observed": 21,
+     "pending": 0,
+     "medianError": 2,
+     "naiveError": 591,
+     "coverage": 0.19,
+     "medianActual": 3,
+     "reliable": false
+    },
+    {
+     "gapMonths": 12,
+     "observed": 20,
+     "pending": 0,
+     "medianError": 5.5,
+     "naiveError": 587.5,
+     "coverage": 0.05,
+     "medianActual": 6.5,
+     "reliable": false
+    },
+    {
+     "gapMonths": 24,
+     "observed": 3,
+     "pending": 0,
+     "medianError": 14,
+     "naiveError": 585,
+     "coverage": 0,
+     "medianActual": 15,
+     "reliable": false
+    },
+    {
+     "gapMonths": 48,
+     "observed": 0,
+     "pending": 0,
+     "medianError": null,
+     "naiveError": null,
+     "coverage": null,
+     "medianActual": null,
+     "reliable": false
+    }
+   ]
+  },
+  "EB1-PH": {
+   "distinct": 0,
+   "cells": [
+    {
+     "gapMonths": 6,
+     "observed": 21,
+     "pending": 0,
+     "medianError": 2,
+     "naiveError": 591,
+     "coverage": 0.19,
+     "medianActual": 3,
+     "reliable": false
+    },
+    {
+     "gapMonths": 12,
+     "observed": 20,
+     "pending": 0,
+     "medianError": 5.5,
+     "naiveError": 587.5,
+     "coverage": 0.05,
+     "medianActual": 6.5,
+     "reliable": false
+    },
+    {
+     "gapMonths": 24,
+     "observed": 3,
+     "pending": 0,
+     "medianError": 14,
+     "naiveError": 585,
+     "coverage": 0,
+     "medianActual": 15,
+     "reliable": false
+    },
+    {
+     "gapMonths": 48,
+     "observed": 0,
+     "pending": 0,
+     "medianError": null,
+     "naiveError": null,
+     "coverage": null,
+     "medianActual": null,
+     "reliable": false
+    }
+   ]
+  },
+  "EB2-ROW": {
+   "distinct": 0,
+   "cells": [
+    {
+     "gapMonths": 6,
+     "observed": 38,
+     "pending": 0,
+     "medianError": 6,
+     "naiveError": 8.5,
+     "coverage": 0.29,
+     "medianActual": 7,
+     "reliable": false
+    },
+    {
+     "gapMonths": 12,
+     "observed": 37,
+     "pending": 0,
+     "medianError": 12,
+     "naiveError": 17.8,
+     "coverage": 0.38,
+     "medianActual": 13,
+     "reliable": false
+    },
+    {
+     "gapMonths": 24,
+     "observed": 6,
+     "pending": 0,
+     "medianError": 1,
+     "naiveError": 598,
+     "coverage": 0.5,
+     "medianActual": 2,
+     "reliable": false
+    },
+    {
+     "gapMonths": 48,
+     "observed": 1,
+     "pending": 0,
+     "medianError": 0,
+     "naiveError": 599,
+     "coverage": 1,
+     "medianActual": 1,
+     "reliable": false
+    }
+   ]
+  },
+  "EB2-CN": {
+   "distinct": 0.985,
+   "cells": [
+    {
+     "gapMonths": 6,
+     "observed": 156,
+     "pending": 0,
+     "medianError": 3,
+     "naiveError": 15,
+     "coverage": 0.72,
+     "medianActual": 6,
+     "reliable": true
+    },
+    {
+     "gapMonths": 12,
+     "observed": 149,
+     "pending": 7,
+     "medianError": 6,
+     "naiveError": 22.4,
+     "coverage": 0.65,
+     "medianActual": 12,
+     "reliable": true
+    },
+    {
+     "gapMonths": 24,
+     "observed": 130,
+     "pending": 23,
+     "medianError": 11.5,
+     "naiveError": 7.8,
+     "coverage": 0.44,
+     "medianActual": 18.5,
+     "reliable": false
+    },
+    {
+     "gapMonths": 48,
+     "observed": 75,
+     "pending": 28,
+     "medianError": 7,
+     "naiveError": 7,
+     "coverage": 0.88,
+     "medianActual": 32,
+     "reliable": true
+    }
+   ]
+  },
+  "EB2-IN": {
+   "distinct": 1,
+   "cells": [
+    {
+     "gapMonths": 6,
+     "observed": 152,
+     "pending": 4,
+     "medianError": 6,
+     "naiveError": 593.5,
+     "coverage": 0.67,
+     "medianActual": 9,
+     "reliable": false
+    },
+    {
+     "gapMonths": 12,
+     "observed": 152,
+     "pending": 4,
+     "medianError": 12,
+     "naiveError": 73.3,
+     "coverage": 0.77,
+     "medianActual": 14.5,
+     "reliable": false
+    },
+    {
+     "gapMonths": 24,
+     "observed": 133,
+     "pending": 23,
+     "medianError": 21,
+     "naiveError": 48.3,
+     "coverage": 0.75,
+     "medianActual": 23,
+     "reliable": false
+    },
+    {
+     "gapMonths": 48,
+     "observed": 103,
+     "pending": 53,
+     "medianError": 41,
+     "naiveError": 54.6,
+     "coverage": 0.8,
+     "medianActual": 40,
+     "reliable": false
+    }
+   ]
+  },
+  "EB2-MX": {
+   "distinct": 0,
+   "cells": [
+    {
+     "gapMonths": 6,
+     "observed": 38,
+     "pending": 0,
+     "medianError": 6,
+     "naiveError": 8.5,
+     "coverage": 0.29,
+     "medianActual": 7,
+     "reliable": false
+    },
+    {
+     "gapMonths": 12,
+     "observed": 37,
+     "pending": 0,
+     "medianError": 12,
+     "naiveError": 17.8,
+     "coverage": 0.38,
+     "medianActual": 13,
+     "reliable": false
+    },
+    {
+     "gapMonths": 24,
+     "observed": 6,
+     "pending": 0,
+     "medianError": 1,
+     "naiveError": 598,
+     "coverage": 0.5,
+     "medianActual": 2,
+     "reliable": false
+    },
+    {
+     "gapMonths": 48,
+     "observed": 1,
+     "pending": 0,
+     "medianError": 0,
+     "naiveError": 599,
+     "coverage": 1,
+     "medianActual": 1,
+     "reliable": false
+    }
+   ]
+  },
+  "EB2-PH": {
+   "distinct": 0,
+   "cells": [
+    {
+     "gapMonths": 6,
+     "observed": 38,
+     "pending": 0,
+     "medianError": 6,
+     "naiveError": 8.5,
+     "coverage": 0.29,
+     "medianActual": 7,
+     "reliable": false
+    },
+    {
+     "gapMonths": 12,
+     "observed": 37,
+     "pending": 0,
+     "medianError": 12,
+     "naiveError": 17.8,
+     "coverage": 0.38,
+     "medianActual": 13,
+     "reliable": false
+    },
+    {
+     "gapMonths": 24,
+     "observed": 6,
+     "pending": 0,
+     "medianError": 1,
+     "naiveError": 598,
+     "coverage": 0.5,
+     "medianActual": 2,
+     "reliable": false
+    },
+    {
+     "gapMonths": 48,
+     "observed": 1,
+     "pending": 0,
+     "medianError": 0,
+     "naiveError": 599,
+     "coverage": 1,
+     "medianActual": 1,
+     "reliable": false
+    }
+   ]
+  },
+  "EB3-ROW": {
+   "distinct": 0,
+   "cells": [
+    {
+     "gapMonths": 6,
+     "observed": 69,
+     "pending": 0,
+     "medianError": 3,
+     "naiveError": 7.7,
+     "coverage": 0.62,
+     "medianActual": 3,
+     "reliable": true
+    },
+    {
+     "gapMonths": 12,
+     "observed": 66,
+     "pending": 0,
+     "medianError": 5,
+     "naiveError": 7.7,
+     "coverage": 0.76,
+     "medianActual": 5,
+     "reliable": false
+    },
+    {
+     "gapMonths": 24,
+     "observed": 33,
+     "pending": 11,
+     "medianError": 6,
+     "naiveError": 15.9,
+     "coverage": 0.78,
+     "medianActual": 5,
+     "reliable": false
+    },
+    {
+     "gapMonths": 48,
+     "observed": 10,
+     "pending": 0,
+     "medianError": 13.5,
+     "naiveError": 32.3,
+     "coverage": 1,
+     "medianActual": 10.5,
+     "reliable": false
+    }
+   ]
+  },
+  "EB3-CN": {
+   "distinct": 0.992,
+   "cells": [
+    {
+     "gapMonths": 6,
+     "observed": 156,
+     "pending": 0,
+     "medianError": 2,
+     "naiveError": 7.4,
+     "coverage": 0.65,
+     "medianActual": 4,
+     "reliable": true
+    },
+    {
+     "gapMonths": 12,
+     "observed": 155,
+     "pending": 1,
+     "medianError": 5,
+     "naiveError": 15.2,
+     "coverage": 0.65,
+     "medianActual": 9,
+     "reliable": false
+    },
+    {
+     "gapMonths": 24,
+     "observed": 128,
+     "pending": 23,
+     "medianError": 9,
+     "naiveError": 19.7,
+     "coverage": 0.68,
+     "medianActual": 19,
+     "reliable": true
+    },
+    {
+     "gapMonths": 48,
+     "observed": 36,
+     "pending": 32,
+     "medianError": 11,
+     "naiveError": 49.3,
+     "coverage": 0.76,
+     "medianActual": 18,
+     "reliable": false
+    }
+   ]
+  },
+  "EB3-IN": {
+   "distinct": 1,
+   "cells": [
+    {
+     "gapMonths": 6,
+     "observed": 153,
+     "pending": 3,
+     "medianError": 6,
+     "naiveError": 4.5,
+     "coverage": 0.54,
+     "medianActual": 8,
+     "reliable": false
+    },
+    {
+     "gapMonths": 12,
+     "observed": 144,
+     "pending": 12,
+     "medianError": 9,
+     "naiveError": 9.9,
+     "coverage": 0.47,
+     "medianActual": 16,
+     "reliable": false
+    },
+    {
+     "gapMonths": 24,
+     "observed": 107,
+     "pending": 49,
+     "medianError": 24,
+     "naiveError": 8.2,
+     "coverage": 0.41,
+     "medianActual": 19,
+     "reliable": false
+    },
+    {
+     "gapMonths": 48,
+     "observed": 98,
+     "pending": 58,
+     "medianError": 38,
+     "naiveError": 9.9,
+     "coverage": 0.32,
+     "medianActual": 34,
+     "reliable": false
+    }
+   ]
+  },
+  "EB3-MX": {
+   "distinct": 0,
+   "cells": [
+    {
+     "gapMonths": 6,
+     "observed": 69,
+     "pending": 0,
+     "medianError": 3,
+     "naiveError": 7.7,
+     "coverage": 0.67,
+     "medianActual": 3,
+     "reliable": true
+    },
+    {
+     "gapMonths": 12,
+     "observed": 66,
+     "pending": 0,
+     "medianError": 5,
+     "naiveError": 7.7,
+     "coverage": 0.76,
+     "medianActual": 5,
+     "reliable": false
+    },
+    {
+     "gapMonths": 24,
+     "observed": 33,
+     "pending": 11,
+     "medianError": 7.5,
+     "naiveError": 15.9,
+     "coverage": 0.81,
+     "medianActual": 5,
+     "reliable": false
+    },
+    {
+     "gapMonths": 48,
+     "observed": 10,
+     "pending": 0,
+     "medianError": 6,
+     "naiveError": 32.3,
+     "coverage": 1,
+     "medianActual": 10.5,
+     "reliable": false
+    }
+   ]
+  },
+  "EB3-PH": {
+   "distinct": 0.451,
+   "cells": [
+    {
+     "gapMonths": 6,
+     "observed": 121,
+     "pending": 1,
+     "medianError": 3,
+     "naiveError": null,
+     "coverage": 0.61,
+     "medianActual": 3,
+     "reliable": true
+    },
+    {
+     "gapMonths": 12,
+     "observed": 99,
+     "pending": 18,
+     "medianError": 5,
+     "naiveError": null,
+     "coverage": 0.61,
+     "medianActual": 5,
+     "reliable": false
+    },
+    {
+     "gapMonths": 24,
+     "observed": 63,
+     "pending": 13,
+     "medianError": 9,
+     "naiveError": 1.5,
+     "coverage": 0.57,
+     "medianActual": 6,
+     "reliable": false
+    },
+    {
+     "gapMonths": 48,
+     "observed": 47,
+     "pending": 0,
+     "medianError": 20,
+     "naiveError": 77.9,
+     "coverage": 0.7,
+     "medianActual": 12,
+     "reliable": false
+    }
+   ]
+  },
+  "EW-ROW": {
+   "distinct": 0,
+   "cells": [
+    {
+     "gapMonths": 6,
+     "observed": 80,
+     "pending": 0,
+     "medianError": 4,
+     "naiveError": 4.7,
+     "coverage": 0.64,
+     "medianActual": 4,
+     "reliable": true
+    },
+    {
+     "gapMonths": 12,
+     "observed": 72,
+     "pending": 7,
+     "medianError": 7,
+     "naiveError": 8.2,
+     "coverage": 0.53,
+     "medianActual": 6,
+     "reliable": false
+    },
+    {
+     "gapMonths": 24,
+     "observed": 38,
+     "pending": 31,
+     "medianError": 16,
+     "naiveError": 2.9,
+     "coverage": 0.35,
+     "medianActual": 5.5,
+     "reliable": false
+    },
+    {
+     "gapMonths": 48,
+     "observed": 10,
+     "pending": 7,
+     "medianError": 28,
+     "naiveError": 32.3,
+     "coverage": 1,
+     "medianActual": 10.5,
+     "reliable": false
+    }
+   ]
+  },
+  "EW-CN": {
+   "distinct": 1,
+   "cells": [
+    {
+     "gapMonths": 6,
+     "observed": 156,
+     "pending": 0,
+     "medianError": 5,
+     "naiveError": 7,
+     "coverage": 0.7,
+     "medianActual": 6,
+     "reliable": false
+    },
+    {
+     "gapMonths": 12,
+     "observed": 156,
+     "pending": 0,
+     "medianError": 7,
+     "naiveError": 9.7,
+     "coverage": 0.65,
+     "medianActual": 10.5,
+     "reliable": false
+    },
+    {
+     "gapMonths": 24,
+     "observed": 150,
+     "pending": 1,
+     "medianError": 13.5,
+     "naiveError": 13,
+     "coverage": 0.77,
+     "medianActual": 21,
+     "reliable": false
+    },
+    {
+     "gapMonths": 48,
+     "observed": 124,
+     "pending": 25,
+     "medianError": 20,
+     "naiveError": 32.9,
+     "coverage": 0.82,
+     "medianActual": 33.5,
+     "reliable": false
+    }
+   ]
+  },
+  "EW-IN": {
+   "distinct": 1,
+   "cells": [
+    {
+     "gapMonths": 6,
+     "observed": 153,
+     "pending": 3,
+     "medianError": 7,
+     "naiveError": 4.5,
+     "coverage": 0.57,
+     "medianActual": 8,
+     "reliable": false
+    },
+    {
+     "gapMonths": 12,
+     "observed": 144,
+     "pending": 12,
+     "medianError": 9,
+     "naiveError": 9.9,
+     "coverage": 0.4,
+     "medianActual": 16,
+     "reliable": false
+    },
+    {
+     "gapMonths": 24,
+     "observed": 107,
+     "pending": 49,
+     "medianError": 31,
+     "naiveError": 8.2,
+     "coverage": 0.27,
+     "medianActual": 19,
+     "reliable": false
+    },
+    {
+     "gapMonths": 48,
+     "observed": 98,
+     "pending": 58,
+     "medianError": 39,
+     "naiveError": 9.9,
+     "coverage": 0.1,
+     "medianActual": 34,
+     "reliable": false
+    }
+   ]
+  },
+  "EW-MX": {
+   "distinct": 0,
+   "cells": [
+    {
+     "gapMonths": 6,
+     "observed": 80,
+     "pending": 0,
+     "medianError": 4,
+     "naiveError": 4.7,
+     "coverage": 0.64,
+     "medianActual": 4,
+     "reliable": true
+    },
+    {
+     "gapMonths": 12,
+     "observed": 72,
+     "pending": 7,
+     "medianError": 8,
+     "naiveError": null,
+     "coverage": 0.56,
+     "medianActual": 6,
+     "reliable": false
+    },
+    {
+     "gapMonths": 24,
+     "observed": 38,
+     "pending": 31,
+     "medianError": 17,
+     "naiveError": 2.9,
+     "coverage": 0.4,
+     "medianActual": 5.5,
+     "reliable": false
+    },
+    {
+     "gapMonths": 48,
+     "observed": 10,
+     "pending": 7,
+     "medianError": 29,
+     "naiveError": 32.6,
+     "coverage": 1,
+     "medianActual": 10.5,
+     "reliable": false
+    }
+   ]
+  },
+  "EW-PH": {
+   "distinct": 0.504,
+   "cells": [
+    {
+     "gapMonths": 6,
+     "observed": 129,
+     "pending": 4,
+     "medianError": 4,
+     "naiveError": 599,
+     "coverage": 0.67,
+     "medianActual": 4,
+     "reliable": true
+    },
+    {
+     "gapMonths": 12,
+     "observed": 122,
+     "pending": 8,
+     "medianError": 5,
+     "naiveError": 599,
+     "coverage": 0.59,
+     "medianActual": 7,
+     "reliable": false
+    },
+    {
+     "gapMonths": 24,
+     "observed": 70,
+     "pending": 31,
+     "medianError": 15,
+     "naiveError": 41.5,
+     "coverage": 0.37,
+     "medianActual": 7,
+     "reliable": false
+    },
+    {
+     "gapMonths": 48,
+     "observed": 47,
+     "pending": 12,
+     "medianError": 22,
+     "naiveError": 77.9,
+     "coverage": 0.24,
+     "medianActual": 12,
+     "reliable": false
+    }
+   ]
+  },
+  "EB4-ROW": {
+   "distinct": 0,
+   "cells": [
+    {
+     "gapMonths": 6,
+     "observed": 26,
+     "pending": 2,
+     "medianError": 10,
+     "naiveError": 575.5,
+     "coverage": 0.11,
+     "medianActual": 8.5,
+     "reliable": false
+    },
+    {
+     "gapMonths": 12,
+     "observed": 25,
+     "pending": 1,
+     "medianError": 9.5,
+     "naiveError": 590,
+     "coverage": 0.04,
+     "medianActual": 10,
+     "reliable": false
+    },
+    {
+     "gapMonths": 24,
+     "observed": 17,
+     "pending": 8,
+     "medianError": 20,
+     "naiveError": 575,
+     "coverage": 0.04,
+     "medianActual": 11,
+     "reliable": false
+    },
+    {
+     "gapMonths": 48,
+     "observed": 6,
+     "pending": 10,
+     "medianError": 33,
+     "naiveError": 563.5,
+     "coverage": 0,
+     "medianActual": 36.5,
+     "reliable": false
+    }
+   ]
+  },
+  "EB4-CN": {
+   "distinct": 0,
+   "cells": [
+    {
+     "gapMonths": 6,
+     "observed": 26,
+     "pending": 2,
+     "medianError": 10,
+     "naiveError": 575.5,
+     "coverage": 0.11,
+     "medianActual": 8.5,
+     "reliable": false
+    },
+    {
+     "gapMonths": 12,
+     "observed": 25,
+     "pending": 1,
+     "medianError": 9.5,
+     "naiveError": 590,
+     "coverage": 0.04,
+     "medianActual": 10,
+     "reliable": false
+    },
+    {
+     "gapMonths": 24,
+     "observed": 17,
+     "pending": 8,
+     "medianError": 20,
+     "naiveError": 575,
+     "coverage": 0.04,
+     "medianActual": 11,
+     "reliable": false
+    },
+    {
+     "gapMonths": 48,
+     "observed": 6,
+     "pending": 10,
+     "medianError": 33,
+     "naiveError": 563.5,
+     "coverage": 0,
+     "medianActual": 36.5,
+     "reliable": false
+    }
+   ]
+  },
+  "EB4-IN": {
+   "distinct": 0.063,
+   "cells": [
+    {
+     "gapMonths": 6,
+     "observed": 33,
+     "pending": 2,
+     "medianError": 6,
+     "naiveError": 563,
+     "coverage": 0.17,
+     "medianActual": 6,
+     "reliable": false
+    },
+    {
+     "gapMonths": 12,
+     "observed": 33,
+     "pending": 0,
+     "medianError": 7,
+     "naiveError": 589,
+     "coverage": 0.12,
+     "medianActual": 8,
+     "reliable": false
+    },
+    {
+     "gapMonths": 24,
+     "observed": 21,
+     "pending": 8,
+     "medianError": 12,
+     "naiveError": 575,
+     "coverage": 0.1,
+     "medianActual": 9,
+     "reliable": false
+    },
+    {
+     "gapMonths": 48,
+     "observed": 8,
+     "pending": 10,
+     "medianError": 32.5,
+     "naiveError": 564.5,
+     "coverage": 0.07,
+     "medianActual": 35.5,
+     "reliable": false
+    }
+   ]
+  },
+  "EB4-MX": {
+   "distinct": 0.619,
+   "cells": [
+    {
+     "gapMonths": 6,
+     "observed": 103,
+     "pending": 0,
+     "medianError": 5,
+     "naiveError": null,
+     "coverage": 0.39,
+     "medianActual": 7,
+     "reliable": false
+    },
+    {
+     "gapMonths": 12,
+     "observed": 100,
+     "pending": 0,
+     "medianError": 9,
+     "naiveError": null,
+     "coverage": 0.47,
+     "medianActual": 11,
+     "reliable": false
+    },
+    {
+     "gapMonths": 24,
+     "observed": 55,
+     "pending": 8,
+     "medianError": 14.5,
+     "naiveError": 35.6,
+     "coverage": 0.44,
+     "medianActual": 25,
+     "reliable": false
+    },
+    {
+     "gapMonths": 48,
+     "observed": 9,
+     "pending": 10,
+     "medianError": 10,
+     "naiveError": 565,
+     "coverage": 0.78,
+     "medianActual": 35,
+     "reliable": false
+    }
+   ]
+  },
+  "EB4-PH": {
+   "distinct": 0,
+   "cells": [
+    {
+     "gapMonths": 6,
+     "observed": 26,
+     "pending": 2,
+     "medianError": 10,
+     "naiveError": 575.5,
+     "coverage": 0.11,
+     "medianActual": 8.5,
+     "reliable": false
+    },
+    {
+     "gapMonths": 12,
+     "observed": 25,
+     "pending": 1,
+     "medianError": 9.5,
+     "naiveError": 590,
+     "coverage": 0.04,
+     "medianActual": 10,
+     "reliable": false
+    },
+    {
+     "gapMonths": 24,
+     "observed": 17,
+     "pending": 8,
+     "medianError": 20,
+     "naiveError": 575,
+     "coverage": 0.04,
+     "medianActual": 11,
+     "reliable": false
+    },
+    {
+     "gapMonths": 48,
+     "observed": 6,
+     "pending": 10,
+     "medianError": 33,
+     "naiveError": 563.5,
+     "coverage": 0,
+     "medianActual": 36.5,
+     "reliable": false
+    }
+   ]
+  },
+  "EB5-ROW": {
+   "distinct": 0,
+   "cells": [
+    {
+     "gapMonths": 6,
+     "observed": 0,
+     "pending": 0,
+     "medianError": null,
+     "naiveError": null,
+     "coverage": null,
+     "medianActual": null,
+     "reliable": false
+    },
+    {
+     "gapMonths": 12,
+     "observed": 0,
+     "pending": 0,
+     "medianError": null,
+     "naiveError": null,
+     "coverage": null,
+     "medianActual": null,
+     "reliable": false
+    },
+    {
+     "gapMonths": 24,
+     "observed": 0,
+     "pending": 0,
+     "medianError": null,
+     "naiveError": null,
+     "coverage": null,
+     "medianActual": null,
+     "reliable": false
+    },
+    {
+     "gapMonths": 48,
+     "observed": 0,
+     "pending": 0,
+     "medianError": null,
+     "naiveError": null,
+     "coverage": null,
+     "medianActual": null,
+     "reliable": false
+    }
+   ]
+  },
+  "EB5-CN": {
+   "distinct": 0.955,
+   "cells": [
+    {
+     "gapMonths": 6,
+     "observed": 114,
+     "pending": 6,
+     "medianError": 12,
+     "naiveError": 20.9,
+     "coverage": 0.57,
+     "medianActual": 15,
+     "reliable": false
+    },
+    {
+     "gapMonths": 12,
+     "observed": 101,
+     "pending": 19,
+     "medianError": 24,
+     "naiveError": 38.8,
+     "coverage": 0.63,
+     "medianActual": 27,
+     "reliable": false
+    },
+    {
+     "gapMonths": 24,
+     "observed": 75,
+     "pending": 37,
+     "medianError": 40,
+     "naiveError": 79.3,
+     "coverage": 0.75,
+     "medianActual": 34,
+     "reliable": false
+    },
+    {
+     "gapMonths": 48,
+     "observed": 40,
+     "pending": 41,
+     "medianError": 30,
+     "naiveError": 182.5,
+     "coverage": 1,
+     "medianActual": 20.5,
+     "reliable": false
+    }
+   ]
+  },
+  "EB5-IN": {
+   "distinct": 0.459,
+   "cells": [
+    {
+     "gapMonths": 6,
+     "observed": 48,
+     "pending": 0,
+     "medianError": 2.5,
+     "naiveError": 594.5,
+     "coverage": 0.27,
+     "medianActual": 3.5,
+     "reliable": false
+    },
+    {
+     "gapMonths": 12,
+     "observed": 47,
+     "pending": 0,
+     "medianError": 4,
+     "naiveError": 593,
+     "coverage": 0.26,
+     "medianActual": 5,
+     "reliable": false
+    },
+    {
+     "gapMonths": 24,
+     "observed": 33,
+     "pending": 6,
+     "medianError": 18,
+     "naiveError": 588,
+     "coverage": 0.21,
+     "medianActual": 11,
+     "reliable": false
+    },
+    {
+     "gapMonths": 48,
+     "observed": 17,
+     "pending": 1,
+     "medianError": 15,
+     "naiveError": 584,
+     "coverage": 0.24,
+     "medianActual": 16,
+     "reliable": false
+    }
+   ]
+  },
+  "EB5-MX": {
+   "distinct": 0,
+   "cells": [
+    {
+     "gapMonths": 6,
+     "observed": 0,
+     "pending": 0,
+     "medianError": null,
+     "naiveError": null,
+     "coverage": null,
+     "medianActual": null,
+     "reliable": false
+    },
+    {
+     "gapMonths": 12,
+     "observed": 0,
+     "pending": 0,
+     "medianError": null,
+     "naiveError": null,
+     "coverage": null,
+     "medianActual": null,
+     "reliable": false
+    },
+    {
+     "gapMonths": 24,
+     "observed": 0,
+     "pending": 0,
+     "medianError": null,
+     "naiveError": null,
+     "coverage": null,
+     "medianActual": null,
+     "reliable": false
+    },
+    {
+     "gapMonths": 48,
+     "observed": 0,
+     "pending": 0,
+     "medianError": null,
+     "naiveError": null,
+     "coverage": null,
+     "medianActual": null,
+     "reliable": false
+    }
+   ]
+  },
+  "EB5-PH": {
+   "distinct": 0,
+   "cells": [
+    {
+     "gapMonths": 6,
+     "observed": 0,
+     "pending": 0,
+     "medianError": null,
+     "naiveError": null,
+     "coverage": null,
+     "medianActual": null,
+     "reliable": false
+    },
+    {
+     "gapMonths": 12,
+     "observed": 0,
+     "pending": 0,
+     "medianError": null,
+     "naiveError": null,
+     "coverage": null,
+     "medianActual": null,
+     "reliable": false
+    },
+    {
+     "gapMonths": 24,
+     "observed": 0,
+     "pending": 0,
+     "medianError": null,
+     "naiveError": null,
+     "coverage": null,
+     "medianActual": null,
+     "reliable": false
+    },
+    {
+     "gapMonths": 48,
+     "observed": 0,
+     "pending": 0,
+     "medianError": null,
+     "naiveError": null,
+     "coverage": null,
+     "medianActual": null,
+     "reliable": false
+    }
+   ]
+  }
+ }
+}

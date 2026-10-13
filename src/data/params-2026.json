@@ -1,0 +1,30 @@
+{
+  "_lisezmoi": "Tous les paramètres légaux du site vivent ici — jamais en dur dans le code (RECETTE-SITE.md §4). Renommer en params-<année>.json à chaque millésime. Chaque valeur doit être relue sur la source officielle citée avant d'être écrite, et retrieved_at mis à jour ce jour-là.",
+  "year": 2026,
+  "retrieved_at": "AAAA-MM-JJ",
+  "valid_from": "2026-01-01",
+  "valid_to": "2026-12-31",
+  "sources": {
+    "principale": {
+      "url": "https://exemple.gouv.xx/page-officielle",
+      "label": {
+        "fr": "Administration — intitulé exact de la page ou du texte",
+        "en": "Authority — exact title of the page or legal text"
+      }
+    },
+    "loi": {
+      "url": "https://exemple.gouv.xx/texte-de-loi",
+      "label": {
+        "fr": "Loi / code — article précis appliqué par le moteur",
+        "en": "Act / code — the exact article the engine applies"
+      }
+    },
+    "bareme": {
+      "url": "https://exemple.gouv.xx/bareme-annuel",
+      "label": {
+        "fr": "Barème ou circulaire annuelle, millésime 2026",
+        "en": "Annual schedule or circular, 2026 edition"
+      }
+    }
+  }
+}

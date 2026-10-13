@@ -1,0 +1,44 @@
+{
+ "legalCountry": "France",
+ "registerLabel": "SIREN",
+ "vatLabel": "VAT",
+ "jurisdiction": "France",
+ "supervisoryAuthority": "Commission nationale de l'informatique et des libertés (CNIL)",
+ "supervisoryAuthorityUrl": "https://www.cnil.fr",
+ "consentMode": "none",
+ "year": 2026,
+ "founded": "2026",
+ "volumes": "volumes-us-greencard.txt",
+ "volumesNote": "621 071 recherches/mois estimées (56 requêtes mesurées au Keyword Planner le 2026-10-13, bornes basses 196 400) : GO volume, validé par l'éditeur le 2026-10-13.",
+ "folder": "us-greencard",
+ "outDir": "a-publier/Mottalib-10M",
+ "url": "https://us-greencard.example",
+ "locales": ["en", "es"],
+ "names": {"en": "Green Card Waits", "es": "Green Card Waits"},
+ "langTags": {"en": "en-US", "es": "es-US"},
+ "ogLocales": {"en": "en_US", "es": "es_US"},
+ "localeTag": "en-US",
+ "currency": "USD",
+ "flag": "us",
+ "symbol": "GC",
+ "accent": "#1F6F50",
+ "authorRole": {
+  "en": "Publisher of Visa Bulletin data, green card wait forecasts, USCIS processing times and 2026 filing fees",
+  "es": "Editor de datos del Boletín de Visas, pronósticos de espera de la green card, tiempos de USCIS y tarifas de 2026"
+ },
+ "authorDesc": {"en": "(voir src/data/site-config.ts)", "es": "(voir src/data/site-config.ts)"},
+ "email": "contact@us-greencard.example",
+ "indexnow": "6b1f0c8e4d2a47f3a9e5c7b18d3f2a61",
+ "shortName": "GC Waits",
+ "description": "When will your green card come? Visa Bulletin cutoffs since 2001, a forecast range with its past error, USCIS processing times by office and 2026 fees.",
+ "port": 4561,
+ "og": [
+  {"file": "og-en.png", "title": "When will your\ngreen card come?", "subtitle": "Visa Bulletin since 2001 · USCIS times · 2026 fees", "badge": "Public State Department and USCIS data", "brand": "Green Card Waits"},
+  {"file": "og-es.png", "title": "¿Cuándo llega\nsu green card?", "subtitle": "Boletín de Visas desde 2001 · tiempos de USCIS · tarifas 2026", "badge": "Datos públicos del Departamento de Estado y de USCIS", "brand": "Green Card Waits"}
+ ],
+ "lastUpdated": "2026-10-13",
+ "knowsAbout": {
+  "en": ["Visa Bulletin final action dates and dates for filing", "Family-sponsored and employment-based priority dates", "USCIS processing times by field office", "USCIS filing fees (Form G-1055)", "Child Status Protection Act age calculation", "Naturalization early filing and residence rules"],
+  "es": ["Fechas de acción final y fechas de presentación del Boletín de Visas", "Fechas de prioridad familiares y de empleo", "Tiempos de proceso de USCIS por oficina", "Tarifas de USCIS (formulario G-1055)", "Cálculo de edad de la Ley CSPA", "Plazos de la naturalización"]
+ }
+}
