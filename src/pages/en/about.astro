@@ -8,7 +8,7 @@ import { personSchema, organizationSchema, breadcrumbSchema, profilePageSchema, 
 const lang = 'en';
 const upd = displayDate(LAST_UPDATED, LANG_TAGS[lang]);
 ---
-<PageLayout title="About Green Card Waits: Who Reads the Visa Bulletin" description="Who publishes Green Card Waits, why it exists, how its forecasts are graded against 294 Visa Bulletins, how it is funded, and what it will never ask you for." lang={lang} jsonLd={[personSchema(lang), organizationSchema(lang), profilePageSchema({ path: route('about', lang), lang }), breadcrumbSchema([{ name: 'Home', path: route('home', lang) }, { name: 'About', path: route('about', lang) }])]} breadcrumbs={[{ label: 'About' }]}>
+<PageLayout title="Green Card Waits Publisher: Who Reads the Visa Bulletin" description="Who publishes Green Card Waits, why it exists, how its forecasts are graded against 294 Visa Bulletins, how it is funded, and what it will never ask you for." lang={lang} jsonLd={[personSchema(lang), organizationSchema(lang), profilePageSchema({ path: route('about', lang), lang }), breadcrumbSchema([{ name: 'Home', path: route('home', lang) }, { name: 'About', path: route('about', lang) }])]} breadcrumbs={[{ label: 'About' }]}>
   <header class="mb-6"><h1 class="text-3xl font-bold text-navy-900 md:text-4xl">About {SITE_NAMES.en}</h1></header>
   <div class="prose prose-slate max-w-none">
     <div class="not-prose mb-6"><p class="text-lg font-semibold text-navy-900">{AUTHOR_NAME}</p><p class="text-navy-700">{AUTHOR_ROLE[lang]}</p></div>

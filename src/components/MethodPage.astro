@@ -18,7 +18,7 @@ const { lang } = Astro.props;
 const es = lang === 'es';
 const T = (en: string, sp: string) => (es ? sp : en);
 const h = helpers(lang);
-const title = T('Visa Bulletin Forecast Method and Past Error, Case by Case', 'Método del pronóstico del Visa Bulletin y su error, caso a caso');
+const title = T('Visa Bulletin Forecast Method and Past Error, Case by Case', 'Método del pronóstico del Visa Bulletin y su error por caso');
 const description = T('How Green Card Waits reads 294 Visa Bulletins, forecasts a range, grades it month by month since 2012, and where the data on USCIS times and fees comes from.', 'Cómo Green Card Waits lee 294 Visa Bulletins, pronostica un rango, lo califica mes a mes desde 2012 y de dónde salen los datos de tiempos y tarifas de USCIS.');
 const path = route('method', lang);
 const shown: Array<[Exclude<Cat, 'IR'>, Country]> = [['F1', 'ROW'], ['F1', 'MX'], ['F1', 'PH'], ['F2A', 'ROW'], ['F2A', 'MX'], ['F2B', 'ROW'], ['F2B', 'MX'], ['F2B', 'PH'], ['F3', 'ROW'], ['F3', 'MX'], ['F3', 'PH'], ['F4', 'ROW'], ['F4', 'IN'], ['F4', 'MX'], ['F4', 'PH'], ['EB1', 'IN'], ['EB1', 'CN'], ['EB2', 'ROW'], ['EB2', 'IN'], ['EB2', 'CN'], ['EB3', 'ROW'], ['EB3', 'IN'], ['EB3', 'CN'], ['EB3', 'PH'], ['EW', 'ROW'], ['EW', 'IN'], ['EW', 'CN'], ['EB4', 'ROW'], ['EB5', 'IN'], ['EB5', 'CN']];

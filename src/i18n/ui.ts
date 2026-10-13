@@ -12,7 +12,7 @@ const es: typeof en = {
   skipToContent: 'Ir al contenido', mainNav: 'Navegación principal', breadcrumbLabel: 'Ruta de navegación', breadcrumbHome: 'Inicio', menuOpen: 'Abrir el menú',
   faqTitle: 'Preguntas frecuentes', relatedCalculators: 'Siga con', sourcesTitle: 'Fuentes oficiales y datos', writtenBy: 'Publicado por',
   asOf: 'Datos de', lastUpdated: 'revisados el', footerValidated: 'Cada Visa Bulletin desde diciembre de 2001 leído y probado · pronósticos contrastados mes a mes', footerBrowser: 'Los cálculos se hacen en su navegador · nada de lo que escribe se guarda ni se envía · gratis',
-  footerDisclaimer: 'Green Card Waits es un sitio independiente publicado por Radif Partners. No está afiliado a USCIS, al Departamento de Estado ni a ninguna agencia del gobierno. Estimaciones con datos públicos, no es asesoría legal: para su caso, consulte a un abogado de inmigración con licencia o a un representante acreditado por el Departamento de Justicia.', footerPopular: 'Lo más leído', notFound: 'No hay ninguna página en esta dirección.',
+  footerDisclaimer: 'Green Card Waits es un sitio independiente publicado por Radif Partners. No está afiliado a USCIS, al Departamento de Estado ni a ninguna agencia del gobierno. Estimaciones con datos públicos que no sustituyen la asesoría legal: para su caso, consulte a un abogado de inmigración con licencia o a un representante acreditado por el Departamento de Justicia.', footerPopular: 'Lo más leído', notFound: 'No hay ninguna página en esta dirección.',
   readMore: 'Leer más',
 };
 export function t(lang: Locale) { return lang === 'es' ? es : en; }

@@ -105,7 +105,7 @@ export function Head({ label, value, sub }: { label: string; value: string; sub?
 export function Disclaimer({ lang, methodHref }: { lang: L; methodHref?: string }) {
   return (
     <p className="mt-3 text-xs text-navy-600">
-      {tx(lang, 'Estimate from public data, not legal advice. Your case may differ (cross-chargeability, CSPA, waivers). For advice, see a licensed immigration attorney or a DOJ-accredited representative. Not affiliated with USCIS or the Department of State. ', 'Estimación con datos públicos, no es asesoría legal. Su caso puede ser distinto (país de cargo del cónyuge, CSPA, perdones). Para su caso, consulte a un abogado de inmigración con licencia o a un representante acreditado por el Departamento de Justicia. Sin relación con USCIS ni con el Departamento de Estado. ')}
+      {tx(lang, 'Estimate from public data, not legal advice. Your case may differ (cross-chargeability, CSPA, waivers). For advice, see a licensed immigration attorney or a DOJ-accredited representative. Not affiliated with USCIS or the Department of State. ', 'Estimación con datos públicos: no sustituye la asesoría legal. Su caso puede ser distinto (país de cargo del cónyuge, CSPA, perdones). Para su caso, consulte a un abogado de inmigración con licencia o a un representante acreditado por el Departamento de Justicia. Sin relación con USCIS ni con el Departamento de Estado. ')}
       {methodHref && <a className="underline" href={methodHref}>{tx(lang, 'Method and past error', 'Método y error pasado')}</a>}
     </p>
   );
