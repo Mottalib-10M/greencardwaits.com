@@ -345,6 +345,13 @@
         "en": "USCIS, Avoid Scams",
         "es": "USCIS, evite las estafas"
       }
+    },
+    "ar11": {
+      "url": "https://www.uscis.gov/ar-11",
+      "label": {
+        "en": "USCIS, Form AR-11, Alien’s Change of Address Card (report a move within 10 days)",
+        "es": "USCIS, formulario AR-11, cambio de dirección (avisar en 10 días)"
+      }
     }
   },
   "limits": {

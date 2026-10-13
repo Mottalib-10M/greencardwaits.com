@@ -50,7 +50,11 @@ function checkText(id: string, lang: 'en' | 'es', x: PageText, guide: boolean, h
   it(`${id} ${lang} : longueur du texte écrit`, () => {
     const n = words(body);
     if (guide) expect(n, 'guide : corps ≥ 900 mots').toBeGreaterThanOrEqual(900);
-    else expect(n, 'page : corps ≥ 260 mots').toBeGreaterThanOrEqual(hasTool ? 260 : 400);
+    else {
+      expect(n, 'page : corps ≥ 180 mots').toBeGreaterThanOrEqual(hasTool ? 180 : 400);
+      // Texte écrit pour la page (corps + paragraphe citable + FAQ) : au moins 450 mots.
+      expect(n + words(x.resume) + x.faqs.reduce((a, f) => a + words(f.a) + words(f.q), 0), 'texte écrit ≥ 450 mots').toBeGreaterThanOrEqual(450);
+    }
     expect(body).toMatch(/<h2/);
   });
   it(`${id} ${lang} : ni mots interdits ni tiret cadratin`, () => {
