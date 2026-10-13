@@ -1,0 +1,38 @@
+name: Monthly data refresh
+
+# Du 5 au 25 de chaque mois : nouveau Visa Bulletin (adoptions.state.gov), délais USCIS (ImmigrationTimes.org,
+# CC BY 4.0) et édition du barème G-1055. Si le bulletin ou les délais changent, les séries, le rétro-test et les
+# tests sont relancés et le résultat est poussé sur main (le déploiement suit). Si l'édition du G-1055 change, le job
+# échoue : les frais se relisent à la main (CONTRIBUTING-PAGES.md). Les pages mensuelles du bulletin s'ajoutent à la main.
+on:
+  schedule:
+    - cron: '23 14 5-25 * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+      - run: npm ci
+      - name: Édition du G-1055
+        run: node scripts/check-g1055.mjs
+      - name: Visa Bulletin, séries et rétro-test
+        run: node scripts/build-bulletins.ts --refresh && node scripts/build-forecast.ts
+      - name: Délais USCIS
+        run: node scripts/build-ptimes.ts --refresh
+      - name: Tests
+        run: npx vitest run
+      - name: Commit si les données ont changé
+        run: |
+          git config user.name "data-refresh"
+          git config user.email "data-refresh@users.noreply.github.com"
+          git add src/data
+          git diff --cached --quiet || (git commit -m "Données : bulletin et délais du $(date -u +%F)" && git push)

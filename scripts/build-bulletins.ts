@@ -35,10 +35,14 @@ const links = [...new Set([...idx.matchAll(/href="([^"]*visa-bulletin-for-[a-z]+
 const items = links.map((l) => ({ url: l.startsWith('http') ? l : HOST + l, month: monthFromUrl(l) })).sort((a, b) => a.month.localeCompare(b.month));
 const latest = items[items.length - 1]?.month;
 
+// Bulletins déjà lus (archive versionnée) : réutilisés quand le HTML brut n'est pas en cache (GitHub Actions).
+const outFile = join(ROOT, 'src/data/visa-bulletin.json');
+const known = new Map<string, any>(existsSync(outFile) ? JSON.parse(readFileSync(outFile, 'utf8')).bulletins.map((b: any) => [b.month, b]) : []);
 const bulletins: Bulletin[] = [];
 const errors: string[] = [];
 for (const it of items) {
   const f = join(CACHE, it.url.split('/').pop()!);
+  if (!existsSync(f) && known.has(it.month) && it.month !== latest) { bulletins.push(known.get(it.month)); continue; }
   if (!existsSync(f) || (refresh && it.month === latest)) {
     writeFileSync(f, await get(it.url));
     await new Promise((r) => setTimeout(r, 800));
