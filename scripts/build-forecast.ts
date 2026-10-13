@@ -41,7 +41,7 @@ for (const chart of ['FAD', 'DFF'] as const) {
 
 const idx = (ym: string) => months.indexOf(ym);
 const t0 = idx('2012-10'), t1 = idx('2025-10');
-const median = (a: number[]) => { const s = [...a].sort((x, y) => x - y); return s.length ? (s.length % 2 ? s[(s.length - 1) / 2] : (s[s.length / 2 - 1] + s[s.length / 2]) / 2) : NaN; };
+const median = (a: number[]) => { const s = a.filter((x) => !Number.isNaN(x)).sort((x, y) => x - y); return s.length ? (s.length % 2 ? s[(s.length - 1) / 2] : (s[s.length / 2 - 1] + s[s.length / 2]) / 2) : NaN; };
 const r1 = (x: number) => (Number.isFinite(x) ? Math.round(x * 10) / 10 : x);
 
 const backtest: Record<string, { distinct: number; cells: BacktestCell[] }> = {};
@@ -50,6 +50,7 @@ for (const key of Object.keys(series.FAD)) {
   const cells: BacktestCell[] = [];
   for (const g of BACKTEST_GAPS) {
     const errs: number[] = [], nerrs: number[] = [], actuals: number[] = [];
+    const pairs: Array<[number, number | null, number]> = [];
     let observed = 0, pending = 0, inside = 0, judged = 0;
     for (let t = t0; t <= t1; t++) {
       if (s[t] === null || s[t] === CURRENT) continue;
@@ -62,6 +63,7 @@ for (const key of Object.keys(series.FAD)) {
       const nv = naiveAt(s, months, t, pd);
       const a = actualWait(s, months, t, pd);
       const hmax = months.length - 1 - t;
+      pairs.push([nv, a, hmax]);
       const cap = (x: number) => Math.min(x, 600);
       if (a !== null) {
         observed++; actuals.push(a);
@@ -75,8 +77,16 @@ for (const key of Object.keys(series.FAD)) {
         if (f.p80 < hmax) judged++;
       }
     }
-    const cell = { gapMonths: g, observed, pending, medianError: r1(median(errs)), naiveError: r1(median(nerrs)), coverage: judged ? Math.round((inside / judged) * 100) / 100 : NaN, medianActual: r1(median(actuals)), reliable: false };
+    const E = median(nerrs);
+    let nIn = 0, nJudged = 0;
+    for (const [nv, a, hmax] of pairs) {
+      if (!Number.isFinite(nv) || !Number.isFinite(E)) { if (a !== null) nJudged++; continue; }
+      if (a !== null) { nJudged++; if (nv - E <= a && a <= nv + E) nIn++; } else if (nv + E < hmax) nJudged++;
+    }
+    const naiveCoverage = nJudged ? Math.round((nIn / nJudged) * 100) / 100 : NaN;
+    const cell = { gapMonths: g, observed, pending, medianError: r1(median(errs)), naiveError: r1(E), coverage: judged ? Math.round((inside / judged) * 100) / 100 : NaN, medianActual: r1(median(actuals)), reliable: false, naiveCoverage, naiveReliable: false };
     cell.reliable = isReliable(cell);
+    cell.naiveReliable = !cell.reliable && isReliable({ ...cell, medianError: cell.naiveError, coverage: naiveCoverage });
     cells.push(cell);
   }
   // Règle des pages catégorie × pays : le pays a sa propre date dans au moins 25 % des bulletins depuis octobre 2015.

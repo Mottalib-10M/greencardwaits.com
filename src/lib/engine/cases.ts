@@ -7,7 +7,7 @@
 import SERIES from '../../data/series.json';
 import BACKTEST from '../../data/backtest.json';
 import PARAMS from '../../data/params-2026.json';
-import { CURRENT, resolve, forecastAt, bucketFor, MONTH_DAYS, isoToDays, daysToIso, addMonths, type Val, type BacktestCell, type Forecast } from './forecast';
+import { CURRENT, resolve, forecastAt, naiveAt, bucketFor, MONTH_DAYS, isoToDays, daysToIso, addMonths, type Val, type BacktestCell, type Forecast } from './forecast';
 
 export type Cat = 'IR' | 'F1' | 'F2A' | 'F2B' | 'F3' | 'F4' | 'EB1' | 'EB2' | 'EB3' | 'EW' | 'EB4' | 'EB5';
 export type Country = 'ROW' | 'CN' | 'IN' | 'MX' | 'PH';
@@ -115,6 +115,9 @@ export interface CaseResult {
   /** Ligne de rétro-test utilisée et verdict. */
   backtest?: BacktestCell;
   reliable: boolean;
+  /** Méthode retenue : temps de passage (« model »), ou rythme des 12 derniers mois avec sa bande d'erreur (« pace »)
+   *  quand seul celui-ci a passé le rétro-test pour cette case et cette distance. */
+  method?: 'model' | 'pace';
 }
 
 /** Le calcul principal : où en est cette date de priorité, et quand deviendra-t-elle courante ? */
@@ -133,5 +136,12 @@ export function evaluate(cat: Cat, country: Country, priorityDate: string, i = L
   const g = bucketFor(behindMonths);
   const bt = g === null ? undefined : backtestCell(cat, country, g);
   const at = (m: number) => (Number.isFinite(m) ? addMonths(MONTHS[i], m) : null);
-  return { cat, country, status: 'waiting', canFile, filingChart: chart, fad, dff, behindMonths, forecast: f, range: [at(f.p20), at(f.p50), at(f.p80)], backtest: bt, reliable: !!bt?.reliable && Number.isFinite(f.p50) };
+  if (bt && !bt.reliable && bt.naiveReliable) {
+    const nv = naiveAt(series(cat, country, 'FAD'), MONTHS, i, pd);
+    if (Number.isFinite(nv)) {
+      const e = bt.naiveError;
+      return { cat, country, status: 'waiting', canFile, filingChart: chart, fad, dff, behindMonths, forecast: f, range: [at(Math.max(1, nv - e)), at(nv), at(nv + e)], backtest: bt, reliable: true, method: 'pace' };
+    }
+  }
+  return { cat, country, status: 'waiting', canFile, filingChart: chart, fad, dff, behindMonths, forecast: f, range: [at(f.p20), at(f.p50), at(f.p80)], backtest: bt, reliable: !!bt?.reliable && Number.isFinite(f.p50), method: 'model' };
 }

@@ -62,7 +62,7 @@ if (data.cat) {
   const cells = backtestCells(c, k);
   if (cells.length) {
     html += `<h2>${T('How our forecast did for this case', 'Cómo le fue a nuestro pronóstico en este caso')}</h2>`;
-    html += h.table([T('Distance behind the cutoff', 'Distancia a la fecha límite'), T('Median error, our model', 'Error mediano, nuestro modelo'), T('Median error, “last 12 months” rule', 'Error mediano, regla de 12 meses'), T('Range held the real date', 'El rango acertó'), T('Start months tested', 'Meses probados'), T('Published?', '¿Se publica?')], cells.map((x) => [T(`${x.gapMonths} months`, `${x.gapMonths} meses`), Number.isFinite(x.medianError) ? T(`${h.num(x.medianError)} months`, `${h.num(x.medianError)} meses`) : '—', Number.isFinite(x.naiveError) ? T(`${h.num(x.naiveError)} months`, `${h.num(x.naiveError)} meses`) : '—', Number.isFinite(x.coverage) ? h.pct(x.coverage) : '—', h.num(x.observed + x.pending), x.reliable ? T('Yes', 'Sí') : T('No reliable forecast', 'Sin pronóstico fiable')]), T(`Back-test from ${h.month(BACKTEST_FROM)} to ${h.month(BACKTEST_TO)}, each month using only the bulletins known that month.`, `Prueba retrospectiva de ${h.month(BACKTEST_FROM)} a ${h.month(BACKTEST_TO)}, cada mes solo con los boletines conocidos entonces.`));
+    html += h.table([T('Distance behind the cutoff', 'Distancia a la fecha límite'), T('Median error, our model', 'Error mediano, nuestro modelo'), T('Median error, “last 12 months” rule', 'Error mediano, regla de 12 meses'), T('Range held the real date', 'El rango acertó'), T('Start months tested', 'Meses probados'), T('Published?', '¿Se publica?')], cells.map((x) => [T(`${x.gapMonths} months`, `${x.gapMonths} meses`), Number.isFinite(x.medianError) ? T(`${h.num(x.medianError)} months`, `${h.num(x.medianError)} meses`) : '—', Number.isFinite(x.naiveError) ? T(`${h.num(x.naiveError)} months`, `${h.num(x.naiveError)} meses`) : '—', Number.isFinite(x.coverage) ? h.pct(x.coverage) : '—', h.num(x.observed + x.pending), x.reliable ? T('Yes', 'Sí') : x.naiveReliable ? T('12-month pace only', 'Solo ritmo de 12 meses') : T('No reliable forecast', 'Sin pronóstico fiable')]), T(`Back-test from ${h.month(BACKTEST_FROM)} to ${h.month(BACKTEST_TO)}, each month using only the bulletins known that month.`, `Prueba retrospectiva de ${h.month(BACKTEST_FROM)} a ${h.month(BACKTEST_TO)}, cada mes solo con los boletines conocidos entonces.`));
   }
 }
 
@@ -78,9 +78,11 @@ if (only === 'predictions') {
     const raw = cellAt(c, k, 'FAD');
     if (raw === 'C' || raw === 'U') return [`${CAT_SHORT[c]} · ${COUNTRY_LABEL[lang][k]}`, cell(raw), '—', '—'];
     const pd = addMonths(raw.slice(0, 7), 12) + raw.slice(7);
+    // Une date de priorité ne peut pas être postérieure au mois du bulletin.
+    if (pd > `${LATEST}-01`) return [`${CAT_SHORT[c]} · ${COUNTRY_LABEL[lang][k]}`, cell(raw), T('cutoff within a year of today', 'fecha a menos de un año de hoy'), '—'];
     const r = evaluate(c, k, pd);
     const est = r.reliable && r.range ? `${r.range[0] ? h.month(r.range[0]) : '—'} – ${r.range[2] ? h.month(r.range[2]) : T('later', 'después')}` : T('No reliable forecast', 'Sin pronóstico fiable');
-    return [`${CAT_SHORT[c]} · ${COUNTRY_LABEL[lang][k]}`, cell(raw), est, r.backtest ? T(`${h.num(r.backtest.medianError)} months`, `${h.num(r.backtest.medianError)} meses`) : '—'];
+    return [`${CAT_SHORT[c]} · ${COUNTRY_LABEL[lang][k]}`, cell(raw), est, r.backtest ? T(`${h.num(r.method === 'pace' ? r.backtest.naiveError : r.backtest.medianError)} months${r.method === 'pace' ? ' (12-month pace)' : ''}`, `${h.num(r.method === 'pace' ? r.backtest.naiveError : r.backtest.medianError)} meses${r.method === 'pace' ? ' (ritmo de 12 meses)' : ''}`) : '—'];
   });
   html += `<h2>${T('A year behind the cutoff: when does it turn current?', 'Un año detrás de la fecha límite: ¿cuándo se pone al día?')}</h2>` + h.table([T('Case', 'Caso'), T(`Cutoff, ${h.month(LATEST)}`, `Fecha límite, ${h.month(LATEST)}`), T('Likely current (20% to 80%)', 'Probable (20 % a 80 %)'), T('Past median error', 'Error mediano pasado')], rows, T('Priority date set 12 months after this month’s Final Action Date. Ranges are shown only where the back-test passed.', 'Fecha de prioridad 12 meses posterior a la fecha de acción final del mes. Solo mostramos rangos donde la prueba retrospectiva pasó.'));
 }

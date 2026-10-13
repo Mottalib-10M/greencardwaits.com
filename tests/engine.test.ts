@@ -118,6 +118,13 @@ describe('case du bulletin d’octobre 2026', () => {
     expect(r.behindMonths).toBeGreaterThan(72);
     expect(r.reliable).toBe(false);
   });
+  it('F2B Mexique, deux ans de retard : le modèle échoue au rétro-test, le rythme des 12 mois passe et sert de prévision', () => {
+    const r = evaluate('F2B', 'MX', '2012-05-15');
+    expect(r.backtest?.reliable).toBe(false);
+    expect(r.backtest?.naiveReliable).toBe(true);
+    expect(r.method).toBe('pace');
+    expect(r.reliable).toBe(true);
+  });
   it('immediate relative : aucune file d’attente', () => expect(evaluate('IR', 'MX', '2026-01-01').status).toBe('noqueue'));
   it('avance du mois : nombre ou null', () => {
     const m = moveDays('F2B', 'MX');

@@ -144,6 +144,9 @@ export interface BacktestCell {
   /** Délai réel médian, en mois. */
   medianActual: number;
   reliable: boolean;
+  /** Bande du modèle naïf : délai au rythme des 12 derniers mois, plus ou moins son erreur médiane (mesurée sur la même période). */
+  naiveCoverage: number;
+  naiveReliable: boolean;
 }
 
 export const BACKTEST_GAPS = [6, 12, 24, 48] as const;
