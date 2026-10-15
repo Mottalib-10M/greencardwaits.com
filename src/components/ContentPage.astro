@@ -16,7 +16,7 @@ import { pageById } from '../lib/guides';
 import { helpers } from '../lib/helpers';
 import { P } from '../lib/params';
 import { articleSchema, faqSchema, breadcrumbSchema, webPageSchema, webApplicationSchema } from '../lib/seo';
-import { AUTHOR_NAME } from '../data/site-config';
+import { AUTHOR_NAME, YEAR } from '../data/site-config';
 import type { PageDef } from '../lib/guide-types';
 interface Props { page: PageDef; lang: Locale }
 const { page, lang } = Astro.props;
@@ -51,6 +51,8 @@ const mh = (k: string) => (miniTarget[k] && hasRoute(miniTarget[k], lang) ? rout
       </>
     ) : (
       <>
+        {/* Année des règles visible près du simulateur (RECETTE §8.4) : la date du haut, qui la portait, n'y est plus. */}
+        {page.mini && !/20\d\d/.test(x.h1 + x.intro) && <p class="mb-2 inline-block rounded-full bg-navy-50 px-3 py-0.5 text-xs font-medium text-navy-600">{lang === 'es' ? `Reglas de ${YEAR}` : `${YEAR} rules`}</p>}
         {page.mini && <MiniSim client:load kind={page.mini} lang={lang} href={mh(page.mini)} lead />}
         <p class="mt-6 text-navy-800">{x.resume}</p>
       </>
