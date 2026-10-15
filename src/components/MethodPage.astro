@@ -27,7 +27,7 @@ const table = h.table([T('Case', 'Caso'), ...[6, 12, 24, 48].map((g) => T(`${g} 
 const sources: SourceKey[] = ['vbIndex', 'vbMirror', 'aosCharts', 'g1055', 'g1055pdf', 'dosFees', 'uscisTimes', 'itData', 'uscisReport', 'cspaPolicy', 'n400Residence', 'n400Presence'];
 const jsonLd = [articleSchema({ title, description, path, lang }), webPageSchema({ name: title, description, path, lang }), breadcrumbSchema([{ name: T('Home', 'Inicio'), path: route('home', lang) }, { name: T('Method', 'Método'), path }])];
 ---
-<PageLayout title={title} description={description} lang={lang} jsonLd={jsonLd} sources={sources.map((k) => ({ name: P.sources[k].label[lang], url: P.sources[k].url }))} breadcrumbs={[{ label: T('Method and past error', 'Método y error pasado') }]}>
+<PageLayout title={title} description={description} lang={lang} jsonLd={jsonLd} sources={sources.map((k) => ({ name: P.sources[k].label[lang], url: P.sources[k].url }))} breadcrumbs={[{ label: T('Method and past error', 'Método y error pasado') }]} dateEnHaut>
   <article class="prose prose-slate max-w-none">
     <h1>{T('Method and past error', 'Método y error pasado')}</h1>
     {es ? (

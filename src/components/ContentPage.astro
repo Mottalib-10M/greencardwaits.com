@@ -37,7 +37,7 @@ const miniHref = page.mini ? (hasRoute('priority-date-calculator', lang) ? route
 const miniTarget: Record<string, string> = { cspaQuick: 'cspa-age-out-calculator', n400Days: 'n-400-early-filing-calculator', aosVsConsular: 'uscis-fee-calculator', fiscalYear: 'visa-bulletin' };
 const mh = (k: string) => (miniTarget[k] && hasRoute(miniTarget[k], lang) ? route(miniTarget[k], lang) : miniHref);
 ---
-<PageLayout title={x.title} description={x.description} lang={lang} jsonLd={jsonLd} faqs={x.faqs} related={related} sources={sources} breadcrumbs={crumbs}>
+<PageLayout title={x.title} description={x.description} lang={lang} jsonLd={jsonLd} faqs={x.faqs} related={related} sources={sources} breadcrumbs={crumbs} dateEnHaut={!page.tool && !page.mini}>
   <article>
     <header class="mb-5">
       <h1 class="text-3xl font-bold text-navy-900 md:text-4xl">{x.h1}</h1>
