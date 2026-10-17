@@ -1,7 +1,7 @@
 ---
 import PageLayout from '../../layouts/PageLayout.astro';
 import LegalIdentity from '../../components/LegalIdentity.astro';
-import { AUTHOR_NAME, AUTHOR_ROLE, CONTACT_EMAIL, LAST_UPDATED, SITE_URL, SITE_NAMES, LEGAL, LANG_TAGS } from '../../data/site-config';
+import { AUTHOR_NAME, AUTHOR_ROLE, CLARITY_ID, CONTACT_EMAIL, GA4_ID, LANG_TAGS, LAST_UPDATED, LEGAL, SITE_NAMES, SITE_URL } from '../../data/site-config';
 import { route } from '../../i18n/routes';
 import { displayDate } from '../../lib/format';
 import { personSchema, organizationSchema, breadcrumbSchema, profilePageSchema, contactPageSchema } from '../../lib/seo';
@@ -18,6 +18,10 @@ const upd = displayDate(LAST_UPDATED, LANG_TAGS[lang]);
     <LegalIdentity mode="hosting" lang={lang} />
     <h2>No es asesoría legal ni un sitio del gobierno</h2>
     <p>{SITE_URL} publica información general y cálculos con datos públicos: fechas del Visa Bulletin, tiempos de USCIS y tarifas. No está afiliado a USCIS, al Departamento de Estado ni a ninguna agencia del gobierno, y no presta asesoría ni servicios legales. Para su caso, consulte a un abogado de inmigración con licencia o a un representante acreditado por el Departamento de Justicia.</p>
+    {/* gen-legal-pages:terms */}
+    <h2>Datos personales y cookies</h2>
+    {GA4_ID ? (<p>Lo que introduce en las calculadoras no sale de su navegador. El sitio instala cookies de medición de audiencia de Google Analytics (<code>_ga</code>, <code>_ga_{GA4_ID.replace('G-', '')}</code>, 13 meses como máximo), sin publicidad{CLARITY_ID && '; la estabilidad de las páginas se mide con Microsoft Clarity, sin cookies'}. Detalles, base jurídica y cómo oponerse: <a href={route('privacy', lang)}>política de privacidad</a> y página de <a href={route('cookies', lang)}>cookies</a>.</p>) : (<p>Lo que introduce en las calculadoras no sale de su navegador y el sitio no instala cookies{CLARITY_ID && '; la estabilidad de las páginas se mide de forma anónima con Microsoft Clarity, sin cookies'}. Véase la <a href={route('privacy', lang)}>política de privacidad</a> y la página de <a href={route('cookies', lang)}>cookies</a>.</p>)}
+    {/* /gen-legal-pages:terms */}
     <h2>Datos y licencias</h2>
     <p>El Visa Bulletin y los formularios de USCIS son obras del gobierno federal de EE. UU., de dominio público. Datos de tiempos: ImmigrationTimes.org, CC BY 4.0, a partir de USCIS, seleccionados y reformateados. No usamos sellos ni logotipos oficiales. Métodos: <a href={route('method', lang)}>método y error pasado</a>. Última actualización: {upd}.</p>
   </div>
