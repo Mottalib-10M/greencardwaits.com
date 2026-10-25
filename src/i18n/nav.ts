@@ -19,7 +19,8 @@ export function navCategories(lang: Locale): NavCategory[] {
   return MENU.map((g) => ({ label: GROUP_LABEL[lang][g], links: inGroup(g, lang, 14) })).filter((c) => c.links.length);
 }
 export const groupLabel = (g: Group, lang: Locale) => GROUP_LABEL[lang][g];
-export const navDirect = (lang: Locale): NavLink[] => [link('method', lang)];
+// Methode : liee en bas de page, hors du menu du haut pour qu'il tienne sur une ligne.
+export const navDirect = (_lang: Locale): NavLink[] => [];
 export const footerColumns = (lang: Locale): NavCategory[] => [
   ...(['bulletin', 'times', 'fees', 'tools', 'guides'] as Group[]).map((g) => ({ label: GROUP_LABEL[lang][g], links: inGroup(g, lang, 12) })).filter((c) => c.links.length),
   { label: lang === 'es' ? 'Este sitio' : 'This site', links: ['home', 'method', 'about', 'contact', 'editorial', 'widget', 'terms', 'privacy', 'cookies'].map((i) => link(i, lang)) },
