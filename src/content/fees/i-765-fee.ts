@@ -2,7 +2,7 @@ import { definePage } from '../../lib/guide-types';
 import P from '../../data/params-2026.json';
 import { formatMoney } from '../../lib/format';
 
-// Tarifs I-765 du G-1055 (édition 10/07/26) et note de params-2026.json sur l'I-485 pendant.
+// Tarifs I-765 du G-1055 (édition 10/26/26) et note de params-2026.json sur l'I-485 pendant.
 const F = P.fees;
 const en = (n: number) => formatMoney(n, 0, 'en');
 const discount = F.i765.paper - F.i765.withPendingI485Since2024;

@@ -2,7 +2,7 @@ import { definePage } from '../../lib/guide-types';
 import P from '../../data/params-2026.json';
 import { formatMoney } from '../../lib/format';
 
-// Tarifs N-400 du G-1055 (édition 10/07/26) et règles de résidence lus dans params-2026.json, jamais tapés.
+// Tarifs N-400 du G-1055 (édition 10/26/26) et règles de résidence lus dans params-2026.json, jamais tapés.
 const F = P.fees;
 const N = P.naturalization;
 const en = (n: number) => formatMoney(n, 0, 'en');
@@ -21,7 +21,7 @@ export default definePage({
     path: "fees/n-400",
     nav: 'N-400 fee', card: 'The citizenship application fee on paper, online and at the reduced rate for lower household incomes.',
     title: 'N-400 Fee 2026: Citizenship Application Fee Paper or Online',
-    description: 'The N-400 fee in 2026 under the G-1055 of 10/07/26: paper, online and the reduced citizenship application fee for households at or under 400% of poverty.',
+    description: 'The N-400 fee in 2026 under the G-1055 of 10/26/26: paper, online and the reduced citizenship application fee for households at or under 400% of poverty.',
     h1: 'The N-400 fee: three prices for the same application',
     intro: 'Tell the calculator how you will file and whether your household income qualifies for the reduced rate to see your citizenship fee.',
     resume: `The citizenship application fee for Form N-400 is ${en(F.n400.paper)} on paper and ${en(F.n400.online)} when filed online, under the USCIS fee schedule G-1055 dated ${P.g1055_edition}. A reduced fee of ${en(F.n400.reduced)}, half the paper price, applies when household income is at or below 400% of the federal poverty guidelines, and it can only be requested on a paper filing. That makes the online discount and the income discount mutually exclusive: an applicant who qualifies for the reduced rate saves ${en(half)} by mailing the form, while one who does not saves ${en(onlineSave)} by filing online. The current schedule has no separate biometrics charge on top of the N-400. Each spouse files and pays separately, so a married couple naturalizing together pays ${en(couple)} on paper at the standard rate. The fee is the same for the five-year and the three-year spouse-of-citizen routes.`,

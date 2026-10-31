@@ -3,7 +3,7 @@ import P from '../../data/params-2026.json';
 import { formatMoney } from '../../lib/format';
 import { feeTotal, DEFAULT_FEES, type Path } from '../../lib/engine/fees';
 
-// Tous les montants : G-1055 édition 10/07/26 et frais du Département d'État (params-2026.json), jamais tapés.
+// Tous les montants : G-1055 édition 10/26/26 et frais du Département d'État (params-2026.json), jamais tapés.
 const F = P.fees;
 const en = (n: number) => formatMoney(n, 0, 'en');
 const es = (n: number) => formatMoney(n, 0, 'es');
@@ -24,9 +24,9 @@ export default definePage({
   sources: ["g1055", "g1055pdf", "feeCalculator", "dosFees", "immigrantFee"],
   en: {
     path: "fees",
-    nav: 'USCIS fees 2026', card: 'Every green card and citizenship fee in the G-1055 of 10/07/26, paper and online, added up by path.',
+    nav: 'USCIS fees 2026', card: 'Every green card and citizenship fee in the G-1055 of 10/26/26, paper and online, added up by path.',
     title: 'USCIS Fees 2026: Green Card and Citizenship Fee Schedule',
-    description: 'USCIS fees from the G-1055 edition of 10/07/26: I-130, I-485, I-765, I-131, I-140, N-400 and State Department visa fees, totaled for each green card path.',
+    description: 'USCIS fees from the G-1055 edition of 10/26/26: I-130, I-485, I-765, I-131, I-140, N-400 and State Department visa fees, totaled for each green card path.',
     h1: 'USCIS fees in 2026, form by form and path by path',
     intro: 'Pick your path and options to add up the government fees you will actually pay, with each line traced to Form G-1055.',
     resume: `USCIS fees for green card and citizenship forms come from one document, Form G-1055, whose current edition is dated ${P.g1055_edition}. A U.S. citizen sponsoring a spouse who lives in the United States pays ${en(mar)} on paper for the I-130, the I-485, the work permit and the travel document, or ${en(marOn)} where online filing is allowed. Leaving out the work permit and travel document brings the same case to ${en(marBare)}. The same family case processed at a consulate abroad costs ${en(cons)}, because the State Department charges ${en(F.dosImmigrantFamily.amount)} for the immigrant visa, ${en(F.dosAffidavitReview.amount)} to review the affidavit of support and USCIS adds a ${en(F.immigrantFee.amount)} Immigrant Fee for the card. Naturalization on Form N-400 is ${en(F.n400.paper)} on paper, ${en(F.n400.online)} online, or ${en(F.n400.reduced)} for households at or below 400% of the federal poverty line. The medical exam, translations and lawyers are never part of these totals.`,

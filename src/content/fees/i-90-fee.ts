@@ -2,7 +2,7 @@ import { definePage } from '../../lib/guide-types';
 import P from '../../data/params-2026.json';
 import { formatMoney } from '../../lib/format';
 
-// Tarifs I-90 et N-400 du G-1055 (édition 10/07/26), lus dans params-2026.json.
+// Tarifs I-90 et N-400 du G-1055 (édition 10/26/26), lus dans params-2026.json.
 const F = P.fees;
 const en = (n: number) => formatMoney(n, 0, 'en');
 const save = F.i90.paper - F.i90.online;

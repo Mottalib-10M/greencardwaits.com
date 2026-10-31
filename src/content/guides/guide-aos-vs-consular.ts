@@ -5,7 +5,7 @@ import { filingChart, LATEST } from '../../lib/engine/cases';
 import { formatMoney } from '../../lib/format';
 import { monthName } from '../../lib/text';
 
-// Frais totalisés par le moteur (G-1055 du 10/07/26 et frais du Département d'État, params-2026.json) ; jamais tapés.
+// Frais totalisés par le moteur (G-1055 du 10/26/26 et frais du Département d'État, params-2026.json) ; jamais tapés.
 const T = (x: Partial<FeeInput>) => feeTotal({ ...DEFAULT_FEES, ...x });
 // Une personne, puis une famille de trois : deux adultes et un enfant de moins de 14 ans.
 const famAos1 = T({ path: 'marriage' });

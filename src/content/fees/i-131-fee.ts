@@ -2,7 +2,7 @@ import { definePage } from '../../lib/guide-types';
 import P from '../../data/params-2026.json';
 import { formatMoney } from '../../lib/format';
 
-// Tarifs I-131 du G-1055 (édition 10/07/26), lus dans params-2026.json.
+// Tarifs I-131 du G-1055 (édition 10/26/26), lus dans params-2026.json.
 const F = P.fees;
 const en = (n: number) => formatMoney(n, 0, 'en');
 const both = F.i131.advanceParolePaper + F.i765.withPendingI485Since2024;

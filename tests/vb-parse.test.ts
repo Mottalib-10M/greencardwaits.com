@@ -105,10 +105,12 @@ describe('normalisation', () => {
 });
 
 describe('archive complète', () => {
-  it('294 bulletins de décembre 2001 à octobre 2026, aucune case manquante', () => {
-    expect(VB.count).toBe(294);
+  // Au moins 295 bulletins (décembre 2001 → novembre 2026, relu le 2026-10-31) ; le relevé mensuel en ajoute un chaque mois.
+  it('archive de décembre 2001 au dernier bulletin, aucune case manquante', () => {
+    expect(VB.count).toBeGreaterThanOrEqual(295);
+    expect(VB.count).toBe(VB.bulletins.length);
     expect(VB.first).toBe('2001-12');
-    expect(VB.latest).toBe('2026-10');
+    expect(VB.latest >= '2026-11').toBe(true);
     for (const b of VB.bulletins as any[]) expect(integrity(b)).toEqual([]);
   });
 });

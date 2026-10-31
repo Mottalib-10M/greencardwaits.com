@@ -2,7 +2,7 @@ import { definePage } from '../../lib/guide-types';
 import P from '../../data/params-2026.json';
 import { formatMoney } from '../../lib/format';
 
-// Tarifs I-130 du G-1055 (édition 10/07/26), lus dans params-2026.json.
+// Tarifs I-130 du G-1055 (édition 10/26/26), lus dans params-2026.json.
 const F = P.fees;
 const en = (n: number) => formatMoney(n, 0, 'en');
 const save = F.i130.paper - F.i130.online;
@@ -18,7 +18,7 @@ export default definePage({
     path: "fees/i-130",
     nav: 'I-130 fee', card: 'The petition for a relative on paper or online, and how many petitions a family really needs.',
     title: 'I-130 Fee 2026: Petition for Alien Relative Paper or Online',
-    description: 'The I-130 fee in 2026 is set by the G-1055 of 10/07/26, paper or online. When one petition covers a family, when each child needs one, and what comes next.',
+    description: 'The I-130 fee in 2026 is set by the G-1055 of 10/26/26, paper or online. When one petition covers a family, when each child needs one, and what comes next.',
     h1: 'The I-130 fee and how many petitions to pay for',
     intro: 'Pick the family path to see the I-130 next to every fee that follows it, at a consulate or inside the United States.',
     resume: `Form I-130, the Petition for Alien Relative, costs ${en(F.i130.paper)} on paper and ${en(F.i130.online)} when filed online, under the USCIS fee schedule G-1055 dated ${P.g1055_edition}. It is the first fee in almost every family green card case and the one that fixes the priority date: the day USCIS receives the petition becomes the place in line for the preference categories F1 to F4. The fee is paid by the petitioner, the U.S. citizen or permanent resident, once per beneficiary. In the preference categories, the beneficiary’s spouse and unmarried children under 21 can follow on the same petition, so a sibling with a family of four needs one I-130. In immediate relative cases each person needs a separate petition, so a citizen bringing three stepchildren pays ${en(threeKids)} on paper. The I-130 does not give a green card on its own: an I-485 or a consular visa still follows.`,

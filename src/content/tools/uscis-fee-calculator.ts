@@ -3,7 +3,7 @@ import P from '../../data/params-2026.json';
 import { feeTotal, DEFAULT_FEES } from '../../lib/engine/fees';
 import { formatMoney } from '../../lib/format';
 
-// Montants : G-1055 édition 10/07/26 et frais du Département d'État (params-2026.json), jamais tapés.
+// Montants : G-1055 édition 10/26/26 et frais du Département d'État (params-2026.json), jamais tapés.
 const F = P.fees;
 const en = (n: number) => formatMoney(n, 0, 'en');
 const es = (n: number) => formatMoney(n, 0, 'es');

@@ -4,7 +4,7 @@
  */
 import { describe, it, expect } from 'vitest';
 import { forecastAt, kmQuantiles, passages, actualWait, bucketFor, isReliable, CURRENT, isoToDays, monthStart, addMonths, type Val } from '../src/lib/engine/forecast';
-import { evaluate, cellAt, filingChart, moveDays, distinctShare, backtestCells, LATEST } from '../src/lib/engine/cases';
+import { evaluate, cellAt, filingChart, moveDays, distinctShare, backtestCells, LATEST, MONTHS } from '../src/lib/engine/cases';
 import { feeTotal, DEFAULT_FEES } from '../src/lib/engine/fees';
 import { cspa, n400, checkTime, ageOn } from '../src/lib/engine/rules';
 import BT from '../src/data/backtest.json';
@@ -92,28 +92,36 @@ describe('rétro-test publié', () => {
   it('chaque case porte ses quatre lignes', () => expect(backtestCells('F4', 'PH')).toHaveLength(4));
 });
 
+// Les valeurs d'un mois donné se lisent à son rang dans l'archive, pas au dernier bulletin : le relevé mensuel
+// automatique (data.yml) ajoute un bulletin chaque mois sans casser ces tests.
+const OCT26 = MONTHS.indexOf('2026-10');
+const NOV26 = MONTHS.indexOf('2026-11');
+
 describe('case du bulletin d’octobre 2026', () => {
-  it('dernier bulletin', () => expect(LATEST).toBe('2026-10'));
+  it('dernier bulletin au moins novembre 2026', () => expect(LATEST >= '2026-11').toBe(true));
   it('valeurs du mois', () => {
-    expect(cellAt('EB2', 'IN', 'FAD')).toBe('2013-11-01');
-    expect(cellAt('EB2', 'IN', 'DFF')).toBe('2015-01-15');
-    expect(cellAt('F2A', 'ROW', 'DFF')).toBe('C');
-    expect(cellAt('EB1', 'ROW', 'FAD')).toBe('C');
+    expect(cellAt('EB2', 'IN', 'FAD', OCT26)).toBe('2013-11-01');
+    expect(cellAt('EB2', 'IN', 'DFF', OCT26)).toBe('2015-01-15');
+    expect(cellAt('F2A', 'ROW', 'DFF', OCT26)).toBe('C');
+    expect(cellAt('EB1', 'ROW', 'FAD', OCT26)).toBe('C');
   });
   it('USCIS impose les Dates for Filing en octobre 2026, famille et emploi', () => {
-    expect(filingChart('F2B')).toBe('DFF');
-    expect(filingChart('EB3')).toBe('DFF');
+    expect((P as any).aosHistory['2026-10']).toEqual({ family: 'DFF', employment: 'DFF' });
   });
-  it('EB-2 Inde, priorité 2013 : courante', () => expect(evaluate('EB2', 'IN', '2013-06-01').status).toBe('current'));
+  it('le tableau du calculateur est celui que USCIS a désigné pour le dernier bulletin lu', () => {
+    expect(filingChart('F2B')).toBe((P as any).aosChart.family);
+    expect(filingChart('EB3')).toBe((P as any).aosChart.employment);
+  });
+  it('EB-2 Inde, priorité 2013 : courante', () => expect(evaluate('EB2', 'IN', '2013-06-01', OCT26).status).toBe('current'));
   it('EB-2 Inde, priorité juin 2014 : en attente, mais I-485 déposable (Dates for Filing 15 janvier 2015)', () => {
-    const r = evaluate('EB2', 'IN', '2014-06-01');
+    const r = evaluate('EB2', 'IN', '2014-06-01', OCT26);
     expect(r.status).toBe('waiting');
     expect(r.canFile).toBe(true);
     expect(r.behindMonths).toBeGreaterThan(6);
     expect(r.range).toHaveLength(3);
   });
   it('EB-2 Inde, priorité 2020 : ni courante ni déposable', () => {
-    const r = evaluate('EB2', 'IN', '2020-03-01');
+    const r = evaluate('EB2', 'IN', '2020-03-01', OCT26);
     expect(r.canFile).toBe(false);
     expect(r.behindMonths).toBeGreaterThan(72);
     expect(r.reliable).toBe(false);
@@ -132,8 +140,33 @@ describe('case du bulletin d’octobre 2026', () => {
   });
 });
 
-describe('frais G-1055 (édition 10/07/26) et Département d’État', () => {
-  it('édition lue', () => expect(P.g1055_edition).toBe('10/07/26'));
+// Visa Bulletin de novembre 2026, lu sur adoptions.state.gov (Département d'État) le 2026-10-31 :
+// F1 ROW 22JAN21, F2B ROW 22AUG20 (Dates for Filing 01SEP20), F3 ROW 22OCT15, F4 ROW 22OCT12, F2A ROW 22OCT26.
+// USCIS (filing charts, lu le 2026-10-31) : Dates for Filing en novembre 2026, famille et emploi.
+describe('bulletin de novembre 2026', () => {
+  it('dates du mois', () => {
+    expect(cellAt('F1', 'ROW', 'FAD', NOV26)).toBe('2021-01-22');
+    expect(cellAt('F2B', 'ROW', 'FAD', NOV26)).toBe('2020-08-22');
+    expect(cellAt('F2B', 'ROW', 'DFF', NOV26)).toBe('2020-09-01');
+    expect(cellAt('F3', 'ROW', 'FAD', NOV26)).toBe('2015-10-22');
+    expect(cellAt('F4', 'ROW', 'FAD', NOV26)).toBe('2012-10-22');
+    expect(cellAt('F2A', 'ROW', 'FAD', NOV26)).toBe('2026-10-22');
+  });
+  it('USCIS impose les Dates for Filing en novembre 2026', () => {
+    expect((P as any).aosHistory['2026-11']).toEqual({ family: 'DFF', employment: 'DFF' });
+  });
+  it('cas de Sami : F2B reste du monde, priorité 1er mars 2020, aux États-Unis : courante, I-485 déposable', () => {
+    const r = evaluate('F2B', 'ROW', '2020-03-01', NOV26);
+    expect(r.status).toBe('current');
+    expect(r.canFile).toBe(true);
+  });
+  it('F1 reste du monde, priorité 1er juin 2020 : courante en novembre 2026', () => {
+    expect(evaluate('F1', 'ROW', '2020-06-01', NOV26).status).toBe('current');
+  });
+});
+
+describe('frais G-1055 (édition 10/26/26) et Département d’État', () => {
+  it('édition lue', () => expect(P.g1055_edition).toBe('10/26/26'));
   it('carte verte par mariage, papier, avec permis de travail et advance parole : 675 + 1 440 + 260 + 630', () => {
     expect(feeTotal(DEFAULT_FEES).total).toBe(3005);
   });

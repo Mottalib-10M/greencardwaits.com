@@ -27,8 +27,10 @@ permis, attribution « Processing-time data: ImmigrationTimes.org (CC BY 4.0), f
 L'API officielle egov.uscis.gov est derrière Cloudflare : jamais de contournement. Le dépôt `jzebedee/uscis` (sans
 licence, collecte par contournement) est écarté.
 
-Mise à jour mensuelle : `node scripts/build-bulletins.ts --refresh && node scripts/build-forecast.ts && node scripts/build-ptimes.ts --refresh`,
-puis relire `aosChart` (tableau imposé par USCIS) dans `params-2026.json`, ajouter la page du nouveau mois
+Mise à jour mensuelle : faite seule par `.github/workflows/data.yml` (du 5 au 25 de chaque mois) :
+`node scripts/build-bulletins.ts --refresh && node scripts/build-forecast.ts && node scripts/build-aos-chart.mjs && node scripts/build-ptimes.ts --refresh`
+(`build-aos-chart.mjs` lit le tableau imposé par USCIS et met à jour `aosChart` et `aosHistory` dans `params-2026.json` ;
+le contrôle du G-1055 passe en dernier et ne bloque plus le bulletin). À la main restent : ajouter la page du nouveau mois
 (`src/content/bulletin/visa-bulletin-AAAA-MM.ts`), retirer la plus ancienne des cinq (redirection 301 vers l'historique),
 et relancer `npx vitest run`.
 

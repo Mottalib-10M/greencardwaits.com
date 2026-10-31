@@ -1,10 +1,10 @@
 {
-  "_lisezmoi": "Tous les montants et règles du site vivent ici, jamais en dur (RECETTE §4, §17.4). Chaque valeur a été relue sur la source citée le jour indiqué. Les frais USCIS viennent du formulaire G-1055, édition 10/07/26 (PDF de 60 pages lu en entier pour les formulaires du site) ; s'il change d'édition, le contrôle quotidien bloque le build jusqu'à relecture.",
+  "_lisezmoi": "Tous les montants et règles du site vivent ici, jamais en dur (RECETTE §4, §17.4). Chaque valeur a été relue sur la source citée le jour indiqué. Les frais USCIS viennent du formulaire G-1055, édition 10/26/26 (PDF de 60 pages lu en entier pour les formulaires du site ; comparé le 2026-10-31 à l'édition 10/07/26 : seuls changent des frais Pub. L. 119-21, I-821 et un cas Sileiri Doe, aucun des formulaires du site) ; s'il change d'édition, le contrôle quotidien bloque le build jusqu'à relecture.",
   "year": 2026,
   "retrieved_at": "2026-10-13",
   "valid_from": "2026-10-07",
   "valid_to": "2026-12-31",
-  "g1055_edition": "10/07/26",
+  "g1055_edition": "10/26/26",
   "fees": {
     "i130": {
       "paper": 675,
@@ -114,11 +114,11 @@
     "_src": "n400Residence"
   },
   "aosChart": {
-    "month": "2026-10",
+    "month": "2026-11",
     "family": "DFF",
     "employment": "DFF",
     "next": null,
-    "reviewed": "2026-10-01",
+    "reviewed": "2026-10-31",
     "_src": "aosCharts"
   },
   "sources": {
@@ -153,8 +153,8 @@
     "g1055": {
       "url": "https://www.uscis.gov/g-1055",
       "label": {
-        "en": "USCIS, Form G-1055 Fee Schedule, edition 10/07/26",
-        "es": "USCIS, tabla de tarifas G-1055, edición del 10/07/26"
+        "en": "USCIS, Form G-1055 Fee Schedule, edition 10/26/26",
+        "es": "USCIS, tabla de tarifas G-1055, edición del 10/26/26"
       }
     },
     "g1055pdf": {
@@ -495,5 +495,15 @@
     "perCountry": 25620,
     "_src": "ina203",
     "_note": "Visa Bulletin, paragraphe 2 : limite mondiale famille 226 000, emploi au moins 140 000, plafond par pays 7 % = 25 620, territoires dépendants 2 %. Relu sur le bulletin d'octobre 2026."
+  },
+  "aosHistory": {
+    "2026-10": {
+      "family": "DFF",
+      "employment": "DFF"
+    },
+    "2026-11": {
+      "family": "DFF",
+      "employment": "DFF"
+    }
   }
 }

@@ -3,7 +3,7 @@ import P from '../../data/params-2026.json';
 import { formatMoney } from '../../lib/format';
 import { feeTotal, DEFAULT_FEES } from '../../lib/engine/fees';
 
-// USCIS Immigrant Fee (G-1055 du 10/07/26) et frais du Département d'État, lus dans params-2026.json.
+// USCIS Immigrant Fee (G-1055 du 10/26/26) et frais du Département d'État, lus dans params-2026.json.
 const F = P.fees;
 const en = (n: number) => formatMoney(n, 0, 'en');
 const fam = feeTotal({ ...DEFAULT_FEES, path: 'family-consular' });

@@ -1,6 +1,6 @@
 /**
  * Frais d'un parcours de carte verte ou de naturalisation, ligne par ligne, d'après le barème G-1055 d'USCIS
- * (édition 10/07/26) et les frais de visa du Département d'État. Tous les montants viennent de params-2026.json.
+ * (édition 10/26/26) et les frais de visa du Département d'État. Tous les montants viennent de params-2026.json.
  * Ce qui n'est jamais compté parce que personne ne le fixe : l'examen médical chez le médecin agréé, les traductions,
  * les photos, l'avocat.
  */

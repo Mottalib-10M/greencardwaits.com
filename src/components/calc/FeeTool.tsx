@@ -1,4 +1,4 @@
-/** Calculateur de frais : parcours et options → total ligne par ligne (G-1055, édition 10/07/26, et frais de visa). */
+/** Calculateur de frais : parcours et options → total ligne par ligne (G-1055, édition 10/26/26, et frais de visa). */
 import { useState } from 'react';
 import SelectField from '../ui/SelectField';
 import NumberField from '../ui/NumberField';
