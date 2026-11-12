@@ -35,7 +35,7 @@ export default definePage({
     title: 'Priority Date Explained 2026: Find It, Read the Bulletin',
     description: 'Find your priority date on the I-797 notice, learn which filing sets it (I-130, I-140 or PERM) and compare it with the Visa Bulletin: current, C, U explained.',
     h1: 'Your priority date: where to find it and how to read it against the bulletin',
-    intro: 'Pick your category and country, type the date printed on your approval notice, and see where it stands in this month’s Final Action chart.',
+    intro: 'Pick your category and country, type the priority date printed on your approval notice, and see where it stands in this month’s Final Action chart.',
     resume: `A priority date is your place in the green card line. For a family case it is the day USCIS received a properly filed Form I-130; for an employment case that needs labor certification it is the day the Department of Labor accepted the PERM application, and for other employment cases the day USCIS accepted Form I-140. The date is printed on the Form I-797 Notice of Action for the petition. Each month the Visa Bulletin publishes a cutoff for every category and country of chargeability, and a visa is available only when your date is earlier than that cutoff. In the ${monthName(LATEST, 'en')} bulletin, F2B for most countries sits at ${en(f2bRow)}, so a date of ${en(EX_PD)} is ${ex.status === 'current' ? 'current' : `about ${exBehind} months behind`}. A “C” means every date qualifies, a “U” means no visa can be issued that month, and USCIS separately tells applicants which of the two charts to use for filing Form I-485.`,
     faqs: [
       { q: 'Where is the priority date printed on a Form I-797 notice?', a: 'On the receipt and approval notices for the petition, Form I-797C or I-797, in a box labeled “Priority Date”, close to the receipt number and the category code. The notice goes to the person or employer who filed, so a beneficiary abroad often has to ask the petitioner for a copy. The same date appears on later notices for that petition.' },
@@ -47,7 +47,7 @@ export default definePage({
       { q: 'Does the priority date matter for the spouse of a U.S. citizen?', a: 'Not for timing. Spouses, parents and unmarried children under 21 of U.S. citizens are immediate relatives, and their visas are unlimited, so they never wait for a cutoff. The I-130 notice still shows a filing date, but the wait in that case is USCIS or consular processing, not the bulletin.' },
     ],
     body: (h) => `
-<h2>One date, set once, used for years</h2>
+<h2>One priority date, set once, used for years</h2>
 <p>The priority date is fixed by the first accepted filing in your case and does not change while that petition stays alive. USCIS lists which filing sets it on its ${h.src('visaPriority', 'visa availability page')}:</p>
 <ul>
 <li><strong>Family preference (F1 to F4):</strong> the day USCIS received a properly filed ${h.src('i130Form', 'Form I-130')}.</li>

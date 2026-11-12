@@ -33,7 +33,7 @@ export default definePage({
     nav: 'EB-3 Philippines', card: 'Filipino skilled workers and nurses: a column that splits from the worldwide date about half the time, and its many reversals.',
     title: 'EB-3 Philippines Priority Date 2026: Cutoff and Reversals',
     description: 'EB-3 Philippines in the Visa Bulletin: the Filipino cutoff against the worldwide date, the 2023 split, reversals since 2001 and the Schedule A nurse I-140 time.',
-    h1: 'EB-3 Philippines: a column that comes and goes',
+    h1: 'EB-3 Philippines priority date: a column that comes and goes',
     intro: 'Enter the priority date from your PERM or Schedule A petition to check an EB-3 case for a person born in the Philippines against this month’s bulletin.',
     resume: `In the ${monthName(LATEST, 'en')} Visa Bulletin, EB-3 for people born in the Philippines has a Final Action Date of ${en(fad)} and a Date for Filing of ${en(dff)}. ${Number.isFinite(behind) && behind !== 0 ? `That is about ${Math.abs(behind)} months ${behind > 0 ? 'behind' : 'ahead of'} the worldwide EB-3 date, ${en(row)}.` : `The worldwide EB-3 date is ${en(row)}.`} Unlike India and China, the Philippine column only splits from the worldwide one part of the time: in ${Math.round(distinctShare('EB3', 'PH') * 100)}% of bulletins since October 2015. It was Current from October 2020 to April 2023, then took its own date in May 2023. The line has retrogressed ${retro.n} times since 2001, and its deepest single fall, in ${monthName(retro.worstAt, 'en')}, cost about ${Math.round(retro.worstMonths)} months. For nurses sponsored under Schedule A, the latest USCIS range for the I-140 petition is ${nur.min} to ${nur.max} months. ${bt6.reliable ? 'Our back-test passes for dates about six months behind the cutoff.' : ''}`,
     faqs: [
@@ -42,7 +42,7 @@ export default definePage({
       { q: 'Does EB-3 Other Workers Philippines follow the same date as EB-3 Philippines?', a: 'Not necessarily. Other Workers is its own row with a worldwide ceiling of 10,000 numbers a year, and its Philippine column can carry a different date from the skilled-worker row. Read the row that matches the classification on the approved I-140. The Other Workers page tracks the worldwide line, which Philippine applicants share when their column has no separate date.' },
     ],
     body: (h) => `
-<h2>Current until spring 2023</h2>
+<h2>EB-3 Philippines priority date: Current until spring 2023</h2>
 <p>For two and a half years the Filipino EB-3 column needed no priority date at all: it read Current from October 2020 to April 2023. In May 2023 it took a date of ${h.cell(may23)} and by August 2023 had fallen to ${h.cell(aug23)}. It opened fiscal 2026 at ${h.cell(oct25)}, reached ${h.cell(mar26)} in March 2026 and stood at ${h.cell(oct26)} in October 2026. Meanwhile the worldwide row is at ${h.cell(row)}, with a filing date of ${h.cell(rowDff)} against ${h.cell(dff)} for the Philippines.</p>
 <h2>A record of reversals</h2>
 <p>With ${h.num(retro.n)} retrogressions since 2001, ${mostEB3 ? 'this column has stepped back more often than any other EB-3 column tracked here' : 'this column has stepped back often'}. The worst came in ${h.month(retro.worstAt)}, when the cutoff went from ${h.cell(before)} to ${h.cell(worst)}, and the next bulletin cut it again to ${h.cell(next)}. Any range for this column has to carry that history; ${h.a('guide-retrogression', 'the retrogression guide')} explains how drops like these happen.</p>

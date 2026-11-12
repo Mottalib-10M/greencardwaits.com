@@ -34,7 +34,7 @@ export default definePage({
     nav: 'F4 Philippines', card: 'Brothers and sisters of U.S. citizens born in the Philippines: a line that has gained years on the calendar.',
     title: 'F4 Philippines Priority Date 2026: Sibling Visa Cutoff',
     description: 'F4 Philippines: the cutoff for brothers and sisters of U.S. citizens, how the line gained ground since 2016, and the most accurate family forecast we test.',
-    h1: 'F4 Philippines: the sibling line that has been catching up',
+    h1: 'F4 Philippines priority date: the sibling line that has been catching up',
     intro: 'Enter the priority date from the I-130 your U.S. citizen brother or sister filed to check the cutoff and see the tested range for when it may be reached.',
     resume: `F4 is the preference for brothers and sisters of U.S. citizens who are at least 21, and applicants born in the Philippines have their own cutoff because of the 7% per-country cap. In the ${LATEST.slice(0, 4)} bulletins the Philippine Final Action Date is ${en(fad)}, against ${en(row)} for the rest of the world and ${en(india)} for India. The Dates for Filing chart, accepted by USCIS for family cases this month, is ${en(dff)}. The striking fact about this line is speed: since October 2016 the cutoff has advanced about ${Math.round(gained)} years, while ten years passed on the calendar, so the wait in front of a new petition has been shrinking. Retrogression is rare here, with ${retro.n} backward moves since 2001. That steady record makes it one of the family cases where our back-test does best: for people a year behind the cutoff, the median miss was ${bt12.medianError} months.`,
     faqs: [
@@ -45,7 +45,7 @@ export default definePage({
     body: (h) => `
 <h2>Ten years, more than ten years of progress</h2>
 <p>October 2016 printed ${h.cell(oct2016)} for Philippine siblings. October 2019 printed ${h.cell(oct2019)}. Today the cutoff is ${h.cell(fad)}, about ${h.num(gained, 1)} years further on, and ${h.num(lastYear, 1)} of those years came in the last twelve months alone. The latest bulletin moved it ${h.num(Math.abs(Math.round(move)))} days ${move >= 0 ? 'forward' : 'backward'}. The gap to the worldwide F4 date, ${h.cell(row)}, is now about ${h.num(years(fad, row), 1)} years. Measured against the bulletin month, the queue is now about ${h.num(years(fad, now), 1)} years long, down from more than twenty in 2016.</p>
-<h2>Philippines and India on the sibling line</h2>
+<h2>Philippines and India priority dates on the sibling line</h2>
 <p>Three countries carry their own F4 date in recent bulletins: Mexico, India and the Philippines. Between the last two, the Philippine date was the further behind for years. ${aheadOfIndia ? `It is now ahead, at ${h.cell(fad)} against ${h.cell(india)} for India, a reversal driven by the Philippine line's pace.` : `It is still behind India's ${h.cell(india)}.`} ${h.a('f4-india', 'Read the F4 India page')} for the other side.</p>
 <h2>What the back-test says</h2>
 <p>Six months behind the cutoff, our forecast missed the real date by a median of ${h.num(bt6.medianError)} months; four years behind, by ${h.num(bt48.medianError)}, and the range held the outcome ${h.pct(bt48.coverage)} of the time. Those are among the smallest errors of any family case on this site. Only ${h.num(retro.n)} retrogressions since 2001, the largest about ${h.num(Math.round(retro.worstMonths))} months in ${h.month(retro.worstAt)}, help explain why.</p>

@@ -35,7 +35,7 @@ export default definePage({
       { q: 'Is priority date retention the same as interfiling or transferring my I-485?', a: 'No. Retention keeps a date from one approved petition to another. Asking USCIS to move a pending I-485 to a different petition is a transfer of underlying basis, a discretionary request made in writing while the I-485 is still pending, with a visa immediately available on the date of the request. Both can apply to the same person.' },
     ],
     body: (h) => `
-<h2>Three different things people call portability</h2>
+<h2>Three different things people call priority date portability</h2>
 <p>The word is used for three rules that sit in different parts of USCIS guidance and protect different things. The first keeps a priority date from one approved petition to another. The second keeps an approved petition alive when the employer withdraws it late. The third, created by the American Competitiveness in the Twenty-First Century Act and known as AC21, lets a pending green card case follow a worker to a new job. A person can rely on one, two or all three over the life of a case, and mixing them up is the most common reason for a wrong assumption.</p>
 <h2>Rule one: the date follows the approved petition</h2>
 <p>The ${h.src('pmPdRetention', 'USCIS Policy Manual')} says that once a petition is approved, the beneficiary keeps the priority date set when the labor certification was filed, and can use it on later petitions. Its example is a worker who uses the earlier date to apply under EB-1 or EB-2. The new employer, the new job and the new category can all differ; what travels is the place in line. The date stays behind in three cases only:</p>

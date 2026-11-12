@@ -22,7 +22,7 @@ export default definePage({
     nav: `San Antonio field office`, card: `USCIS San Antonio: fast for citizenship and family green cards, and how it compares with Harlingen and El Paso.`,
     title: `N-400 Processing Time San Antonio 2026: USCIS Office`,
     description: `USCIS San Antonio field office: N-400 and family I-485 processing times, Harlingen and El Paso compared, rank among 90 offices and inquiry cut-off dates.`,
-    h1: `San Antonio field office: one of Texas’s quicker queues`,
+    h1: `N-400 processing time in San Antonio: one of Texas’s quicker queues`,
     intro: `South and West Texas are served by San Antonio, Harlingen and El Paso; all three publish family green card times in the faster part of the country.`,
     resume: `San Antonio is quick on both counts. USCIS publishes ${o.n400Range} for Form N-400 at the San Antonio field office, rank ${o.n400Rank} of ${OFFICE_COUNT}, and ${o.i485Range} for family-based Form I-485, rank ${o.i485Rank}. The two border offices that serve the Rio Grande Valley and far West Texas are also in the faster half for the family green card: Harlingen publishes ${hlg.i485Range} and El Paso ${elp.i485Range}. For naturalization, Harlingen shows ${hlg.n400Range} and El Paso ${elp.n400Range}. In our first 2022 record San Antonio published ${o.n400FirstRange} for citizenship and ${o.i485FirstRange} for family adjustment, so the upper bounds have moved by ${sgn(o.n400Change)} and ${sgn(o.i485Change)} months. USCIS accepts San Antonio inquiries for N-400 receipts on or before ${o.n400Inquiry} and family I-485 receipts on or before ${o.i485Inquiry}, per its publication of ${pub}.`,
     faqs: [

@@ -50,7 +50,7 @@ export default definePage({
     nav: 'F4 Mexico', card: 'Mexican-born brothers and sisters of U.S. citizens: the oldest family cutoff in the bulletin and a year of almost no movement.',
     title: 'F4 Mexico Visa Bulletin 2026: Sibling Petition Wait',
     description: 'F4 Mexico: the Final Action Date for Mexican-born siblings of U.S. citizens, among the oldest family cutoffs, a decade of movement in numbers and the 2005 drop.',
-    h1: 'F4 Mexico: a U.S. citizen’s brother or sister born in Mexico',
+    h1: 'F4 Mexico Visa Bulletin: a U.S. citizen’s brother or sister born in Mexico',
     intro: 'Enter the priority date of the sibling I-130 to see how far it sits from the Mexico F4 cutoff, one of the slowest family lines in the bulletin.',
     resume: `For a brother or sister of a U.S. citizen, born in Mexico, the F4 Final Action Date in the latest Visa Bulletin is ${en(fad)} and the Date for Filing ${en(dff)}. That makes the line about ${lineYears.toFixed(0)} years long, ${oldest ? 'the oldest family cutoff in the table' : 'one of the oldest family cutoffs in the table'}, while siblings born in most other countries are at ${en(row)}. The past year shows how slowly it moves: the date was ${en(oct2025)} in October 2025, held still for ${held} bulletins in a row, and then advanced ${yearDays} days. Over ten years, from October 2016, it covered about ${decade.toFixed(1)} years of priority dates. In ${monthName(retro.worstAt, 'en')} it fell from ${en(before)} to ${en(after)}. A citizen filing for a Mexican-born sibling today is filing for a wait that has, historically, run longer than two decades, and our calculator shows that distance plainly rather than a hopeful month.`,
     faqs: [
@@ -59,7 +59,7 @@ export default definePage({
       { q: 'What happens to nephews and nieces in a long F4 Mexico wait?', a: 'They come as derivatives only while unmarried and under 21, or while the Child Status Protection Act keeps their age below 21. In a line measured in decades, most children of the sibling will be adults when the date arrives. There is no category for an aunt or uncle to sponsor a nephew, so they need another basis to immigrate.' },
     ],
     body: (h) => `
-<h2>A year counted in days</h2>
+<h2>A Mexico Visa Bulletin year counted in days</h2>
 <p>October 2025: ${h.cell(oct2025)}. Then ${h.num(held)} bulletins in a row with the same date. Then a move of ${h.num(Math.abs(Math.round(move)))} days to today’s ${h.cell(fad)}. For a Mexican-born sibling, twelve months of bulletins advanced the line by ${h.num(yearDays)} days. Over a longer window the picture is less bleak but still slow: ${h.cell(oct2016)} in October 2016, ${h.cell(oct2021)} in October 2021, about ${h.num(decade, 1)} years of priority dates in ten years.</p>
 <h2>The 2005 drop</h2>
 <p>In ${h.month(retro.worstAt)} the cutoff fell from ${h.cell(before)} to ${h.cell(after)}, roughly ${h.num(Math.round(retro.worstMonths))} months in one bulletin. It is one of ${h.num(retro.n)} retrogressions on this line since 2001. Worldwide F4 is at ${h.cell(row)}, about ${h.num(years(fad, row), 1)} years ahead; the ${h.a('f4', 'F4 page')} compares all four columns.</p>
@@ -73,8 +73,8 @@ export default definePage({
     nav: 'F4 México', card: 'Hermanos nacidos en México de un ciudadano: la fecha familiar más antigua del boletín y un año casi sin avance.',
     title: 'F4 México boletín de visas 2026: petición para un hermano',
     description: 'F4 México: fecha de acción final para el hermano nacido en México de un ciudadano, de las más antiguas del cuadro, cuánto avanza al año y la caída de 2005.',
-    h1: 'F4 México: cuando un ciudadano pide a su hermano nacido en México',
-    intro: 'Escriba la fecha de prioridad del I-130 que presentó por su hermano o su hermana y vea a qué distancia está de la fecha F4 de México.',
+    h1: 'F4 México en el Boletín de Visas: cuando un ciudadano pide a su hermano nacido en México',
+    intro: 'Escriba la fecha de prioridad del I-130 que presentó por su hermano o su hermana y vea a qué distancia está de la fecha F4 de México en el Boletín de Visas.',
     resume: `Si usted es ciudadano estadounidense y pidió a su hermano o hermana nacida en México, la fecha de acción final (Final Action Date) del boletín de visas más reciente es ${es(fad)} y la fecha para presentar (Date for Filing) es ${es(dff)}. ${oldest ? 'Es la fecha familiar más antigua de todo el boletín' : 'Es una de las fechas familiares más antiguas del boletín'}: la fila mide unos ${lineYears.toFixed(0)} años. Para un hermano nacido en El Salvador o en Honduras la fecha es ${es(row)}. El último año muestra el ritmo: en octubre de 2025 la fecha era ${es(oct2025)}, se quedó igual ${held} boletines seguidos y luego avanzó ${yearDays} días. En diez años, desde octubre de 2016, cubrió unos ${decade.toFixed(1)} años de fechas de prioridad. En ${monthName(retro.worstAt, 'es')} cayó de ${es(before)} a ${es(after)}. Quien presenta hoy una petición F4 por un hermano mexicano entra en una fila que históricamente ha durado más de veinte años, y la calculadora lo muestra tal cual.`,
     faqs: [
       { q: '¿Por qué la F4 de México casi no avanza?', a: 'Porque hay muchísimas peticiones de ciudadanos por hermanos nacidos en México, y el límite por país impide que México use más de su parte cada año. Además, cada hermano viene con su cónyuge y sus hijos menores de 21, que usan visas de la misma fila. El resultado es una fecha que en muchos años avanza solo días o semanas.' },
@@ -84,7 +84,7 @@ export default definePage({
     body: (h) => `
 <h2>Un hermano en Oaxaca, una fila de décadas</h2>
 <p>Usted vive en California, se hizo ciudadano y presentó el ${h.src('i130Form', 'formulario I-130')} por su hermano, que sigue en Oaxaca con su esposa y sus hijos. Su fecha de prioridad se compara con ${h.cell(fad)}, la fecha F4 de México. Si su hermano hubiera nacido en Honduras, la fecha sería ${h.cell(row)}, unos ${h.num(years(fad, row), 1)} años más adelante.</p>
-<h2>Un año medido en días</h2>
+<h2>Un año del Boletín de Visas de México medido en días</h2>
 <p>En octubre de 2025 la fecha era ${h.cell(oct2025)}. Se quedó así ${h.num(held)} boletines seguidos y el último la movió ${h.num(Math.abs(Math.round(move)))} días. En doce meses, la fila avanzó ${h.num(yearDays)} días. En diez años avanzó unos ${h.num(decade, 1)} años: ${h.cell(oct2016)} en octubre de 2016, ${h.cell(oct2021)} en octubre de 2021.</p>
 <h2>La caída de 2005</h2>
 <p>En ${h.month(retro.worstAt)} la fecha bajó de ${h.cell(before)} a ${h.cell(after)}, unos ${h.num(Math.round(retro.worstMonths))} meses en un solo boletín. Ha retrocedido ${h.num(retro.n)} veces desde 2001. Por eso no tomamos un buen mes como promesa. Y recuerde: solo un ciudadano de 21 años o más puede pedir a un hermano; un residente tiene que naturalizarse antes.</p>

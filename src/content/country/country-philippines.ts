@@ -35,8 +35,8 @@ export default definePage({
     nav: 'Philippines', card: 'Every Visa Bulletin category for people born in the Philippines, against the worldwide dates.',
     title: 'Visa Bulletin Philippines 2026: Family and EB-3 Cutoffs',
     description: 'Visa Bulletin dates for applicants born in the Philippines: four family lines with their own cutoff, the EB-3 column, how far each trails the world and why.',
-    h1: 'Green card dates for people born in the Philippines',
-    intro: 'Select your category and enter your priority date; the table below sets every Philippine cutoff this month beside the worldwide date.',
+    h1: 'Visa Bulletin Philippines: green card dates for people born there',
+    intro: 'Select your category and enter your priority date; the table below sets every Visa Bulletin cutoff for the Philippines this month beside the worldwide date.',
     resume: `The Philippines has its own Visa Bulletin column because Filipino demand passes the ${Math.round(L.perCountryShare * 100)}% per-country limit, ${L.perCountry.toLocaleString('en-US')} visas a year, in several preference categories. Where India's backlog is an employment story, the Philippine one is mostly about families: in the ${LATEST.slice(0, 4)} bulletins ${fam.length} family categories have their own Philippine date (${list(fam.map((x) => CAT_SHORT[x.c]))})${emp.length ? `, against ${emp.length} in employment (${list(emp.map((x) => CAT_SHORT[x.c]))})` : ' and none in employment'}. The longest gap is ${CAT_SHORT[top.c]}, married sons and daughters of U.S. citizens, at ${en(top.a)}, about ${Math.round(top.gap)} years behind the worldwide date. Brothers and sisters in F4 are at ${en(f4)}, a line that has gained ground quickly since 2016. The column is decided by country of birth: a Filipino-born applicant with another passport still uses it, and a spouse born elsewhere can sometimes move the couple to another queue.`,
     faqs: [
       { q: 'Which Philippine family categories have their own Visa Bulletin date?', a: 'In recent bulletins the Philippines has had separate dates for F1, F2B, F3 and F4, the lines for adult children and siblings of U.S. citizens and adult unmarried children of green card holders. Spouses and minor children of green card holders in F2A share the worldwide date, and immediate relatives of citizens have no queue at all.' },
@@ -44,7 +44,7 @@ export default definePage({
       { q: 'Is F2B or F1 shorter for a Filipino adult son or daughter?', a: 'The two Philippine lines have run within months of each other in recent years and have changed order several times, so neither is reliably shorter. The comparison matters most when a green card holder parent naturalizes and the case moves from F2B to F1. The F1 and F2B Philippines pages track both dates and their history.' },
     ],
     body: (h) => `
-<h2>A family backlog</h2>
+<h2>Philippines Visa Bulletin: a family backlog</h2>
 <p>The Immigration and Nationality Act limits any one country to ${h.pct(L.perCountryShare)} of the yearly preference numbers, ${h.num(L.perCountry)} visas across family and employment. The Philippines reaches that limit through its family petitions. This month ${h.num(fam.length)} of the five family preference lines carry a Philippine date. ${shared.length ? `Only ${list(shared)} follows the worldwide cutoff.` : ''} ${h.src('ina203', 'INA sections 201 to 203')}.</p>
 <h2>The longest and the fastest</h2>
 <p>F3, married sons and daughters of U.S. citizens, is the deepest line: ${h.cell(f3)} against ${h.cell(cellAt('F3', 'ROW', 'FAD'))} worldwide. In October 2016 it stood at ${h.cell(f3Oct2016)}, so it has gained about ${h.num(years(f3Oct2016, f3), 1)} years in ten. F4 has moved even faster, from ${h.cell(f4Oct2016)} in October 2016 to ${h.cell(f4)} today, about ${h.num(years(f4Oct2016, f4), 1)} years of progress. ${h.a('f3-philippines', 'F3 Philippines')} and ${h.a('f4-philippines', 'F4 Philippines')} have the detail.</p>

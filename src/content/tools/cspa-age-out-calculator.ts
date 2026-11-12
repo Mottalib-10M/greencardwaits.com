@@ -57,7 +57,7 @@ export default definePage({
       { q: '¿Cómo cumple mi familia con el plazo de un año de la ley CSPA?', a: 'El Manual de USCIS acepta, entre otros actos, presentar correctamente el I-485 si el hijo está en Estados Unidos, o enviar la parte I del formulario DS-260 o pagar la tarifa de visa si el trámite es en el consulado. Pasado el año, solo se perdona el retraso por circunstancias extraordinarias que la familia no causó.' },
     ],
     body: (h) => `
-<h2>Lo que la calculadora resta y lo que no</h2>
+<h2>Lo que la calculadora de edad CSPA resta y lo que no</h2>
 <p>La regla está en el ${h.src('cspaPolicy', 'Manual de políticas de USCIS, capítulo sobre CSPA')}: edad el día de la disponibilidad del visa, menos el tiempo pendiente de la petición. Solo se resta el tiempo que la petición pasó en USCIS esperando aprobación. Los años que la familia pasa después en la fila del Visa Bulletin, que en las categorías de México pueden ser muchos, no se descuentan. Por eso dos hermanos con la misma petición pueden tener resultados opuestos.</p>
 <h2>Dos hermanos, una petición</h2>
 <p>Un residente que vive en Texas pide a su esposa en la categoría F2A, con dos hijos como derivados. Supongamos que el I-130 se presentó en febrero de 2024, se aprobó en agosto de 2025 tras ${h.num(hija.pendingDays)} días, y la fecha se puso al día en octubre de 2026. La hija, nacida en abril de 2005, tenía ${h.num(hija.ageDays / 365.25, 2)} años ese mes; su edad CSPA es ${h.num(hija.cspaYears, 2)} y ${hija.protected ? 'queda protegida' : 'pierde la protección'}. Su hermano, nacido año y medio antes, llega a ${h.num(hijo.cspaYears, 2)} y ${hijo.protected ? 'también queda protegido' : 'pierde la edad de hijo'}. La calculadora hace este cálculo para cada hijo por separado.</p>

@@ -27,7 +27,7 @@ export default definePage({
     title: 'I-131 Processing Time 2026: Advance Parole and Re-entry',
     description: 'I-131 processing time in 2026: the advance parole range for pending green card cases, the re-entry permit for residents, and how both compare with the I-485.',
     h1: 'I-131 processing time for advance parole and re-entry permits',
-    intro: 'Choose advance parole or the re-entry permit, enter the receipt date of your I-131, and compare it with the range USCIS currently publishes.',
+    intro: 'Choose advance parole or the re-entry permit, enter the receipt date of your I-131, and compare it with the processing time range USCIS currently publishes.',
     resume: `Form I-131 covers two very different travel documents, and USCIS publishes each separately at Service Center Operations. Advance parole, the document many adjustment applicants request so they can travel while Form I-485 is pending, shows a range of ${n(ap.min)} to ${n(ap.max)} months in the edition of ${pubEn}, with case inquiries accepted for receipts up to ${displayDate(ap.inquiry!, 'en-US')}. The re-entry permit, requested by green card holders who plan a long stay abroad, shows ${n(re.min)} to ${n(re.max)} months. In each case the first figure is the median and the second the time by which 80% of applications were decided. No national average for Form I-131 appears in the monthly report to Congress, so the published ranges are the only official measure. A striking comparison: at ${n(famFaster)} of the 90 field offices, the upper bound for a family-based I-485 is shorter than the upper bound for advance parole, so the green card itself can arrive before the travel document requested alongside it. The paper fee for advance parole is ${usd(F.advanceParolePaper, 'en')}.`,
     faqs: [
       { q: 'Can advance parole take longer than the I-485 it was filed with?', a: 'It can. USCIS publishes advance parole at one unit with a long range, while family-based I-485 ranges vary by field office and some are shorter. If the green card is approved first, the pending travel document no longer matters for most travel, because the card itself is the entry document for a permanent resident.' },
@@ -60,7 +60,7 @@ ${h.table(['Document', 'Who asks for it', 'Published range', 'Inquiries for rece
     ],
     body: (h) => {
       const m = (x: number | null | undefined) => (x == null ? '–' : h.num(x, x % 1 ? 1 : 0));
-      return `<h2>Planear un viaje con estas cifras</h2>
+      return `<h2>Planear un viaje con el advance parole I-131 y estas cifras</h2>
 <p>Con una cifra alta de ${m(ap.max)} meses, el advance parole no sirve para una emergencia que llega sin aviso. Muchas familias lo piden junto con el I-485, precisamente para tenerlo listo cuando haga falta. Si ya lo presentó, la herramienta de arriba le dice cuántos meses lleva y desde qué fecha USCIS acepta una consulta: hoy, para recibos hasta el ${h.date(ap.inquiry!)}.</p>
 <h2>Lo que cuesta cada documento</h2>
 ${h.table(['Documento', 'Papel', 'En línea'], [['Advance parole, I-485 presentado desde el 1 de abril de 2024', h.usd(F.advanceParolePaper), h.usd(F.advanceParoleOnline)], ['Advance parole, I-485 presentado con tarifa antes del 1 de abril de 2024', h.usd(F.withPendingI485Before2024), h.usd(F.withPendingI485Before2024)], ['Permiso de reingreso', h.usd(F.reentryPermitPaper), 'No disponible']], `Formulario G-1055 de USCIS, edición del ${h.P.g1055_edition}.`, ['l', 'r', 'r'])}

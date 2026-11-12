@@ -36,7 +36,7 @@ export default definePage({
     title: 'I-765 Processing Time 2026: (c)(9) Work Permit at USCIS',
     description: 'I-765 processing time in 2026 for the (c)(9) work permit with a pending I-485: the published range, its rank among EAD categories and the national average.',
     h1: 'I-765 (c)(9) processing time: the work permit while your green card is pending',
-    intro: 'Pick the unit handling your work permit and enter its receipt date to see where the application stands against the latest published range.',
+    intro: 'Pick the unit handling your I-765 work permit and enter its receipt date to see where the application stands against the latest published processing time.',
     resume: `The employment authorization document many green card applicants request is the (c)(9) category, filed on Form I-765 because Form I-485 is pending. In the USCIS edition of ${pubEn}, it is published at two units, the National Benefits Center and Service Center Operations, with upper bounds between ${n(c9lo)} and ${n(c9hi)} months; the upper bound is the time by which 80% of those applications were decided. The report to Congress for ${NATIONAL_MONTH} shows a much shorter national average for Form I-765, ${n(nat.months)} months. Both are accurate. The national figure averages every work permit decided in the month, across all categories, including some that USCIS publishes in weeks; the (c)(9) range describes only adjustment applicants. USCIS received ${n(nat.received)} work permit applications that month, more than any other form we track, and had ${n(nat.pending)} pending. The fee for a (c)(9) request filed with or after an I-485 submitted since April 1, 2024 is ${usd(F.withPendingI485Since2024, 'en')}.`,
     faqs: [
       { q: 'Why is the national I-765 average so much shorter than the (c)(9) range?', a: 'The report to Congress counts every Form I-765 decided in the month, whatever the eligibility category, and some categories move in weeks. The (c)(9) range covers only work permits based on a pending adjustment application, and it is published as a median and an 80% mark. Mixing the two would give a false picture of your own wait.' },
@@ -69,7 +69,7 @@ ${h.table(['Category as published', 'Unit', 'Upper bound'], sorted.map((r) => [r
     ],
     body: (h) => {
       const m = (x: number | null | undefined) => (x == null ? '–' : h.num(x, x % 1 ? 1 : 0));
-      return `<h2>Un permiso con su propio reloj</h2>
+      return `<h2>Un permiso de trabajo I-765 con su propio reloj</h2>
 <p>Muchas familias suponen que el permiso de trabajo llega en pocas semanas porque eso le pasó a un conocido. Para la categoría (c)(9), la cifra alta publicada está hoy entre ${m(c9lo)} y ${m(c9hi)} meses, y ocupa el puesto ${h.num(c9rank)} de las ${h.num(ALL.length)} líneas del I-765 con cifra, contando desde la más rápida. El promedio de ${m(nat.months)} meses del informe de ${h.month(natYm)} incluye todas las categorías y por eso queda más bajo.</p>
 <h2>Lo que paga según la fecha de su I-485</h2>
 ${h.table(['Situación', 'Tarifa del I-765'], [['I-485 presentado con tarifa desde el 1 de abril de 2024 y pendiente', h.usd(F.withPendingI485Since2024)], ['I-485 presentado con tarifa entre el 30 de julio de 2007 y el 31 de marzo de 2024', h.usd(F.withPendingI485Before2024)], ['Otras categorías, en papel', h.usd(F.paper)], ['Otras categorías, en línea', h.usd(F.online)]], `Formulario G-1055 de USCIS, edición del ${h.P.g1055_edition}.`, ['l', 'r'])}

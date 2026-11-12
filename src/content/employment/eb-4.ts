@@ -33,7 +33,7 @@ export default definePage({
     nav: 'EB-4 special immigrants', card: 'Fourth preference: special immigrants and religious workers, a cutoff that only appeared in 2023, and the 2025 freeze.',
     title: 'EB-4 Visa Bulletin 2026: Special Immigrant Cutoff and Wait',
     description: 'EB-4 special immigrants and religious workers: this month’s cutoff and filing date, the 2025 months listed unavailable, and the Form I-360 time from USCIS.',
-    h1: 'EB-4 special immigrants: a small category with a new queue',
+    h1: 'EB-4 Visa Bulletin: special immigrants, a small category with a new queue',
     intro: 'Enter the priority date from your approved Form I-360 to see whether an EB-4 visa number is available this month and how the line has moved.',
     resume: `In the ${monthName(LATEST, 'en')} Visa Bulletin, EB-4, the class the law calls certain special immigrants, has a Final Action Date of ${en(fad)} and a Date for Filing of ${en(dff)} for applicants born outside Mexico, and the Mexican column reads ${en(fadMX)}. The class receives 7.1% of the worldwide employment-based level. Its religious-worker row follows the same dates, and the October 2026 bulletin reports that H.R. 6500, signed on September 2, 2026, extends that program through December 11, 2026. For two decades EB-4 needed no queue at all: every October bulletin in the archive from 2002 to 2022 listed it as Current. A cutoff appeared in 2023, and every EB-4 bulletin from April to September 2025 listed the class as unavailable. Petitions in this class are filed on Form I-360, which the USCIS report to Congress for ${NATIONAL_MONTH} puts at an average of ${NATIONAL['I-360']} months.`,
     faqs: [

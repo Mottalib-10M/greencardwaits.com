@@ -26,7 +26,7 @@ export default definePage({
     title: 'N-400 Continuous Residence 2026: Trips, Days and Breaks',
     description: 'Continuous residence and physical presence for Form N-400: the 913 and 548 day counts, what a trip over six months or a year does, and how to rebut a break.',
     h1: 'Continuous residence and physical presence for the N-400',
-    intro: 'Enter your total days abroad and your longest trip to check both naturalization tests at once, then read how USCIS treats long absences.',
+    intro: 'Enter your total days abroad and your longest trip to check both N-400 tests at once, continuous residence and physical presence, then read how USCIS treats long absences.',
     resume: `Naturalization on Form N-400 asks for two separate things, and an applicant must meet both. Continuous residence means living in the United States as a permanent resident for ${N.residenceYears} years before filing, or ${N.residenceYearsSpouse} years for a person married to and living with a U.S. citizen, with USCIS accepting the application up to ${N.earlyFilingDays} days early. Physical presence means having actually been in the country for at least half of that period: ${N.physicalPresenceDays5} days on the ${N.residenceYears}-year path and ${N.physicalPresenceDays3} days on the ${N.residenceYearsSpouse}-year path. The two tests fail in different ways. Many short trips can exhaust the days without touching residence, while one long trip can break residence even when the day count is fine. Under the USCIS Policy Manual, an absence of more than ${N.breakPresumedMonths} months but less than ${N.breakYears} year is presumed to break continuous residence, a presumption the applicant can rebut with evidence, and an absence of ${N.breakYears} year or more breaks it outright unless an approved Form N-470 preserves it.`,
     faqs: [
       { q: 'Does a trip of more than six months break continuous residence for the N-400?', a: 'It creates a presumption that residence was broken, not an automatic break. The USCIS Policy Manual lets the applicant rebut it with evidence from the time abroad, for example that the U.S. job was kept and no job was taken abroad, that immediate family stayed in the United States, or that the applicant kept full access to a U.S. home.' },
@@ -54,7 +54,7 @@ ${h.table(
   ['l', 'r', 'r'],
 )}
 <p>The third row is simple arithmetic on the rule: physical presence is half the period, so the other half may be spent abroad without failing the day count. That is a large margin, and it is why one long trip deserves as much attention as the total number of days away.</p>
-<h2>What a single trip does to residence</h2>
+<h2>What a single trip does to continuous residence</h2>
 <p>The ${h.src('n400Residence', 'Policy Manual chapter on continuous residence')} sorts absences by length. The rule is about each trip, not the total.</p>
 ${h.table(
   ['Length of one absence', 'Effect on continuous residence'],

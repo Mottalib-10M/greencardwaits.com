@@ -22,15 +22,15 @@ export default definePage({
     nav: `Tampa field office`, card: `USCIS Tampa: a quicker family green card queue than most of Florida, and a mid-table citizenship line.`,
     title: `USCIS Tampa Processing Times 2026: N-400 and I-485`,
     description: `USCIS Tampa field office: N-400 and family I-485 processing times, compared with Orlando and Fort Myers, rank among 90 offices, and case inquiry cut-off dates.`,
-    h1: `Tampa field office: Florida’s Gulf Coast queue`,
-    intro: `Tampa serves the Gulf Coast of Florida from Tampa Bay; its family green card queue is one of the quicker ones in the state.`,
+    h1: `USCIS Tampa processing times: Florida’s Gulf Coast queue`,
+    intro: `USCIS Tampa serves the Gulf Coast of Florida from Tampa Bay; its processing times include a family green card queue that is one of the quicker ones in the state.`,
     resume: `USCIS publishes ${o.i485Range} for family-based Form I-485 at the Tampa field office, rank ${o.i485Rank} of ${OFFICE_COUNT}, which makes Tampa one of the quicker Florida offices for a family green card. Naturalization is published at ${o.n400Range}, rank ${o.n400Rank}, around the middle of the national list. Orlando, inland, publishes ${orl.n400Range} for the N-400 and ${orl.i485Range} for the family I-485; Fort Myers, further south on the Gulf Coast, ${ofm.n400Range} and ${ofm.i485Range}. In our first record, from ${o.firstDate}, Tampa published ${o.n400FirstRange} for citizenship and ${o.i485FirstRange} for family adjustment; the upper bounds have moved by ${sgn(o.n400Change)} and ${sgn(o.i485Change)} months since. USCIS accepts Tampa case inquiries for N-400 receipts on or before ${o.n400Inquiry} and family I-485 receipts on or before ${o.i485Inquiry}, per its publication of ${pub}.`,
     faqs: [
       { q: `How long is the N-400 wait at USCIS Tampa?`, a: `USCIS publishes ${o.n400Range} for naturalization at Tampa, from the receipt date on your notice to a decision. Tampa ranks ${o.n400Rank} of ${OFFICE_COUNT} field offices. The oath ceremony is scheduled after approval. If the case has been transferred, the receiving office’s range is the one to use from then on.` },
       { q: `Is Tampa faster than Orlando for a family green card?`, a: `Yes on current figures: Tampa publishes ${o.i485Range} for family-based Form I-485 and Orlando ${orl.i485Range}. Spouses of citizens with no Visa Bulletin wait feel this difference directly. The checker on this page applies these same figures to the receipt date on your own notice.` },
       { q: `Does Fort Myers have its own USCIS field office?`, a: `Yes. USCIS lists Fort Myers, Florida, separately, with ${ofm.n400Range} for Form N-400 and ${ofm.i485Range} for family-based Form I-485 on the latest publication. Your address decides whether Tampa or Fort Myers holds the file. A request for evidence, a rescheduled appointment or a file transfer adds time that no published range includes.` },
     ],
-    body: (h) => `<h2>Three Gulf and Central Florida offices</h2>
+    body: (h) => `<h2>USCIS processing times at three Gulf and Central Florida offices</h2>
 <p>For the family green card, Tampa ranks ${o.i485Rank}, Fort Myers ${ofm.i485Rank} and Orlando ${orl.i485Rank}. For naturalization the order is Tampa first again, then Orlando and Fort Myers, both in the slower fifth of the country.</p>
 <h2>Since 2022</h2>
 <p>At the 80% mark, Tampa’s naturalization queue has barely moved since our first record (${sgn(o.n400Change)} months), while the family green card queue has grown by ${sgn(o.i485Change)} months. Other Florida offices grew faster, which is why Tampa now looks relatively quick for family cases.</p>

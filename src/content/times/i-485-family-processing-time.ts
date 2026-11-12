@@ -48,7 +48,7 @@ export default definePage({
     title: 'I-485 Processing Time 2026: Family-Based Green Card',
     description: 'Family-based I-485 processing time in 2026 at all 90 USCIS field offices: the five fastest and slowest, how the range grew this year, and the national average.',
     h1: 'Family-based I-485 processing time at every USCIS field office',
-    intro: 'Pick the field office on your interview or receipt notice and enter the receipt date to see where your adjustment of status case stands.',
+    intro: 'Pick the field office on your interview or receipt notice and enter the receipt date to see where your I-485 case stands against the office’s processing time.',
     resume: `A family-based green card application filed inside the United States, Form I-485, is decided at one of 90 USCIS field offices, and the office makes a large difference. In the USCIS publication of ${pubEn}, the upper bound of the range, the point by which 80% of that office’s cases were finished, runs from ${n(offs[0].i485fam!.max)} months in ${offs[0].name} to ${n(offs[offs.length - 1].i485fam!.max)} months in ${offs[offs.length - 1].name}. The middle office sits at ${n(medNow)} months, ${medNow >= prevYear.med ? 'up' : 'down'} from ${n(prevYear.med)} at the end of ${prevYear.y}. The report to Congress for ${NATIONAL_MONTH} gives a national average of ${n(nat.months)} months, a much shorter figure, because it averages every family adjustment decided in the month instead of measuring how long the slower part of one office’s queue takes. USCIS had ${n(nat.pending)} family-based applications pending. In ${n(slowerThanN400)} of the 90 offices, the family I-485 takes longer than naturalization at the same address.`,
     faqs: [
       { q: 'Why is the family-based I-485 slower than the N-400 at the same field office?', a: 'They are separate queues decided by the same officers. USCIS publishes each one with its own range, and at almost every office the family adjustment range is the longer of the two. USCIS does not publish a reason office by office, so we report the figures as they stand rather than guess at the cause.' },
@@ -58,7 +58,7 @@ export default definePage({
     body: (h) => {
       const m = (x: number | null | undefined) => (x == null ? '–' : h.num(x, x % 1 ? 1 : 0));
       const row = (o: Off) => [o.name, `${m(o.i485fam!.min)} to ${m(o.i485fam!.max)} months`, h.num(o.i485famRank), o.i485fam!.inquiry ? h.date(o.i485fam!.inquiry) : '–'];
-      return `<h2>The ends of the list</h2>
+      return `<h2>I-485 processing time: the ends of the list</h2>
 <p>The table below the checker covers the 20 largest offices. The extremes sit elsewhere, in smaller cities and in one state that dominates the slow end.</p>
 ${h.table(['Field office', 'Published range', 'Rank of 90', 'Inquiries for receipts up to'], [...fastest.map(row), ...slowest.map(row)], 'Five fastest, then five slowest, by the upper bound of the family-based I-485 range.', ['l', 'r', 'r', 'l'])}
 <p>${wa.length >= 2 ? `Washington State holds ${h.num(wa.length)} of the slowest five: ${wa.map((o) => o.name.replace(', WA', '')).join(', ')}. ` : ''}A gap of ${m(slowest[0].i485fam!.max! - fastest[0].i485fam!.max!)} months separates the top of the list from the bottom.</p>

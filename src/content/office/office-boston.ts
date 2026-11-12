@@ -22,8 +22,8 @@ export default definePage({
     nav: `Boston field office`, card: `USCIS Boston against Lawrence and Providence: New England offices with very different speeds.`,
     title: `USCIS Boston Processing Times 2026: N-400 and I-485`,
     description: `USCIS Boston field office: N-400 and family I-485 processing times, the Lawrence and Providence offices compared, four years of data and inquiry cut-offs.`,
-    h1: `Boston field office: New England’s main USCIS queue`,
-    intro: `Massachusetts is served by Boston and Lawrence, and Rhode Island by Providence; the three publish strikingly different times.`,
+    h1: `USCIS Boston processing times: New England’s main queue`,
+    intro: `Massachusetts is served by the USCIS Boston and Lawrence offices, and Rhode Island by Providence; the three publish strikingly different processing times.`,
     resume: `USCIS publishes ${o.n400Range} for Form N-400 at the Boston field office, rank ${o.n400Rank} of ${OFFICE_COUNT}, and ${o.i485Range} for family-based Form I-485, rank ${o.i485Rank}. Within an hour’s drive, the Lawrence office, which covers parts of northeastern Massachusetts, is among the slowest for both queues, at ${law.n400Range} and ${law.i485Range}, while Providence is among the fastest, at ${pro.n400Range} and ${pro.i485Range}. Boston itself is close to the middle for naturalization and in the faster third for family adjustment. Since our first record, from ${o.firstDate}, Boston’s upper bounds have moved by ${sgn(o.n400Change)} months for citizenship and ${sgn(o.i485Change)} months for the family green card. USCIS accepts Boston case inquiries for N-400 receipts on or before ${o.n400Inquiry} and for family I-485 receipts on or before ${o.i485Inquiry}. Source: USCIS publication of ${pub}.`,
     faqs: [
       { q: `How long does citizenship take at the Boston USCIS office?`, a: `Naturalization at Boston is published at ${o.n400Range}, counted from the receipt date to a decision. Boston ranks ${o.n400Rank} of ${OFFICE_COUNT} offices. The upper figure is the time within which 80% of cases are completed. These are office-wide figures; your own case can finish earlier or later than both numbers.` },
@@ -32,7 +32,7 @@ export default definePage({
     ],
     body: (h) => `<h2>Neighbors far apart</h2>
 <p>The upper bound for the family green card is ${fm(law.i485.max)} months at Lawrence, ${fm(o.i485.max)} at Boston and ${fm(pro.i485.max)} at Providence. For naturalization the three run from ${fm(pro.n400.max)} to ${fm(law.n400.max)} months. Two applicants in neighboring towns can therefore be on very different clocks.</p>
-<h2>Boston since 2022</h2>
+<h2>USCIS Boston processing times since 2022</h2>
 <p>Our first record shows ${o.n400FirstRange} for the N-400 and ${o.i485FirstRange} for the family I-485 at Boston. At the 80% mark naturalization is now slightly quicker, while the family green card queue has grown by ${sgn(o.i485Change)} months.</p>
 <h2>Your own file</h2>
 <p>Enter the receipt date from your notice in the checker above. If you have moved since filing, check which office your latest notice names: a transfer between offices can change both the range and the inquiry date that apply to you.</p>

@@ -40,8 +40,8 @@ export default definePage({
     nav: 'F1 (adult son or daughter)', card: 'Unmarried sons and daughters 21+ of U.S. citizens: this month’s cutoff, the Mexico and Philippines lines, and the wait.',
     title: 'F1 Visa Bulletin 2026: Priority Date Cutoff and Wait',
     description: 'F1 category for unmarried adult children of U.S. citizens: Final Action Date, Date for Filing, Mexico and Philippines lines, history since 2001 and a forecast.',
-    h1: 'F1: the queue for a U.S. citizen’s unmarried son or daughter',
-    intro: 'Type the priority date printed on the I-130 receipt or approval notice to see where it sits against the F1 cutoff this month.',
+    h1: 'F1 Visa Bulletin: the queue for a U.S. citizen’s unmarried son or daughter',
+    intro: 'Type the priority date printed on the I-130 receipt or approval notice to see where it sits against the F1 cutoff in this month’s Visa Bulletin.',
     resume: `F1 is the family preference for the unmarried sons and daughters, aged 21 or older, of U.S. citizens. In the latest Visa Bulletin the Final Action Date for applicants born in most countries is ${en(fad)}, and the Date for Filing is ${en(dff)}. Two countries wait on their own, longer lines: Mexico at ${en(mx)} and the Philippines at ${en(ph)}. The worldwide date was ${en(oct2025)} a year earlier, so twelve bulletins carried it about ${gainYear} months forward, after a stretch in which it sat at ${en(oct2021)} for more than a year. Marriage before the green card moves the beneficiary to F3, whose worldwide date is ${en(f3row)}. Our back-test from October 2012 to October 2025 shows forecasts for a person twelve months behind the cutoff missed by a median of ${bt12.medianError} months, so the calculator gives a range, never a single month.`,
     faqs: [
       { q: 'Who qualifies for the F1 category of the Visa Bulletin?', a: 'A son or daughter of a U.S. citizen who is 21 or older and not married when the visa is issued. The citizen files Form I-130. The beneficiary’s own unmarried children under 21 can come along as derivatives with the same priority date, and a spouse cannot, because a married son or daughter belongs to F3 instead.' },
@@ -70,8 +70,8 @@ export default definePage({
     nav: 'F1 (hijo soltero mayor)', card: 'Hijos solteros de 21 años o más de un ciudadano: la fecha del mes, las filas de México y Filipinas, y la espera.',
     title: 'F1 boletín de visas 2026: hijo soltero de ciudadano',
     description: 'Categoría F1 para hijos solteros de 21 años o más de un ciudadano de EE. UU.: fecha de acción final, fecha para presentar, México, Filipinas y la espera.',
-    h1: 'F1: cuando un ciudadano pide a su hijo soltero mayor de 21',
-    intro: 'Escriba la fecha de prioridad del aviso de recibo del I-130 y vea si su hijo o hija ya está al día en la categoría F1 este mes.',
+    h1: 'F1 en el Boletín de Visas: cuando un ciudadano pide a su hijo soltero mayor de 21',
+    intro: 'Escriba la fecha de prioridad del aviso de recibo del I-130 y vea si su hijo o hija ya está al día en la categoría F1 del Boletín de Visas de este mes.',
     resume: `La categoría F1 es para el hijo o la hija soltera, de 21 años o más, de un ciudadano estadounidense. En el boletín de visas (Visa Bulletin) más reciente, la fecha de acción final (Final Action Date) para quien nació en El Salvador, Guatemala, Honduras o cualquier país sin columna propia es ${es(fad)}; la fecha para presentar (Date for Filing) es ${es(dff)}. Si su hijo nació en México, la fila es otra y mucho más lenta: ${es(mx)}. En Filipinas va en ${es(ph)}. Un año antes, la fecha general estaba en ${es(oct2025)}, de modo que avanzó unos ${gainYear} meses en doce boletines. Si su hijo se casa antes de recibir la visa, la petición pasa a F3, cuya fecha general es ${es(f3row)}. Por eso nuestra calculadora muestra un rango y nunca promete un mes: con doce meses de atraso, el pronóstico falló por una mediana de ${bt12.medianError} meses entre 2012 y 2025.`,
     faqs: [
       { q: '¿Quién entra en la categoría F1 si soy ciudadano y pido a mi hijo?', a: 'Su hijo o hija de 21 años o más que siga soltero hasta que se emita la visa. Usted presenta el formulario I-130. Los hijos solteros menores de 21 de su hijo pueden venir como derivados con la misma fecha de prioridad. Un yerno o una nuera no: si su hijo está casado, la categoría es F3.' },

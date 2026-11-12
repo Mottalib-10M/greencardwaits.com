@@ -59,7 +59,7 @@ ${h.table(['Path', 'Paper', 'Online'], [
     title: 'Costo de la residencia americana 2026: tarifas de USCIS',
     description: 'Cuánto cuesta la residencia americana en 2026: tarifas oficiales del G-1055 para I-130, I-485, permiso de trabajo y N-400, más los cargos del consulado.',
     h1: 'Cuánto cuesta la residencia americana en 2026',
-    intro: 'Elija el caso de su familia y las opciones para ver, línea por línea, las tarifas oficiales que pagará al gobierno.',
+    intro: 'Elija el caso de su familia y las opciones para ver, línea por línea, el costo de la residencia americana en tarifas oficiales que pagará al gobierno.',
     resume: `La residencia permanente (green card) no tiene un precio único: depende de dónde está la persona que va a inmigrar. Si su esposa o esposo ya vive en Estados Unidos y usted es ciudadano, la petición (I-130), el ajuste de estatus (I-485), el permiso de trabajo y el permiso de viaje suman ${es(mar)} en papel según la tabla de tarifas G-1055 del ${P.g1055_edition}. Si su familiar vive en México o en Centroamérica y hace el trámite en el consulado, el total oficial baja a ${es(cons)}: la misma petición de ${es(F.i130.paper)}, ${es(F.dosImmigrantFamily.amount)} para la visa de inmigrante, ${es(F.dosAffidavitReview.amount)} por revisar la declaración de patrocinio en el Centro Nacional de Visas y ${es(F.immigrantFee.amount)} de USCIS Immigrant Fee antes de viajar. Más adelante, la ciudadanía con el N-400 cuesta ${es(F.n400.paper)} en papel o ${es(F.n400.reduced)} con ingresos bajos. El examen médico y los honorarios de un abogado van aparte.`,
     faqs: [
       { q: '¿Cuánto cuesta la residencia americana para un familiar que vive en México?', a: `Con proceso consular, las tarifas oficiales suman ${es(cons)} para una persona: ${es(F.i130.paper)} de la petición I-130 en papel, ${es(F.dosImmigrantFamily.amount)} de visa familiar, ${es(F.dosAffidavitReview.amount)} de revisión de la declaración de patrocinio y ${es(F.immigrantFee.amount)} de USCIS Immigrant Fee. El examen médico con el médico autorizado por la embajada se paga aparte y su precio no lo fija el gobierno.` },
@@ -70,7 +70,7 @@ ${h.table(['Path', 'Paper', 'Online'], [
     body: (h) => `
 <h2>Primero: ¿su familiar está aquí o en su país?</h2>
 <p>La pregunta que más cambia el precio no es el formulario, sino el lugar. Quien ya vive en Estados Unidos y puede ajustar su estatus paga el I-485 de ${h.usd(F.i485.paper)} en papel, y muchas familias suman el permiso de trabajo (I-765) y el permiso de viaje (advance parole, I-131) para no quedarse meses sin poder trabajar ni salir del país. Quien vive en Guadalajara, San Salvador o Tegucigalpa hace el proceso consular (consular processing): no paga el I-485, paga la visa al Departamento de Estado. Si su familiar entró sin inspección o tuvo problemas migratorios, la vía posible puede ser otra; eso lo decide un abogado de inmigración, no una calculadora.</p>
-<h2>Las dos rutas de una familia, en números</h2>
+<h2>El costo de la residencia americana por las dos rutas de una familia, en números</h2>
 ${h.table(['Caso', 'Papel', 'En línea'], [
   [h.a('marriage-green-card-cost', 'Cónyuge en EE. UU., con permisos'), h.usd(mar), h.usd(marOn)],
   ['Cónyuge en EE. UU., sin permisos', h.usd(marBare), h.usd(feeTotal({ ...DEFAULT_FEES, path: 'marriage', ead: false, advanceParole: false, online: true }).total)],

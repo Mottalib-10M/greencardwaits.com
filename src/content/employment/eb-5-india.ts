@@ -32,7 +32,7 @@ export default definePage({
     nav: 'EB-5 India', card: 'Indian investors in the unreserved row: a queue born in 2022, a summer 2026 freeze and set-asides that stay open.',
     title: 'EB-5 India Priority Date 2026: Unreserved Cutoff and Freeze',
     description: 'EB-5 India in the Visa Bulletin: unreserved cutoff and filing date, the 2026 months listed unavailable, the 2022 break and set-aside rows for Indian investors.',
-    h1: 'EB-5 India: an investor queue that is only a few years old',
+    h1: 'EB-5 India priority date: an investor queue that is only a few years old',
     intro: 'Enter the priority date from your Form I-526E receipt to check the unreserved EB-5 row for an investor born in India.',
     resume: `The ${monthName(LATEST, 'en')} Visa Bulletin gives EB-5 India, in the unreserved row, a Final Action Date of ${en(fad)} and a Date for Filing of ${en(dff)}. ${unav26.length ? `It follows ${unav26.length} bulletins in 2026, ${unav26.map((m) => monthName(m, 'en')).join(', ').replace(/, ([^,]*)$/, ' and $1')}, in which the Indian unreserved row was listed as unavailable, meaning no Indian unreserved EB-5 green card could be approved.` : ''} This queue is recent: the Indian column was Current until September 2022, and the October 2022 bulletin replaced Current with a date, a fall of about ${Math.round(retro.worstMonths)} months. Since October 2015 the column has differed from the worldwide one in ${Math.round(distinctShare('EB5', 'IN') * 100)}% of bulletins. ${setAllC ? 'The rural, high-unemployment and infrastructure set-aside rows are Current for India this month, so the cutoff applies only to investors whose project falls in the unreserved row.' : 'The set-aside rows carry their own dates for India this month.'} No distance passes our back-test here, so the calculator shows no forecast.`,
     faqs: [
@@ -41,7 +41,7 @@ export default definePage({
       { q: 'How did EB-5 India move during fiscal year 2025?', a: 'It opened at January 1, 2022 in October 2024, then moved back to November 1, 2019 in April 2025 and to May 1, 2019 in May 2025. October 2025, the start of the next fiscal year, brought it forward to February 1, 2021. The row is young and has swung in both directions.' },
     ],
     body: (h) => `
-<h2>How the Indian queue began</h2>
+<h2>How the EB-5 India priority date began</h2>
 <p>For most of the archive, investors born in India waited behind no cutoff. The column had a date for about a year from mid-2019, was Current again from July 2020 and stayed so until September 2022. Then ${h.month(retro.worstAt)} moved it from ${h.cell(before)} to ${h.cell(worst)}, the deepest single drop this line has recorded. It opened the next three fiscal years at ${h.cell(octs[0])}, ${h.cell(octs[1])} and ${h.cell(octs[2])}, with two steps back inside fiscal 2025: ${h.cell(apr25)} in April and ${h.cell(may25)} in May.</p>
 <h2>The 2026 freeze</h2>
 <p>The row held at ${h.cell(jun26)} through June 2026${unav26.length ? `, then was listed as unavailable in ${list(h, unav26)}` : ''}. The ${h.src('vbOct2026', 'October 2026 bulletin')} reopened it at ${h.cell(oct26)}, with the Date for Filing at ${h.cell(dff)}. An Indian investor with a pending Form I-485 simply waits through an unavailable month; nothing is cancelled, but nothing can be approved.</p>

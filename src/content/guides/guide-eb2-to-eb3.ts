@@ -37,7 +37,7 @@ export default definePage({
     title: 'EB-2 to EB-3 Downgrade 2026: Cutoffs and the Second I-140',
     description: 'EB-2 and EB-3 cutoffs side by side for every country column, each October since 2016, and how a second I-140 and a basis transfer keep your priority date.',
     h1: 'EB-2 to EB-3: when the lower category is the shorter line',
-    intro: 'Choose your country of chargeability and enter your priority date to see which of the two lines is ahead for you in this month’s Visa Bulletin.',
+    intro: 'Choose your country of chargeability and enter your priority date to see whether an EB-2 to EB-3 downgrade puts you in the line that is ahead in this month’s Visa Bulletin.',
     resume: `A downgrade from EB-2 to EB-3 means an employer files a second Form I-140 for the same worker in the third preference, so that the worker can use whichever line is moving faster. The USCIS Policy Manual lets the beneficiary of an approved petition keep its priority date on a later petition, so the EB-3 filing does not restart the wait. If an I-485 is already pending, the applicant can ask USCIS in writing to transfer it to the new petition; the decision is discretionary, a visa must be immediately available on the date of the request, and no new I-485 or filing fee is required. The comparison changes over time. In the ${LATEST.slice(0, 4)} bulletins, EB-3 India stands at ${en(cellAt('EB3', 'IN', 'FAD'))} against ${en(cellAt('EB2', 'IN', 'FAD'))} for EB-2 India, while for the rest of the world EB-2 is ahead. In the Octobers since ${OCT_FROM}, EB-3 India led in ${eb3AheadIn} and EB-2 India in ${eb2AheadIn}.`,
     faqs: [
       { q: 'Does an EB-2 to EB-3 downgrade keep my original priority date?', a: 'Yes, once the earlier EB-2 petition has been approved. The USCIS Policy Manual says the beneficiary of an approved petition keeps its priority date for later petitions, unless the approval is revoked for fraud or willful misrepresentation, the labor certification is revoked, or the approval rested on a material error. The new EB-3 petition must still qualify on its own.' },
@@ -49,7 +49,7 @@ export default definePage({
       { q: 'Does a downgrade to EB-3 change the Dates for Filing chart I use?', a: 'The chart USCIS designates applies to all employment categories alike in a given month. What changes is the date in your row: the EB-3 column for your country on that chart may be earlier or later than the EB-2 one. USCIS posts the chart choice each month on its adjustment of status filing charts page.' },
     ],
     body: (h) => `
-<h2>Why a lower category can be a shorter wait</h2>
+<h2>Why an EB-2 to EB-3 downgrade can be a shorter wait</h2>
 <p>EB-2 is the preference for advanced degrees and exceptional ability, EB-3 the one for skilled workers and professionals. The labels suggest a ranking, but each category has its own share of the yearly employment numbers and its own queue of applicants from each country. When more people born in a country are waiting in EB-2 than in EB-3, the EB-3 cutoff can sit later than the EB-2 one. The so-called downgrade is a response to that: the worker who qualifies for EB-2 also qualifies for EB-3, and the employer files in the line that happens to move faster.</p>
 <h2>This month, side by side</h2>
 <p>The table reads the ${h.month(LATEST)} bulletin for each chargeability column. A later date is a shorter wait for the same priority date.</p>

@@ -22,15 +22,15 @@ export default definePage({
     nav: `Denver field office`, card: `USCIS Denver: both queues longer than in 2022, with Salt Lake City and Albuquerque for comparison.`,
     title: `USCIS Denver Processing Times 2026: N-400 and I-485`,
     description: `USCIS Denver field office: N-400 and family I-485 times, how both have lengthened since 2022, Salt Lake City and Albuquerque compared, and inquiry dates.`,
-    h1: `Denver field office: Mountain West times compared`,
-    intro: `Denver serves Colorado and Wyoming addresses; its published times have grown on both main forms since the series began in 2022.`,
+    h1: `USCIS Denver processing times: the Mountain West compared`,
+    intro: `USCIS Denver serves Colorado and Wyoming addresses; its published processing times have grown on both main forms since the series began in 2022.`,
     resume: `USCIS publishes ${o.n400Range} for Form N-400 at the Denver field office, rank ${o.n400Rank} of ${OFFICE_COUNT}, and ${o.i485Range} for family-based Form I-485, rank ${o.i485Rank}. Both are longer than in our first record, from ${o.firstDate}, when the office published ${o.n400FirstRange} for naturalization and ${o.i485FirstRange} for family adjustment: the upper bounds have moved by ${sgn(o.n400Change)} and ${sgn(o.i485Change)} months. Other Mountain West offices publish shorter family green card ranges at the moment: Salt Lake City ${slc.i485Range} and Albuquerque ${abq.i485Range}. For naturalization, Salt Lake City shows ${slc.n400Range} and Albuquerque ${abq.n400Range}. USCIS accepts Denver case inquiries for N-400 receipts on or before ${o.n400Inquiry} and family I-485 receipts on or before ${o.i485Inquiry}, according to its publication of ${pub}.`,
     faqs: [
       { q: `How long does the N-400 take at USCIS Denver?`, a: `USCIS publishes ${o.n400Range} for naturalization at Denver, from receipt to decision. In early 2022 the same office published ${o.n400FirstRange}. Denver now ranks ${o.n400Rank} of ${OFFICE_COUNT} field offices. If the case has been transferred, the receiving office’s range is the one to use from then on.` },
       { q: `Is Salt Lake City faster than Denver for a family green card?`, a: `On the latest figures, yes: Salt Lake City publishes ${slc.i485Range} for family-based Form I-485 and Denver ${o.i485Range}. Each serves its own area; USCIS assigns the office from the applicant’s address. The checker on this page applies these same figures to the receipt date on your own notice.` },
       { q: `How much longer is the Denver family green card queue than in 2022?`, a: `At the upper bound, ${sgn(o.i485Change)} months: from ${o.i485FirstRange} in our first record to ${o.i485Range} today. The table on this page shows the last USCIS publication of each year. A request for evidence, a rescheduled appointment or a file transfer adds time that no published range includes.` },
     ],
-    body: (h) => `<h2>Both queues longer</h2>
+    body: (h) => `<h2>USCIS Denver processing times: both queues longer</h2>
 <p>Denver is one of the offices where the 80% mark has grown for citizenship and for family adjustment alike. The family green card queue is now ${fm(o.gap)} months longer than the naturalization queue at the upper bound.</p>
 <h2>The neighbors</h2>
 <p>Salt Lake City ranks ${slc.i485Rank} and Albuquerque ${abq.i485Rank} for family adjustment, both well ahead of Denver at ${o.i485Rank}. For naturalization the three are closer, between ranks ${Math.min(o.n400Rank, slc.n400Rank, abq.n400Rank)} and ${Math.max(o.n400Rank, slc.n400Rank, abq.n400Rank)}.</p>

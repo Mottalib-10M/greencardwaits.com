@@ -51,8 +51,8 @@ ${h.table(['How you file', 'Fee', 'Saving against paper'], [
     nav: 'Costo de la ciudadanía', card: 'Lo que cuesta pasar de residente a ciudadano: N-400 en papel, en línea o con tarifa reducida.',
     title: 'Costo de la ciudadanía americana 2026: tarifa del N-400',
     description: 'Costo de la ciudadanía americana en 2026: el N-400 en papel, en línea o con la tarifa reducida, y lo que gana su familia en México al hacerse ciudadano.',
-    h1: 'Cuánto cuesta hacerse ciudadano de Estados Unidos',
-    intro: 'Elija cómo va a presentar la solicitud y si sus ingresos califican para la tarifa reducida para ver su costo exacto.',
+    h1: 'Costo de la ciudadanía americana: cuánto cuesta hacerse ciudadano de Estados Unidos',
+    intro: 'Elija cómo va a presentar la solicitud y si sus ingresos califican para la tarifa reducida para ver el costo exacto de su ciudadanía americana.',
     resume: `La solicitud de naturalización (Form N-400) cuesta ${es(F.n400.paper)} en papel y ${es(F.n400.online)} en línea según la tabla de tarifas G-1055 de USCIS del ${P.g1055_edition}. Si los ingresos de su hogar no pasan del 400 % del nivel federal de pobreza (federal poverty guidelines), puede pagar ${es(F.n400.reduced)}, la mitad, pero solo si envía el formulario en papel. No hay cobro aparte por huellas digitales ni por la ceremonia. Cada persona paga su propio N-400: si usted y su esposa se hacen ciudadanos al mismo tiempo, son ${es(couple)} en papel con la tarifa normal. Para muchas familias mexicanas y centroamericanas, el precio se mide contra lo que se gana: un ciudadano de 21 años o más puede pedir a sus padres sin fila, y sus hijos solteros mayores de 21 años pasan de la categoría F2B a la F1. Para saber si ya cumple los años de residencia, use la calculadora de fecha temprana.`,
     faqs: [
       { q: '¿Quién puede pagar la tarifa reducida de la ciudadanía americana?', a: `Quien tiene ingresos del hogar iguales o menores al 400 % del nivel federal de pobreza según el número de personas en su casa. La tarifa reducida es de ${es(F.n400.reduced)} y solo se pide con el N-400 en papel, junto con pruebas de ingresos. La tabla de pobreza cambia cada año; revise la cifra vigente en la página del N-400 de USCIS.` },
@@ -60,7 +60,7 @@ ${h.table(['How you file', 'Fee', 'Saving against paper'], [
       { q: '¿Me devuelven el costo del N-400 si me niegan la ciudadanía?', a: `No. La tarifa paga la revisión de la solicitud, no la aprobación. Por eso conviene revisar antes los ${N.residenceYears} años de residencia (3 si está casado con un ciudadano), los días dentro del país y los viajes largos. Si tiene arrestos o problemas migratorios pasados, hable antes con un abogado de inmigración o un representante acreditado por el DOJ.` },
     ],
     body: (h) => `
-<h2>Tres precios para el mismo formulario</h2>
+<h2>Costo de la ciudadanía americana: tres precios para el mismo formulario</h2>
 ${h.table(['Cómo lo presenta', 'Tarifa'], [
   ['En papel, tarifa normal', h.usd(F.n400.paper)],
   ['En línea, tarifa normal', h.usd(F.n400.online)],

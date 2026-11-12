@@ -33,7 +33,7 @@ export default definePage({
       { q: 'Is my priority date sent anywhere when I use the calculator?', a: 'No. The calculation runs in your browser with data already loaded on the page, and nothing you type is stored, sent or written into the page address. The reminder button creates a calendar file on your own device, and closing the tab erases everything you entered.' },
     ],
     body: (h) => `
-<h2>What the calculator reads</h2>
+<h2>What the priority date calculator reads</h2>
 <p>Every bulletin since ${h.month(VB.first)} has been read cell by cell: ${h.num(VB.count)} months, five family and six employment categories, the worldwide column and the columns for China, India, Mexico and the Philippines, and since October 2015 both charts. The ${h.month(VB.latest)} bulletin gives the current cutoffs; USCIS’s filing-charts page says which chart it accepts for Form I-485 this month. If you select a USCIS field office, the result adds the family green card range USCIS publishes for that office; otherwise it shows the national average from the monthly report to Congress.</p>
 <h2>How to read the result</h2>
 <p>The headline is either “Current”, a range of months, or “No reliable forecast”. Under it, the result lists both cutoffs, whether you can file the I-485 now, the past error of the method at your distance, the office time and the government fees for the path you chose. The step-by-step panel shows each number with its source. On a large screen, the chart puts the cutoff history since 2012 next to your date as a red line; when a forecast is shown, the shaded cone is the range.</p>
@@ -57,7 +57,7 @@ export default definePage({
       { q: '¿Se envía mi fecha de prioridad a algún lado?', a: 'No. El cálculo se hace en su navegador con los datos ya cargados en la página, y nada de lo que escribe se guarda, se envía ni se escribe en la dirección de la página. El botón de recordatorio crea un archivo de calendario en su propio dispositivo.' },
     ],
     body: (h) => `
-<h2>Lo que lee la calculadora</h2>
+<h2>Lo que lee la calculadora de fecha de prioridad</h2>
 <p>Cada boletín desde ${h.month(VB.first)} se leyó casilla por casilla: ${h.num(VB.count)} meses, cinco categorías familiares y seis de empleo, la columna del resto del mundo y las de China, India, México y Filipinas, y desde octubre de 2015 las dos tablas. El boletín de ${h.month(VB.latest)} da las fechas actuales; la página de USCIS sobre las tablas de presentación dice cuál acepta este mes para el I-485. Si elige una oficina de USCIS, el resultado agrega el rango publicado para la green card familiar en esa oficina; si no, muestra el promedio nacional del informe mensual al Congreso.</p>
 <h2>Cómo leer el resultado</h2>
 <p>El titular dice «Al día», un rango de meses o «Sin pronóstico fiable». Debajo aparecen las dos fechas límite, si puede presentar el I-485 ya, el error pasado del método a su distancia, el tiempo de la oficina y las tarifas del gobierno para el trámite elegido. El panel «Cómo se calculó» muestra cada cifra con su fuente.</p>

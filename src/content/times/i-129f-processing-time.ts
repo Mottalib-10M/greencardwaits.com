@@ -26,7 +26,7 @@ export default definePage({
     title: 'I-129F Processing Time 2026: K-1 Fiancé Visa at USCIS',
     description: 'K-1 visa processing time in 2026: the USCIS range for Form I-129F, the steps after approval with no published wait, the fees and the green card after marriage.',
     h1: 'I-129F processing time and the K-1 fiancé(e) visa',
-    intro: 'Enter the receipt date of your I-129F to see how far the petition has come against the range USCIS publishes for fiancé(e) and spouse K visas.',
+    intro: 'Enter the receipt date of your I-129F to see how far the petition has come against the processing time range USCIS publishes for fiancé(e) and spouse K visas.',
     resume: `A U.S. citizen who wants to bring a fiancé or fiancée from abroad to marry in the United States starts with Form I-129F, the petition for an alien fiancé(e). USCIS publishes one line for it at Service Center Operations, covering K-1 fiancé(e)s and the related K-2, K-3 and K-4 categories. In the edition of ${pubEn}, the range is ${n(k.min)} to ${n(k.max)} months: the median petition was decided in ${n(k.min)} months and 80% within ${n(k.max)}. Case inquiries are accepted for receipts up to ${displayDate(k.inquiry!, 'en-US')}. That is only the USCIS part of a K-1 visa. After approval, the case moves to the State Department for the visa interview abroad, a stage for which no wait is published that we can use. The I-129F fee is ${usd(F.i129f.paper, 'en')} on paper, and the State Department charges ${usd(F.dosK.amount, 'en')} for the K visa. After arrival and the wedding, the green card application is a family-based I-485 with its own processing time.`,
     faqs: [
       { q: 'How long does a K-1 visa take from start to finish?', a: 'Only part of it can be measured. USCIS publishes a range for Form I-129F, shown on this page. The consular stage that follows, from approval to the interview and visa, has no published time we can use. After entry, the couple marries and files a family-based Form I-485, which has its own range at each field office.' },
@@ -51,8 +51,8 @@ ${h.table(['Stage', 'Who handles it', 'Published time', 'Fee'], [['Form I-129F p
     nav: 'Tiempo de la visa K-1', card: 'Cuánto tarda la petición de prometido(a) I-129F y qué etapas de la visa K-1 no tienen tiempo publicado.',
     title: 'Visa K-1 tiempo de proceso 2026: petición I-129F de USCIS',
     description: 'Cuánto tarda la visa K-1 de prometido(a) en 2026: el rango de USCIS para la petición I-129F, la entrevista consular, las tarifas y la residencia tras la boda.',
-    h1: 'Visa de prometido(a) K-1: cuánto tarda la petición I-129F',
-    intro: 'Escriba la fecha de recibo de su I-129F para ver cuánto lleva la petición frente al rango que publica USCIS para las visas K.',
+    h1: 'Visa K-1 de prometido(a): tiempo de proceso de la petición I-129F',
+    intro: 'Escriba la fecha de recibo de su I-129F para ver cuánto lleva la petición frente al tiempo de proceso que publica USCIS para las visas K-1.',
     resume: `Un ciudadano estadounidense que quiere casarse en Estados Unidos con su novia de Guadalajara o su novio de Bogotá empieza con el formulario I-129F, la petición de prometido(a) extranjero (Petition for Alien Fiancé(e)). USCIS lo publica en una sola línea de los centros de servicio, que incluye la visa K-1 y las categorías K-2, K-3 y K-4. En la publicación del ${pubEs}, el rango es de ${n(k.min, 'es')} a ${n(k.max, 'es')} meses: la mitad de las peticiones se decidió antes de ${n(k.min, 'es')} meses y el 80 % antes de ${n(k.max, 'es')}. Después de la aprobación, el caso pasa al Departamento de Estado para la entrevista en el consulado, una etapa sin tiempo publicado que podamos usar. La petición cuesta ${usd(F.i129f.paper, 'es')} y la visa K, ${usd(F.dosK.amount, 'es')}. Tras la llegada y la boda, la residencia se pide con el I-485 por familia, que tiene su propio tiempo en cada oficina de USCIS.`,
     faqs: [
       { q: '¿Cuánto tarda la visa K-1 para mi prometida que vive en México?', a: 'Solo la parte de USCIS tiene un tiempo oficial: el rango del I-129F que muestra esta página. La entrevista en el consulado de Ciudad Juárez o en otro consulado depende del Departamento de Estado, que no publica un tiempo comparable. Desconfíe de quien le prometa una fecha exacta para todo el proceso.' },
@@ -61,7 +61,7 @@ ${h.table(['Stage', 'Who handles it', 'Published time', 'Fee'], [['Form I-129F p
     ],
     body: (h) => {
       const m = (x: number | null | undefined) => (x == null ? '–' : h.num(x, x % 1 ? 1 : 0));
-      return `<h2>Lo que se sabe y lo que no</h2>
+      return `<h2>Tiempo de proceso de la visa K-1: lo que se sabe y lo que no</h2>
 <p>De las tres etapas de una visa K-1, dos tienen cifras oficiales de USCIS y una no tiene ninguna. La petición I-129F está hoy en ${m(k.min)} a ${m(k.max)} meses, con consultas aceptadas para recibos hasta el ${h.date(k.inquiry!)}. La entrevista en el consulado no tiene un tiempo publicado. El ajuste de estatus después de la boda depende de la oficina: la oficina típica de las 90 publica ${m(famMed)} meses como cifra alta.</p>
 ${h.table(['Pago', 'Monto'], [['Petición I-129F (USCIS)', h.usd(F.i129f.paper)], ['Visa K (Departamento de Estado)', h.usd(F.dosK.amount)], ['Ajuste de estatus I-485 después de la boda, en papel', h.usd(F.i485.paper)]], `Formulario G-1055 de USCIS y tarifas del Departamento de Estado.`, ['l', 'r'])}
 <h2>Planear la boda</h2>

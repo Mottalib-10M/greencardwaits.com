@@ -47,8 +47,8 @@ export default definePage({
     nav: 'F3 Mexico', card: 'Mexican-born married sons and daughters of U.S. citizens: a quarter-century line with the deepest drop on record.',
     title: 'F3 Mexico Visa Bulletin 2026: Married Son or Daughter',
     description: 'F3 Mexico: Final Action Date for Mexican-born married children of U.S. citizens, one of the oldest cutoffs, its 2006 collapse and the grandchildren who age out.',
-    h1: 'F3 Mexico: a citizen’s married son or daughter, born in Mexico',
-    intro: 'Enter the priority date from the I-130 to see how the Mexico F3 cutoff compares with it, and why the calculator is cautious about this line.',
+    h1: 'F3 Mexico Visa Bulletin: a citizen’s married son or daughter, born in Mexico',
+    intro: 'Enter the priority date from the I-130 to see how the Mexico F3 cutoff in the Visa Bulletin compares with it, and why the calculator is cautious about this line.',
     resume: `For a married son or daughter of a U.S. citizen, born in Mexico, the F3 Final Action Date in the latest Visa Bulletin is ${en(fad)}, so the queue covers about ${lineYears.toFixed(0)} years of priority dates. Petitions filed in ${fadYear} are only now reaching the front. The worldwide F3 date is ${en(row)}, some ${years(fad, row).toFixed(1)} years ahead. The Dates for Filing chart is further along at ${en(dff)}, about ${dffLead} months past the Final Action Date. Movement has been uneven: about ${g24} months of progress in the year to October 2024, then only ${gNow} months in the past twelve. In ${monthName(retro.worstAt, 'en')} the cutoff fell from ${en(before)} to ${en(after)}, ${deepest ? 'the deepest single drop in any family column we track' : 'one of the deepest single drops in the family table'}. Our back-test fails for this case at one and two years behind, so the calculator gives no date here, only the distance and filing status.`,
     faqs: [
       { q: 'Why does F3 Mexico move so slowly?', a: 'Married sons and daughters immigrate with their spouses and children under 21, so each Mexican F3 case uses several visa numbers from a small yearly F3 allotment, and Mexico is capped by the per-country limit on top of that. The line is long because demand built up over decades and every priority date carries a household. A good year can still be followed by a pause.' },
@@ -56,7 +56,7 @@ export default definePage({
       { q: 'Is a divorced F3 Mexico beneficiary better off in F1?', a: 'Divorce converts the case to F1 Mexico with the same priority date when the beneficiary is 21 or older, and the F1 Mexico cutoff is currently years ahead of F3 Mexico. The former spouse stops being a derivative. A divorce has many consequences besides the visa line, so for a real decision speak to an immigration attorney or a DOJ-accredited representative.' },
     ],
     body: (h) => `
-<h2>A line measured in generations</h2>
+<h2>A Mexico Visa Bulletin line measured in generations</h2>
 <p>An F3 Mexico priority date that becomes current today was filed in ${fadYear}; a son who was 30 then is about ${30 + Math.round(lineYears)} now, and his children have grown up during the wait. The cutoff, ${h.cell(fad)}, sits about ${h.num(lineYears, 0)} years behind the bulletin date, against ${h.num(years(row, latestDay), 0)} years for the worldwide F3 column. ${move === 0 ? 'The latest bulletin left it unchanged.' : `The latest bulletin moved it ${h.num(Math.abs(Math.round(move)))} days ${move > 0 ? 'forward' : 'backward'}.`}</p>
 <h2>The 2006 collapse and the long climb back</h2>
 <p>In ${h.month(retro.worstAt)} the Mexico F3 date dropped from ${h.cell(before)} to ${h.cell(after)}, erasing about ${h.num(Math.round(retro.worstMonths))} months in a single bulletin. It took years to recover. The cutoff was ${h.cell(oct2016)} in October 2016, ${h.cell(oct2021)} in October 2021 and ${h.cell(oct2025)} in October 2025. With ${h.num(retro.n)} retrogressions since 2001, this ${mostRetro ? 'is the Mexican family column that has gone backwards most often' : 'is one of the Mexican family columns that most often goes backwards'}.</p>
@@ -72,8 +72,8 @@ export default definePage({
     nav: 'F3 México', card: 'Hijos casados, nacidos en México, de un ciudadano: una fila de unos veinticinco años y el retroceso más grande del boletín.',
     title: 'F3 México boletín de visas 2026: hijo casado de ciudadano',
     description: 'F3 México: fecha de acción final para el hijo casado nacido en México de un ciudadano, una de las fechas más antiguas, su caída de 2006 y la edad de los nietos.',
-    h1: 'F3 México: su hijo casado, nacido en México, y toda su familia',
-    intro: 'Escriba la fecha de prioridad del I-130 que presentó por su hijo casado y vea dónde está frente a la fecha F3 de México.',
+    h1: 'F3 México en el Boletín de Visas: su hijo casado, nacido en México, y toda su familia',
+    intro: 'Escriba la fecha de prioridad del I-130 que presentó por su hijo casado y vea dónde está frente a la fecha F3 de México en el Boletín de Visas.',
     resume: `Si usted es ciudadano estadounidense y pidió a su hijo o hija casada, nacida en México, la fecha de acción final (Final Action Date) del boletín de visas más reciente es ${es(fad)}: la fila cubre unos ${lineYears.toFixed(0)} años de fechas de prioridad. Las peticiones presentadas en ${fadYear} apenas llegan hoy al frente. Para los nacidos en otros países, la F3 va en ${es(row)}. La fecha para presentar (Date for Filing) va algo más adelante, en ${es(dff)}. El avance ha sido desigual: unos ${g24} meses en el año hasta octubre de 2024 y apenas ${gNow} en los últimos doce. En ${monthName(retro.worstAt, 'es')} la fecha cayó de ${es(before)} a ${es(after)}, ${deepest ? 'el peor retroceso de todas las filas familiares' : 'uno de los peores retrocesos del cuadro familiar'}. Con su yerno o su nuera vienen los nietos menores de 21, pero muchos cumplen 21 antes de la visa. Nuestro pronóstico no pasó la prueba retrospectiva para este caso: la calculadora no da fecha.`,
     faqs: [
       { q: '¿Por qué la F3 de México tarda tanto?', a: 'Porque cada hijo casado viene con su cónyuge y sus hijos menores de 21, así que cada caso usa varias visas de un cupo anual pequeño, y México además tiene el límite por país. La demanda se acumuló durante décadas. Un buen año puede venir seguido de meses sin avance, como se ve en la historia de esta fila.' },
@@ -83,7 +83,7 @@ export default definePage({
     body: (h) => `
 <h2>Una petición de hace un cuarto de siglo</h2>
 <p>Usted se hizo ciudadano hace muchos años y pidió a su hijo, ya casado, que vive en Puebla con su esposa y sus hijos. La fecha F3 de México es ${h.cell(fad)}: unos ${h.num(lineYears, 0)} años de fila, frente a unos ${h.num(years(row, latestDay), 0)} para la columna general. ${move === 0 ? 'El último boletín la dejó sin cambio.' : `El último boletín la movió ${h.num(Math.abs(Math.round(move)))} días ${move > 0 ? 'hacia adelante' : 'hacia atrás'}.`}</p>
-<h2>La caída de 2006</h2>
+<h2>La caída de 2006 en el Boletín de Visas de México</h2>
 <p>En ${h.month(retro.worstAt)} la fecha bajó de ${h.cell(before)} a ${h.cell(after)}: unos ${h.num(Math.round(retro.worstMonths))} meses perdidos en un solo boletín. Recuperarse tomó años: ${h.cell(oct2016)} en octubre de 2016, ${h.cell(oct2021)} en octubre de 2021, ${h.cell(oct2025)} en octubre de 2025. En total ha retrocedido ${h.num(retro.n)} veces desde 2001${mostRetro ? ', más que cualquier otra fila familiar mexicana' : ''}.</p>
 <h2>Cuando un hijo en F1 se casa</h2>
 <p>Muchos casos F3 México empezaron como F1: el hijo era soltero y se casó durante la espera. Conservó la fecha, pero pasó de la F1 de México (${h.cell(f1mx)}) a esta fila, unos ${h.num(years(fad, f1mx), 1)} años más atrás. Vea la página ${h.a('f1-mexico', 'F1 México')}.</p>

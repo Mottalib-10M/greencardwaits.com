@@ -22,8 +22,8 @@ export default definePage({
     nav: `Newark field office`, card: `USCIS Newark against Mount Laurel and Cranbury: three New Jersey offices with very different family green card times.`,
     title: `USCIS Newark Processing Times 2026: N-400 and I-485`,
     description: `USCIS Newark field office: N-400 and family I-485 times as published, the Mount Laurel and Cranbury offices in New Jersey compared, and inquiry cut-off dates.`,
-    h1: `Newark field office: New Jersey’s busiest USCIS queue`,
-    intro: `New Jersey has three USCIS field offices; Newark covers the northern counties and carries the longest family green card queue of the three.`,
+    h1: `USCIS Newark processing times: New Jersey’s busiest queue`,
+    intro: `New Jersey has three USCIS field offices; Newark covers the northern counties and its processing times include the longest family green card queue of the three.`,
     resume: `USCIS publishes ${o.n400Range} for naturalization at the Newark field office, rank ${o.n400Rank} of ${OFFICE_COUNT}, and ${o.i485Range} for family-based adjustment of status, rank ${o.i485Rank}. New Jersey’s other two offices sit on either side of it. Mount Laurel, in the south, publishes ${mtl.n400Range} for Form N-400 and ${mtl.i485Range} for the family I-485. Cranbury, the newest office in the data, which appears in the published series only from September 2024, shows ${njc.n400Range} for naturalization, among the very fastest in the country, and ${njc.i485Range} for the family green card. The upper figure of each range is the time within which USCIS completes 80% of cases. At Newark, USCIS accepts a case inquiry for N-400 receipts dated on or before ${o.n400Inquiry} and family I-485 receipts on or before ${o.i485Inquiry}. All figures: USCIS publication of ${pub}.`,
     faqs: [
       { q: `How long is the Newark USCIS wait for citizenship?`, a: `Naturalization at Newark is published at ${o.n400Range}, from the receipt date to a decision. Mount Laurel shows ${mtl.n400Range} and Cranbury ${njc.n400Range}. New Jersey addresses are assigned to one of the three by county; the interview notice tells you which. The interview notice, not the city you live in, tells you which office’s figures apply to you.` },
@@ -32,7 +32,7 @@ export default definePage({
     ],
     body: (h) => `<h2>Three New Jersey offices compared</h2>
 <p>Newark is the largest of the three and, for family adjustment, the slowest: its upper bound of ${fm(o.i485.max)} months compares with ${fm(mtl.i485.max)} at Mount Laurel and ${fm(njc.i485.max)} at Cranbury. For naturalization, the order is the opposite of what size would suggest, with Cranbury near the top of the national ranking.</p>
-<h2>Since 2022</h2>
+<h2>USCIS Newark processing times since 2022</h2>
 <p>When our records begin, on ${o.firstDate}, Newark published ${o.n400FirstRange} for the N-400 and ${o.i485FirstRange} for the family I-485. The upper bounds have since moved by ${sgn(o.n400Change)} and ${sgn(o.i485Change)} months.</p>
 <h2>Your receipt date is what matters</h2>
 <p>A published range describes the office, not your file. Enter the receipt date from Form I-797C in the checker above to see how far along you are and whether the inquiry window is open. Keep your address current with USCIS: a move between New Jersey counties can send the file to another office.</p>

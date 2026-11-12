@@ -30,7 +30,7 @@ export default definePage({
       { q: 'Is the USCIS Immigrant Fee charged to people adjusting status with an I-485?', a: `No. It belongs to the consular route: it pays for turning an immigrant visa packet into a green card after admission. Someone who becomes a resident through Form I-485 inside the United States pays the I-485 fee of ${en(F.i485.paper)} on paper instead, and the card is produced from that application.` },
     ],
     body: (h) => `
-<h2>Paid to USCIS, at the very end</h2>
+<h2>The USCIS Immigrant Fee: paid at the very end</h2>
 <p>The ${h.src('immigrantFee', 'USCIS Immigrant Fee')} is the odd one out in a consular case. Everything else after the petition is paid to the ${h.src('dosFees', 'State Department')}: the immigrant visa application and, for family cases, the review of the affidavit of support. This last charge goes back to USCIS, because USCIS, not the consulate, makes the card. The visa interview is done and the visa is in the passport; what remains is the trip, then the card in the mailbox at the U.S. address in the case.</p>
 <h2>Where it sits in the total</h2>
 ${h.table(['Line', 'Paid to', 'Amount'], fam.lines.map((l) => [l.form, l.payer === 'dos' ? 'State Department' : 'USCIS', h.usd(l.amount * l.count)]).concat([['<strong>Total</strong>', '', `<strong>${h.usd(fam.total)}</strong>`]]), `One person, family case, I-130 on paper. Form G-1055, edition ${P.g1055_edition}.`, ['l', 'l', 'r'])}

@@ -36,7 +36,7 @@ export default definePage({
     nav: 'EB-1 priority workers', card: 'First preference: the rest-of-world cutoff, the India and China lines, and where EB-1 time is really spent.',
     title: 'EB-1 Visa Bulletin 2026: Priority Worker Cutoff and Wait',
     description: 'EB-1 in the Visa Bulletin: the rest-of-world cutoff, the separate India and China dates, rare retrogressions since 2001 and USCIS time for each I-140 type.',
-    h1: 'EB-1 priority workers: the cutoff, the exceptions and the real clock',
+    h1: 'EB-1 Visa Bulletin: the cutoff, the exceptions and the real clock',
     intro: 'Pick your country of birth and enter the priority date from your EB-1 Form I-140 to see whether a visa number is available this month.',
     resume: `In the ${monthName(LATEST, 'en')} Visa Bulletin, EB-1 for people born outside India and mainland China reads ${en(fad)} on the Final Action chart, and Mexico and the Philippines share that column. A Current cutoff means no visa queue at all: once USCIS approves the Form I-140 and the Form I-485, the green card can be issued whatever the priority date. India and China are the exceptions, with Final Action Dates of ${en(fadIN)} and ${en(fadCN)}, because the 7% per-country cap applies in the first preference too. For most EB-1 applicants the waiting is therefore done at USCIS: the latest published range for an extraordinary ability petition (E11) is ${e11.min} to ${e11.max} months, against ${e12.min} to ${e12.max} months for outstanding professors and researchers (E12) and ${e13.min} to ${e13.max} months for multinational executives and managers (E13). None of these figures is a promise for an individual file.`,
     faqs: [

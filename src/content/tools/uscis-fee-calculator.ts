@@ -27,7 +27,7 @@ export default definePage({
     title: 'USCIS Fee Calculator 2026: Total for the Whole Family',
     description: `USCIS fee calculator for the G-1055 of ${P.g1055_edition}: adds every form and family member, paper or online, plus State Department visa fees, shown line by line.`,
     h1: 'USCIS fee calculator: the whole case, not one form',
-    intro: 'Choose the path, the number of family members and the options; the total adds every form USCIS and the State Department will charge, each line priced from Form G-1055.',
+    intro: 'Choose the path, the number of family members and the options; the USCIS fee calculator adds every form USCIS and the State Department will charge, each line priced from Form G-1055.',
     resume: `The official USCIS fee calculator looks up the fee for one form at a time. A green card case is rarely one form: a worker sponsored by an employer, a spouse, a 16-year-old and a 9-year-old adjusting status together pay for an I-140, four I-485s at two different prices, four work permits and four travel documents. This calculator adds all of it from the USCIS fee schedule, Form G-1055, edition ${P.g1055_edition}. For that family of four filing on paper the government total is ${en(fam4.total)}, of which ${en(i140Part)} is the I-140 and its Asylum Program Fee, usually paid by the employer; online, where USCIS allows it, the total falls to ${en(fam4On.total)}. The calculator also prices the State Department side of a consular case, which no USCIS tool covers, and applies the reduced I-485 fee for children under 14 filing with a parent, the ${en(F.i765.withPendingI485Since2024)} work permit with a pending I-485, and the paper-only ${en(F.n400.reduced)} N-400 rate.`,
     faqs: [
       { q: 'What does this USCIS fee calculator add that the official one does not?', a: 'The USCIS tool asks you to select one form and returns its fee. This one starts from the path, then multiplies each line by the number of people filing, applies the child rate for the I-485, adds the State Department visa fees and the USCIS Immigrant Fee for consular cases, and separates what goes to each agency. Both read the same G-1055 schedule.' },
@@ -36,7 +36,7 @@ export default definePage({
       { q: 'Which costs are missing from the USCIS fee calculator total?', a: 'Anything with no official price: the civil surgeon or panel physician who does the medical exam, certified translations, photos, postage and any attorney. Form I-693 and Form I-864 appear in the list at zero because USCIS charges nothing for them when filed with the I-485. A second I-130 for another relative is also not added; count it yourself.' },
     ],
     body: (h) => `
-<h2>From one form to the whole case</h2>
+<h2>USCIS fee calculator: from one form to the whole case</h2>
 <p>Pick what you are filing from eight paths: a family or employment green card inside the country, the same through a consulate, a fiancé visa followed by adjustment, citizenship, removal of conditions, or a card renewal. The form then shows only the questions that change the bill: how many other family members aged 14 or older file, how many children under 14 file with a parent, whether you want the work permit and the travel document, whether the employer has 25 or fewer staff, and whether household income is within the reduced N-400 limit. The result lists each form with its count, then the USCIS subtotal, the State Department subtotal and the total.</p>
 <h2>A family of four, priced line by line</h2>
 ${h.table(['Form', 'Count', 'Each', 'Line'], fam4.lines.map((l) => [l.form, l.count, h.usd(l.amount), h.usd(l.amount * l.count)]), `Employment green card, adjustment of status, paper filing, G-1055 edition ${h.P.g1055_edition}.`, ['l', 'r', 'r', 'r'])}
@@ -58,7 +58,7 @@ ${h.table(['Form', 'Count', 'Each', 'Line'], fam4.lines.map((l) => [l.form, l.co
       { q: '¿Cuánto más cuesta si mi hijo menor de 14 años hace el ajuste aquí?', a: `Si el niño presenta su I-485 junto con uno de sus padres, paga ${es(F.i485.under14WithParentPaper)} en papel en lugar de ${es(F.i485.paper)}. Si presenta solo, paga la tarifa completa. A eso se suman, si los pide, el permiso de trabajo de ${es(F.i765.withPendingI485Since2024)} y el permiso de viaje de ${es(F.i131.advanceParolePaper)} en papel. La calculadora aplica estas tarifas cuando indica cuántos menores de 14 años presentan.` },
     ],
     body: (h) => `
-<h2>Una familia, dos agencias</h2>
+<h2>Tarifas USCIS: una familia, dos agencias</h2>
 <p>En un caso familiar por consulado, el dinero va a dos lugares. USCIS cobra la petición I-130, ${h.usd(F.i130.paper)} en papel o ${h.usd(F.i130.online)} en línea, y después la ${h.src('immigrantFee', 'USCIS Immigrant Fee')} por cada persona, que paga la producción de la tarjeta. El Departamento de Estado cobra la visa de inmigrante y la revisión de la declaración de patrocinio en el Centro Nacional de Visas (National Visa Center), según su ${h.src('dosFees', 'página de tarifas')}. La calculadora separa las dos sumas para que sepa cuánto pagar en cada etapa.</p>
 <h2>El ejemplo de Chicago, línea por línea</h2>
 ${h.table(['Formulario', 'Personas', 'Cada uno', 'Total'], cons3.lines.map((l) => [l.form, l.count, h.usd(l.amount), h.usd(l.amount * l.count)]), 'Petición familiar por consulado, esposa y dos hijos, I-130 en papel.', ['l', 'r', 'r', 'r'])}

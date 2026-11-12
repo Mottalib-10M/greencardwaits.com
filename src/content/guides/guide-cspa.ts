@@ -52,7 +52,7 @@ export default definePage({
 </ul>
 <h2>Who can use it</h2>
 <p>USCIS lists the people covered: immediate relatives, principal and derivative applicants in the family preference categories, VAWA self-petitioners and their derivatives, derivative children of employment-based and diversity visa applicants, and derivative refugees and asylees. The case qualifies if the I-485, or the underlying petition (I-130, I-140, I-360, I-526 or I-526E, among others), was filed or still pending on or after August 6, 2002. Refugee and asylee children have their own frozen date, set at the parent’s refugee interview or asylum filing. A principal applicant in an employment category, the worker named on the I-140, gets no CSPA calculation, because that person is not applying as anyone’s child.</p>
-<h2>The formula in the Policy Manual</h2>
+<h2>The CSPA age formula in the Policy Manual</h2>
 <p>The ${h.src('cspaPolicy', 'Policy Manual chapter on the CSPA')} writes it as one subtraction: age at the time of visa availability minus pending time equals CSPA age. Each term has a strict meaning.</p>
 <p><strong>Visa availability</strong> is the later of two dates: the day the petition was approved, and the first day of the month of the Visa Bulletin that shows the priority date current in the Final Action Dates chart. Not the publication date of the bulletin, not the day the family noticed, and not the Dates for Filing chart for current applications.</p>
 <p><strong>Pending time</strong> is the number of days between the filing date of the petition (the receipt date on the I-130 or I-140 notice) and its approval date. For a derivative child it is the parent’s petition that counts.</p>
@@ -103,7 +103,7 @@ ${h.table(['Adjustment application filed', 'Chart USCIS uses for the CSPA age'],
 </ul>
 <h2>A quién cubre la ley</h2>
 <p>USCIS enumera a los cubiertos: familiares inmediatos, beneficiarios principales y derivados de las categorías familiares de preferencia, quienes presentan su propia petición bajo la ley VAWA y sus derivados, los hijos derivados de una petición de empleo o de la lotería de visas, y los hijos derivados de refugiados y asilados. El caso califica si el I-485 o la petición de base, como la I-130, estaba presentada o pendiente el 6 de agosto de 2002 o después. Para los hijos de refugiados y asilados la edad se congela en otra fecha: la entrevista de refugiado del padre o la presentación de su solicitud de asilo.</p>
-<h2>La fórmula, término por término</h2>
+<h2>La fórmula de la edad CSPA, término por término</h2>
 <p>El ${h.src('cspaPolicy', 'capítulo del Manual de políticas de USCIS sobre la CSPA')} la escribe como una resta: edad en el momento de la disponibilidad de la visa menos tiempo pendiente igual a edad CSPA.</p>
 <p><strong>Disponibilidad de la visa</strong>: la fecha más tardía entre la aprobación de la petición y el primer día del mes del boletín de visas que muestra la fecha de prioridad al día en la tabla de fechas de acción final (Final Action Dates). No es el día en que se publica el boletín ni el día en que la familia se entera.</p>
 <p><strong>Tiempo pendiente</strong> (pending time): los días entre la fecha de recibo de la petición I-130 y su fecha de aprobación. Si el hijo viene como derivado, cuenta la petición del padre o de la madre.</p>

@@ -22,8 +22,8 @@ export default definePage({
     nav: `Seattle field office`, card: `USCIS Seattle: an average citizenship queue and one of the very longest family green card queues.`,
     title: `USCIS Seattle Processing Times 2026: N-400 and I-485`,
     description: `USCIS Seattle field office: N-400 and family I-485 times, one of the longest family green card queues, compared with Portland and Spokane, plus inquiry dates.`,
-    h1: `Seattle field office: a family green card queue near the top`,
-    intro: `Seattle’s naturalization line is ordinary; its family green card line is one of the longest published for any field office.`,
+    h1: `USCIS Seattle processing times: a family green card queue near the top`,
+    intro: `USCIS Seattle’s naturalization processing time is ordinary; its family green card line is one of the longest published for any field office.`,
     resume: `The Seattle field office shows the widest gap of any large office between its two main queues. USCIS publishes ${o.n400Range} for Form N-400 there, rank ${o.n400Rank} of ${OFFICE_COUNT}, close to the national middle. For family-based Form I-485 it publishes ${o.i485Range}, rank ${o.i485Rank}, among the longest in the country. In early 2022 the family range was ${o.i485FirstRange}, so the upper bound has moved by ${sgn(o.i485Change)} months; naturalization went the other way, from ${o.n400FirstRange} to the current figure. The receipt date that opens a case inquiry for family adjustment at Seattle is ${o.i485Inquiry}, years earlier than for most offices; for the N-400 it is ${o.n400Inquiry}. Elsewhere in the Northwest, Portland publishes ${poo.i485Range} for the family I-485 and Spokane ${spo.i485Range}. Source: USCIS publication of ${pub}.`,
     faqs: [
       { q: `Why is the family I-485 so slow at USCIS Seattle?`, a: `USCIS does not publish reasons office by office. What it publishes is the range: ${o.i485Range} for family-based adjustment at Seattle, against ${o.n400Range} for naturalization at the same office. A family case also needs a visa number when the applicant is in a preference category, which can hold the file regardless of staffing.` },
@@ -32,7 +32,7 @@ export default definePage({
     ],
     body: (h) => `<h2>The widest gap among large offices</h2>
 <p>At Seattle the family green card upper bound is ${fm(o.gap)} months longer than the naturalization one. Few offices come close. For a couple where one spouse is a green card holder and the other is waiting for adjustment, the two figures describe very different experiences of the same building.</p>
-<h2>Four years of figures</h2>
+<h2>Four years of USCIS Seattle processing times</h2>
 <p>The table below lists the last USCIS publication of each year since 2022. The naturalization line has shortened at the upper bound, while family adjustment has lengthened.</p>
 <h2>Your next step</h2>
 <p>If your family I-485 receipt date is on or before ${o.i485Inquiry}, USCIS will accept a case inquiry for it. Enter your own date in the checker above to see where you stand.</p>

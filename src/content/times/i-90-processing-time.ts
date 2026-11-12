@@ -26,7 +26,7 @@ export default definePage({
     title: 'I-90 Processing Time 2026: Green Card Renewal Wait',
     description: 'I-90 processing time in 2026: the USCIS range for renewing a ten-year green card and for replacing a lost, stolen or damaged one, with inquiry dates and fees.',
     h1: 'I-90 processing time for green card renewal and replacement',
-    intro: 'Choose renewal or replacement, enter the receipt date of your I-90, and see how the application compares with the range USCIS publishes.',
+    intro: 'Choose renewal or replacement, enter the receipt date of your I-90, and see how the application compares with the processing time USCIS publishes.',
     resume: `Form I-90 is the application a permanent resident uses to renew a ten-year green card or to replace one that was lost, stolen, damaged or never received. USCIS publishes two lines for it at Service Center Operations. In the edition of ${pubEn}, the ten-year renewal shows ${n(renew.min)} to ${n(renew.max)} months, with case inquiries accepted for receipts up to ${displayDate(renew.inquiry!, 'en-US')}. Initial issuance or replacement shows ${n(repl.min)} to ${n(repl.max)} months, with inquiries for receipts up to ${displayDate(repl.inquiry!, 'en-US')}. The first figure of each pair is the median and the second the time by which 80% of applications were decided. ${renewSlower ? 'A routine renewal currently takes longer than replacing a lost card. ' : ''}The monthly report to Congress has no line for the I-90, so the published ranges are the only official measure. The fee is ${usd(F.paper, 'en')} on paper or ${usd(F.online, 'en')} online, under the G-1055 schedule.`,
     faqs: [
       { q: 'Is an I-90 renewal slower than an I-90 replacement?', a: 'USCIS publishes the ten-year renewal and the replacement or initial card as two separate lines, each with its own median and 80% figure, and the two do not move together. The table on this page shows both. USCIS does not explain the difference on its processing-times tool, so we do not attribute a cause.' },
@@ -50,7 +50,7 @@ ${h.table(['Request', 'Median', '80% of cases', 'Inquiries for receipts up to', 
     title: 'I-90 renovación de green card 2026: tiempo de USCIS',
     description: 'Cuánto tarda renovar la green card en 2026 con el I-90: el rango de USCIS para la tarjeta de diez años y para reemplazar una perdida, con consultas y tarifa.',
     h1: 'Renovar la green card con el I-90: cuánto tarda',
-    intro: 'Elija renovación o reemplazo, escriba la fecha de recibo de su I-90 y compárela con el rango que publica USCIS.',
+    intro: 'Elija renovación o reemplazo de su green card, escriba la fecha de recibo de su I-90 y compárela con el rango que publica USCIS.',
     resume: `El formulario I-90 sirve para renovar la tarjeta de residente permanente de diez años o para reemplazar una tarjeta perdida, robada o dañada. Es el trámite típico de un residente que vive en Chicago o en San Antonio y ve que su tarjeta vence en unos meses. En la publicación de USCIS del ${pubEs}, la renovación de diez años tiene un rango de ${n(renew.min, 'es')} a ${n(renew.max, 'es')} meses y el reemplazo, de ${n(repl.min, 'es')} a ${n(repl.max, 'es')} meses: la primera cifra es el caso mediano y la segunda, el plazo en que se resolvió el 80 % de los casos. ${renewSlower ? 'Hoy la renovación tarda más que el reemplazo. ' : ''}El informe mensual al Congreso no incluye el I-90, así que el rango publicado es la única cifra oficial. USCIS recuerda en la página del formulario que el residente debe llevar consigo una tarjeta vigente o un documento equivalente en todo momento. La tarifa es de ${usd(F.paper, 'es')} en papel y ${usd(F.online, 'es')} en línea.`,
     faqs: [
       { q: '¿Puedo viajar a México mientras USCIS renueva mi green card con el I-90?', a: 'USCIS exige llevar una tarjeta vigente o un documento equivalente en todo momento, y la renovación puede tardar más de lo que dura un viaje planeado. Antes de salir con la tarjeta vencida o por vencer, consulte a un abogado de inmigración o a un representante acreditado. Esta página solo muestra los tiempos publicados y no es asesoría legal.' },
@@ -59,7 +59,7 @@ ${h.table(['Request', 'Median', '80% of cases', 'Inquiries for receipts up to', 
     ],
     body: (h) => {
       const m = (x: number | null | undefined) => (x == null ? '–' : h.num(x, x % 1 ? 1 : 0));
-      return `<h2>Renovar con tiempo</h2>
+      return `<h2>Renovar la green card con tiempo: el I-90</h2>
 <p>Con una cifra alta de ${m(renew.max)} meses para la renovación, quien presenta el I-90 pocas semanas antes del vencimiento probablemente tendrá la tarjeta vencida durante una parte de la espera. Las dos líneas que publica USCIS:</p>
 ${h.table(['Trámite', 'Rango publicado', 'Consultas para recibos hasta'], [['Renovación de la tarjeta de diez años', `${m(renew.min)} a ${m(renew.max)} meses`, h.date(renew.inquiry!)], ['Reemplazo o primera tarjeta', `${m(repl.min)} a ${m(repl.max)} meses`, h.date(repl.inquiry!)]], `Publicación de USCIS del ${h.date(PUBLISHED)}, centros de servicio.`, ['l', 'r', 'l'])}
 <p>USCIS no explica en su herramienta por qué una línea tarda más que la otra; nosotros tampoco lo suponemos.</p>

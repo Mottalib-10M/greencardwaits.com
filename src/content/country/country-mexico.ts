@@ -37,8 +37,8 @@ export default definePage({
     nav: 'Mexico', card: 'Every Visa Bulletin category for people born in Mexico, with the worldwide date for comparison.',
     title: 'Visa Bulletin Mexico 2026: Every Family Line and Its Gap',
     description: 'Visa Bulletin dates for people born in Mexico: five family lines with their own cutoff, the only separate F2A date, and employment lines that match the world.',
-    h1: 'Green card dates for people born in Mexico',
-    intro: 'Choose the category and enter your priority date; the table below shows each Mexican cutoff this month next to the worldwide date.',
+    h1: 'Visa Bulletin Mexico: green card dates for people born in Mexico',
+    intro: 'Choose the category and enter your priority date; the table below shows each Visa Bulletin cutoff for Mexico this month next to the worldwide date.',
     resume: `Mexico has its own Visa Bulletin column because family demand from Mexican-born applicants passes the ${Math.round(L.perCountryShare * 100)}% per-country limit, ${L.perCountry.toLocaleString('en-US')} visas a year. In the ${LATEST.slice(0, 4)} bulletins Mexico has a separate Final Action Date in ${fam.length} family categories (${listEn(fam.map((x) => CAT_SHORT[x.c]))})${emp.length ? ` and ${emp.length} employment categories` : ' and none in employment'}, which makes it the most family-heavy backlog in the bulletin. The longest gap is ${CAT_SHORT[top.c]}, married sons and daughters of U.S. citizens, at ${cellText(top.a, 'en')}: about ${Math.round(top.gap)} years behind the worldwide date and about ${Math.round(f3Queue)} years behind the bulletin month. ${f2aOnlyMx ? 'Mexico is also the only country with its own F2A date, for spouses and minor children of green card holders.' : ''} In the employment categories Mexican-born workers use the worldwide dates. The column follows country of birth, not citizenship, and a spouse born elsewhere can sometimes let both partners use that country's queue.`,
     faqs: [
       { q: 'Why does Mexico have its own F2A date in the Visa Bulletin?', a: 'F2A covers spouses and minor children of green card holders, and Mexican demand in that line is large enough that the State Department often sets a separate Mexican cutoff while the rest of the world moves ahead. Since 2015 the Mexican F2A date has differed from the worldwide date in about two thirds of the bulletins.' },
@@ -48,7 +48,7 @@ export default definePage({
     body: (h) => `
 <h2>Five family lines of their own</h2>
 <p>The Immigration and Nationality Act holds each country to ${h.pct(L.perCountryShare)} of the yearly preference total, ${h.num(L.perCountry)} visas. ${fam.length === 5 ? 'Mexico reaches the ceiling in every family preference this month' : `Mexico reaches the ceiling in ${fam.length} of the five family preferences this month`}: ${listEn(fam.map((x) => CAT_SHORT[x.c]))} ${fam.length > 1 ? 'all carry' : 'carries'} a Mexican date. ${h.src('ina203', 'INA sections 201 to 203')}.</p>
-<h2>Where each line stands</h2>
+<h2>Where each Mexico line stands in the Visa Bulletin</h2>
 <p>F3 is the deepest, at ${h.cell(fad('F3'))}, a queue of about ${h.num(f3Queue, 1)} years. F4 siblings are at ${h.cell(fad('F4'))}; in October 2016 they were at ${h.cell(f4Oct2016)}. F1 is at ${h.cell(fad('F1'))} and F2B at ${h.cell(fad('F2B'))}, so ${f1BehindF2b ? 'the line for children of citizens is behind the line for children of residents' : 'F1 is ahead of F2B this month'}. ${h.a('f3-mexico', 'F3 Mexico')} and ${h.a('f4-mexico', 'F4 Mexico')} have the full history.</p>
 <h2>F2A: the one queue that is short</h2>
 <p>${f2aOnlyMx ? 'No other country has its own F2A date.' : 'Mexico often has its own F2A date.'} This month the Mexican Final Action Date is ${h.cell(fad('F2A'))}, about ${h.num(years(fad('F2A'), cellAt('F2A', 'ROW', 'FAD')) * 12)} months behind the world, and the Dates for Filing chart for Mexican F2A reads ${h.cell(dffF2A)}. Since 2015 the Mexican date has been separate in ${h.pct(f2aShare)} of bulletins. With USCIS accepting the filing chart for family cases this month, a Mexican spouse of a green card holder who is already in the United States and eligible to adjust can file Form I-485 ${dffF2A === 'C' ? 'whatever the priority date' : `with a priority date before ${h.cell(dffF2A)}`}. If the resident spouse naturalizes first, the husband or wife becomes an immediate relative and leaves the queue. ${h.a('f2a-mexico', 'F2A Mexico')}.</p>
@@ -62,8 +62,8 @@ export default definePage({
     nav: 'México', card: 'Todas las categorías del Visa Bulletin para personas nacidas en México, con la fecha del resto del mundo.',
     title: 'Boletín de Visas México 2026: Fechas por Tipo de Familiar',
     description: 'Fechas del Visa Bulletin para familias mexicanas: cónyuges de residentes, hijos solteros, hijos casados y hermanos de ciudadanos, y qué cambia si se naturaliza.',
-    h1: 'Fechas de la green card para personas nacidas en México',
-    intro: 'Elija la categoría de su familiar e ingrese la fecha de prioridad del recibo del I-130; la tabla muestra cada fecha mexicana de este mes.',
+    h1: 'Boletín de Visas México: fechas de la green card para personas nacidas en México',
+    intro: 'Elija la categoría de su familiar e ingrese la fecha de prioridad del recibo del I-130; la tabla muestra cada fecha de México en el Boletín de Visas de este mes.',
     resume: `Las personas nacidas en México tienen su propia columna en el boletín de visas (Visa Bulletin) porque la demanda familiar desde México supera el límite por país del ${Math.round(L.perCountryShare * 100)} %, ${L.perCountry.toLocaleString('en-US')} visas al año. En los boletines de ${LATEST.slice(0, 4)}, México tiene una fecha de acción final (Final Action Date) propia en ${fam.length} categorías familiares: ${listEs(fam.map((x) => CAT_SHORT[x.c]))}. La espera más larga es F3, hijos casados de ciudadanos, con fecha ${cellText(top.a, 'es')}: unos ${Math.round(f3Queue)} años desde la fecha de prioridad hasta hoy. Para el cónyuge o el hijo menor de un residente permanente (F2A), la fecha mexicana es ${cellText(fad('F2A'), 'es')}, mucho más cercana. En las categorías de empleo, los trabajadores nacidos en México usan las mismas fechas que el resto del mundo. Lo que cuenta es el país de nacimiento, no el pasaporte. Si el familiar que pidió la visa se hace ciudadano, la categoría puede cambiar, y no siempre para mejor.`,
     faqs: [
       { q: '¿Qué pasa con la petición de mi esposa si me hago ciudadano estadounidense?', a: 'Si usted es residente permanente y pidió a su cónyuge en F2A, al naturalizarse su cónyuge pasa a ser familiar inmediato (immediate relative) de un ciudadano. Los familiares inmediatos no esperan en el boletín de visas, así que la fila mexicana de F2A deja de aplicarse. Conviene que un abogado de inmigración con licencia revise el expediente antes de dar pasos.' },
@@ -72,7 +72,7 @@ export default definePage({
       { q: '¿Si nací en México pero mi esposo nació en Guatemala, qué fila uso?', a: 'En principio, la de su país de nacimiento, México. La ley permite en ciertos casos usar el país de nacimiento del cónyuge cuando ambos inmigran juntos (cross-chargeability). Guatemala usa hoy las fechas del resto del mundo, que en las filas familiares van años por delante de México. Un representante acreditado por el Departamento de Justicia (DOJ) puede confirmar si aplica.' },
     ],
     body: (h) => `
-<h2>Una fila distinta para cada familiar</h2>
+<h2>Una fila distinta para cada familiar en el Boletín de Visas de México</h2>
 <p>El boletín de visas no tiene una sola fila para México, sino ${h.num(fam.length)} en la parte familiar, y cada una depende de quién pide y a quién. Este mes, las fechas de acción final mexicanas son:</p>
 <ul>
 <li>F2A, cónyuge o hijo menor de un residente: ${h.cell(fad('F2A'))}.</li>
