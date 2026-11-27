@@ -3,8 +3,8 @@
 @font-face { font-family: 'Source Serif 4'; font-style: normal; font-weight: 200 900; font-display: swap; src: url('/fonts/source-serif-4-var.woff2') format('woff2'); }
 @font-face { font-family: 'Inter'; font-style: normal; font-weight: 400 700; font-display: swap; src: url('/fonts/inter-var.woff2') format('woff2'); }
 @theme {
-  --color-navy-50: #f8fafc; --color-navy-100: #f1f5f9; --color-navy-200: #e2e8f0; --color-navy-300: #cbd5e1; --color-navy-400: #94a3b8; --color-navy-500: #64748b; --color-navy-600: #475569; --color-navy-700: #334155; --color-navy-800: #1e293b; --color-navy-900: #0f172a; --color-navy-950: #020617;
-  --color-accent-50: #effbf6; --color-accent-100: #dbf5eb; --color-accent-200: #b7ebd7; --color-accent-300: #87debc; --color-accent-400: #58d0a1; --color-accent-500: #1F6F50; --color-accent-600: #1a5e44; --color-accent-700: #164e38; --color-accent-800: #113e2d; --color-accent-900: #0e3123;
+  --color-navy-50: #F8F8F9; --color-navy-100: #EEEFF1; --color-navy-200: #DADDE0; --color-navy-300: #B9BFC6; --color-navy-400: #7E8895; --color-navy-500: #586676; --color-navy-600: #425164; --color-navy-700: #2B3C52; --color-navy-800: #172A41; --color-navy-900: #061A33; --color-navy-950: #020617;
+  --color-accent-50: #EEF1F4; --color-accent-100: #DDE2E9; --color-accent-200: #B6C1D0; --color-accent-300: #8498B0; --color-accent-400: #546F90; --color-accent-500: #0A3161; --color-accent-600: #082A52; --color-accent-700: #072346; --color-accent-800: #061C38; --color-accent-900: #04162C;
   --color-success: #15803d; --color-warning: #b45309; --color-error: #dc2626;
   --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
   --font-serif: 'Source Serif 4', Georgia, 'Times New Roman', serif;
@@ -92,3 +92,66 @@ h1 { font-weight: 700; } h2 { font-weight: 650; } h3 { font-weight: 600; }
 :where(form, div, fieldset):has(> .grid-rows-subgrid) { align-content: start; }
 /* Dans une grille, le cadre du formulaire s'arrête sous ses champs au lieu de s'étirer à la hauteur du résultat. */
 .grid > form:has(> .grid-rows-subgrid) { align-self: start; }
+
+/* Charte de page aux couleurs du pays (refonte d'identité validée par l'éditeur, appliquée le 2026-11-25, MASTERFACTORY §10.5) :
+   en-tête et bandeau du H1 pleins dans la couleur forte, filet de la 2e couleur, sections alternées teintées,
+   simulateur en carte blanche à bord haut épais, chiffres-résultats grands, boutons pleins, pied sombre.
+   Échelle --color-accent-* dans @theme ci-dessus ; règles hors couche, elles priment sur les utilitaires Tailwind. */
+header nav[aria-label] { background:#B31942; border-bottom:4px solid #0A3161; }
+header nav[aria-label] > div:first-child > a, header nav[aria-label] > div:first-child > div > a, header nav[aria-label] .nav-dropdown-trigger, #mobile-menu-toggle { color:#fff; }
+header nav[aria-label] > div:first-child > a span.text-accent-500 { color:#FFFFFF; }
+header nav[aria-label] .nav-dropdown-trigger:hover, header nav[aria-label] > div:first-child > div > a:hover { background:rgba(255,255,255,.14); }
+header nav[aria-label] > div:first-child a[hreflang], header nav[aria-label] > div:first-child a[lang] { border-color:rgba(255,255,255,.6); }
+header nav[aria-label] img[src^="data:"] { background:#fff; border-radius:8px; padding:2px; }
+.nav-dropdown-panel a, #mobile-menu a, #mobile-menu button { color:#061A33; }
+main > div:first-child { padding-top:0; }
+main > div > header:has(h1), main > div > header:has(h1) ~ :not(section,[data-outil]):has(~ [data-outil]) { box-shadow:0 0 0 100vmax #B31942; clip-path:inset(0 -100vmax); margin-bottom:0; }
+main > div > header:has(h1) { background:#B31942; color:#fff; padding:1rem 0 1.4rem; }
+main > div > header:has(h1) ~ :not(section,[data-outil]):has(~ [data-outil]) { background:#B31942; margin-top:0; margin-bottom:1rem; clip-path:inset(0 -100vmax -1rem); }
+main > div > header:has(h1) ~ :not(section,nav,[data-outil]):has(~ [data-outil]) :is(p,span,a,label,li,time) { color:rgba(255,255,255,.92); }
+main > div > header:has(h1) h1 { color:#fff; letter-spacing:-0.02em; }
+main > div > header:has(h1) h1 span { color:#FFFFFF; }
+main > div > header:has(h1) p, main > div > header:has(h1) div, main > div > header:has(h1) a, main > div > header:has(h1) time, main > div > header:has(h1) span:not(h1 span) { color:rgba(255,255,255,.92); }
+main > div > header:has(h1) + nav { background:#B31942; box-shadow:0 0 0 100vmax #B31942; clip-path:inset(0 -100vmax); margin:0; padding-bottom:.8rem; }
+main > div > header:has(h1) + nav, main > div > header:has(h1) + nav * { color:#fff; }
+main > div > header:has(h1) + nav a[class*="bg-white"] { background:#0A3161; border-color:#0A3161; color:#FFFFFF; }
+main > div > header:has(h1) + nav a[class*="bg-white"] * { color:#FFFFFF; }
+main > div > header:has(h1) + nav a[class*="bg-white"]:hover { background:#082A52; }
+main [data-outil] , main > div > header:has(h1) + :not(nav,style,script,p,.clamp,[class*="amber"],[class*="border-l"]) , main > div > header:has(h1) + nav + * , main > div > header:has(h1) ~ astro-island:first-of-type > *:first-child { border-image:linear-gradient(#B31942 0 5.5rem, transparent 5.5rem) fill 0//0 100vmax; }
+main [data-outil] > astro-island > :first-child, main [data-outil] > div:not([class*="amber"]):first-of-type, main > div > header:has(h1) ~ astro-island:first-of-type > :first-child > :first-child { background:#fff; border-top:6px solid #0A3161; border-radius:14px;  }
+main > div > section:nth-of-type(even), main > div > div.prose:nth-of-type(odd) { border-image:conic-gradient(#F6E6EB 0 0) fill 0//0 100vmax; padding-block:1.75rem; }
+main section h2, main .prose h2{color:#061A33;text-decoration:underline;text-decoration-color:#0A3161;text-decoration-thickness:5px;text-underline-offset:9px;text-decoration-skip-ink:none}
+main .bg-accent-50 { background:#EEF1F6; border-left:6px solid #0A3161; }
+main [class*="tabular-nums"][class*="text-2xl"], main [class*="tabular-nums"][class*="text-3xl"], main [class*="tabular-nums"][class*="text-4xl"], main dd[class*="text-2xl"], main dd[class*="text-xl"], main [data-outil] [class*="text-3xl"], main [data-outil] [class*="text-4xl"] { font-size:2.25rem; line-height:1.1; color:#0A3161; }
+main a[class*="border-accent"], main a[class*="bg-accent-5"], main a[class*="bg-accent-6"], main button:is([class*="bg-accent-5"],[class*="bg-accent-6"],[class*="bg-accent-7"]):not([class*="bg-accent-50"]):not(.fixed), main button[type="submit"] { background:#0A3161; color:#FFFFFF; border-color:#0A3161; border-radius:10px; }
+main a[class*="border-accent"]:hover, main button:is([class*="bg-accent-5"],[class*="bg-accent-6"],[class*="bg-accent-7"]):not([class*="bg-accent-50"]):not(.fixed):hover { background:#082A52; }
+main a[class*="border-accent"] * { color:#FFFFFF; }
+main p a, main li > a:not([class*="rounded"]), main .prose a { color:#0A3161; text-decoration:underline; }
+main table thead th { color:#061A33; border-bottom-color:transparent; box-shadow:inset 0 -3px 0 #0A3161; }
+body > footer, footer.mt-16 { background:#061A33; border-top:5px solid #0A3161; }
+body > footer *, footer.mt-16 * { color:#F1F5F9; border-color:rgba(255,255,255,.18); }
+body > footer a, footer.mt-16 a { color:#F3B4C4; }
+/* sites sans data-outil : simulateur directement dans un astro-island (carte .rechner) ou dans une section/div enveloppe */
+main > div > header:has(h1):has(~ astro-island:first-of-type > .rechner.rechner) { padding-bottom:4.5rem; }
+main > div > header:has(h1) ~ astro-island:first-of-type > .rechner.rechner { border-image:none; position:relative; margin-top:-3.25rem; background:#fff; border:1px solid #D2D6DA; border-top:6px solid #0A3161; border-radius:14px;  }
+main > div > header:has(h1) ~ astro-island:first-of-type > .rechner.rechner > :first-child { background:transparent; border-top:0; box-shadow:none; border-radius:0; }
+main > div > header:has(h1) [class*="bg-white"], main > div > header:has(h1) [class*="bg-white"] * { color:#061A33; }
+main > div > header:has(h1) + :is(section,div):not([data-outil]) > astro-island > :first-child { background:#fff; border-top:6px solid #0A3161; border-radius:14px;  }
+
+/* corrections v3 */
+footer .rounded-full, footer [class*="bg-"] { background:transparent; border-color:rgba(255,255,255,.35); }
+main button[aria-pressed="true"]:not(#z) { background:#0A3161; color:#FFFFFF; }
+main button[aria-pressed="false"]:not(#z) { background:#fff; color:#061A33; }
+.skip-link:not(#z) { background:#061A33; color:#fff; }
+body button.fixed:not(#z), body button.fixed:not(#z) * { background:#EEF1F6; color:#061A33; }
+body button.fixed:not(#z) { border:0; border-top:4px solid #0A3161; }
+main > div > header:has(h1) ~ :not(section,nav,[data-outil]):has(~ [data-outil]):is(p,div,time) { color:#fff; }
+main :is(p,li,td,caption) a:not([class*="rounded"]):not(#z) { text-decoration-thickness:auto; text-underline-offset:auto; }
+main :is(p,li,td,caption,span) > a:not([class*="rounded"]):not([class*="block"]):not([class*="flex"]) { padding-block:3px; }
+main > div > header:has(h1) + :is(section,div):not(nav,style,script,p,.clamp,[class*="amber"],[class*="border-l"]) > h2:first-child:not(#z) { color:#fff; text-decoration-color:#0A3161; }
+main > div > header:has(h1) label:not(#z) { color:#fff; }
+header nav[aria-label] a span[class*="text-accent"]:not(#z) { color:#FFFFFF; }
+.skip-link:not(:focus) { opacity:0; }
+body :is(a,div,button,aside)[class*="fixed"][class*="bottom-"]:not(nav):not(#z), body :is(a,div,button,aside)[class*="fixed"][class*="bottom-"]:not(nav):not(#z) * { background:#EEF1F6; color:#061A33; }
+/* ajouts propres au site */
+main table.tabular-nums td:not(#z) { padding-right:.4rem; padding-top:.45rem; padding-bottom:.45rem; }
